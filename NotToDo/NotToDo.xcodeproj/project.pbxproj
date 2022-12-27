@@ -29,6 +29,18 @@
 		3B3405C0295B0A8C00D44722 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BF295B0A8C00D44722 /* Pretendard-Regular.otf */; };
 		3B3405C2295B0AAE00D44722 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405C1295B0AAD00D44722 /* Pretendard-SemiBold.otf */; };
 		3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405C3295B0ABB00D44722 /* UIFont+.swift */; };
+		3B3405C8295B0FB300D44722 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B3405C7295B0FB300D44722 /* SnapKit */; };
+		3B3405CB295B0FC700D44722 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3B3405CA295B0FC700D44722 /* Then */; };
+		3B3405CE295B0FEE00D44722 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 3B3405CD295B0FEE00D44722 /* Moya */; };
+		3B3405D0295B101600D44722 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405CF295B101600D44722 /* RecommendViewController.swift */; };
+		3B3405D2295B105900D44722 /* NotTodoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D1295B105900D44722 /* NotTodoAddViewController.swift */; };
+		3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D3295B108400D44722 /* AchievementViewController.swift */; };
+		3B3405D6295B109A00D44722 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D5295B109A00D44722 /* MyInfoViewController.swift */; };
+		3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D7295B10C900D44722 /* TabBarItem.swift */; };
+		3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D9295B12BC00D44722 /* UIImage+.swift */; };
+		3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DB295B146E00D44722 /* TabBarController.swift */; };
+		3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DD295B162600D44722 /* UITabBar+.swift */; };
+		3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +68,15 @@
 		3B3405BF295B0A8C00D44722 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		3B3405C1295B0AAD00D44722 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		3B3405C3295B0ABB00D44722 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		3B3405CF295B101600D44722 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		3B3405D1295B105900D44722 /* NotTodoAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTodoAddViewController.swift; sourceTree = "<group>"; };
+		3B3405D3295B108400D44722 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
+		3B3405D5295B109A00D44722 /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		3B3405D7295B10C900D44722 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		3B3405D9295B12BC00D44722 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		3B3405DB295B146E00D44722 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		3B3405DD295B162600D44722 /* UITabBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+.swift"; sourceTree = "<group>"; };
+		3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +84,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3405C8295B0FB300D44722 /* SnapKit in Frameworks */,
+				3B3405CB295B0FC700D44722 /* Then in Frameworks */,
+				3B3405CE295B0FEE00D44722 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +147,7 @@
 				3B3405C5295B0B1100D44722 /* UI */,
 				3B16288A295AD82F0077AE7B /* UIView+.swift */,
 				3B16288C295AD8380077AE7B /* UIStackView+.swift */,
+				3B3405DD295B162600D44722 /* UITabBar+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -175,6 +200,9 @@
 		3B162897295AD95B0077AE7B /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				3B3405D7295B10C900D44722 /* TabBarItem.swift */,
+				3B3405DB295B146E00D44722 /* TabBarController.swift */,
+				3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -218,6 +246,7 @@
 		3B16289C295AD9CB0077AE7B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3B3405CF295B101600D44722 /* RecommendViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -239,6 +268,7 @@
 		3B16289F295AD9DF0077AE7B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3B3405D1295B105900D44722 /* NotTodoAddViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -253,6 +283,7 @@
 		3B1628A1295AD9EC0077AE7B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3B3405D3295B108400D44722 /* AchievementViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -267,6 +298,7 @@
 		3B1628A3295AD9FD0077AE7B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3B3405D5295B109A00D44722 /* MyInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -367,6 +399,7 @@
 			children = (
 				3B3405B8295B090300D44722 /* UIColor+.swift */,
 				3B3405C3295B0ABB00D44722 /* UIFont+.swift */,
+				3B3405D9295B12BC00D44722 /* UIImage+.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -388,6 +421,11 @@
 			dependencies = (
 			);
 			name = NotToDo;
+			packageProductDependencies = (
+				3B3405C7295B0FB300D44722 /* SnapKit */,
+				3B3405CA295B0FC700D44722 /* Then */,
+				3B3405CD295B0FEE00D44722 /* Moya */,
+			);
 			productName = NotToDo;
 			productReference = 3B162870295AD7860077AE7B /* NotToDo.app */;
 			productType = "com.apple.product-type.application";
@@ -416,6 +454,11 @@
 				Base,
 			);
 			mainGroup = 3B162867295AD7860077AE7B;
+			packageReferences = (
+				3B3405C6295B0FB300D44722 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3B3405C9295B0FC700D44722 /* XCRemoteSwiftPackageReference "Then" */,
+				3B3405CC295B0FEE00D44722 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = 3B162871295AD7860077AE7B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -475,15 +518,24 @@
 				3B1628AE295ADB550077AE7B /* GeneralResponse.swift in Sources */,
 				3B1628B2295ADB710077AE7B /* NetworkResult.swift in Sources */,
 				3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */,
+				3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */,
 				3B162878295AD7860077AE7B /* ViewController.swift in Sources */,
+				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,
 				3B1628AA295ADB2F0077AE7B /* URLConstant.swift in Sources */,
 				3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */,
+				3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */,
+				3B3405D2295B105900D44722 /* NotTodoAddViewController.swift in Sources */,
 				3B1628AC295ADB440077AE7B /* NetworkLoggerPlugin.swift in Sources */,
 				3B3405B9295B090300D44722 /* UIColor+.swift in Sources */,
 				3B162890295AD89C0077AE7B /* Strings.swift in Sources */,
+				3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */,
 				3B1628B0295ADB640077AE7B /* NetworkConstant.swift in Sources */,
 				3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */,
 				3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */,
+				3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */,
+				3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */,
+				3B3405D6295B109A00D44722 /* MyInfoViewController.swift in Sources */,
+				3B3405D0295B101600D44722 /* RecommendViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +745,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B3405C6295B0FB300D44722 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		3B3405C9295B0FC700D44722 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		3B3405CC295B0FEE00D44722 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B3405C7295B0FB300D44722 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B3405C6295B0FB300D44722 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3B3405CA295B0FC700D44722 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B3405C9295B0FC700D44722 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		3B3405CD295B0FEE00D44722 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B3405CC295B0FEE00D44722 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3B162868295AD7860077AE7B /* Project object */;
 }

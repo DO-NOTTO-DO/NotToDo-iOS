@@ -9,5 +9,8 @@ disabled_rules:
 - function_body_length
 - nesting
 
+opt_in_rules:
+- mark
+
 excluded:
 - NotToDo/Application

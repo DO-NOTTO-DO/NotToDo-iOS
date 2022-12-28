@@ -8,9 +8,10 @@
 import UIKit
 
 extension UITabBar {
-    static func clearShadow() {
+    static func clearUI() {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().backgroundColor = UIColor.clear
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -12.adjusted)
     }
 }

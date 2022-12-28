@@ -16,6 +16,8 @@ final class TabBarController: UITabBarController {
     
     private var tabs: [UIViewController] = []
     private var shapeLayer: CALayer?
+    private let width: CGFloat = UIScreen.main.bounds.width
+    private let height: CGFloat = UIScreen.main.bounds.height
     
     // MARK: - View Life Cycle
     
@@ -56,9 +58,12 @@ extension TabBarController {
     }
     
     private func setTabBarUI() {
-        UITabBar.clearShadow()
+        UITabBar.clearUI()
         addShape()
 
+        self.tabBar.itemWidth = 45.0.adjusted
+        self.tabBar.itemPositioning = .centered
+        
         tabBar.layer.masksToBounds = false
         tabBar.layer.shadowColor = UIColor.nottodoGray2?.cgColor
         tabBar.layer.shadowOpacity = 0.08
@@ -67,11 +72,11 @@ extension TabBarController {
         super.tabBar.sizeToFit()
         
         let selectedfontAttributes = [
-            NSAttributedString.Key.font: UIFont.PretendardBold(size: 14),
+            NSAttributedString.Key.font: UIFont.PretendardBold(size: 14.adjusted),
             NSAttributedString.Key.foregroundColor: UIColor.nottodoBlack
         ]
         let fontAttributes = [
-            NSAttributedString.Key.font: UIFont.PretendardMedium(size: 14),
+            NSAttributedString.Key.font: UIFont.PretendardMedium(size: 14.adjusted),
             NSAttributedString.Key.foregroundColor: UIColor.nottodoGray2
         ]
         UITabBarItem.appearance().setTitleTextAttributes(fontAttributes as [NSAttributedString.Key: Any], for: .normal)
@@ -79,10 +84,9 @@ extension TabBarController {
     }
     
     private func createPath() -> CGPath {
-        let height: CGFloat = UIScreen.main.bounds.height
-        let dy: CGFloat = 11
-        let width: CGFloat = UIScreen.main.bounds.width
-        let dx: CGFloat = 14
+        
+        let dy: CGFloat = 11.adjusted
+        let dx: CGFloat = 14.adjusted
         let path = UIBezierPath()
   
         path.move(to: CGPoint(x: dx, y: 0))

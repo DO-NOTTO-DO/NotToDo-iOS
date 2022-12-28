@@ -41,6 +41,7 @@
 		3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DB295B146E00D44722 /* TabBarController.swift */; };
 		3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DD295B162600D44722 /* UITabBar+.swift */; };
 		3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */; };
+		3BED5328295C018700157A3B /* adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED5327295C018700157A3B /* adjust+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		3B3405DB295B146E00D44722 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3B3405DD295B162600D44722 /* UITabBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+.swift"; sourceTree = "<group>"; };
 		3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		3BED5327295C018700157A3B /* adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "adjust+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				3B16288A295AD82F0077AE7B /* UIView+.swift */,
 				3B16288C295AD8380077AE7B /* UIStackView+.swift */,
 				3B3405DD295B162600D44722 /* UITabBar+.swift */,
+				3BED5327295C018700157A3B /* adjust+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				3B162878295AD7860077AE7B /* ViewController.swift in Sources */,
 				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,
 				3B1628AA295ADB2F0077AE7B /* URLConstant.swift in Sources */,
+				3BED5328295C018700157A3B /* adjust+.swift in Sources */,
 				3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */,
 				3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */,
 				3B3405D2295B105900D44722 /* NotTodoAddViewController.swift in Sources */,

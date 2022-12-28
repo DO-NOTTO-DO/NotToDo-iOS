@@ -9,9 +9,15 @@ import UIKit
 
 class CustomTabBar: UITabBar {
     
+    // MARK: - Properties
+    
+    private var shapeLayer: CALayer?
+    
+    // MARK: - Methods
+    
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
-        sizeThatFits.height = 111
+        sizeThatFits.height = 117
         return sizeThatFits
     }
 }
@@ -24,7 +30,4 @@ extension UITabBar {
         return sizeThatFits
     }
     
-    private func draw() {
-        
-    }
 }

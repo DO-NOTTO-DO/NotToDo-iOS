@@ -1,0 +1,16 @@
+disabled_rules:
+- force_cast
+- identifier_name
+- line_length
+- shorthand_operator
+- trailing_whitespace
+- type_name
+- function_parameter_count
+- function_body_length
+- nesting
+
+opt_in_rules:
+- mark
+
+excluded:
+- NotToDo/Application

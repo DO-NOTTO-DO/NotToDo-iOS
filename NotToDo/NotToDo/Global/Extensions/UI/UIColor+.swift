@@ -18,7 +18,7 @@ extension UIColor {
     static let nottodoGray4 = UIColor(named: "nottodoGray4")
     static let nottodoGreen = UIColor(named: "nottodoGreen")
     static let nottodoBlue = UIColor(named: "nottodoBlue")
-    static let nottodoRed = UIColor(named: "nottodoRed")
     static let nottodoWhite = UIColor(named: "nottodoWhite")
+    static let nottodoRed = UIColor(named: "nottodoRed")
     static let BG = UIColor(named: "BG")
 }

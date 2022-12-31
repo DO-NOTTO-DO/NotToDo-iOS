@@ -463,12 +463,6 @@
 				Base,
 			);
 			mainGroup = 3B162867295AD7860077AE7B;
-			packageReferences = (
-				3B3405C6295B0FB300D44722 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				3B3405C9295B0FC700D44722 /* XCRemoteSwiftPackageReference "Then" */,
-				3B3405CC295B0FEE00D44722 /* XCRemoteSwiftPackageReference "Moya" */,
-				090FA2E8295F563C00918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-			);
 			productRefGroup = 3B162871295AD7860077AE7B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

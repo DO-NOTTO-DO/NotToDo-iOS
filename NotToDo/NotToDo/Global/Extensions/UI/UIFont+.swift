@@ -20,7 +20,7 @@ extension UIFont {
     
     public enum PretendardType: String {
         case bold = "Bold"
-        case mediun = "Medium"
+        case medium = "Medium"
         case regular = "Regular"
         case semiBold = "SemiBold"
     }

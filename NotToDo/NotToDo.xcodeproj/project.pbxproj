@@ -36,9 +36,6 @@
 		3B3405C0295B0A8C00D44722 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BF295B0A8C00D44722 /* Pretendard-Regular.otf */; };
 		3B3405C2295B0AAE00D44722 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405C1295B0AAD00D44722 /* Pretendard-SemiBold.otf */; };
 		3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405C3295B0ABB00D44722 /* UIFont+.swift */; };
-		3B3405C8295B0FB300D44722 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B3405C7295B0FB300D44722 /* SnapKit */; };
-		3B3405CB295B0FC700D44722 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3B3405CA295B0FC700D44722 /* Then */; };
-		3B3405CE295B0FEE00D44722 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 3B3405CD295B0FEE00D44722 /* Moya */; };
 		3B3405D0295B101600D44722 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405CF295B101600D44722 /* RecommendViewController.swift */; };
 		3B3405D2295B105900D44722 /* NotTodoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D1295B105900D44722 /* NotTodoAddViewController.swift */; };
 		3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D3295B108400D44722 /* AchievementViewController.swift */; };
@@ -94,15 +91,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B3405C8295B0FB300D44722 /* SnapKit in Frameworks */,
-				3B3405CB295B0FC700D44722 /* Then in Frameworks */,
 				090FA2FB2960B87500918AED /* Moya in Frameworks */,
 				090FA2EA295F563C00918AED /* FirebaseAnalytics in Frameworks */,
 				096BDFD52960B910009ED396 /* FSCalendar in Frameworks */,
 				090FA2F82960B74000918AED /* Then in Frameworks */,
 				090FA2F52960B70400918AED /* SnapKit in Frameworks */,
 				090FA2F22960B15300918AED /* FirebaseAnalytics in Frameworks */,
-				3B3405CE295B0FEE00D44722 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,9 +434,6 @@
 			);
 			name = NotToDo;
 			packageProductDependencies = (
-				3B3405C7295B0FB300D44722 /* SnapKit */,
-				3B3405CA295B0FC700D44722 /* Then */,
-				3B3405CD295B0FEE00D44722 /* Moya */,
 				090FA2E9295F563C00918AED /* FirebaseAnalytics */,
 				090FA2F12960B15300918AED /* FirebaseAnalytics */,
 				090FA2F42960B70400918AED /* SnapKit */,
@@ -825,30 +816,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		3B3405C6295B0FB300D44722 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
-		3B3405C9295B0FC700D44722 /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		3B3405CC295B0FEE00D44722 /* XCRemoteSwiftPackageReference "Moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -881,21 +848,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 096BDFD32960B910009ED396 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
-		};
-		3B3405C7295B0FB300D44722 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3B3405C6295B0FB300D44722 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		3B3405CA295B0FC700D44722 /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3B3405C9295B0FC700D44722 /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
-		};
-		3B3405CD295B0FEE00D44722 /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3B3405CC295B0FEE00D44722 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

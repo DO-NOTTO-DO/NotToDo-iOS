@@ -28,7 +28,7 @@ Firebase | 푸쉬 알림 | SPM
 <br>
 
 ## 📌 Code Convention  
-[go to NotTodo Code Convention✨](https://github.com/DO-NOTTO-DO/NotToDo-iOS/wiki/Code-Convention)
+[go to NotTodo Code Convention✨](https://github.com/DO-NOTTO-DO/NotToDo-iOS/wiki/%E2%98%81%EF%B8%8F-Code-Convention)
 
 <br>
 

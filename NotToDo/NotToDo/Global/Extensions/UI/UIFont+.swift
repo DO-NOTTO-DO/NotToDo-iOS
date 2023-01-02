@@ -9,7 +9,7 @@ import UIKit
 
 struct AppFontName {
     static let pretendardBold = "Pretendard-Bold"
-    static let pretendardSemiBold = "Pretendard-SemiBold.otf"
+    static let pretendardSemiBold = "Pretendard-SemiBold"
     static let pretendardMedium = "Pretendard-Medium"
     static let pretendardRegular = "Pretendard-Regular"
 }
@@ -17,6 +17,17 @@ struct AppFontName {
 extension UIFont {
     
     // MARK: - Pretendard Font
+    
+    public enum PretendardType: String {
+        case bold = "Bold"
+        case medium = "Medium"
+        case regular = "Regular"
+        case semiBold = "SemiBold"
+    }
+    
+    static func Pretandard(_ type: PretendardType, size: CGFloat) -> UIFont {
+        return UIFont(name: "Pretendard-\(type.rawValue)", size: size)!
+    }
     
     @nonobjc class func PretendardBold(size: CGFloat) -> UIFont {
         return UIFont(name: AppFontName.pretendardBold, size: size)!

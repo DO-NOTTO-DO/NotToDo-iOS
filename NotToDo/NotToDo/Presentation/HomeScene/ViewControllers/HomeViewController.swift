@@ -14,10 +14,31 @@ final class HomeViewController: UIViewController {
     
     // MARK: - UI Components
     
+    private let homeView = HomeView()
+    
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .nottodoWhite
+        setLayout()
+        addAction()
+    }
+}
+
+extension HomeViewController {
+    private func setLayout() {
+        view.addSubview(homeView)
+        homeView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+    
+    private func addAction() {
+        homeView.button.addAction(UIAction(handler: { _ in
+            let nextViewController = ActionSheetViewController()
+            nextViewController.modalPresentationStyle = .overFullScreen
+            self.present(nextViewController, animated: false)
+        }), for: .touchUpInside)
     }
 }

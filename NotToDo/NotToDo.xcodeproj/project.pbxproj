@@ -16,7 +16,6 @@
 		096BDFD52960B910009ED396 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 096BDFD42960B910009ED396 /* FSCalendar */; };
 		3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162873295AD7860077AE7B /* AppDelegate.swift */; };
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
-		3B162878295AD7860077AE7B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162877295AD7860077AE7B /* ViewController.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
 		3B162880295AD7870077AE7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287E295AD7870077AE7B /* LaunchScreen.storyboard */; };
 		3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16288A295AD82F0077AE7B /* UIView+.swift */; };
@@ -45,6 +44,9 @@
 		3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DB295B146E00D44722 /* TabBarController.swift */; };
 		3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DD295B162600D44722 /* UITabBar+.swift */; };
 		3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */; };
+		3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */; };
+		3B59AFB8296346650050FF49 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFB7296346650050FF49 /* Numbers.swift */; };
+		3B59AFBC29634D900050FF49 /* ActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */; };
 		3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34A929617D88002E1161 /* NotTodoButton.swift */; };
 		3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34AB29618441002E1161 /* UIButton+.swift */; };
 		3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ED42B2961DC310052D2B8 /* HomeView.swift */; };
@@ -56,7 +58,6 @@
 		3B162870295AD7860077AE7B /* NotToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B162873295AD7860077AE7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B162875295AD7860077AE7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3B162877295AD7860077AE7B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3B16287C295AD7870077AE7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B16287F295AD7870077AE7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B162881295AD7870077AE7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +87,9 @@
 		3B3405DB295B146E00D44722 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3B3405DD295B162600D44722 /* UITabBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+.swift"; sourceTree = "<group>"; };
 		3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetView.swift; sourceTree = "<group>"; };
+		3B59AFB7296346650050FF49 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
+		3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetViewController.swift; sourceTree = "<group>"; };
 		3B5B34A929617D88002E1161 /* NotTodoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTodoButton.swift; sourceTree = "<group>"; };
 		3B5B34AB29618441002E1161 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		3B5ED42B2961DC310052D2B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -135,7 +139,6 @@
 				3B1628A4295ADA8F0077AE7B /* Network */,
 				3B162893295AD90A0077AE7B /* Presentation */,
 				3B1628B5295ADC9E0077AE7B /* Resource */,
-				3B162877295AD7860077AE7B /* ViewController.swift */,
 			);
 			path = NotToDo;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				3B16288F295AD89C0077AE7B /* Strings.swift */,
+				3B59AFB7296346650050FF49 /* Numbers.swift */,
 			);
 			path = Literals;
 			sourceTree = "<group>";
@@ -425,9 +429,19 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		3B59AFB429633DE40050FF49 /* ActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */,
+				3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */,
+			);
+			path = ActionSheet;
+			sourceTree = "<group>";
+		};
 		3B5B34A729617D3C002E1161 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3B59AFB429633DE40050FF49 /* ActionSheet */,
 				3B5B34A829617D6A002E1161 /* NotTodoButton */,
 			);
 			path = Common;
@@ -556,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B59AFBC29634D900050FF49 /* ActionSheetViewController.swift in Sources */,
 				3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */,
 				3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */,
 				3B16288D295AD8380077AE7B /* UIStackView+.swift in Sources */,
@@ -563,7 +578,6 @@
 				3B1628B2295ADB710077AE7B /* NetworkResult.swift in Sources */,
 				3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */,
 				3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */,
-				3B162878295AD7860077AE7B /* ViewController.swift in Sources */,
 				3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */,
 				3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */,
 				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,
@@ -573,10 +587,12 @@
 				3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */,
 				3B3405D2295B105900D44722 /* NotTodoAddViewController.swift in Sources */,
 				3B1628AC295ADB440077AE7B /* NetworkLoggerPlugin.swift in Sources */,
+				3B59AFB8296346650050FF49 /* Numbers.swift in Sources */,
 				3B3405B9295B090300D44722 /* UIColor+.swift in Sources */,
 				3B162890295AD89C0077AE7B /* Strings.swift in Sources */,
 				3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */,
 				3B1628B0295ADB640077AE7B /* NetworkConstant.swift in Sources */,
+				3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */,
 				3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */,
 				3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */,
 				3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */,

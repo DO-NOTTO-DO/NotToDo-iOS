@@ -16,8 +16,6 @@ final class TabBarController: UITabBarController {
     
     private var tabs: [UIViewController] = []
     private var shapeLayer: CALayer?
-    private let width: CGFloat = UIScreen.main.bounds.width
-    private let height: CGFloat = UIScreen.main.bounds.height
     
     // MARK: - View Life Cycle
     
@@ -90,10 +88,10 @@ extension TabBarController {
         let path = UIBezierPath()
   
         path.move(to: CGPoint(x: dx, y: 0))
-        path.addLine(to: CGPoint(x: width - dx, y: 0))
-        path.addLine(to: CGPoint(x: width, y: dy))
-        path.addLine(to: CGPoint(x: width, y: height))
-        path.addLine(to: CGPoint(x: 0, y: height))
+        path.addLine(to: CGPoint(x: Numbers.width - dx, y: 0))
+        path.addLine(to: CGPoint(x: Numbers.width, y: dy))
+        path.addLine(to: CGPoint(x: Numbers.width, y: Numbers.height))
+        path.addLine(to: CGPoint(x: 0, y: Numbers.height))
         path.addLine(to: CGPoint(x: 0, y: dy))
         path.close()
         return path.cgPath

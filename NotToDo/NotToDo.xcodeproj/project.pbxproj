@@ -22,6 +22,7 @@
 		096BDFF529652270009ED396 /* MissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF429652270009ED396 /* MissionCollectionViewCell.swift */; };
 		096BDFF7296522C6009ED396 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF6296522C6009ED396 /* CustomLabel.swift */; };
 		096BDFF9296523C0009ED396 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF8296523C0009ED396 /* EmptyCollectionViewCell.swift */; };
+		096BDFFD29654F63009ED396 /* SituationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFFC29654F63009ED396 /* SituationCollectionViewCell.swift */; };
 		3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162873295AD7860077AE7B /* AppDelegate.swift */; };
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		096BDFF429652270009ED396 /* MissionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCollectionViewCell.swift; sourceTree = "<group>"; };
 		096BDFF6296522C6009ED396 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		096BDFF8296523C0009ED396 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
+		096BDFFC29654F63009ED396 /* SituationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B162870295AD7860077AE7B /* NotToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B162873295AD7860077AE7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B162875295AD7860077AE7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				096BDFF429652270009ED396 /* MissionCollectionViewCell.swift */,
+				096BDFFC29654F63009ED396 /* SituationCollectionViewCell.swift */,
 				096BDFF8296523C0009ED396 /* EmptyCollectionViewCell.swift */,
 				096BDFF6296522C6009ED396 /* CustomLabel.swift */,
 			);
@@ -622,6 +625,7 @@
 				3B1628B0295ADB640077AE7B /* NetworkConstant.swift in Sources */,
 				3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */,
 				3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */,
+				096BDFFD29654F63009ED396 /* SituationCollectionViewCell.swift in Sources */,
 				3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */,
 				096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */,
 				3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */,

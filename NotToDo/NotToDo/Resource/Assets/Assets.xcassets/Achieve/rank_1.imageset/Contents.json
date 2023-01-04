@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Property 1=ic_rank_fourth.png",
+      "filename" : "Property 1=Default-3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Property 1=ic_rank_fourth@2x.png",
+      "filename" : "Property 1=Default@2x-3.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Property 1=ic_rank_fourth@3x.png",
+      "filename" : "Property 1=Default@3x-3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

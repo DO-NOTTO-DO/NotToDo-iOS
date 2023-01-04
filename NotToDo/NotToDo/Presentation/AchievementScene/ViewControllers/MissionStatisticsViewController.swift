@@ -69,7 +69,23 @@ class MissionStatisticsViewController: UIViewController {
             case .main:
                 let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: MissionCollectionViewCell.reusedId, for: indexPath) as! MissionCollectionViewCell
                 cell.config(item as! MissionList)
-                return cell
+                switch indexPath.row {
+                case 0 :
+                    cell.image.image = UIImage.rank1
+                    return cell
+                case 1 :
+                    cell.image.image = UIImage.rank2
+                    return cell
+                case 2 :
+                    cell.image.image = UIImage.rank3
+                    return cell
+                case 3 :
+                    cell.image.image = UIImage.rank4
+                    return cell
+                default:
+                    cell.image.image = UIImage.rank5
+                    return cell
+                }
             case .empty:
                 let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseId, for: indexPath) as! EmptyCollectionViewCell
                 self.hStack.isHidden = true
@@ -83,8 +99,10 @@ class MissionStatisticsViewController: UIViewController {
         defer {
             dataSource.apply(snapshot, animatingDifferences: false)
         }
-        snapshot.appendSections([.empty])
-        snapshot.appendItems(Array(0..<1), toSection: .empty)
+//        snapshot.appendSections([.empty])
+//        snapshot.appendItems(Array(0..<1), toSection: .empty)
+        snapshot.appendSections([.main])
+        snapshot.appendItems(missionList,toSection: .main)
     }
     
     private func layout() -> UICollectionViewLayout {

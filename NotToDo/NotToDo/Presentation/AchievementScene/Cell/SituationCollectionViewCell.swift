@@ -1,5 +1,5 @@
 //
-//  MissionCollectionViewCell.swift
+//  SituationCollectionViewCell.swift
 //  NotToDo
 //
 //  Created by JEONGEUN KIM on 2023/01/04.
@@ -7,12 +7,11 @@
 
 import UIKit
 
-class MissionCollectionViewCell: UICollectionViewCell {
-    static var reusedId = "MissionCollectionViewCell"
+class SituationCollectionViewCell: UICollectionViewCell {
+    static var reusedId = "SituationCollectionViewCell"
     lazy var label = customLabel(color: .nottodoBlack!, font: UIFont(name: AppFontName.pretendardSemiBold, size: 14)!)
     lazy var image = UIImageView().then {
         $0.image = UIImage.rank1
-
     }
     func config(_ item : MissionList){
         label.text = item.title
@@ -22,7 +21,6 @@ class MissionCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.label.layer.cornerRadius = 10
-        self.backgroundColor = .clear
         setAttributes()
         setViews()
         setConstraints()
@@ -49,6 +47,5 @@ class MissionCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 

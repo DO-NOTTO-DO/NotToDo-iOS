@@ -14,8 +14,8 @@ class MissionCollectionViewCell: UICollectionViewCell {
         $0.spacing = 13
         $0.distribution = .equalSpacing
     }
-    lazy var num = customLabel(color: .black)
-    lazy var label = customLabel(color: .black)
+    lazy var num = customLabel(color: .nottodoBlack!, font: UIFont(name: AppFontName.pretendardSemiBold, size: 14)!)
+    lazy var label = customLabel(color: .nottodoBlack!, font: UIFont(name: AppFontName.pretendardSemiBold, size: 14)!)
     func config(_ item : MissionList){
         num.text = "\(item.num)"
         label.text = item.title
@@ -24,8 +24,15 @@ class MissionCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.label.layer.cornerRadius = 10
+        setAttributes()
         setViews()
         setConstraints()
+        
+    }
+    private func setAttributes(){
+        self.label.layer.cornerRadius = 10
+        self.contentView.layer.borderWidth = 1
+        self.contentView.layer.borderColor = UIColor.nottodoGray2?.cgColor
     }
     private func setViews(){
         self.addSubview(hStack)

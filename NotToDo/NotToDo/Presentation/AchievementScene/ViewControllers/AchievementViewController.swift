@@ -23,8 +23,6 @@ final class AchievementViewController: UIViewController {
     private lazy var situationVC = SituationStatisticsViewController()
     private lazy var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal).then{
         $0.setViewControllers([self.dataViewControllers[0]], direction: .forward, animated: true)
-        $0.view.layer.borderWidth = 1
-        $0.view.layer.borderColor = UIColor.nottodoGray2?.cgColor
     }
     var dataViewControllers: [UIViewController] {
       [self.missionVC, self.situationVC]
@@ -47,7 +45,7 @@ final class AchievementViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .nottodoWhite
+        view.backgroundColor = .BG
         setAttributes()
         setViews()
         setConstraints()

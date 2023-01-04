@@ -9,13 +9,10 @@ import UIKit
 
 class customLabel : UILabel{
     var color : UIColor = .black
-    convenience init(color: UIColor) {
+    convenience init(color: UIColor, font: UIFont) {
         self.init()
-        self.color = color
-        setStyle()
-    }
-    private func setStyle(){
         self.textAlignment = .left
-        self.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        self.color = color
+        self.font = font
     }
 }

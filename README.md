@@ -1,5 +1,7 @@
 
 # 📝 NotTodo-iOS
+<img width="1728" alt="아요_과제제출_서비스설명" src="https://user-images.githubusercontent.com/65678579/210533936-ead66a1a-910c-44f6-bb7b-8f94e130332d.png">
+
 
 ## 🫶 NotTodo iOS Developers
 

@@ -7,14 +7,19 @@
 
 import UIKit
 
+import FSCalendar
 import SnapKit
 import Then
 
-class ActionSheetViewController: UIViewController {
+final class ActionSheetViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private var mode: ActionSheetType! = .calendar
     
     // MARK: - UI Components
 
-    private var actionSheetView = ActionSheetView()
+    private var actionSheetView = ActionSheetView(frame: CGRect(), mode: .calendar)
     
     // MARK: - View Life Cycle
     
@@ -22,6 +27,7 @@ class ActionSheetViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setCalendarDelegate()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,6 +43,9 @@ class ActionSheetViewController: UIViewController {
 }
 
 extension ActionSheetViewController {
+    
+    // MARK: - Methods
+    
     private func setUI() {
         view.backgroundColor = .nottodoBlack?.withAlphaComponent(0.7)
     }
@@ -51,9 +60,9 @@ extension ActionSheetViewController {
     }
     
     private func showActionSheetWithAnimation() {
-        let actionSheetViewHeight = Numbers.height * 0.36.adjusted
+        let actionSheetViewHeight = mode.viewHeight
         self.actionSheetView.snp.updateConstraints {
-            $0.top.equalToSuperview().inset(actionSheetViewHeight)
+            $0.top.equalToSuperview().inset(Numbers.height - actionSheetViewHeight)
         }
         UIView.animate(withDuration: 0.3) {
             self.actionSheetView.transform = CGAffineTransform(translationX: 0, y: 0)
@@ -73,5 +82,24 @@ extension ActionSheetViewController {
             self.dismiss(animated: true)
         }
     }
+    
+    private func setCalendarDelegate() {
+        actionSheetView.calendar.delegate = self
+    }
+}
 
+extension ActionSheetViewController: FSCalendarDelegate {
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        let currentDate = Date().addingTimeInterval(-24 * 60 * 60)
+        if date < currentDate || date.compare(Date()) == .orderedAscending {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        actionSheetView.calendar.reloadData()
+        actionSheetView.headerLabel.text = actionSheetView.dateFormatter.string(from: calendar.currentPage)
+    }
 }

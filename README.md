@@ -1,5 +1,10 @@
+# NotTodo-iOS <img src="https://user-images.githubusercontent.com/65678579/210546300-261c69ca-aa3a-406f-8fee-517c1f12e5c2.png" align=left width=100>
+오늘 하루 하지 않을 것을 지키고 더 나은 일상을 경험하세요.
+일상 속 규율 지킴이 **낫투두**.
 
-# 📝 NotTodo-iOS
+<br>
+<img width="1728" alt="아요_과제제출_서비스설명" src="https://user-images.githubusercontent.com/65678579/210533936-ead66a1a-910c-44f6-bb7b-8f94e130332d.png">
+
 
 ## 🫶 NotTodo iOS Developers
 

@@ -16,17 +16,9 @@ class MissionStatisticsViewController: UIViewController {
     typealias Item = AnyHashable
     var dataSource : UICollectionViewDiffableDataSource<Section,Item>! = nil
     lazy var collectionview = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout())
-    lazy var hStack = UIStackView(arrangedSubviews: [icon,subLabel]).then{
-        $0.axis = .horizontal
-    }
-    lazy var icon = UIImageView().then {
-        $0.image = UIImage.ic_rank
-    }
-    lazy var subLabel = customLabel(color: .nottodoBlack!, font: UIFont(name: AppFontName.pretendardSemiBold, size: 16)!).then {
-        $0.text =  "내가 달성한 낫투두의 순위는?"
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .clear
         setAttributes()
         setViews()
         registerSubViews()
@@ -40,25 +32,21 @@ class MissionStatisticsViewController: UIViewController {
             $0.showsVerticalScrollIndicator = false
             $0.delegate = self
             $0.bounces = false
+            $0.isScrollEnabled = false
         }
     }
     private func setViews(){
-        self.view.addSubview(hStack)
-        self.view.addSubview(collectionview)
+        self.view.addSubviews(collectionview)
     }
     private func registerSubViews(){
         collectionview.register(MissionCollectionViewCell.self, forCellWithReuseIdentifier: MissionCollectionViewCell.reusedId)
         collectionview.register(EmptyCollectionViewCell.self, forCellWithReuseIdentifier: EmptyCollectionViewCell.reuseId)
-        
+        collectionview.register(AchievementHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AchievementHeaderView.reuseId)
     }
     private func setConstraints(){
-        hStack.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(25)
-            $0.leading.equalToSuperview().inset(40)
-        }
         collectionview.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
-            $0.top.equalTo(subLabel.snp.bottom).offset(9)
+            $0.top.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
     }
@@ -88,7 +76,6 @@ class MissionStatisticsViewController: UIViewController {
                 }
             case .empty:
                 let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseId, for: indexPath) as! EmptyCollectionViewCell
-                self.hStack.isHidden = true
                 return cell
             }
         })
@@ -99,12 +86,16 @@ class MissionStatisticsViewController: UIViewController {
         defer {
             dataSource.apply(snapshot, animatingDifferences: false)
         }
-//        snapshot.appendSections([.empty])
-//        snapshot.appendItems(Array(0..<1), toSection: .empty)
-        snapshot.appendSections([.main])
-        snapshot.appendItems(missionList,toSection: .main)
-    }
-    
+        snapshot.appendSections([.empty])
+        snapshot.appendItems(Array(0..<1), toSection: .empty)
+//                snapshot.appendSections([.main])
+//                snapshot.appendItems(missionList,toSection: .main)
+        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AchievementHeaderView.reuseId, for: indexPath) as? AchievementHeaderView else {return UICollectionReusableView()}
+                header.HeaderTitle(title: "내가 달성한 낫투두의 순위는?")
+            return header
+            }
+        }
     private func layout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { sectionIndex, env in
             let section = self.dataSource.snapshot().sectionIdentifiers[sectionIndex]
@@ -117,22 +108,14 @@ class MissionStatisticsViewController: UIViewController {
                 break
             }
         })
+        layout.register(BackgroundSupplementaryView.self, forDecorationViewOfKind: "background")
         return layout
     }
     func MainSection() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(45)))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension:.fractionalHeight(1)), subitems: [item])
-        group.interItemSpacing = .fixed(18)
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 20, bottom: 0, trailing: 20)
-        return section
+        return Layout.compositional_vertical(itemW:  .fractionalWidth(1), itemH: .absolute(45), gWidth: .fractionalWidth(1), gHeight: .estimated(800), count: nil)
     }
     func EmptySection() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitem : item ,count: 1)
-        let section = NSCollectionLayoutSection(group: group)
-        section.supplementariesFollowContentInsets = false
-        return section
+            return   Layout.compositional_vertical(itemW: .fractionalWidth(1), itemH: .fractionalHeight(1), gWidth: .fractionalWidth(1), gHeight: .absolute(250), count: 1)
     }
 }
 extension MissionStatisticsViewController : UICollectionViewDelegate{

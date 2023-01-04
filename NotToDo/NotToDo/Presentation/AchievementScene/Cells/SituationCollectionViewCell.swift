@@ -21,6 +21,7 @@ class SituationCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.label.layer.cornerRadius = 10
+        self.backgroundColor = .clear
         setAttributes()
         setViews()
         setConstraints()

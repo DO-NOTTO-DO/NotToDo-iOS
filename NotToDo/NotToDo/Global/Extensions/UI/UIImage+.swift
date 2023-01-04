@@ -94,4 +94,5 @@ extension UIImage {
     static let graphic4 = UIImage(named: "Graphic/graphic4")!.withRenderingMode(.alwaysOriginal)
     static let heartEmpty = UIImage(named: "Graphic/graphic5")!.withRenderingMode(.alwaysOriginal)
     static let heartFill = UIImage(named: "Graphic/graphic2")!.withRenderingMode(.alwaysOriginal)
+    static let heartFill2 = UIImage(named: "Graphic/graphic6")!.withRenderingMode(.alwaysOriginal)
 }

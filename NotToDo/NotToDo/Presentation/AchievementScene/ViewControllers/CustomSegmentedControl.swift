@@ -31,8 +31,10 @@ class CustomSegmentedControl: UISegmentedControl {
     }
     // font color
     private func setStyle(){
-        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray,.font: UIFont.systemFont(ofSize: 16, weight: .semibold)], for: .normal)
-        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemPurple, .font: UIFont.systemFont(ofSize: 16, weight: .semibold), .backgroundColor : UIColor.yellow], for: .selected)
+        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoGray2,.font: UIFont.systemFont(ofSize: 16, weight: .semibold)], for: .normal)
+        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoBlack, .font: UIFont.systemFont(ofSize: 16, weight: .semibold), .backgroundColor : UIColor.yellow_deep], for: .selected)
+        self.setContentPositionAdjustment(UIOffset(horizontal: -20, vertical: 0), forSegmentType: .center, barMetrics: .default)
+        
     }
 }
 

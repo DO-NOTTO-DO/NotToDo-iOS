@@ -13,7 +13,7 @@ import FSCalendar
 
 class customCalendar: UIView {
 
-    fileprivate weak var calendar: FSCalendar!
+    var calendar: FSCalendar! = FSCalendar(frame: .zero)
     private lazy var hStack = UIStackView(arrangedSubviews: [leftBtn,rightBtn])
     lazy var headerLabel = UILabel()
     private lazy var leftBtn = UIButton()
@@ -21,13 +21,11 @@ class customCalendar: UIView {
     private lazy var headerImage = UIImageView()
     private var currentPage: Date?
     private lazy var today: Date = { return Date() }()
-    private lazy var dateFormatter = DateFormatter()
+    lazy var dateFormatter = DateFormatter()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.backgroundColor = UIColor.nottodoWhite
-        let calendar = FSCalendar(frame: .zero)
-        self.calendar = calendar
         setAttributes()
         setViews()
         setConstraints()
@@ -103,12 +101,12 @@ class customCalendar: UIView {
     }
     private func calendarColor(){
         calendar.appearance.weekdayTextColor = UIColor.nottodoGray2 // 달력의 요일 글자 색상
+        calendar.appearance.titleWeekendColor = UIColor.nottodoBlack
         calendar.appearance.titleSelectionColor = UIColor.nottodoBlack //선택한 날짜 글자 색상
-        calendar.appearance.selectionColor = UIColor.nottodoBlack // 선택한 날짜 색상
+        calendar.appearance.selectionColor = UIColor.yellow_basic // 선택한 날짜 색상
         calendar.appearance.borderRadius = 0.4 //radius 0(사각형) ~ 1(원)
-        calendar.appearance.titleWeekendColor = .black
-        calendar.today = nil // today 날짜에 색상 없앰
-
+        calendar.appearance.titleWeekendColor = UIColor.nottodoBlack
+        calendar.today = nil
         }
     private func setUpCalendar(){
         self.calendar.placeholderType = .fillHeadTail  //달력 필요한 부분만 보이게

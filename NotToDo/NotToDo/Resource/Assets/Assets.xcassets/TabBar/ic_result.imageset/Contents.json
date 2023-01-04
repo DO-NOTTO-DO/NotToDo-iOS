@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Property 1=Default.png",
+      "filename" : "ic_result.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Property 1=Default@2x.png",
+      "filename" : "ic_result@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Property 1=Default@3x.png",
+      "filename" : "ic_result@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

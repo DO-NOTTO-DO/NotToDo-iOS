@@ -20,8 +20,6 @@ final class BehaviorTableViewCell: UITableViewCell {
     
     // MARK: - UI Components
     
-    private let behaviorLabel = UILabel()
-    private let recommendButton = UIButton()
     private let behaviorTextField = UITextField()
     private let addBehaviorButton = UIButton()
     
@@ -45,38 +43,37 @@ extension BehaviorTableViewCell {
     // MARK: - Layout Helpers
     
     private func setUI() {
-        behaviorLabel.do {
-            $0.text = "구체적인 실천 행동은 무엇인가요?"
-            $0.textColor = .nottodoBlack
-            $0.font = .PretendardMedium(size: 16)
-        }
         
         behaviorTextField.do {
             $0.backgroundColor = .nottodoWhite
             $0.borderStyle = .line
             $0.font = .PretendardMedium(size: 16)
-            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 13.15, height: 0.0))
+            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 13.15.adjusted, height: 0.0))
             $0.leftViewMode = .always
             $0.placeholder = "ex) 9시 이후 휴대폰 가방에 넣기" // color 설정 필요
         }
+        
+        addBehaviorButton.setImage(.plusBtn, for: .normal)
     }
     
     private func setLayout() {
-        backgroundColor = .nottodoBlue
-        [behaviorLabel, recommendButton, addBehaviorButton, behaviorTextField].forEach {
-            self.addSubview($0)
-        }
-        
-        behaviorLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview().offset(20)
+        [behaviorTextField, addBehaviorButton].forEach {
+            contentView.addSubview($0)
         }
         
         behaviorTextField.snp.makeConstraints {
-            $0.top.equalTo(self.behaviorLabel.snp.bottom).offset(15)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-73)
-            $0.height.equalTo(46)
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20.adjusted)
+            $0.trailing.equalToSuperview().offset(-73.adjusted)
+            $0.height.equalTo(46.adjusted)
+            $0.bottom.equalToSuperview().inset(35.adjusted)
+        }
+        
+        addBehaviorButton.snp.makeConstraints {
+            $0.top.equalTo(behaviorTextField)
+            $0.leading.equalTo(behaviorTextField.snp.trailing).offset(7.adjusted)
+            $0.trailing.equalToSuperview().offset(-20.adjusted)
+            $0.height.equalTo(46.adjusted)
         }
     }
 }

@@ -49,10 +49,8 @@
 		3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ED42B2961DC310052D2B8 /* HomeView.swift */; };
 		3BED5328295C018700157A3B /* adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED5327295C018700157A3B /* adjust+.swift */; };
 		6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */; };
-		6CDC2D132964198000BFF5F4 /* MissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D122964198000BFF5F4 /* MissionModel.swift */; };
 		6CDC2D1529641BE000BFF5F4 /* MissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D1429641BE000BFF5F4 /* MissionTableViewCell.swift */; };
 		6CDC2D172965330C00BFF5F4 /* BehaviorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D162965330C00BFF5F4 /* BehaviorTableViewCell.swift */; };
-		6CDC2D192965332100BFF5F4 /* SituationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D182965332100BFF5F4 /* SituationTableViewCell.swift */; };
 		6CDC2D1D296533A100BFF5F4 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D1C296533A100BFF5F4 /* DateTableViewCell.swift */; };
 		6CDC2D1F2965521D00BFF5F4 /* AddMissionTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D1E2965521D00BFF5F4 /* AddMissionTableHeaderView.swift */; };
 		6CF0427829633E58000F40EB /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF0427729633E58000F40EB /* NavigationBarView.swift */; };
@@ -97,10 +95,8 @@
 		3B5ED42B2961DC310052D2B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3BED5327295C018700157A3B /* adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "adjust+.swift"; sourceTree = "<group>"; };
 		6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionView.swift; sourceTree = "<group>"; };
-		6CDC2D122964198000BFF5F4 /* MissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionModel.swift; sourceTree = "<group>"; };
 		6CDC2D1429641BE000BFF5F4 /* MissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionTableViewCell.swift; sourceTree = "<group>"; };
 		6CDC2D162965330C00BFF5F4 /* BehaviorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorTableViewCell.swift; sourceTree = "<group>"; };
-		6CDC2D182965332100BFF5F4 /* SituationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationTableViewCell.swift; sourceTree = "<group>"; };
 		6CDC2D1C296533A100BFF5F4 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		6CDC2D1E2965521D00BFF5F4 /* AddMissionTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTableHeaderView.swift; sourceTree = "<group>"; };
 		6CF0427729633E58000F40EB /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
@@ -253,6 +249,7 @@
 		3B162899295AD9740077AE7B /* AddMissionScene */ = {
 			isa = PBXGroup;
 			children = (
+				6CDC2D10296418FA00BFF5F4 /* Cells */,
 				6CDC2D0A2963E2A100BFF5F4 /* Views */,
 				3B16289F295AD9DF0077AE7B /* ViewControllers */,
 			);
@@ -451,8 +448,6 @@
 		6CDC2D0A2963E2A100BFF5F4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6CDC2D10296418FA00BFF5F4 /* Cells */,
-				6CDC2D112964190F00BFF5F4 /* Model */,
 				6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */,
 			);
 			path = Views;
@@ -463,19 +458,10 @@
 			children = (
 				6CDC2D1429641BE000BFF5F4 /* MissionTableViewCell.swift */,
 				6CDC2D162965330C00BFF5F4 /* BehaviorTableViewCell.swift */,
-				6CDC2D182965332100BFF5F4 /* SituationTableViewCell.swift */,
 				6CDC2D1C296533A100BFF5F4 /* DateTableViewCell.swift */,
 				6CDC2D1E2965521D00BFF5F4 /* AddMissionTableHeaderView.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		6CDC2D112964190F00BFF5F4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6CDC2D122964198000BFF5F4 /* MissionModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		6CF0427629633E0E000F40EB /* NavigationBarView */ = {
@@ -628,8 +614,6 @@
 				6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */,
 				6CDC2D1529641BE000BFF5F4 /* MissionTableViewCell.swift in Sources */,
 				3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */,
-				6CDC2D132964198000BFF5F4 /* MissionModel.swift in Sources */,
-				6CDC2D192965332100BFF5F4 /* SituationTableViewCell.swift in Sources */,
 				3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */,
 				3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */,
 				3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */,

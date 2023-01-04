@@ -22,6 +22,7 @@ final class AddMissionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .nottodoWhite
     }
     
     override func loadView() {

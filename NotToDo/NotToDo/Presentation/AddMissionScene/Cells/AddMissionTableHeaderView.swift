@@ -12,11 +12,11 @@ import Then
 
 // MARK: - AddMissionTableHeaderView
 
-class AddMissionTableHeaderView: UICollectionReusableView {
+class AddMissionTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Identifier
 
-    static var reuseId: String = "HeaderView"
+    static let identifier: String = "AddMissionTableHeaderView"
     
     // MARK: - UI Components
     
@@ -25,23 +25,23 @@ class AddMissionTableHeaderView: UICollectionReusableView {
     
     // MARK: - View Life Cycles
     
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         setUI()
-        // setLayout()
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func HeaderTitle(title: String?) {
+    public func HeaderTitle(title: String?) {
         self.titleLabel.text = title
     }
     
-    func ButtonWithIcon(title: String?, icon: String?) {
+    public func ButtonWithIcon(title: String?, icon: UIImage?) {
         self.button.configuration?.title = title ?? ""
-        self.button.configuration?.image = UIImage(named: icon ?? "")
+        self.button.configuration?.image = icon ?? nil
     }
 }
 
@@ -61,7 +61,6 @@ extension AddMissionTableHeaderView {
             $0.configuration?.titleAlignment = .trailing
             $0.titleLabel?.font = .PretendardMedium(size: 16)
             $0.configuration?.baseForegroundColor = .nottodoGray2
-            // $0.configuration?.imagePadding = 0
             $0.configuration?.imagePlacement = NSDirectionalRectEdge.trailing
             $0.configuration?.buttonSize = .small
             $0.configuration?.baseBackgroundColor = .clear
@@ -72,14 +71,18 @@ extension AddMissionTableHeaderView {
     // MARK: - Layout Helpers
     
     private func setLayout() {
+        [titleLabel, button].forEach {
+            addSubview($0)
+        }
+        
         titleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20.adjusted)
         }
         
         button.snp.makeConstraints {
-            $0.trailing.equalToSuperview()
-            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-14.adjusted)
+            $0.centerY.equalTo(titleLabel)
         }
     }
 }

@@ -51,6 +51,10 @@
 		3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */; };
 		3B59AFB8296346650050FF49 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFB7296346650050FF49 /* Numbers.swift */; };
 		3B59AFBC29634D900050FF49 /* ActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */; };
+		3B4B90C62965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90C52965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift */; };
+		3B4B90C82965CB9C008C5CA8 /* myInfoMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90C72965CB9C008C5CA8 /* myInfoMenuCollectionViewCell.swift */; };
+		3B4B90CC2965D697008C5CA8 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90CB2965D697008C5CA8 /* CALayer+.swift */; };
+		3B4B90CF2965F17A008C5CA8 /* menuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90CE2965F17A008C5CA8 /* menuModel.swift */; };
 		3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34A929617D88002E1161 /* NotTodoButton.swift */; };
 		3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34AB29618441002E1161 /* UIButton+.swift */; };
 		3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ED42B2961DC310052D2B8 /* HomeView.swift */; };
@@ -98,6 +102,10 @@
 		3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetView.swift; sourceTree = "<group>"; };
 		3B59AFB7296346650050FF49 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 		3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetViewController.swift; sourceTree = "<group>"; };
+		3B4B90C52965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		3B4B90C72965CB9C008C5CA8 /* myInfoMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoMenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		3B4B90CB2965D697008C5CA8 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
+		3B4B90CE2965F17A008C5CA8 /* menuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuModel.swift; sourceTree = "<group>"; };
 		3B5B34A929617D88002E1161 /* NotTodoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTodoButton.swift; sourceTree = "<group>"; };
 		3B5B34AB29618441002E1161 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		3B5ED42B2961DC310052D2B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 				3BED5327295C018700157A3B /* adjust+.swift */,
 				3B5B34AB29618441002E1161 /* UIButton+.swift */,
 				3B576323296403CB00E03637 /* UILabel+.swift */,
+				3B4B90CB2965D697008C5CA8 /* CALayer+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -271,6 +280,8 @@
 		3B16289B295AD9980077AE7B /* MyInfoScene */ = {
 			isa = PBXGroup;
 			children = (
+				3B4B90CD2965F16C008C5CA8 /* Models */,
+				3B4B90C02965B5AF008C5CA8 /* Cells */,
 				3B1628A3295AD9FD0077AE7B /* ViewControllers */,
 				3B1628A2295AD9F80077AE7B /* Views */,
 			);
@@ -448,6 +459,21 @@
 				3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */,
 			);
 			path = ActionSheet;
+		3B4B90C02965B5AF008C5CA8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3B4B90C52965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift */,
+				3B4B90C72965CB9C008C5CA8 /* myInfoMenuCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3B4B90CD2965F16C008C5CA8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3B4B90CE2965F17A008C5CA8 /* menuModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		3B5B34A729617D3C002E1161 /* Common */ = {
@@ -602,9 +628,11 @@
 				3B3405D2295B105900D44722 /* NotTodoAddViewController.swift in Sources */,
 				3B1628AC295ADB440077AE7B /* NetworkLoggerPlugin.swift in Sources */,
 				3B59AFB8296346650050FF49 /* Numbers.swift in Sources */,
+				3B4B90C62965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift in Sources */,
 				3B3405B9295B090300D44722 /* UIColor+.swift in Sources */,
 				3B162890295AD89C0077AE7B /* Strings.swift in Sources */,
 				3B4B90BF29656751008C5CA8 /* AuthView.swift in Sources */,
+				3B4B90CC2965D697008C5CA8 /* CALayer+.swift in Sources */,
 				3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */,
 				3B1628B0295ADB640077AE7B /* NetworkConstant.swift in Sources */,
 				3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */,
@@ -612,9 +640,11 @@
 				3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */,
 				3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */,
 				3B4B90BD2965673E008C5CA8 /* AuthViewController.swift in Sources */,
+				3B4B90C82965CB9C008C5CA8 /* myInfoMenuCollectionViewCell.swift in Sources */,
 				3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */,
 				3B3405D6295B109A00D44722 /* MyInfoViewController.swift in Sources */,
 				3B3405D0295B101600D44722 /* RecommendViewController.swift in Sources */,
+				3B4B90CF2965F17A008C5CA8 /* menuModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

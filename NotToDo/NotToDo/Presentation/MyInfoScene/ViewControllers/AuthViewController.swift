@@ -15,10 +15,6 @@ final class AuthViewController: UIViewController {
 
     // MARK: - Life View
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func loadView() {
         super.loadView()
         authView = AuthView(frame: self.view.frame)

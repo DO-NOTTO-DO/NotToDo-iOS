@@ -10,22 +10,23 @@ import UIKit
 import SnapKit
 import Then
 
-final class MissionAddViewController: UIViewController {
+// MARK: - AddMissionViewController
+
+final class AddMissionViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private var missionAddView: MissionAddView!
+    private var addMissionView: AddMissionView!
     
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .nottodoGray1
     }
     
     override func loadView() {
         super.loadView()
-        missionAddView = MissionAddView(frame: self.view.frame)
-        self.view = missionAddView
+        addMissionView = AddMissionView(frame: self.view.frame)
+        self.view = addMissionView
     }
 }

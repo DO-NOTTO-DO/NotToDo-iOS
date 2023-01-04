@@ -14,15 +14,21 @@ final class HomeViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let homeView = HomeView()
+    private var homeView: HomeView!
     
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .nottodoWhite
-        setLayout()
+//        setLayout()
         addAction()
+    }
+    
+    override func loadView() {
+        super.loadView()
+        homeView = HomeView()
+        self.view = homeView
     }
 }
 

@@ -44,6 +44,7 @@
 		3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DB295B146E00D44722 /* TabBarController.swift */; };
 		3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DD295B162600D44722 /* UITabBar+.swift */; };
 		3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */; };
+		3B576324296403CB00E03637 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B576323296403CB00E03637 /* UILabel+.swift */; };
 		3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */; };
 		3B59AFB8296346650050FF49 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFB7296346650050FF49 /* Numbers.swift */; };
 		3B59AFBC29634D900050FF49 /* ActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */; };
@@ -87,6 +88,7 @@
 		3B3405DB295B146E00D44722 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3B3405DD295B162600D44722 /* UITabBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+.swift"; sourceTree = "<group>"; };
 		3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		3B576323296403CB00E03637 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetView.swift; sourceTree = "<group>"; };
 		3B59AFB7296346650050FF49 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 		3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				3B3405DD295B162600D44722 /* UITabBar+.swift */,
 				3BED5327295C018700157A3B /* adjust+.swift */,
 				3B5B34AB29618441002E1161 /* UIButton+.swift */,
+				3B576323296403CB00E03637 /* UILabel+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */,
 				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,
 				3B1628AA295ADB2F0077AE7B /* URLConstant.swift in Sources */,
+				3B576324296403CB00E03637 /* UILabel+.swift in Sources */,
 				3BED5328295C018700157A3B /* adjust+.swift in Sources */,
 				3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */,
 				3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */,

@@ -15,6 +15,7 @@
 		090FA2FB2960B87500918AED /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2FA2960B87500918AED /* Moya */; };
 		096BDFD52960B910009ED396 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 096BDFD42960B910009ED396 /* FSCalendar */; };
 		096BDFD92964FEF6009ED396 /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFD82964FEF6009ED396 /* CustomCalendar.swift */; };
+		096BDFEC29650EB8009ED396 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */; };
 		3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162873295AD7860077AE7B /* AppDelegate.swift */; };
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		090FA2E6295F51BB00918AED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		096BDFD82964FEF6009ED396 /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
+		096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		3B162870295AD7860077AE7B /* NotToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B162873295AD7860077AE7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B162875295AD7860077AE7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				3B3405D3295B108400D44722 /* AchievementViewController.swift */,
+				096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				3B1628B2295ADB710077AE7B /* NetworkResult.swift in Sources */,
 				3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */,
 				3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */,
+				096BDFEC29650EB8009ED396 /* CustomSegmentedControl.swift in Sources */,
 				3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */,
 				3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */,
 				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,

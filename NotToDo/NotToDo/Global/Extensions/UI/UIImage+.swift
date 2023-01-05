@@ -39,28 +39,11 @@ extension UIImage {
     static let recentCalendar = UIImage(named: "Recent/ic_calender")!.withRenderingMode(.alwaysOriginal)
     
     // Recommend
-    
-    static let healthActive = UIImage(named: "Recommend/ic_health_active")!.withRenderingMode(.alwaysOriginal)
-    static let snsActive = UIImage(named: "Recommend/ic_sns_active")!.withRenderingMode(.alwaysOriginal)
-    static let sleepActive = UIImage(named: "Recommend/ic_sleep_active")!.withRenderingMode(.alwaysOriginal)
-    static let entertainActive = UIImage(named: "Recommend/ic_entertain_active")!.withRenderingMode(.alwaysOriginal)
-    static let workActive = UIImage(named: "Recommend/ic_work_active")!.withRenderingMode(.alwaysOriginal)
-    static let habitActive = UIImage(named: "Recommend/ic_habit_active")!.withRenderingMode(.alwaysOriginal)
-    static let shopActive = UIImage(named: "Recommend/ic_shop_active")!.withRenderingMode(.alwaysOriginal)
-    static let emotionActive = UIImage(named: "Recommend/ic_emotion_active")!.withRenderingMode(.alwaysOriginal)
-    
-    static let healthDefault = UIImage(named: "Recommend/ic_health_default")!.withRenderingMode(.alwaysOriginal)
-    static let snsDefault = UIImage(named: "Recommend/ic_sns_default")!.withRenderingMode(.alwaysOriginal)
-    static let sleepDefault = UIImage(named: "Recommend/ic_sleep_default")!.withRenderingMode(.alwaysOriginal)
-    static let entertainDefault = UIImage(named: "Recommend/ic_entertain_default")!.withRenderingMode(.alwaysOriginal)
-    static let workDefault = UIImage(named: "Recommend/ic_work_default")!.withRenderingMode(.alwaysOriginal)
-    static let habitDefault = UIImage(named: "Recommend/ic_habit_default")!.withRenderingMode(.alwaysOriginal)
-    static let shopDefault = UIImage(named: "Recommend/ic_shop_default")!.withRenderingMode(.alwaysOriginal)
-    static let emotionDefault = UIImage(named: "Recommend/ic_emotion_default")!.withRenderingMode(.alwaysOriginal)
-    
+    static let recommend_star = UIImage(named: "Recommend/ic_circle_s")!.withRenderingMode(.alwaysOriginal)
+ 
     // Calendar
     
-    static let calendar = UIImage(named: "Calendar/Component")!.withRenderingMode(.alwaysOriginal)
+    static let headerImage = UIImage(named: "Calendar/Component")!.withRenderingMode(.alwaysOriginal)
     static let calendarLeftArrow = UIImage(named: "Calendar/btn_arrow/_left")!.withRenderingMode(.alwaysOriginal)
     static let calendarRightArrow = UIImage(named: "Calendar/btn_arrow/_right")!.withRenderingMode(.alwaysOriginal)
     static let selectedDateBtn = UIImage(named: "Calendar/btn_selected")!.withRenderingMode(.alwaysOriginal)
@@ -103,4 +86,12 @@ extension UIImage {
     static let myInfoBackground = UIImage(named: "MyInfo/img_myInfo")!.withRenderingMode(.alwaysOriginal)
     static let myInfoUser = UIImage(named: "MyInfo/img_myInfoUser")!.withRenderingMode(.alwaysOriginal)
     static let myInfoRightButton = UIImage(named: "MyInfo/btn_right")!.withRenderingMode(.alwaysOriginal)
+    static let heartFill2 = UIImage(named: "Graphic/graphic6")!.withRenderingMode(.alwaysOriginal)
+    
+    // Achieve
+    static let rank1 = UIImage(named: "Achieve/rank_1")!.withRenderingMode(.alwaysOriginal)
+    static let rank2 = UIImage(named: "Achieve/rank_2")!.withRenderingMode(.alwaysOriginal)
+    static let rank3 = UIImage(named: "Achieve/rank_3")!.withRenderingMode(.alwaysOriginal)
+    static let rank4 = UIImage(named: "Achieve/rank_4")!.withRenderingMode(.alwaysOriginal)
+    static let rank5 = UIImage(named: "Achieve/rank_5")!.withRenderingMode(.alwaysOriginal)
 }

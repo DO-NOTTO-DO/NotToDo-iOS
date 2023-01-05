@@ -40,7 +40,7 @@ extension AddMissionTextFieldView {
     private func setUI(placeHolder: String) {
         AddMissionTextField.do {
             $0.backgroundColor = .nottodoWhite
-            $0.layer.borderWidth = 1.0
+            $0.layer.borderWidth = 1.adjusted
             $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
             $0.font = .PretendardMedium(size: 16)
             $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 13.15.adjusted, height: 0.0))

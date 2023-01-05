@@ -96,9 +96,9 @@ extension AddMissionView {
             $0.configuration?.baseBackgroundColor = .BG
             $0.configuration?.baseForegroundColor = .nottodoGray1
             $0.configuration?.cornerStyle = .medium
-            $0.layer.borderWidth = 0.5
+            $0.layer.borderWidth = 0.5.adjusted
             $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
-            $0.layer.cornerRadius = 5
+            $0.layer.cornerRadius = 5.adjusted
             $0.titleLabel?.font = .PretendardMedium(size: 16)
 
 //            $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -158,25 +158,25 @@ extension AddMissionView {
         
         addMissionButton.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(74)
+            $0.height.equalTo(74.adjusted)
         }
         
         // MARK: - Cells
         
         missionView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
+            $0.top.equalToSuperview().offset(20.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(83.adjusted)
         }
         
         behaviorView.snp.makeConstraints {
-            $0.top.equalTo(missionView.snp.bottom).offset(35)
+            $0.top.equalTo(missionView.snp.bottom).offset(35.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(107.adjusted)
         }
         
         vStack.snp.makeConstraints {
-            $0.top.equalTo(behaviorView.snp.bottom).offset(35)
+            $0.top.equalTo(behaviorView.snp.bottom).offset(35.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(212.adjusted)
         }
@@ -197,7 +197,7 @@ extension AddMissionView {
         }
         
         maxMissionLabel.snp.makeConstraints {
-            $0.top.equalTo(addMissionButton.snp.top).offset(-46)
+            $0.top.equalTo(addMissionButton.snp.top).offset(-46.adjusted)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-103.adjusted)
         }
@@ -225,8 +225,8 @@ extension AddMissionView {
         
         behaviorTextFieldView.snp.makeConstraints {
             $0.top.equalTo(behaviorTitleView.snp.bottom).offset(11.adjusted)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-73)
+            $0.leading.equalToSuperview().offset(20.adjusted)
+            $0.trailing.equalToSuperview().offset(-73.adjusted)
             $0.height.equalTo(46.adjusted)
         }
         
@@ -238,7 +238,7 @@ extension AddMissionView {
         }
         
         maxBehaviorLabel.snp.makeConstraints {
-            $0.top.equalTo(behaviorTextFieldView.snp.bottom).offset(9)
+            $0.top.equalTo(behaviorTextFieldView.snp.bottom).offset(9.adjusted)
             $0.leading.equalToSuperview().offset(20.adjusted)
         }
         
@@ -265,9 +265,9 @@ extension AddMissionView {
         
         dateButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.height.equalTo(35)
-            $0.width.equalTo(150)
+            $0.trailing.equalToSuperview().offset(-20.adjusted)
+            $0.height.equalTo(35.adjusted)
+            $0.width.equalTo(150.adjusted)
         }
     }
     func updateData(date: String) {

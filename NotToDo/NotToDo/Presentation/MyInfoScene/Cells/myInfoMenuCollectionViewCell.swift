@@ -86,7 +86,7 @@ extension myInfoMenuCollectionViewCell {
         }
         
         goToMenuButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(18)
+            $0.trailing.equalToSuperview().inset(18.adjusted)
             $0.centerY.equalToSuperview()
             $0.size.equalTo(24.adjusted)
         }

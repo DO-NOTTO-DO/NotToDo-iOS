@@ -14,10 +14,13 @@ final class MyInfoViewController: UIViewController {
     
     // MARK: - UI Components
     
+    var myInfoView: MyInfoView!
+    
     // MARK: - View Life Cycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .nottodoGray2
+    
+    override func loadView() {
+        super.loadView()
+        myInfoView = MyInfoView(frame: self.view.frame)
+        view = myInfoView
     }
 }

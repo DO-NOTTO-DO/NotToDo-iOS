@@ -94,4 +94,13 @@ extension UIImage {
     static let graphic4 = UIImage(named: "Graphic/graphic4")!.withRenderingMode(.alwaysOriginal)
     static let heartEmpty = UIImage(named: "Graphic/graphic5")!.withRenderingMode(.alwaysOriginal)
     static let heartFill = UIImage(named: "Graphic/graphic2")!.withRenderingMode(.alwaysOriginal)
+    
+    // MyInfo
+    
+    static let login = UIImage(named: "MyInfo/img_login")!.withRenderingMode(.alwaysOriginal)
+    static let kakaoLoginButton = UIImage(named: "MyInfo/btn_login_kakao")!.withRenderingMode(.alwaysOriginal)
+    static let appleLoginButton = UIImage(named: "MyInfo/btn_login_apple")!.withRenderingMode(.alwaysOriginal)
+    static let myInfoBackground = UIImage(named: "MyInfo/img_myInfo")!.withRenderingMode(.alwaysOriginal)
+    static let myInfoUser = UIImage(named: "MyInfo/img_myInfoUser")!.withRenderingMode(.alwaysOriginal)
+    static let myInfoRightButton = UIImage(named: "MyInfo/btn_right")!.withRenderingMode(.alwaysOriginal)
 }

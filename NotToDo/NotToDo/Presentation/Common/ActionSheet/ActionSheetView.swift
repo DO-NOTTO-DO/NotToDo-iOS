@@ -170,7 +170,6 @@ extension ActionSheetView {
     }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("???")
         self.calendar.reloadData()
         self.headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
     }

@@ -54,9 +54,6 @@
 		3BED5328295C018700157A3B /* adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED5327295C018700157A3B /* adjust+.swift */; };
 		6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */; };
 		6CDC2D1529641BE000BFF5F4 /* AddMissionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */; };
-		6CDC2D172965330C00BFF5F4 /* BehaviorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D162965330C00BFF5F4 /* BehaviorTableViewCell.swift */; };
-		6CDC2D1D296533A100BFF5F4 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D1C296533A100BFF5F4 /* DateTableViewCell.swift */; };
-		6CDC2D1F2965521D00BFF5F4 /* AddMissionTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D1E2965521D00BFF5F4 /* AddMissionTableHeaderView.swift */; };
 		6CDC2D212966C86D00BFF5F4 /* AddMissionTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D202966C86D00BFF5F4 /* AddMissionTextFieldView.swift */; };
 		6CF0427829633E58000F40EB /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF0427729633E58000F40EB /* NavigationBarView.swift */; };
 /* End PBXBuildFile section */
@@ -105,9 +102,6 @@
 		3BED5327295C018700157A3B /* adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "adjust+.swift"; sourceTree = "<group>"; };
 		6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionView.swift; sourceTree = "<group>"; };
 		6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTitleView.swift; sourceTree = "<group>"; };
-		6CDC2D162965330C00BFF5F4 /* BehaviorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorTableViewCell.swift; sourceTree = "<group>"; };
-		6CDC2D1C296533A100BFF5F4 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
-		6CDC2D1E2965521D00BFF5F4 /* AddMissionTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTableHeaderView.swift; sourceTree = "<group>"; };
 		6CDC2D202966C86D00BFF5F4 /* AddMissionTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTextFieldView.swift; sourceTree = "<group>"; };
 		6CF0427729633E58000F40EB /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,7 +255,6 @@
 		3B162899295AD9740077AE7B /* AddMissionScene */ = {
 			isa = PBXGroup;
 			children = (
-				6CDC2D10296418FA00BFF5F4 /* Cells */,
 				6CDC2D0A2963E2A100BFF5F4 /* Views */,
 				3B16289F295AD9DF0077AE7B /* ViewControllers */,
 			);
@@ -477,16 +470,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		6CDC2D10296418FA00BFF5F4 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				6CDC2D162965330C00BFF5F4 /* BehaviorTableViewCell.swift */,
-				6CDC2D1C296533A100BFF5F4 /* DateTableViewCell.swift */,
-				6CDC2D1E2965521D00BFF5F4 /* AddMissionTableHeaderView.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		6CF0427629633E0E000F40EB /* NavigationBarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,10 +601,8 @@
 				3B1628B2295ADB710077AE7B /* NetworkResult.swift in Sources */,
 				3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */,
 				3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */,
-				6CDC2D1F2965521D00BFF5F4 /* AddMissionTableHeaderView.swift in Sources */,
 				3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */,
 				6CF0427829633E58000F40EB /* NavigationBarView.swift in Sources */,
-				6CDC2D1D296533A100BFF5F4 /* DateTableViewCell.swift in Sources */,
 				3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */,
 				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,
 				3B1628AA295ADB2F0077AE7B /* URLConstant.swift in Sources */,
@@ -632,7 +613,6 @@
 				3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */,
 				3B1628AC295ADB440077AE7B /* NetworkLoggerPlugin.swift in Sources */,
 				3B59AFB8296346650050FF49 /* Numbers.swift in Sources */,
-				6CDC2D172965330C00BFF5F4 /* BehaviorTableViewCell.swift in Sources */,
 				3B3405B9295B090300D44722 /* UIColor+.swift in Sources */,
 				6CDC2D212966C86D00BFF5F4 /* AddMissionTextFieldView.swift in Sources */,
 				3B162890295AD89C0077AE7B /* Strings.swift in Sources */,

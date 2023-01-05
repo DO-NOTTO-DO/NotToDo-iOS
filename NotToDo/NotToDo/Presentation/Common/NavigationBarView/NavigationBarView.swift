@@ -29,6 +29,7 @@ class NavigationBarView: UIView {
     private var backButton = UIButton()
     private var titleLabel = UILabel()
     private var successButton = UIButton()
+    private var line = UIView()
     
     // MARK: - View Life Cycle
     
@@ -72,6 +73,8 @@ extension NavigationBarView {
             $0.titleLabel?.font = .PretendardMedium(size: 18)
         }
         
+        line.backgroundColor = .nottodoGray4
+        
         switch mode {
         case .plain:
             backButton.setImage(.deletePageBtn, for: .normal)
@@ -80,9 +83,9 @@ extension NavigationBarView {
                 $0.textColor = .nottodoGray1
                 $0.font = .PretendardSemiBold(size: 22)
             }
-            successButton.do {
-                $0.isHidden = true
-            }
+            successButton.isHidden = true
+            line.isHidden = true
+            
         case .addSituation:
             backButton.setImage(.leftArrow, for: .normal)
             titleLabel.do {
@@ -91,6 +94,8 @@ extension NavigationBarView {
                 $0.font = .PretendardSemiBold(size: 22)
             }
             successButton.isHidden = false
+            line.isHidden = false
+            
         case .recommend:
             backButton.setImage(.leftArrow, for: .normal)
             titleLabel.do {
@@ -99,6 +104,7 @@ extension NavigationBarView {
                 $0.font = .PretendardSemiBold(size: 22)
             }
             successButton.isHidden = true
+            line.isHidden = false
         }
         backgroundColor = .nottodoWhite
     }
@@ -106,7 +112,7 @@ extension NavigationBarView {
     // MARK: - Layout Helpers
     
     private func setLayout() {
-        [backButton, titleLabel, successButton].forEach {
+        [backButton, titleLabel, successButton, line].forEach {
             addSubview($0)
         }
         
@@ -124,6 +130,12 @@ extension NavigationBarView {
         successButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-20.adjusted)
+        }
+        
+        line.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(68)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(0.5)
         }
     }
 }

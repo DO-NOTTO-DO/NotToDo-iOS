@@ -17,13 +17,13 @@ final class AddMissionTextFieldView: UIView {
     
     // MARK: - UI Components
     
-    private let AddMissionTitleLabel = UILabel()
+    private let AddMissionTextField = UITextField()
     
     // MARK: - View Life Cycles
     
-    init(frame: CGRect, titleLabel: String, buttonLabel: String?, icon: UIImage?) {
+    init(frame: CGRect, placeHolder: String) {
         super.init(frame: frame)
-        setUI(titleLabel: titleLabel, buttonLabel: buttonLabel, icon: icon)
+        setUI(placeHolder: placeHolder)
         setLayout()
     }
 
@@ -38,39 +38,26 @@ extension AddMissionTextFieldView {
     
     // MARK: - UI Helpers
     
-    private func setUI(titleLabel: String, buttonLabel: String?, icon: UIImage?) {
-        AddMissionTitleLabel.do {
-            $0.text = titleLabel
-            $0.textColor = .nottodoBlack
+    private func setUI(placeHolder: String) {
+        AddMissionTextField.do {
+            $0.backgroundColor = .nottodoWhite
+            $0.layer.borderWidth = 1.0
+            $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
             $0.font = .PretendardMedium(size: 16)
-        }
-        
-        AddMissionButton.do {
-            $0.configuration?.title = buttonLabel ?? ""
-            $0.configuration?.image = icon ?? nil
-            $0.configuration?.titleAlignment = .trailing
-            $0.titleLabel?.font = .PretendardMedium(size: 16)
-            $0.configuration?.baseForegroundColor = .nottodoGray2
-            $0.configuration?.imagePlacement = NSDirectionalRectEdge.trailing
-            $0.configuration?.buttonSize = .small
-            $0.configuration?.baseBackgroundColor = .clear
-            $0.configuration?.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
+            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 13.15.adjusted, height: 0.0))
+            $0.leftViewMode = .always
+            $0.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.nottodoGray3])
         }
     }
     
     // MARK: - Layout Helpers
     
     private func setLayout() {
-        addSubviews(AddMissionTitleLabel, AddMissionButton)
+        addSubview(AddMissionTextField)
         
-        AddMissionTitleLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(20.adjusted)
-        }
-        
-        AddMissionButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().offset(-14.adjusted)
-            $0.centerY.equalTo(AddMissionTitleLabel)
+        AddMissionTextField.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(46.adjusted)
         }
     }
 }

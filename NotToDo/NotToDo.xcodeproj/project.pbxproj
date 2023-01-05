@@ -44,11 +44,12 @@
 		3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DB295B146E00D44722 /* TabBarController.swift */; };
 		3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DD295B162600D44722 /* UITabBar+.swift */; };
 		3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */; };
+		3B42D1EE2966A1C20012898E /* myInfoMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */; };
+		3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */; };
 		3B4B90BB29656684008C5CA8 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90BA29656684008C5CA8 /* MyInfoView.swift */; };
 		3B4B90BD2965673E008C5CA8 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90BC2965673E008C5CA8 /* AuthViewController.swift */; };
 		3B4B90BF29656751008C5CA8 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90BE29656751008C5CA8 /* AuthView.swift */; };
 		3B4B90C62965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90C52965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift */; };
-		3B4B90C82965CB9C008C5CA8 /* myInfoMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90C72965CB9C008C5CA8 /* myInfoMenuCollectionViewCell.swift */; };
 		3B4B90CC2965D697008C5CA8 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90CB2965D697008C5CA8 /* CALayer+.swift */; };
 		3B4B90CF2965F17A008C5CA8 /* menuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90CE2965F17A008C5CA8 /* menuModel.swift */; };
 		3B576324296403CB00E03637 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B576323296403CB00E03637 /* UILabel+.swift */; };
@@ -95,11 +96,12 @@
 		3B3405DB295B146E00D44722 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3B3405DD295B162600D44722 /* UITabBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+.swift"; sourceTree = "<group>"; };
 		3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoMenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		3B4B90BA29656684008C5CA8 /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
 		3B4B90BC2965673E008C5CA8 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		3B4B90BE29656751008C5CA8 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3B4B90C52965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoUserCollectionViewCell.swift; sourceTree = "<group>"; };
-		3B4B90C72965CB9C008C5CA8 /* myInfoMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B4B90CB2965D697008C5CA8 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		3B4B90CE2965F17A008C5CA8 /* menuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuModel.swift; sourceTree = "<group>"; };
 		3B576323296403CB00E03637 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
@@ -452,20 +454,12 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		3B59AFB429633DE40050FF49 /* ActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */,
-				3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */,
-			);
-			path = ActionSheet;
-			sourceTree = "<group>";
-		};
 		3B4B90C02965B5AF008C5CA8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				3B4B90C52965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift */,
-				3B4B90C72965CB9C008C5CA8 /* myInfoMenuCollectionViewCell.swift */,
+				3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */,
+				3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -476,6 +470,15 @@
 				3B4B90CE2965F17A008C5CA8 /* menuModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3B59AFB429633DE40050FF49 /* ActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */,
+				3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */,
+			);
+			path = ActionSheet;
 			sourceTree = "<group>";
 		};
 		3B5B34A729617D3C002E1161 /* Common */ = {
@@ -618,6 +621,7 @@
 				3B4B90BB29656684008C5CA8 /* MyInfoView.swift in Sources */,
 				3B1628B2295ADB710077AE7B /* NetworkResult.swift in Sources */,
 				3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */,
+				3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */,
 				3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */,
 				3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */,
 				3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */,
@@ -625,6 +629,7 @@
 				3B1628AA295ADB2F0077AE7B /* URLConstant.swift in Sources */,
 				3B576324296403CB00E03637 /* UILabel+.swift in Sources */,
 				3BED5328295C018700157A3B /* adjust+.swift in Sources */,
+				3B42D1EE2966A1C20012898E /* myInfoMenuCollectionViewCell.swift in Sources */,
 				3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */,
 				3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */,
 				3B3405D2295B105900D44722 /* NotTodoAddViewController.swift in Sources */,
@@ -642,7 +647,6 @@
 				3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */,
 				3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */,
 				3B4B90BD2965673E008C5CA8 /* AuthViewController.swift in Sources */,
-				3B4B90C82965CB9C008C5CA8 /* myInfoMenuCollectionViewCell.swift in Sources */,
 				3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */,
 				3B3405D6295B109A00D44722 /* MyInfoViewController.swift in Sources */,
 				3B3405D0295B101600D44722 /* RecommendViewController.swift in Sources */,

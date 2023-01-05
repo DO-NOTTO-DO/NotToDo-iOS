@@ -12,6 +12,12 @@ import Then
 
 final class MyInfoView: UIView {
     
+    // MARK: - Properties
+    
+    private var isLogin: Bool {
+        return false
+    }
+    
     // MARK: - UI Components
     
     private var myInfoLabel = UILabel()
@@ -45,15 +51,19 @@ extension MyInfoView {
     private func register() {
         myInfoCollectionView.register(myInfoUserCollectionViewCell.self, forCellWithReuseIdentifier: myInfoUserCollectionViewCell.identifier)
         myInfoCollectionView.register(myInfoMenuCollectionViewCell.self, forCellWithReuseIdentifier: myInfoMenuCollectionViewCell.identifier)
+        myInfoCollectionView.register(myInfoFooterCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: myInfoFooterCollectionReusableView.identifier)
     }
     
     private func setCollectionView() {
-        myInfoCollectionView.delegate = self
-        myInfoCollectionView.dataSource = self
+        myInfoCollectionView.do {
+            $0.delegate = self
+            $0.dataSource = self
+            $0.backgroundColor = .BG
+        }
     }
     
     private func setUI() {
-        backgroundColor = .nottodoWhite
+        backgroundColor = .BG
         myInfoLabel.do {
             $0.text = I18N.myInfo
             $0.font = .PretendardSemiBold(size: 22)
@@ -79,13 +89,14 @@ extension MyInfoView {
 
 extension MyInfoView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = UIScreen.main.bounds.width
-        let cellWidth = width - 40
+        let cellWidth = 353.adjusted
+        let menuCellHeight = 61.adjusted
+        let userCellHeight = 96.adjusted
         switch indexPath.section {
         case 0:
-            return CGSize(width: cellWidth.adjusted, height: 96.adjusted)
+            return CGSize(width: cellWidth, height: userCellHeight)
         default:
-            return CGSize(width: cellWidth.adjusted, height: 61.adjusted)
+            return CGSize(width: cellWidth, height: menuCellHeight)
         }
     }
 }
@@ -112,19 +123,51 @@ extension MyInfoView: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: myInfoUserCollectionViewCell.identifier, for: indexPath) as? myInfoUserCollectionViewCell else { return UICollectionViewCell() }
+            cell.setLayout(isLogin: isLogin)
+            cell.layer.addBorder([.top, .bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
             return cell
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: myInfoMenuCollectionViewCell.identifier, for: indexPath) as? myInfoMenuCollectionViewCell else { return UICollectionViewCell() }
-            var model = myInfoFirstMenuList[indexPath.row]
-            cell.configure(model.title, menuIcon: model.icon, rightButton: model.goToButton)
+            let model = myInfoFirstMenuList[indexPath.row]
+            cell.configure(model.title, menuIcon: model.icon, rightButton: model.goToButton, indexPath: indexPath)
             return cell
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: myInfoMenuCollectionViewCell.identifier, for: indexPath) as? myInfoMenuCollectionViewCell else { return UICollectionViewCell() }
-            var model = myInfoSecondMenuList[indexPath.row]
-            cell.configure(model.title, menuIcon: model.icon, rightButton: model.goToButton)
+            let model = myInfoSecondMenuList[indexPath.row]
+            cell.configure(model.title, menuIcon: model.icon, rightButton: model.goToButton, indexPath: indexPath)
             return cell
         default:
             return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch section {
+        case 0:
+            return UIEdgeInsets(top: 0, left: 0, bottom: 18.adjusted, right: 0)
+        case 1:
+            return UIEdgeInsets(top: 0, left: 0, bottom: 16.adjusted, right: 0)
+        default:
+            return UIEdgeInsets()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionFooter,
+              let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: myInfoFooterCollectionReusableView.identifier,
+                for: indexPath
+              ) as? myInfoFooterCollectionReusableView else { return UICollectionReusableView() }
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        switch section {
+        case 2:
+            return CGSize(width: 150.adjusted, height: 17.adjusted)
+        default:
+            return CGSize()
         }
     }
 }

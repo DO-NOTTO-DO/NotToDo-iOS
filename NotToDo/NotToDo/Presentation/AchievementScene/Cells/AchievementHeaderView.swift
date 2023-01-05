@@ -13,7 +13,7 @@ class AchievementHeaderView: UICollectionReusableView {
         $0.axis = .horizontal
     }
     lazy var icon = UIImageView().then {
-        $0.image = UIImage.ic_rank
+        $0.image = .rank
     }
     lazy var subLabel = customLabel(color: .nottodoBlack!, font: UIFont(name: AppFontName.pretendardSemiBold, size: 16)!)
         override init(frame: CGRect) {

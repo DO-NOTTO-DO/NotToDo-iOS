@@ -90,7 +90,7 @@ extension AddMissionView {
             dateFormatter.dateFormat = "yyyy.MM.dd"
             let str = dateFormatter.string(from: nowDate)
             $0.configuration?.title = str
-            // $0.configuration?.image = .ic_calendar
+            $0.configuration?.image = .addCalendar
             $0.configuration?.imagePadding = 10.adjusted
             $0.configuration?.imagePlacement = NSDirectionalRectEdge.trailing
             $0.configuration?.baseBackgroundColor = .BG

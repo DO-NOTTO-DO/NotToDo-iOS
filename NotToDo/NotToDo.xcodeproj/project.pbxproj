@@ -35,6 +35,7 @@
 		096BE0232966A296009ED396 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0222966A296009ED396 /* RecommendCollectionViewCell.swift */; };
 		096BE0252966A2B0009ED396 /* SortedItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0242966A2B0009ED396 /* SortedItemModel.swift */; };
 		096BE0272966A8DE009ED396 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0262966A8DE009ED396 /* CustomTabBarItem.swift */; };
+		099F06CB2967271F0036CF55 /* SharedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F06CA2967271F0036CF55 /* SharedItem.swift */; };
 		3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162873295AD7860077AE7B /* AppDelegate.swift */; };
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
@@ -106,6 +107,7 @@
 		096BE0222966A296009ED396 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		096BE0242966A2B0009ED396 /* SortedItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedItemModel.swift; sourceTree = "<group>"; };
 		096BE0262966A8DE009ED396 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
+		099F06CA2967271F0036CF55 /* SharedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedItem.swift; sourceTree = "<group>"; };
 		3B162870295AD7860077AE7B /* NotToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B162873295AD7860077AE7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B162875295AD7860077AE7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +194,25 @@
 				096BE00029659B3A009ED396 /* AchievementHeaderView.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		096BE0282966DA50009ED396 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				096BE0222966A296009ED396 /* RecommendCollectionViewCell.swift */,
+				096BE0202966A24A009ED396 /* NestedCollectionViewCell.swift */,
+				096BE0162966A142009ED396 /* CustomTabBarCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		099F06C9296723EF0036CF55 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				096BE0242966A2B0009ED396 /* SortedItemModel.swift */,
+				096BE0262966A8DE009ED396 /* CustomTabBarItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3B162867295AD7860077AE7B = {
@@ -318,6 +339,8 @@
 		3B162898295AD9650077AE7B /* RecommendScene */ = {
 			isa = PBXGroup;
 			children = (
+				099F06C9296723EF0036CF55 /* Model */,
+				096BE0282966DA50009ED396 /* Cell */,
 				3B16289C295AD9CB0077AE7B /* ViewControllers */,
 				3B16289D295AD9D20077AE7B /* Views */,
 			);
@@ -359,8 +382,6 @@
 			isa = PBXGroup;
 			children = (
 				3B3405CF295B101600D44722 /* RecommendViewController.swift */,
-				096BE0222966A296009ED396 /* RecommendCollectionViewCell.swift */,
-				096BE0242966A2B0009ED396 /* SortedItemModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -369,12 +390,10 @@
 			isa = PBXGroup;
 			children = (
 				096BE01229669F92009ED396 /* CustomTabBarView.swift */,
-				096BE0262966A8DE009ED396 /* CustomTabBarItem.swift */,
 				096BE0182966A18A009ED396 /* CustomPaddingLabel.swift */,
 				096BE01A2966A1B3009ED396 /* RecommendHeaderView.swift */,
 				096BE01E2966A1FA009ED396 /* NestedView.swift */,
-				096BE0202966A24A009ED396 /* NestedCollectionViewCell.swift */,
-				096BE0162966A142009ED396 /* CustomTabBarCell.swift */,
+				099F06CA2967271F0036CF55 /* SharedItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -721,6 +740,7 @@
 				3BED5328295C018700157A3B /* adjust+.swift in Sources */,
 				3B42D1EE2966A1C20012898E /* myInfoMenuCollectionViewCell.swift in Sources */,
 				096BDFF22965215D009ED396 /* MissionList.swift in Sources */,
+				099F06CB2967271F0036CF55 /* SharedItem.swift in Sources */,
 				3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */,
 				096BE0172966A142009ED396 /* CustomTabBarCell.swift in Sources */,
 				3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */,

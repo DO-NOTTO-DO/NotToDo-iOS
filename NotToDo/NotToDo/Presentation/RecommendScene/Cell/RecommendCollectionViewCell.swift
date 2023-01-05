@@ -42,7 +42,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     
     private func setViews(){
         self.addSubviews(titleLabel,nestedCollectionView)
-        nestedCollectionView.item = item
+     //   nestedCollectionView.item = item
         nestedCollectionView.config()
     }
    

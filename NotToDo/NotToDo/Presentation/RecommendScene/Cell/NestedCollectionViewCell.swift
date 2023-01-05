@@ -13,11 +13,10 @@ class NestedCollectionViewCell: UICollectionViewCell {
     var itemlist: [SortedItemModel] = SortedItemModel.sampleData
     lazy var colorView = UIView().then{
         $0.layer.backgroundColor = UIColor.yellow_basic?.cgColor
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
+        //$0.layer.borderWidth = 1
+       // $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
     }
      lazy var titleLabel = UILabel().then{
-         $0.text = "One"
          $0.textColor = UIColor.nottodoGray1
          $0.font = .PretendardSemiBold(size: 16)
     }
@@ -36,6 +35,7 @@ class NestedCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     private func setViews(){
         self.addSubviews(colorView,titleLabel)
     }

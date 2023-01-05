@@ -9,17 +9,21 @@ import UIKit
 
 class NestedView: UIView {
     let itemList: [SortedItemModel] = SortedItemModel.sampleData
-    var item : SortedItemModel?
+  //  var itemArray : Array(SortedItemModel) = []
+    struct CategorizedList: Hashable {
+        let itemArray: SortedItemModel
+        let category: Section
+    }
 
     //data
     enum Section: Int,Hashable {
         case main, main2
     }
-    typealias Item = AnyHashable
+    typealias Item = CategorizedList
      var dataSource: UICollectionViewDiffableDataSource<Section,Item>! = nil
      lazy var collectionview = UICollectionView(frame: self.bounds, collectionViewLayout: layout()).then {
         $0.backgroundColor = .clear
-        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
         $0.delegate = self
     }
     override init(frame: CGRect) {
@@ -48,7 +52,6 @@ class NestedView: UIView {
     }
     private func setupCollectioView(){
       //  초기 tapBar selectedItem 설정
-    collectionview.isScrollEnabled = false
     }
     private func setupCustomTabBar(){
         collectionview.snp.makeConstraints {
@@ -64,9 +67,13 @@ class NestedView: UIView {
                 let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.reusedId, for: indexPath) as! NestedCollectionViewCell
                 let item = item as! ItemModel
                 cell.config(item)
+                print(item)
                 return cell
             case .main2 :
                 let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.reusedId, for: indexPath) as! NestedCollectionViewCell
+                let item = item as! ItemModel
+                cell.config(item)
+                print(item)
                 return cell
             }
         })
@@ -78,9 +85,17 @@ class NestedView: UIView {
             dataSource.apply(snapShot,animatingDifferences: true)
         }
         snapShot.appendSections([.main,.main2])
-        guard let item = item else { return }
-        snapShot.appendItems(item.itemsList,toSection: .main)
-        snapShot.appendItems(Array(0..<4),toSection: .main2)
+        let list = itemList[0]
+        let list1 = itemList[1]
+        print("list : \(list)")
+        print("list 1: \(list1)")
+
+        
+//        snapShot.appendItems(,toSection: .main)
+//        snapShot.appendItems(itemList[1],toSection: .main2)
+
+//        snapShot.appendItems(Array(0..<4),toSection: .main2)
+        snapShot.appendItems([Item(itemArray: list.itemsList.hashValue., category: .main)])
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendHeaderView.reuseId, for: indexPath) as? RecommendHeaderView else {return UICollectionReusableView()}
             if (indexPath.section == 0) {
@@ -101,7 +116,7 @@ class NestedView: UIView {
          group.interItemSpacing = .fixed(20)
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(34))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,elementKind: UICollectionView.elementKindSectionHeader,alignment: .top)
         section.boundarySupplementaryItems = [header]
         section.orthogonalScrollingBehavior = .none

@@ -72,6 +72,7 @@ extension UIImage {
     static let icRecommend = UIImage(named: "IC/ic_recommend")!.withRenderingMode(.alwaysOriginal)
     static let trash = UIImage(named: "IC/ic_trash")!.withRenderingMode(.alwaysOriginal)
     static let warning = UIImage(named: "IC/ic_warning")!.withRenderingMode(.alwaysOriginal)
+    static let star = UIImage(named: "IC/ic_star")!.withRenderingMode(.alwaysOriginal)
     
     // Calendar
     
@@ -79,21 +80,6 @@ extension UIImage {
     static let calendarLeftArrow = UIImage(named: "Calendar/btn_arrow/_left")!.withRenderingMode(.alwaysOriginal)
     static let calendarRightArrow = UIImage(named: "Calendar/btn_arrow/_right")!.withRenderingMode(.alwaysOriginal)
     static let selectedDateBtn = UIImage(named: "Calendar/btn_selected")!.withRenderingMode(.alwaysOriginal)
-    
-    // Icon
-    
-    static let ic_alarm = UIImage(named: "Icon/ic_alarm")!.withRenderingMode(.alwaysOriginal)
-    static let ic_trash = UIImage(named: "Icon/ic_trash")!.withRenderingMode(.alwaysOriginal)
-    static let ic_edit = UIImage(named: "Icon/ic_edit")!.withRenderingMode(.alwaysOriginal)
-    static let ic_anotherDay = UIImage(named: "Icon/ic_anotherday")!.withRenderingMode(.alwaysOriginal)
-    static let ic_calendar = UIImage(named: "Icon/ic_calendar")!.withRenderingMode(.alwaysOriginal)
-    static let ic_rank = UIImage(named: "Icon/ic_rank")!.withRenderingMode(.alwaysOriginal)
-    static let ic_guide = UIImage(named: "Icon/ic_guide")!.withRenderingMode(.alwaysOriginal)
-    static let ic_question = UIImage(named: "Icon/ic_question")!.withRenderingMode(.alwaysOriginal)
-    static let ic_recommand = UIImage(named: "Icon/ic_recommand")!.withRenderingMode(.alwaysOriginal)
-    static let ic_recentUse = UIImage(named: "Icon/ic_recentuse")!.withRenderingMode(.alwaysOriginal)
-    static let ic_recentSearch = UIImage(named: "Icon/ic_recentsearch")!.withRenderingMode(.alwaysOriginal)
-    static let ic_star = UIImage(named: "Icon/ic_star")!.withRenderingMode(.alwaysOriginal)
     
     // Shape
     

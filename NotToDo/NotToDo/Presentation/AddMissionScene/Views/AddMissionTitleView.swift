@@ -14,7 +14,6 @@ import Then
 
 final class AddMissionTitleView: UIView {
     
-    
     // MARK: - UI Components
     
     private let AddMissionTitleLabel = UILabel()

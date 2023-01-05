@@ -22,11 +22,11 @@ class AddMissionView: UIView {
     
     private let missionView = UIView()
     private let missionTitleView = AddMissionTitleView(frame: .zero, titleLabel: "하지 않을 일을 적어주세요", buttonLabel: nil, icon: nil)
-    private let missionTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder:"ex) 유튜브 2시간 이상 보지 않기")
+    private let missionTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: "ex) 유튜브 2시간 이상 보지 않기")
     
     private let behaviorView = UIView()
     private let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: "구체적인 실천 행동은 무엇인가요?", buttonLabel: "추천받기", icon: .rightArrow)
-    private let behaviorTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder:"ex) 9시 이후 휴대폰 가방에 넣기")
+    private let behaviorTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: "ex) 9시 이후 휴대폰 가방에 넣기")
     private let addBehaviorButton = UIButton()
     private let maxBehaviorLabel = UILabel()
     
@@ -34,7 +34,7 @@ class AddMissionView: UIView {
     
     private let goalView = UIView()
     private let goalTitleView = AddMissionTitleView(frame: .zero, titleLabel: "이루고자 하는 목표는 무엇인가요?", buttonLabel: nil, icon: nil)
-    private let goalTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder:"ex) 책 1권 완독하기")
+    private let goalTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: "ex) 책 1권 완독하기")
     
     var date = Date()
     private let dateView = UIView()
@@ -46,7 +46,7 @@ class AddMissionView: UIView {
     
     // MARK: - View Life Cycle
     
-    override init(frame: CGRect){
+    override init(frame: CGRect) {
       super.init(frame: frame)
         setUI()
         setLayout()
@@ -90,7 +90,7 @@ extension AddMissionView {
             dateFormatter.dateFormat = "yyyy.MM.dd"
             let str = dateFormatter.string(from: nowDate)
             $0.configuration?.title = str
-            //$0.configuration?.image = .ic_calendar
+            // $0.configuration?.image = .ic_calendar
             $0.configuration?.imagePadding = 10.adjusted
             $0.configuration?.imagePlacement = NSDirectionalRectEdge.trailing
             $0.configuration?.baseBackgroundColor = .BG
@@ -270,7 +270,7 @@ extension AddMissionView {
             $0.width.equalTo(150)
         }
     }
-    func updateData(date : String){
+    func updateData(date: String) {
         dateButton.setTitle(date, for: .normal)
     }
 }

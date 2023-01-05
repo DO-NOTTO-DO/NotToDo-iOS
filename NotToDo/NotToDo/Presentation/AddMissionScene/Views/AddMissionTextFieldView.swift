@@ -14,7 +14,6 @@ import Then
 
 final class AddMissionTextFieldView: UIView {
     
-    
     // MARK: - UI Components
     
     private let AddMissionTextField = UITextField()
@@ -46,7 +45,7 @@ extension AddMissionTextFieldView {
             $0.font = .PretendardMedium(size: 16)
             $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 13.15.adjusted, height: 0.0))
             $0.leftViewMode = .always
-            $0.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.nottodoGray3])
+            $0.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
         }
     }
     

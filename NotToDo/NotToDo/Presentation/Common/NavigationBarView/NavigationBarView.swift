@@ -59,7 +59,7 @@ extension NavigationBarView {
         case .addSituation:
             setUI(mode: .addSituation)
         case .recommend:
-            setUI(mode:.recommend)
+            setUI(mode: .recommend)
         }
         setLayout()
     }

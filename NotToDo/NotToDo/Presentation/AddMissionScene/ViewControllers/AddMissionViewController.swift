@@ -27,7 +27,7 @@ final class AddMissionViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        addMissionView = AddMissionView(frame: self.view.frame)
+        addMissionView = AddMissionView()
         self.view = addMissionView
     }
 }

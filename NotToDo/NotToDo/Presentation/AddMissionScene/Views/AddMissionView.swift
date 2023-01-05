@@ -13,28 +13,44 @@ import SnapKit
 // MARK: - AddMissionView
 
 class AddMissionView: UIView {
-
+    
     // MARK: - UI Components
     
-    private var navigationBarView = NavigationBarView(frame: CGRect(), mode: .plain)
-    private lazy var addMissionTableView = UITableView(frame: .zero, style: .grouped)
+    private lazy var navigationBarView = NavigationBarView(frame: CGRect(), mode: .plain)
+    private lazy var scrollView = UIScrollView()
+    private lazy var vStack = UIStackView(arrangedSubviews: [situationView, goalView, dateView])
     
-    // MARK: - Variables
+    private let missionView = UIView()
+    private let missionTitleView = AddMissionTitleView(frame: .zero, titleLabel: "하지 않을 일을 적어주세요", buttonLabel: nil, icon: nil)
+    private let missionTextField = UITextField()
     
-//    var missionList: [MissionModel] = [
-//        MissionModel(textField: "ex) 유튜브 2시간 이상 보지 않기"),
-//        MissionModel(textField: "ex) 책 1권 완독하기")
-//    ]
+    private let behaviorView = UIView()
+    private let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: "구체적인 실천 행동은 무엇인가요?", buttonLabel: "추천받기", icon: .rightArrow)
+    private let behaviorTextField = UITextField()
+    private let addBehaviorButton = UIButton()
+    private let maxBehaviorLabel = UILabel()
+    
+    private let situationView = AddMissionTitleView(frame: .zero, titleLabel: "어떤 상황인가요?", buttonLabel: "입력하기", icon: .rightArrow)
+    
+    private let goalView = UIView()
+    private let goalTitleView = AddMissionTitleView(frame: .zero, titleLabel: "이루고자 하는 목표는 무엇인가요?", buttonLabel: nil, icon: nil)
+    private let goalTextField = UITextField()
+    
+    var date = Date()
+    private let dateView = UIView()
+    private let dateLabel = UILabel()
+    private let dateButton = UIButton()
+    
+    private let maxMissionLabel = UILabel()
+    private let addMissionButton = UIButton()
     
     // MARK: - View Life Cycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setTableView()
+//    init(frame: CGRect, titleLabel: String, buttonLabel: String) {
+    override init(frame: CGRect){
+      super.init(frame: frame)
         setUI()
         setLayout()
-        register()
-        
     }
     
     @available(*, unavailable)
@@ -50,141 +66,239 @@ extension AddMissionView {
     // MARK: - UI Helpers
     
     private func setUI() {
-        addMissionTableView.do {
+        vStack.do {
+            $0.axis = .vertical
+            $0.spacing = 35
+        }
+        
+        missionTextField.do {
             $0.backgroundColor = .nottodoWhite
-            $0.separatorStyle = .none
-            $0.rowHeight = UITableView.automaticDimension
+            $0.layer.borderWidth = 1.0
+            $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
+            $0.font = .PretendardMedium(size: 16)
+            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 13.15.adjusted, height: 0.0))
+            $0.leftViewMode = .always
+            $0.attributedPlaceholder = NSAttributedString(string: "ex) 유튜브 2시간 이상 보지 않기", attributes: [NSAttributedString.Key.foregroundColor : UIColor.nottodoGray3])
+        }
+        
+        behaviorTextField.do {
+            $0.backgroundColor = .nottodoWhite
+            $0.borderStyle = .line
+            $0.layer.borderWidth = 1.0
+            $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
+            $0.font = .PretendardMedium(size: 16)
+            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 13.15.adjusted, height: 0.0))
+            $0.leftViewMode = .always
+            $0.attributedPlaceholder = NSAttributedString(string: "ex) 9시 이후 휴대폰 가방에 넣기", attributes: [NSAttributedString.Key.foregroundColor : UIColor.nottodoGray3])
+        }
+    
+        addBehaviorButton.setImage(.plusBtn, for: .normal)
+        
+        maxBehaviorLabel.do {
+            $0.text = "* 상황 추가는 낫투두 당 2개까지 가능합니다."
+            $0.font = .PretendardRegular(size: 12)
+            $0.textColor = .nottodoGray2
+        }
+        
+        goalTextField.do {
+            $0.backgroundColor = .nottodoWhite
+            $0.layer.borderWidth = 1.0
+            $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
+            $0.font = .PretendardMedium(size: 16)
+            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 13.15.adjusted, height: 0.0))
+            $0.leftViewMode = .always
+            $0.attributedPlaceholder = NSAttributedString(string: "ex) 책 1권 완독하기", attributes: [NSAttributedString.Key.foregroundColor : UIColor.nottodoGray3])
+        }
+        
+        dateLabel.do {
+            $0.text = "실천 날짜"
+            $0.textColor = .nottodoBlack
+            $0.font = .PretendardMedium(size: 16)
+        }
+        
+        dateButton.do {
+            let nowDate = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy.MM.dd"
+            let str = dateFormatter.string(from: nowDate)
+            $0.configuration?.title = str
+            $0.configuration?.image = UIImage(systemName: "calendar")
+            $0.configuration?.imagePadding = 10.adjusted
+            $0.configuration?.imagePlacement = NSDirectionalRectEdge.trailing
+            $0.configuration?.baseBackgroundColor = .nottodoGray1
+            $0.configuration?.baseForegroundColor = .nottodoBlack
+            $0.configuration?.cornerStyle = .medium
+//            $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        }
+        
+        maxMissionLabel.do {
+            $0.text = "* 하루 최대 3개까지 낫투두를 작성할 수 있어요!"
+            $0.font = .PretendardRegular(size: 14)
+            $0.textColor = .nottodoGray1
+        }
+        
+        addMissionButton.do {
+            $0.setTitle("추가하기", for: .normal)
+            $0.setTitleColor(.nottodoWhite, for: .normal)
+            $0.titleLabel?.font = .PretendardBold(size: 18)
+            $0.backgroundColor = .nottodoGray2
         }
     }
     
     // MARK: - Layout Helpers
     
     private func setLayout() {
-        [navigationBarView, addMissionTableView].forEach {
+        [navigationBarView, scrollView, addMissionButton].forEach {
             addSubview($0)
         }
         
-        navigationBarView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide)
-            $0.leading.trailing.equalTo(self.safeAreaLayoutGuide)
-            $0.height.equalTo(68)
+        [missionView, behaviorView, vStack, maxMissionLabel].forEach {
+            scrollView.addSubview($0)
         }
         
-        addMissionTableView.snp.makeConstraints {
-            $0.top.equalTo(self.navigationBarView.snp.bottom).offset(20)
-            $0.leading.trailing.equalTo(self.safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview()
+        [missionTitleView, missionTextField].forEach {
+            missionView.addSubview($0)
+        }
+        
+        [behaviorTitleView, behaviorTextField, addBehaviorButton, maxBehaviorLabel].forEach {
+            behaviorView.addSubview($0)
+        }
+        
+        [goalTitleView, goalTextField].forEach {
+            goalView.addSubview($0)
+        }
+        
+        [dateLabel, dateButton].forEach {
+            dateView.addSubview($0)
+        }
+        
+        navigationBarView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(68.adjusted)
+        }
+        
+        scrollView.snp.makeConstraints {
+            $0.top.equalTo(navigationBarView.snp.bottom)
+            $0.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        addMissionButton.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(74)
+        }
+        
+        // MARK: - Cells
+        
+        missionView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(83.adjusted)
+        }
+        
+        behaviorView.snp.makeConstraints {
+            $0.top.equalTo(missionView.snp.bottom).offset(35)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(107.adjusted)
+        }
+        
+        vStack.snp.makeConstraints {
+            $0.top.equalTo(behaviorView.snp.bottom).offset(35)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(212.adjusted)
+        }
+        
+        situationView.snp.makeConstraints {
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(24.adjusted)
+        }
+            
+        goalView.snp.makeConstraints {
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(83.adjusted)
+        }
+        
+        dateView.snp.makeConstraints {
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(37.adjusted)
+        }
+        
+        maxMissionLabel.snp.makeConstraints {
+            $0.top.equalTo(addMissionButton.snp.top).offset(-46)
+            $0.centerX.equalToSuperview()
+            /// 뽀인트!!!!!!
+            $0.bottom.equalToSuperview().offset(-103.adjusted)
+        }
+    
+        // MARK: - mission
+        
+        missionTitleView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(24.adjusted)
+        }
+        
+        missionTextField.snp.makeConstraints {
+            $0.top.equalTo(missionTitleView.snp.bottom).offset(11.adjusted)
+            $0.leading.trailing.equalToSuperview().inset(20.adjusted)
+            $0.height.equalTo(46.adjusted)
+        }
+        
+        // MARK: - behavior
+        
+        behaviorTitleView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(24.adjusted)
+        }
+        
+        behaviorTextField.snp.makeConstraints {
+            $0.top.equalTo(behaviorTitleView.snp.bottom).offset(11.adjusted)
+            $0.leading.equalToSuperview().offset(20.adjusted)
+            $0.trailing.equalToSuperview().offset(-73.adjusted)
+            $0.height.equalTo(46.adjusted)
+        }
+        
+        addBehaviorButton.snp.makeConstraints {
+            $0.centerY.equalTo(behaviorTextField.snp.centerY)
+            $0.leading.equalTo(behaviorTextField.snp.trailing).offset(7.adjusted)
+            $0.trailing.equalToSuperview().offset(-20.adjusted)
+            $0.height.equalTo(46.adjusted)
+        }
+        
+        maxBehaviorLabel.snp.makeConstraints {
+            $0.top.equalTo(behaviorTextField.snp.bottom).offset(9)
+            $0.leading.equalTo(behaviorTextField)
+        }
+        
+        // MARK: - goal
+        
+        goalTitleView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.height.equalTo(24.adjusted)
+        }
+        
+        goalTextField.snp.makeConstraints {
+            $0.top.equalTo(goalTitleView.snp.bottom).offset(11.adjusted)
+            $0.leading.trailing.equalToSuperview().inset(20.adjusted)
+            $0.height.equalTo(46.adjusted)
+        }
+        
+        // MARK: - date
+        
+        dateLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20.adjusted)
+            $0.centerY.equalToSuperview()
+        }
+        
+        dateButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.height.equalTo(35)
+            $0.width.equalTo(150)
         }
     }
-    
-    private func setTableView() {
-        addMissionTableView.delegate = self
-        addMissionTableView.dataSource = self
-    }
-    
-    private func register() {
-        addMissionTableView.register(AddMissionTableHeaderView.self, forHeaderFooterViewReuseIdentifier: "AddMissionTableHeaderView")
-        addMissionTableView.register(MissionTableViewCell.self,
-                                     forCellReuseIdentifier: MissionTableViewCell.identifier)
-        addMissionTableView.register(BehaviorTableViewCell.self,
-                                     forCellReuseIdentifier: BehaviorTableViewCell.identifier)
-        addMissionTableView.register(DateTableViewCell.self,
-                                     forCellReuseIdentifier: DateTableViewCell.identifier)
+    func updateData(date : String){
+        dateButton.setTitle(date, for: .normal)
     }
 }
-
-// MARK: - UITableViewDataSource
-
-extension AddMissionView: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        default:
-            return 1
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
-    UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MissionTableViewCell.identifier, for: indexPath)
-                    as? MissionTableViewCell else { return UITableViewCell() }
-            cell.selectionStyle = .none
-            cell.setPlaceholder("ex) 유튜브 2시간 이상 보지 않기")
-            return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: BehaviorTableViewCell.identifier, for: indexPath)
-                    as? BehaviorTableViewCell else { return UITableViewCell() }
-            cell.selectionStyle = .none
-            return cell
-        case 3:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MissionTableViewCell.identifier, for: indexPath)
-                    as? MissionTableViewCell else { return UITableViewCell() }
-            cell.selectionStyle = .none
-            cell.setPlaceholder("ex) 책 1권 완독하기")
-            return cell
-        case 4:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: DateTableViewCell.identifier, for: indexPath)
-                    as? DateTableViewCell else { return UITableViewCell() }
-            cell.selectionStyle = .none
-            return cell
-        default:
-            return UITableViewCell()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
-            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "AddMissionTableHeaderView") as? AddMissionTableHeaderView else { return UITableViewHeaderFooterView() }
-            headerView.HeaderTitle(title: "하지 않을 일을 적어주세요")
-            return headerView
-        case 1:
-            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "AddMissionTableHeaderView") as? AddMissionTableHeaderView else { return
-                UITableViewHeaderFooterView() }
-            headerView.HeaderTitle(title: "구체적인 실천 행동은 무엇인가요?")
-            headerView.ButtonWithIcon(title: "추천받기", icon: .rightArrow)
-            return headerView
-        case 2:
-            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "AddMissionTableHeaderView") as? AddMissionTableHeaderView else { return UITableViewHeaderFooterView() }
-            headerView.HeaderTitle(title: "어떤 상황인가요?")
-            headerView.ButtonWithIcon(title: "입력하기", icon: .rightArrow)
-            return headerView
-        case 3:
-            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "AddMissionTableHeaderView") as? AddMissionTableHeaderView else { return UITableViewHeaderFooterView() }
-            headerView.HeaderTitle(title: "이루고자 하는 목표는 무엇인가요?")
-            return headerView
-        default:
-            return UIView()
-        }
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension AddMissionView: UITableViewDelegate {
-    func tableView(_tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 2:
-            return 35.adjusted
-        default:
-            return UITableView.automaticDimension
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 2:
-            return 19.adjusted
-        case 4:
-            return 0
-        default:
-            return 30.adjusted
-        }
-    }
-}
-

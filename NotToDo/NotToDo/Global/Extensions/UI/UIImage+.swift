@@ -39,6 +39,7 @@ extension UIImage {
     static let recentCalendar = UIImage(named: "Recent/ic_calender")!.withRenderingMode(.alwaysOriginal)
     
     // Recommend
+    
     static let recommend_star = UIImage(named: "Recommend/ic_circle_s")!.withRenderingMode(.alwaysOriginal)
     static let emotionActive = UIImage(named: "Recommend/ic_emotion_active")!.withRenderingMode(.alwaysOriginal)
     static let emotion = UIImage(named: "Recommend/ic_emotion_default")!.withRenderingMode(.alwaysOriginal)
@@ -58,19 +59,20 @@ extension UIImage {
  
     // Icon
     
-    static let addCalendar = UIImage(named: "Icon/ic_add_calendar")!.withRenderingMode(.alwaysOriginal)
-    static let alarm = UIImage(named: "Icon/ic_alarm")!.withRenderingMode(.alwaysOriginal)
-    static let anotherDay = UIImage(named: "Icon/ic_anotherday")!.withRenderingMode(.alwaysOriginal)
-    static let calendar = UIImage(named: "Icon/ic_calender")!.withRenderingMode(.alwaysOriginal)
-    static let edit = UIImage(named: "Icon/ic_edit")!.withRenderingMode(.alwaysOriginal)
-    static let guide = UIImage(named: "Icon/ic_guide")!.withRenderingMode(.alwaysOriginal)
-    static let question = UIImage(named: "Icon/ic_question")!.withRenderingMode(.alwaysOriginal)
-    static let rank = UIImage(named: "Icon/ic_rank")!.withRenderingMode(.alwaysOriginal)
-    static let recentSearch = UIImage(named: "Icon/ic_recentsearch")!.withRenderingMode(.alwaysOriginal)
-    static let recentUse = UIImage(named: "Icon/ic_recentuse")!.withRenderingMode(.alwaysOriginal)
-    static let icRecommend = UIImage(named: "Icon/ic_recommend")!.withRenderingMode(.alwaysOriginal)
-    static let trash = UIImage(named: "Icon/ic_trash")!.withRenderingMode(.alwaysOriginal)
-    static let warning = UIImage(named: "Icon/ic_warning")!.withRenderingMode(.alwaysOriginal)
+    static let addCalendar = UIImage(named: "IC/ic_add_calendar")!.withRenderingMode(.alwaysOriginal)
+    static let alarm = UIImage(named: "IC/ic_alarm")!.withRenderingMode(.alwaysOriginal)
+    static let anotherDay = UIImage(named: "IC/ic_anotherday")!.withRenderingMode(.alwaysOriginal)
+    static let calendar = UIImage(named: "IC/ic_calender")!.withRenderingMode(.alwaysOriginal)
+    static let edit = UIImage(named: "IC/ic_edit")!.withRenderingMode(.alwaysOriginal)
+    static let guide = UIImage(named: "IC/ic_guide")!.withRenderingMode(.alwaysOriginal)
+    static let question = UIImage(named: "IC/ic_question")!.withRenderingMode(.alwaysOriginal)
+    static let rank = UIImage(named: "IC/ic_rank")!.withRenderingMode(.alwaysOriginal)
+    static let recentSearch = UIImage(named: "IC/ic_recentsearch")!.withRenderingMode(.alwaysOriginal)
+    static let recentUse = UIImage(named: "IC/ic_recentuse")!.withRenderingMode(.alwaysOriginal)
+    static let icRecommend = UIImage(named: "IC/ic_recommend")!.withRenderingMode(.alwaysOriginal)
+    static let trash = UIImage(named: "IC/ic_trash")!.withRenderingMode(.alwaysOriginal)
+    static let warning = UIImage(named: "IC/ic_warning")!.withRenderingMode(.alwaysOriginal)
+    static let star = UIImage(named: "IC/ic_star")!.withRenderingMode(.alwaysOriginal)
     
     // Calendar
     
@@ -78,21 +80,6 @@ extension UIImage {
     static let calendarLeftArrow = UIImage(named: "Calendar/btn_arrow/_left")!.withRenderingMode(.alwaysOriginal)
     static let calendarRightArrow = UIImage(named: "Calendar/btn_arrow/_right")!.withRenderingMode(.alwaysOriginal)
     static let selectedDateBtn = UIImage(named: "Calendar/btn_selected")!.withRenderingMode(.alwaysOriginal)
-    
-    // Icon
-    
-    static let ic_alarm = UIImage(named: "Icon/ic_alarm")!.withRenderingMode(.alwaysOriginal)
-    static let ic_trash = UIImage(named: "Icon/ic_trash")!.withRenderingMode(.alwaysOriginal)
-    static let ic_edit = UIImage(named: "Icon/ic_edit")!.withRenderingMode(.alwaysOriginal)
-    static let ic_anotherDay = UIImage(named: "Icon/ic_anotherday")!.withRenderingMode(.alwaysOriginal)
-    static let ic_calendar = UIImage(named: "Icon/ic_calendar")!.withRenderingMode(.alwaysOriginal)
-    static let ic_rank = UIImage(named: "Icon/ic_rank")!.withRenderingMode(.alwaysOriginal)
-    static let ic_guide = UIImage(named: "Icon/ic_guide")!.withRenderingMode(.alwaysOriginal)
-    static let ic_question = UIImage(named: "Icon/ic_question")!.withRenderingMode(.alwaysOriginal)
-    static let ic_recommand = UIImage(named: "Icon/ic_recommand")!.withRenderingMode(.alwaysOriginal)
-    static let ic_recentUse = UIImage(named: "Icon/ic_recentuse")!.withRenderingMode(.alwaysOriginal)
-    static let ic_recentSearch = UIImage(named: "Icon/ic_recentsearch")!.withRenderingMode(.alwaysOriginal)
-    static let ic_star = UIImage(named: "Icon/ic_star")!.withRenderingMode(.alwaysOriginal)
     
     // Shape
     

@@ -37,4 +37,26 @@ struct I18N {
     static let loginGuide = "더욱 안전하고 편리하게 이용할 수 있어요!"
     static let logout = "로그아웃"
     static let withdrawal = "회원탈퇴"
+    
+    // navigation
+    
+    static let addSituation = "상황 추가하기"
+    static let submit = "완료"
+    
+    // AddMission
+    
+    static let addMission = "낫투두 추가하기"
+    static let missionTitle = "하지 않을 일을 적어주세요"
+    static let missionPlaceHolder = "ex) 유튜브 2시간 이상 보지 않기"
+    static let behaviorTitle = "구체적인 실천 행동은 무엇인가요?"
+    static let recommend = "추천받기"
+    static let behaviorPlaceHolder = "ex) 9시 이후 휴대폰 가방에 넣기"
+    static let situationTitle = "어떤 상황인가요?"
+    static let input = "입력하기"
+    static let goalTitle = "이루고자 하는 목표는 무엇인가요?"
+    static let goalPlaceHolder = "ex) 책 1권 완독하기"
+    static let actionDate = "실천 날짜"
+    static let add = "추가하기"
+    static let maxBehavior = "* 상황 추가는 낫투두 당 2개까지 가능합니다."
+    static let maxMission = "* 하루 최대 3개까지 낫투두를 작성할 수 있어요!"
 }

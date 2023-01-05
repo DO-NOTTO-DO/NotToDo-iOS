@@ -10,8 +10,6 @@ import UIKit
 import SnapKit
 import Then
 
-// MARK: - NavigationBarView
-
 enum NavigationMode {
     case plain
     case addSituation
@@ -36,7 +34,6 @@ class NavigationBarView: UIView {
     init(frame: CGRect, mode: NavigationMode) {
         self.navigationMode = mode
         super.init(frame: frame)
-
         setupMode(mode: mode)
     }
 
@@ -46,11 +43,9 @@ class NavigationBarView: UIView {
     }
 }
 
-// MARK: - Extensions
+// MARK: - Methods
 
 extension NavigationBarView {
-    
-    // MARK: - setupMode
     
     private func setupMode(mode: NavigationMode) {
         switch mode {
@@ -64,11 +59,9 @@ extension NavigationBarView {
         setLayout()
     }
     
-    // MARK: - UI Helpers
-    
     private func setUI(mode: NavigationMode) {
         successButton.do {
-            $0.setTitle("완료", for: .normal)
+            $0.setTitle(I18N.submit, for: .normal)
             $0.setTitleColor(.nottodoGray2, for: .normal)
             $0.titleLabel?.font = .PretendardMedium(size: 18)
         }
@@ -79,7 +72,7 @@ extension NavigationBarView {
         case .plain:
             backButton.setImage(.deletePageBtn, for: .normal)
             titleLabel.do {
-                $0.text = "낫투두 추가하기"
+                $0.text = I18N.addMission
                 $0.textColor = .nottodoGray1
                 $0.font = .PretendardSemiBold(size: 22)
             }
@@ -89,7 +82,7 @@ extension NavigationBarView {
         case .addSituation:
             backButton.setImage(.leftArrow, for: .normal)
             titleLabel.do {
-                $0.text = "상황 추가하기"
+                $0.text = I18N.addSituation
                 $0.textColor = .nottodoGray1
                 $0.font = .PretendardSemiBold(size: 22)
             }
@@ -99,7 +92,7 @@ extension NavigationBarView {
         case .recommend:
             backButton.setImage(.leftArrow, for: .normal)
             titleLabel.do {
-                $0.text = "추천받기"
+                $0.text = I18N.recommend
                 $0.textColor = .nottodoGray1
                 $0.font = .PretendardSemiBold(size: 22)
             }
@@ -109,12 +102,8 @@ extension NavigationBarView {
         backgroundColor = .nottodoWhite
     }
     
-    // MARK: - Layout Helpers
-    
     private func setLayout() {
-        [backButton, titleLabel, successButton, line].forEach {
-            addSubview($0)
-        }
+            addSubviews(backButton, titleLabel, successButton, line)
         
         backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -133,9 +122,9 @@ extension NavigationBarView {
         }
         
         line.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(68)
+            $0.top.equalToSuperview().offset(68.adjusted)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(0.5)
+            $0.height.equalTo(0.5.adjusted)
         }
     }
 }

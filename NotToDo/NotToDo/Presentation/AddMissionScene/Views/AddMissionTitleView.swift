@@ -10,8 +10,6 @@ import UIKit
 import SnapKit
 import Then
 
-// MARK: - AddMissionTitleView
-
 final class AddMissionTitleView: UIView {
     
     // MARK: - UI Components
@@ -32,12 +30,9 @@ final class AddMissionTitleView: UIView {
     }
 }
 
-// MARK: - Extensions
+// MARK: - Methods
 
 extension AddMissionTitleView {
-    
-    // MARK: - UI Helpers
-    
     private func setUI(titleLabel: String, buttonLabel: String?, icon: UIImage?) {
         AddMissionTitleLabel.do {
             $0.text = titleLabel
@@ -57,8 +52,6 @@ extension AddMissionTitleView {
             $0.configuration?.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
         }
     }
-    
-    // MARK: - Layout Helpers
     
     private func setLayout() {
         addSubviews(AddMissionTitleLabel, AddMissionButton)

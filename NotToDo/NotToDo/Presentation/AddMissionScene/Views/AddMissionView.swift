@@ -10,8 +10,6 @@ import UIKit
 import Then
 import SnapKit
 
-// MARK: - AddMissionView
-
 class AddMissionView: UIView {
     
     // MARK: - UI Components
@@ -21,20 +19,20 @@ class AddMissionView: UIView {
     private lazy var vStack = UIStackView(arrangedSubviews: [situationView, goalView, dateView])
     
     private let missionView = UIView()
-    private let missionTitleView = AddMissionTitleView(frame: .zero, titleLabel: "하지 않을 일을 적어주세요", buttonLabel: nil, icon: nil)
-    private let missionTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: "ex) 유튜브 2시간 이상 보지 않기")
+    private let missionTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.missionTitle, buttonLabel: nil, icon: nil)
+    private let missionTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: I18N.missionPlaceHolder)
     
     private let behaviorView = UIView()
-    private let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: "구체적인 실천 행동은 무엇인가요?", buttonLabel: "추천받기", icon: .rightArrow)
-    private let behaviorTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: "ex) 9시 이후 휴대폰 가방에 넣기")
+    private let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.behaviorTitle, buttonLabel: I18N.recommend, icon: .rightArrow)
+    private let behaviorTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: I18N.behaviorPlaceHolder)
     private let addBehaviorButton = UIButton()
     private let maxBehaviorLabel = UILabel()
     
-    private let situationView = AddMissionTitleView(frame: .zero, titleLabel: "어떤 상황인가요?", buttonLabel: "입력하기", icon: .rightArrow)
+    private let situationView = AddMissionTitleView(frame: .zero, titleLabel: I18N.situationTitle, buttonLabel: I18N.input, icon: .rightArrow)
     
     private let goalView = UIView()
-    private let goalTitleView = AddMissionTitleView(frame: .zero, titleLabel: "이루고자 하는 목표는 무엇인가요?", buttonLabel: nil, icon: nil)
-    private let goalTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: "ex) 책 1권 완독하기")
+    private let goalTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.goalTitle, buttonLabel: nil, icon: nil)
+    private let goalTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: I18N.goalPlaceHolder)
     
     var date = Date()
     private let dateView = UIView()
@@ -47,7 +45,7 @@ class AddMissionView: UIView {
     // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
-      super.init(frame: frame)
+        super.init(frame: frame)
         setUI()
         setLayout()
     }
@@ -58,28 +56,25 @@ class AddMissionView: UIView {
     }
 }
 
-// MARK: - Extensions
+// MARK: - Methods
 
 extension AddMissionView {
-    
-    // MARK: - UI Helpers
-    
     private func setUI() {
         vStack.do {
             $0.axis = .vertical
-            $0.spacing = 35
+            $0.spacing = 35.adjusted
         }
-    
+        
         addBehaviorButton.setImage(.plusBtn, for: .normal)
         
         maxBehaviorLabel.do {
-            $0.text = "* 상황 추가는 낫투두 당 2개까지 가능합니다."
+            $0.text = I18N.maxBehavior
             $0.font = .PretendardRegular(size: 12)
             $0.textColor = .nottodoGray2
         }
         
         dateLabel.do {
-            $0.text = "실천 날짜"
+            $0.text = I18N.actionDate
             $0.textColor = .nottodoBlack
             $0.font = .PretendardMedium(size: 16)
         }
@@ -100,50 +95,31 @@ extension AddMissionView {
             $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
             $0.layer.cornerRadius = 5.adjusted
             $0.titleLabel?.font = .PretendardMedium(size: 16)
-
-//            $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         }
         
         maxMissionLabel.do {
-            $0.text = "* 하루 최대 3개까지 낫투두를 작성할 수 있어요!"
+            $0.text = I18N.maxMission
             $0.font = .PretendardRegular(size: 14)
             $0.textColor = .nottodoGray1
         }
         
         addMissionButton.do {
-            $0.setTitle("추가하기", for: .normal)
+            $0.setTitle(I18N.add, for: .normal)
             $0.setTitleColor(.nottodoWhite, for: .normal)
             $0.titleLabel?.font = .PretendardBold(size: 18)
             $0.backgroundColor = .nottodoGray2
         }
     }
     
-    // MARK: - Layout Helpers
-    
     private func setLayout() {
-        [navigationBarView, scrollView, addMissionButton].forEach {
-            addSubview($0)
-        }
+        backgroundColor = .nottodoWhite
         
-        [missionView, behaviorView, vStack, maxMissionLabel].forEach {
-            scrollView.addSubview($0)
-        }
-        
-        [missionTitleView, missionTextFieldView].forEach {
-            missionView.addSubview($0)
-        }
-        
-        [behaviorTitleView, behaviorTextFieldView, addBehaviorButton, maxBehaviorLabel].forEach {
-            behaviorView.addSubview($0)
-        }
-        
-        [goalTitleView, goalTextFieldView].forEach {
-            goalView.addSubview($0)
-        }
-        
-        [dateLabel, dateButton].forEach {
-            dateView.addSubview($0)
-        }
+        addSubviews(navigationBarView, scrollView, addMissionButton)
+        scrollView.addSubviews(missionView, behaviorView, vStack, maxMissionLabel)
+        missionView.addSubviews(missionTitleView, missionTextFieldView)
+        behaviorView.addSubviews(behaviorTitleView, behaviorTextFieldView, addBehaviorButton, maxBehaviorLabel)
+        goalView.addSubviews(goalTitleView, goalTextFieldView)
+        dateView.addSubviews(dateLabel, dateButton)
         
         navigationBarView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
@@ -153,15 +129,13 @@ extension AddMissionView {
         
         scrollView.snp.makeConstraints {
             $0.top.equalTo(navigationBarView.snp.bottom)
-            $0.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.trailing.bottom.equalTo(safeAreaLayoutGuide)
         }
         
         addMissionButton.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.height.equalTo(74.adjusted)
         }
-        
-        // MARK: - Cells
         
         missionView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20.adjusted)
@@ -185,7 +159,7 @@ extension AddMissionView {
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(24.adjusted)
         }
-            
+        
         goalView.snp.makeConstraints {
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(83.adjusted)
@@ -201,8 +175,6 @@ extension AddMissionView {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-103.adjusted)
         }
-    
-        // MARK: - mission
         
         missionTitleView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
@@ -214,8 +186,6 @@ extension AddMissionView {
             $0.leading.trailing.equalToSuperview().inset(20.adjusted)
             $0.height.equalTo(46.adjusted)
         }
-        
-        // MARK: - behavior
         
         behaviorTitleView.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -242,8 +212,6 @@ extension AddMissionView {
             $0.leading.equalToSuperview().offset(20.adjusted)
         }
         
-        // MARK: - goal
-        
         goalTitleView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.height.equalTo(24.adjusted)
@@ -254,8 +222,6 @@ extension AddMissionView {
             $0.leading.trailing.equalToSuperview().inset(20.adjusted)
             $0.height.equalTo(46.adjusted)
         }
-        
-        // MARK: - date
         
         dateLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -270,6 +236,7 @@ extension AddMissionView {
             $0.width.equalTo(150.adjusted)
         }
     }
+    
     func updateData(date: String) {
         dateButton.setTitle(date, for: .normal)
     }

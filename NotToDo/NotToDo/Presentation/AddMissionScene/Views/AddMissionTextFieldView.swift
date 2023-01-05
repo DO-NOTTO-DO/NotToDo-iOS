@@ -10,8 +10,6 @@ import UIKit
 import SnapKit
 import Then
 
-// MARK: - AddMissionTextFieldView
-
 final class AddMissionTextFieldView: UIView {
     
     // MARK: - UI Components
@@ -31,12 +29,9 @@ final class AddMissionTextFieldView: UIView {
     }
 }
 
-// MARK: - Extensions
+// MARK: - Methods
 
 extension AddMissionTextFieldView {
-    
-    // MARK: - UI Helpers
-    
     private func setUI(placeHolder: String) {
         AddMissionTextField.do {
             $0.backgroundColor = .nottodoWhite
@@ -48,8 +43,6 @@ extension AddMissionTextFieldView {
             $0.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
         }
     }
-    
-    // MARK: - Layout Helpers
     
     private func setLayout() {
         addSubview(AddMissionTextField)

@@ -31,11 +31,13 @@ class RecommendHeaderView: UICollectionReusableView {
     
     func setAttributes(){
         titleLabel.do{
+            $0.textColor = .nottodoGray1
+            $0.font = .PretendardMedium(size: 14)
             $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
             $0.layer.borderWidth = 1
         }
         iconImage.do{
-            $0.image = UIImage.ic_star
+            $0.image = UIImage.recommend_star
         }
     }
         func setViews(){
@@ -46,10 +48,11 @@ class RecommendHeaderView: UICollectionReusableView {
             titleLabel.snp.makeConstraints {
                 $0.leading.equalToSuperview()
                 $0.bottom.equalToSuperview()
+                $0.height.equalTo(34)
             }
             iconImage.snp.makeConstraints {
                 $0.leading.equalToSuperview().offset(10)
-                $0.top.equalToSuperview().offset(12)
+                $0.centerY.equalToSuperview()
                 $0.height.width.equalTo(7)
             }
         }

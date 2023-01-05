@@ -107,6 +107,9 @@ class NestedView: UIView {
         section.orthogonalScrollingBehavior = .none
         let layout = UICollectionViewCompositionalLayout(section: section)
         layout.register(BackgroundSupplementaryView.self, forDecorationViewOfKind: "background")
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 25
+        layout.configuration = config
         return layout
     }
     

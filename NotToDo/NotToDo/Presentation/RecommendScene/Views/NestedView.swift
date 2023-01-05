@@ -95,7 +95,7 @@ class NestedView: UIView {
 //        snapShot.appendItems(itemList[1],toSection: .main2)
 
 //        snapShot.appendItems(Array(0..<4),toSection: .main2)
-        snapShot.appendItems([Item(itemArray: list.itemsList.hashValue., category: .main)])
+//        snapShot.appendItems([Item(itemArray: list.itemsList.hashValue., category: .main)])
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendHeaderView.reuseId, for: indexPath) as? RecommendHeaderView else {return UICollectionReusableView()}
             if (indexPath.section == 0) {

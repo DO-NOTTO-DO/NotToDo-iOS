@@ -40,7 +40,38 @@ extension UIImage {
     
     // Recommend
     static let recommend_star = UIImage(named: "Recommend/ic_circle_s")!.withRenderingMode(.alwaysOriginal)
+    static let emotionActive = UIImage(named: "Recommend/ic_emotion_active")!.withRenderingMode(.alwaysOriginal)
+    static let emotion = UIImage(named: "Recommend/ic_emotion_default")!.withRenderingMode(.alwaysOriginal)
+    static let entertainActive = UIImage(named: "Recommend/ic_entertain_active")!.withRenderingMode(.alwaysOriginal)
+    static let entertain = UIImage(named: "Recommend/ic_entertain_default")!.withRenderingMode(.alwaysOriginal)
+    static let havitActive = UIImage(named: "Recommend/ic_habit_active")!.withRenderingMode(.alwaysOriginal)
+    static let healthActive = UIImage(named: "Recommend/ic_health_active")!.withRenderingMode(.alwaysOriginal)
+    static let health = UIImage(named: "Recommend/ic_health_default")!.withRenderingMode(.alwaysOriginal)
+    static let shopActive = UIImage(named: "Recommend/ic_shop_active")!.withRenderingMode(.alwaysOriginal)
+    static let shop = UIImage(named: "Recommend/ic_shop_default")!.withRenderingMode(.alwaysOriginal)
+    static let sleepActive = UIImage(named: "Recommend/ic_sleep_active")!.withRenderingMode(.alwaysOriginal)
+    static let sleep = UIImage(named: "Recommend/ic_sleep_default")!.withRenderingMode(.alwaysOriginal)
+    static let snsActive = UIImage(named: "Recommend/ic_sns_active")!.withRenderingMode(.alwaysOriginal)
+    static let sns = UIImage(named: "Recommend/ic_sns_default")!.withRenderingMode(.alwaysOriginal)
+    static let workActive = UIImage(named: "Recommend/ic_work_active")!.withRenderingMode(.alwaysOriginal)
+    static let work = UIImage(named: "Recommend/ic_work_default")!.withRenderingMode(.alwaysOriginal)
  
+    // Icon
+    
+    static let addCalendar = UIImage(named: "Icon/ic_add_calendar")!.withRenderingMode(.alwaysOriginal)
+    static let alarm = UIImage(named: "Icon/ic_alarm")!.withRenderingMode(.alwaysOriginal)
+    static let anotherDay = UIImage(named: "Icon/ic_anotherday")!.withRenderingMode(.alwaysOriginal)
+    static let calendar = UIImage(named: "Icon/ic_calender")!.withRenderingMode(.alwaysOriginal)
+    static let edit = UIImage(named: "Icon/ic_edit")!.withRenderingMode(.alwaysOriginal)
+    static let guide = UIImage(named: "Icon/ic_guide")!.withRenderingMode(.alwaysOriginal)
+    static let question = UIImage(named: "Icon/ic_question")!.withRenderingMode(.alwaysOriginal)
+    static let rank = UIImage(named: "Icon/ic_rank")!.withRenderingMode(.alwaysOriginal)
+    static let recentSearch = UIImage(named: "Icon/ic_recentsearch")!.withRenderingMode(.alwaysOriginal)
+    static let recentUse = UIImage(named: "Icon/ic_recentuse")!.withRenderingMode(.alwaysOriginal)
+    static let icRecommend = UIImage(named: "Icon/ic_recommend")!.withRenderingMode(.alwaysOriginal)
+    static let trash = UIImage(named: "Icon/ic_trash")!.withRenderingMode(.alwaysOriginal)
+    static let warning = UIImage(named: "Icon/ic_warning")!.withRenderingMode(.alwaysOriginal)
+    
     // Calendar
     
     static let headerImage = UIImage(named: "Calendar/Component")!.withRenderingMode(.alwaysOriginal)

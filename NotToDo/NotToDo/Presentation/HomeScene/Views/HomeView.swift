@@ -7,12 +7,23 @@
 
 import UIKit
 
+import FSCalendar
 import SnapKit
 import Then
 
-class HomeView: UIView {
+final class HomeView: UIView {
     
-    var button = UIButton()
+    // MARK: - Properties
+    
+    private let weekly = Date()
+    
+    // MARK: - UI Components
+    
+    var calendar = FSCalendar(frame: .zero)
+    private var motivationLabel = UILabel()
+    private var graphicImageView = UIImageView()
+    private 
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,19 +39,9 @@ class HomeView: UIView {
 
 extension HomeView {
     private func setUI() {
-        button.do {
-            $0.setTitle("테스트버튼", for: .normal)
-            $0.setTitleColor(.black, for: .normal)
-        }
+        backgroundColor = .nottodoWhite
     }
     
     private func setLayout() {
-        addSubview(button)
-        
-        button.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(30.adjusted)
-            $0.height.equalTo(15.adjusted)
-        }
     }
 }

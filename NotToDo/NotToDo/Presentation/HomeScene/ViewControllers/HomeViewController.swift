@@ -20,9 +20,6 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .nottodoWhite
-//        setLayout()
-        addAction()
     }
     
     override func loadView() {
@@ -41,10 +38,10 @@ extension HomeViewController {
     }
     
     private func addAction() {
-        homeView.button.addAction(UIAction(handler: { _ in
-            let nextViewController = ActionSheetViewController()
-            nextViewController.modalPresentationStyle = .overFullScreen
-            self.present(nextViewController, animated: false)
-        }), for: .touchUpInside)
+//        homeView.button.addAction(UIAction(handler: { _ in
+//            let nextViewController = ActionSheetViewController()
+//            nextViewController.modalPresentationStyle = .overFullScreen
+//            self.present(nextViewController, animated: false)
+//        }), for: .touchUpInside)
     }
 }

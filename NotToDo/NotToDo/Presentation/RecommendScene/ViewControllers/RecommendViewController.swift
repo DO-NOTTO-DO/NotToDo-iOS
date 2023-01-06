@@ -11,9 +11,9 @@ import SnapKit
 import Then
 
 final class RecommendViewController: UIViewController , CustomTabBarDelegate{
-
+    
     var itemList: [SortedItemModel] = SortedItemModel.sampleData
-
+    
     enum Section : Int , Hashable{
         case sub,main
     }
@@ -23,12 +23,12 @@ final class RecommendViewController: UIViewController , CustomTabBarDelegate{
         $0.backgroundColor = .systemGray6
         $0.showsHorizontalScrollIndicator = false
         $0.isPagingEnabled = true
-        }
+    }
     //TabBar CollectionView
     var customTabBar = CustomTabBarView()
     var customTabBarCollectionView = CustomTabBarView().collectionview
     private lazy var safeArea = self.view.safeAreaLayoutGuide
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -38,7 +38,7 @@ final class RecommendViewController: UIViewController , CustomTabBarDelegate{
         registerSubViews()
         setupDataSource() // presentation
         reloadData()
-
+        
     }
     // MARK: setView
     private func setViews(){
@@ -55,11 +55,30 @@ final class RecommendViewController: UIViewController , CustomTabBarDelegate{
     }
     // 탭바를 클릭했을 때, 콘텐츠 뷰 이동
     func scrollToIndex(to index: Int) {
-            let indexPath = IndexPath(row: 0, section: 0)
-        print(indexPath.item)
-            self.pageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        reloadData()
-        print(reloadData())
+        //            let indexPath = IndexPath(row: 0, section: 0)
+        //        print(indexPath.item)
+        //            self.pageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        //        reloadData()
+        //        print(reloadData())
+        fetchCategoryItems(index) { [weak self] itemList in
+            self?.itemList = itemList
+            self?.pageCollectionView.reloadData()
+        }
+    }
+    
+    private func fetchCategoryItems(_ index: Int, completion: @escaping ([SortedItemModel]) -> ()) {
+        // FIXME : - 나중에 인덱스별로 서버에서 데이터를 들고 와야 함.
+        
+        // 아래 코드는 서버 없이 임의로 작성한 예시
+        switch index {
+        case 0: completion(SortedItemModel.sampleData)
+        case 1: completion(SortedItemModel.sampleData1)
+        case 2: completion(SortedItemModel.sampleData2)
+        case 3: completion(SortedItemModel.sampleData3)
+        case 4: completion(SortedItemModel.sampleData4)
+
+        default: completion(SortedItemModel.sampleData)
+        }
     }
     private func registerSubViews(){
         pageCollectionView.register(LabelCollectionViewCell.self, forCellWithReuseIdentifier: LabelCollectionViewCell.reuseId)

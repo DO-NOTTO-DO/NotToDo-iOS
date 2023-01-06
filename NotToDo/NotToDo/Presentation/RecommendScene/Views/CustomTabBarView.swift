@@ -60,7 +60,6 @@ class CustomTabBarView: UIView {
         collectionview.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.bottom.top.equalToSuperview()
-           // $0.height.equalTo(55)
         }
     }
     private func setupDataSource(){

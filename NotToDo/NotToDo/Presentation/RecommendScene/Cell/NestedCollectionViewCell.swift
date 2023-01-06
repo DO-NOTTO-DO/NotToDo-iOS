@@ -8,27 +8,29 @@
 import UIKit
 
 class NestedCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Properties
+    
     static var reusedId = "NestedCollectionViewCell"
     
     var itemlist: [SortedItemModel] = SortedItemModel.sampleData
     
-    lazy var colorView = UIView().then{
-        $0.layer.backgroundColor = UIColor.yellow_basic?.cgColor
-        //$0.layer.borderWidth = 1
-       // $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
-    }
-     lazy var titleLabel = UILabel().then{
-         $0.textColor = UIColor.nottodoGray1
-         $0.font = .PretendardSemiBold(size: 16)
-    }
+    // MARK: - UI Components
+    
+    lazy var colorView = UIView()
+    lazy var titleLabel = UILabel()
+   
+    // MARK: - Network
+    
     func config(_ item : ItemModel){
         titleLabel.text = item.subTitle
     }
+    // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.gray.cgColor
         self.backgroundColor = .white
+        setAttributes()
         setViews()
         setConstraints()
     }
@@ -36,7 +38,18 @@ class NestedCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+}
+extension NestedCollectionViewCell{
+    
+    private func setAttributes(){
+        colorView.do {
+            $0.layer.backgroundColor = UIColor.yellow_basic?.cgColor
+        }
+        titleLabel.do {
+            $0.textColor = UIColor.nottodoGray1
+            $0.font = .PretendardSemiBold(size: 16)
+        }
+    }
     private func setViews(){
         self.addSubviews(colorView,titleLabel)
     }

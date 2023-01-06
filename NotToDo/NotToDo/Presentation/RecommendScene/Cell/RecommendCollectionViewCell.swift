@@ -8,11 +8,18 @@
 import UIKit
 
 class RecommendCollectionViewCell: UICollectionViewCell {
-     static var reusedId = "RecommendCollectionViewCell"
     
-    //nested CollectionView
+    // MARK: - Properties
+    
+    static var reusedId = "RecommendCollectionViewCell"
+    
+    // MARK: - UI Components
+    
     lazy var nestedCollectionView = NestedView(frame: .zero)
     var item : SortedItemModel?
+    
+    // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.backgroundColor = .clear
@@ -21,14 +28,15 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+}
+extension RecommendCollectionViewCell{
     func config() {
         setAttributes()
         setViews()
         setConstraints()
     }
     private func setAttributes(){
-       
+        
         nestedCollectionView.do {
             $0.backgroundColor = .clear
         }
@@ -39,7 +47,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         nestedCollectionView.item = item
         nestedCollectionView.config()
     }
-   
+    
     private func setConstraints(){
         nestedCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview()

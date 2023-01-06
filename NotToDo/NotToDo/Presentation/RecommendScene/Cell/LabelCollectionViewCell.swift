@@ -8,9 +8,16 @@
 import UIKit
 
 class LabelCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Properties
+    
     static var reuseId: String = "LabelCollectionViewCell"
     
+    // MARK: - UI Components
+    
     private lazy  var titleLabel = UILabel()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -21,6 +28,8 @@ class LabelCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+extension LabelCollectionViewCell{
     func setAttributes(){
         titleLabel.do {
             $0.text = "* 박스 터치 시, 낫투두가 아닌 환경만 입력됩니다."

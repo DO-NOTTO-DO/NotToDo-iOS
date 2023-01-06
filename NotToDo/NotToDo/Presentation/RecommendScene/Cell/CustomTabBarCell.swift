@@ -11,10 +11,18 @@ import Then
 import SnapKit
 
 class CustomTabBarCell: UICollectionViewCell {
+    
+    // MARK: - Properties
+    
     static var reusedId = "CustomTabBarCell"
+    
+    // MARK: - UI Components
+    
     lazy var bgView = UIView()
     lazy var icImage = UIImageView()
     lazy var titleLabel = UILabel()
+    
+    // MARK: - Network
     
     func config(_ item : CustomTabBarItem, isSelected : Bool){
         if isSelected {
@@ -27,17 +35,26 @@ class CustomTabBarCell: UICollectionViewCell {
             self.titleLabel.text = item.name
             self.titleLabel.textColor = .nottodoGray2
             self.titleLabel.font = .PretendardMedium(size: 12)
-            self.icImage.image = UIImage(named: item.image) 
+            self.icImage.image = UIImage(named: item.image)
             self.bgView.backgroundColor = .clear
         }
     }
-
+    
+    // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setAttributes()
         setViews()
         setConstraints()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+extension CustomTabBarCell{
+    
     private func setAttributes(){
         titleLabel.do{
             $0.textAlignment = .center
@@ -64,8 +81,5 @@ class CustomTabBarCell: UICollectionViewCell {
             $0.top.equalTo(icImage.snp.bottom).offset(6)
             $0.bottom.equalToSuperview().inset(11)
         }
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

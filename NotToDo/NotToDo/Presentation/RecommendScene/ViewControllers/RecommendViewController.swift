@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class RecommendViewController: UIViewController, CustomTabBarDelegate {
+class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     var itemList: [SortedItemModel] = SortedItemModel.sampleData
     enum Section: Int, Hashable {
@@ -23,6 +23,7 @@ final class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     private lazy var mainTitle = UILabel()
     private lazy var createButton = UIButton()
+    private lazy var headerView = RecommendHeaderView()
     private lazy var contentsCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: recommendlayout())
     private lazy var customTabBar = CustomTabBarView()
     private lazy var underLineView = UIView()
@@ -30,7 +31,7 @@ final class RecommendViewController: UIViewController, CustomTabBarDelegate {
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
     // MARK: - Life Cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -94,7 +95,7 @@ extension RecommendViewController {
         contentsCollectionView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.top.equalTo(underLineView.snp.bottom)
-            $0.bottom.equalTo(safeArea)
+            $0.bottom.equalToSuperview()
         }
         registerSubViews()
     }

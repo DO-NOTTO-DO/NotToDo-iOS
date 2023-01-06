@@ -19,6 +19,7 @@ class RecommendHeaderView: UICollectionReusableView {
     // MARK: - UI Components
     
     lazy var titleLabel = CustomPaddingLabel(padding: .init(top: 7, left: 27, bottom: 10, right: 13))
+    var bgView = UIView()
     private lazy var iconImage = UIImageView()
     
     // MARK: - Network
@@ -28,7 +29,7 @@ class RecommendHeaderView: UICollectionReusableView {
     }
     
     // MARK: - Life Cycle
-    
+ 
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setUI()
@@ -45,17 +46,19 @@ extension RecommendHeaderView {
         titleLabel.do {
             $0.textColor = .nottodoGray1
             $0.font = .PretendardMedium(size: 14)
-            $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
-            $0.layer.borderWidth = 1
         }
         
         iconImage.do {
             $0.image = UIImage.recommend_star
         }
+        bgView.do {
+            $0.layer.borderWidth = 0.5
+            $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
+        }
     }
     func setLayout() {
         addSubview(titleLabel)
-        titleLabel.addSubview(iconImage)
+        titleLabel.addSubviews(bgView, iconImage)
         
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
@@ -66,6 +69,9 @@ extension RecommendHeaderView {
             $0.leading.equalToSuperview().offset(10)
             $0.centerY.equalToSuperview()
             $0.height.width.equalTo(7)
+        }
+        bgView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }

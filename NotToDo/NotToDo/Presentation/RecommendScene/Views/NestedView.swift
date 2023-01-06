@@ -73,6 +73,12 @@ extension NestedView {
             guard let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.reusedId, for: indexPath) as? NestedCollectionViewCell else { return UICollectionViewCell()}
             let item = item as! ItemModel
             cell.config(item)
+            switch indexPath.row {
+            case 0:
+                cell.layer.addBorder([.top, .bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
+            default:
+                cell.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
+            }
             return cell
         })
     }

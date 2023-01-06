@@ -13,6 +13,9 @@ class AddSituationView: UIView {
     
     private var navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
     private lazy var addSituationCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    private var inputTextField = UITextField()
+    private var textCountLabel = UILabel()
+    let maxLength = 15
     
     // variables
     
@@ -32,7 +35,8 @@ class AddSituationView: UIView {
         AddSituationModel(keyword: "떡볶이"),
         AddSituationModel(keyword: "낫투두"),
         AddSituationModel(keyword: "최고"),
-        AddSituationModel(keyword: "짱이얌")    ]
+        AddSituationModel(keyword: "짱이얌")
+    ]
     
     // MARK: - View Life Cycle
     
@@ -59,12 +63,29 @@ extension AddSituationView {
             $0.delegate = self
             $0.dataSource = self
         }
+        
+        inputTextField.do {
+            $0.backgroundColor = .nottodoWhite
+            $0.layer.borderWidth = 1.adjusted
+            $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
+            $0.font = .PretendardMedium(size: 16)
+            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 15.adjusted, height: 0.0))
+            $0.leftViewMode = .always
+            $0.attributedPlaceholder = NSAttributedString(string: "직접 입력하기...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
+             $0.delegate = self
+        }
+        
+        textCountLabel.do {
+             $0.text = "0/15"
+            $0.font = .PretendardRegular(size: 16)
+            $0.textColor = .nottodoGray2
+        }
     }
     
     private func setLayout() {
         backgroundColor = .nottodoWhite
         
-        addSubviews(navigationBarView, addSituationCollectionView)
+        addSubviews(navigationBarView, addSituationCollectionView, inputTextField, textCountLabel)
         
         navigationBarView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
@@ -76,6 +97,17 @@ extension AddSituationView {
             $0.top.equalTo(navigationBarView.snp.bottom).offset(32)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(266)
+        }
+        
+        inputTextField.snp.makeConstraints {
+            $0.top.equalTo(addSituationCollectionView.snp.bottom).offset(38)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(46.adjusted)
+        }
+        
+        textCountLabel.snp.makeConstraints {
+            $0.top.equalTo(inputTextField.snp.bottom).offset(9)
+            $0.trailing.equalToSuperview().inset(20)
         }
     }
     
@@ -172,5 +204,18 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let width = collectionView.frame.width
         return CGSize(width: width, height: 31.adjusted)
+    }
+}
+
+extension AddSituationView: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        if textField.text?.count ?? 0 > maxLength {
+            textField.deleteBackward()
+        }
+        textCountLabel.text = "\(textField.text!.count)/15"
+
+        return true
     }
 }

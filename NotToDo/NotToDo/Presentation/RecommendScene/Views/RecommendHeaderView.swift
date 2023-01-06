@@ -7,8 +7,8 @@
 
 import UIKit
 
-import Then
 import SnapKit
+import Then
 
 class RecommendHeaderView: UICollectionReusableView {
     
@@ -48,6 +48,7 @@ extension RecommendHeaderView {
             $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
             $0.layer.borderWidth = 1
         }
+        
         iconImage.do {
             $0.image = UIImage.recommend_star
         }
@@ -55,6 +56,7 @@ extension RecommendHeaderView {
     func setLayout() {
         addSubview(titleLabel)
         titleLabel.addSubview(iconImage)
+        
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()

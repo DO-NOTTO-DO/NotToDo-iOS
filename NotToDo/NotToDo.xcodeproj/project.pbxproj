@@ -208,8 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				096BE0222966A296009ED396 /* RecommendCollectionViewCell.swift */,
-				096BE0202966A24A009ED396 /* NestedCollectionViewCell.swift */,
 				096BE0162966A142009ED396 /* CustomTabBarCell.swift */,
+				096BE0202966A24A009ED396 /* NestedCollectionViewCell.swift */,
 				099F06F92967EE9E0036CF55 /* LabelCollectionViewCell.swift */,
 			);
 			path = Cell;
@@ -408,8 +408,8 @@
 			isa = PBXGroup;
 			children = (
 				096BE01A2966A1B3009ED396 /* RecommendHeaderView.swift */,
-				096BE01E2966A1FA009ED396 /* NestedView.swift */,
 				099F06CE296732970036CF55 /* CustomTabBarView.swift */,
+				096BE01E2966A1FA009ED396 /* NestedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -774,7 +774,7 @@
 				096BE0172966A142009ED396 /* CustomTabBarCell.swift in Sources */,
 				3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */,
 				096BE01F2966A1FA009ED396 /* NestedView.swift in Sources */,
-				3B3405D2295B105900D44722 /* NotTodoAddViewController.swift in Sources */,
+				3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */,
 				3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */,
 				3B1628AC295ADB440077AE7B /* NetworkLoggerPlugin.swift in Sources */,
 				3B4B90C62965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift in Sources */,

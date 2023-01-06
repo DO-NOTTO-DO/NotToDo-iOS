@@ -7,14 +7,15 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class NestedCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
     static var reusedId = "NestedCollectionViewCell"
-    
-    var itemlist: [SortedItemModel] = SortedItemModel.sampleData
-    
+        
     // MARK: - UI Components
     
     lazy var colorView = UIView()
@@ -45,17 +46,18 @@ extension NestedCollectionViewCell {
         }
         titleLabel.do {
             $0.textColor = UIColor.nottodoGray1
-            $0.font = .PretendardSemiBold(size: 16)
+            $0.font = .PretendardSemiBold(size: 16.adjusted)
         }
     }
     private func setLayout() {
         addSubviews(colorView, titleLabel)
+        
         colorView.snp.makeConstraints {
             $0.top.bottom.leading.equalToSuperview()
-            $0.width.equalTo(11)
+            $0.width.equalTo(11.adjusted)
         }
         titleLabel.snp.makeConstraints {
-            $0.leading.equalTo(colorView.snp.trailing).offset(13)
+            $0.leading.equalTo(colorView.snp.trailing).offset(13.adjusted)
             $0.centerY.equalToSuperview()
         }
     }

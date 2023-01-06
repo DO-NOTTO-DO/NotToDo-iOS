@@ -36,12 +36,13 @@ extension LabelCollectionViewCell {
         titleLabel.do {
             $0.text = "* 박스 터치 시, 낫투두가 아닌 환경만 입력됩니다."
             $0.textAlignment = .center
-            $0.font = .PretendardRegular(size: 12)
+            $0.font = .PretendardRegular(size: 12.adjusted)
             $0.textColor = .nottodoGray2
         }
     }    
     func setLayout() {
         contentView.addSubview(titleLabel)
+        
         titleLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
         }

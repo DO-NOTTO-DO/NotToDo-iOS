@@ -7,55 +7,73 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class NestedView: UIView {
+    
     let itemList: [SortedItemModel] = SortedItemModel.sampleData
     var item: SortedItemModel?
-
+    
     enum Section: Int, Hashable {
         case main
     }
     typealias Item = AnyHashable
-     var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
-     lazy var collectionview = UICollectionView(frame: self.bounds, collectionViewLayout: layout()).then {
-        $0.backgroundColor = .clear
-        $0.showsVerticalScrollIndicator = false
-        $0.delegate = self
-    }
+    var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
+    
+    // MARK: - UI Components
+    
+    lazy var collectionview = UICollectionView(frame: self.bounds, collectionViewLayout: layout())
+    
+    // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+extension NestedView {
     func config() {
+        setUI()
         setLayout()
         setupDataSource()
         reloadData()
     }
-
+    private func setUI() {
+        collectionview.do {
+            $0.backgroundColor = .clear
+            $0.showsVerticalScrollIndicator = false
+            $0.delegate = self
+            $0.isScrollEnabled = false
+            $0.bounces = false
+        }
+    }
     private func registerSubViews() {
         collectionview.register(NestedCollectionViewCell.self, forCellWithReuseIdentifier: NestedCollectionViewCell.reusedId)
         collectionview.register(RecommendHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendHeaderView.reuseId)
     }
     private func setLayout() {
-        collectionview.isScrollEnabled = false
-        collectionview.bounces = false
         addSubview(collectionview)
+        
         collectionview.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.top.bottom.equalToSuperview()
         }
         registerSubViews()
     }
+    
+    // MARK: - Data
+    
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionview, cellProvider: { (_, indexPath, item) -> UICollectionViewCell? in
             guard let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.reusedId, for: indexPath) as? NestedCollectionViewCell else { return UICollectionViewCell()}
-                let item = item as! ItemModel
-                cell.config(item)
-                print(item)
-                return cell
+            let item = item as! ItemModel
+            cell.config(item)
+            return cell
         })
     }
     private func reloadData() {
@@ -66,20 +84,19 @@ class NestedView: UIView {
         snapShot.appendSections([.main])
         guard let item = item else { return }
         snapShot.appendItems(item.itemsList, toSection: .main)
-    
+        
         dataSource.supplementaryViewProvider = { (collectionView, _, indexPath) in
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendHeaderView.reuseId, for: indexPath) as? RecommendHeaderView else {return UICollectionReusableView()}
-                header.titleLabel.text = item.title
-                return header
-            }
+            header.titleLabel.text = item.title
+            return header
         }
+    }
     
     private func layout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60.adjusted)))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300)), subitems: [item])
-         group.interItemSpacing = .fixed(20)
+        group.interItemSpacing = .fixed(20)
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(34))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         section.boundarySupplementaryItems = [header]
@@ -91,7 +108,6 @@ class NestedView: UIView {
         layout.configuration = config
         return layout
     }
-    
 }
 extension NestedView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

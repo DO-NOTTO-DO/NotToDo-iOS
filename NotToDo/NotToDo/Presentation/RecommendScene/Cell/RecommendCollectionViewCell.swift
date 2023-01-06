@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class RecommendCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
@@ -50,7 +53,7 @@ extension RecommendCollectionViewCell {
     private func setLayout() {
         nestedCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.directionalHorizontalEdges.equalToSuperview().inset(20)
+            $0.directionalHorizontalEdges.equalToSuperview().inset(20.adjusted)
             $0.bottom.equalToSuperview()
         }
     }

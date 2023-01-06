@@ -25,45 +25,56 @@ class CustomTabBarView: UIView {
     typealias Item = AnyHashable
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
+    
+    // MARK: - UI Components
+    
     lazy var collectionview = UICollectionView(frame: self.bounds, collectionViewLayout: layout())
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
         setUI()
-        registerSubViews()
-        setupCollectioView()
         setLayout()
         setupDataSource()
         reloadData()
         collectionview.reloadData()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+extension CustomTabBarView {
     private func setUI() {
+        setupCollectioView()
         collectionview.do {
             $0.backgroundColor = .clear
             $0.delegate = self
             $0.showsHorizontalScrollIndicator = true
+            $0.isScrollEnabled = false
+        }
+    }
+    private func setLayout() {
+        addSubviews(collectionview)
+        registerSubViews()
+        
+        collectionview.snp.makeConstraints {
+            $0.directionalHorizontalEdges.equalToSuperview()
+            $0.bottom.top.equalToSuperview()
         }
     }
     private func registerSubViews() {
         collectionview.register(CustomTabBarCell.self, forCellWithReuseIdentifier: CustomTabBarCell.reusedId)
     }
     private func setupCollectioView() {
-        //  초기 tapBar selectedItem 설정
-        collectionview.isScrollEnabled = false
         let indexPath = IndexPath(item: 0, section: 0)
         collectionview.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
-    private func setLayout() {
-        addSubviews(collectionview, underLineView)
-        collectionview.snp.makeConstraints {
-            $0.directionalHorizontalEdges.equalToSuperview()
-            $0.bottom.top.equalToSuperview()
-        }
-    }
+    
+    // MARK: - Data
+    
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionview, cellProvider: { collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomTabBarCell.reusedId, for: indexPath) as? CustomTabBarCell else { return UICollectionViewCell()}
@@ -79,12 +90,14 @@ class CustomTabBarView: UIView {
         snapShot.appendSections([.main])
         snapShot.appendItems(titleList, toSection: .main)
     }
+    
+    // MARK: - Layout
+    
     private func layout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(82)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(104)), subitem: item, count: 4)
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -92,7 +105,6 @@ class CustomTabBarView: UIView {
 extension CustomTabBarView: UICollectionViewDelegate {
     // 셀을 클릭했을 때, 콘텐츠 뷰를 해당 index로 이동
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //눌렀을 때 글씨색 변화
         defaultIndex = indexPath.item
         delegate?.scrollToIndex(to: indexPath.item)
         collectionview.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)

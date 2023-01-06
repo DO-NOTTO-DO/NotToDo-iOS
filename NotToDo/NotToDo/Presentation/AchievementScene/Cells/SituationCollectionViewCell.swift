@@ -8,7 +8,9 @@
 import UIKit
 
 class SituationCollectionViewCell: UICollectionViewCell {
+    
     static var reusedId = "SituationCollectionViewCell"
+    
     lazy var label = customLabel(color: .nottodoBlack!, font: UIFont(name: AppFontName.pretendardSemiBold, size: 14)!)
     lazy var image = UIImageView().then {
         $0.image = UIImage.rank1

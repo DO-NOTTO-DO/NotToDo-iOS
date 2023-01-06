@@ -17,7 +17,7 @@ class AddSituationView: UIView {
     private var textCountLabel = UILabel()
     let maxLength = 15
     
-    // variables
+    /// test variables
     
     var recommendList: [AddSituationModel] = [
         AddSituationModel(keyword: "출근 시간"),
@@ -68,16 +68,16 @@ extension AddSituationView {
             $0.backgroundColor = .nottodoWhite
             $0.layer.borderWidth = 1.adjusted
             $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
-            $0.font = .PretendardMedium(size: 16)
+            $0.font = .PretendardMedium(size: 16.adjusted)
             $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 15.adjusted, height: 0.0))
             $0.leftViewMode = .always
-            $0.attributedPlaceholder = NSAttributedString(string: "직접 입력하기...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
+            $0.attributedPlaceholder = NSAttributedString(string: I18N.inputPlaceHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
              $0.delegate = self
         }
         
         textCountLabel.do {
-             $0.text = "0/15"
-            $0.font = .PretendardRegular(size: 16)
+            $0.text = "0/15"
+            $0.font = .PretendardRegular(size: 16.adjusted)
             $0.textColor = .nottodoGray2
         }
     }
@@ -94,27 +94,27 @@ extension AddSituationView {
         }
         
         addSituationCollectionView.snp.makeConstraints {
-            $0.top.equalTo(navigationBarView.snp.bottom).offset(32)
+            $0.top.equalTo(navigationBarView.snp.bottom).offset(32.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
-            $0.height.equalTo(266)
+            $0.height.equalTo(270.adjusted)
         }
         
         inputTextField.snp.makeConstraints {
-            $0.top.equalTo(addSituationCollectionView.snp.bottom).offset(38)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(addSituationCollectionView.snp.bottom).offset(38.adjusted)
+            $0.leading.trailing.equalToSuperview().inset(20.adjusted)
             $0.height.equalTo(46.adjusted)
         }
         
         textCountLabel.snp.makeConstraints {
-            $0.top.equalTo(inputTextField.snp.bottom).offset(9)
-            $0.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(inputTextField.snp.bottom).offset(9.adjusted)
+            $0.trailing.equalToSuperview().inset(20.adjusted)
         }
     }
     
     private func layout() -> UICollectionViewFlowLayout {
         let layout = LeftAlignedCollectionViewFlowLayout()
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 6
+        layout.minimumLineSpacing = 10.adjusted
+        layout.minimumInteritemSpacing = 6.adjusted
         layout.sectionInset = UIEdgeInsets(top: 15.adjusted, left: 20.adjusted, bottom: 32.adjusted, right: 20.adjusted)
         return layout
     }
@@ -165,12 +165,12 @@ extension AddSituationView: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationHeaderView.identifier, for: indexPath) as? AddSituationHeaderView else { return UICollectionReusableView() }
-            headerView.HeaderTitle(title: "낫투두가 추천하는 상황 키워드")
+            headerView.HeaderTitle(title: I18N.recommendKeyword)
             headerView.Icon(icon: .icRecommend)
             return headerView
         case 1:
             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationHeaderView.identifier, for: indexPath) as? AddSituationHeaderView else { return UICollectionReusableView() }
-            headerView.HeaderTitle(title: "최근 사용한 키워드")
+            headerView.HeaderTitle(title: I18N.recentKeyword)
             headerView.Icon(icon: .recentUse)
             return headerView
         default:
@@ -217,5 +217,21 @@ extension AddSituationView: UITextFieldDelegate {
         textCountLabel.text = "\(textField.text!.count)/15"
 
         return true
+    }
+}
+extension AddSituationView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.reloadData()
+        switch indexPath.section {
+        case 0:
+            inputTextField.text = recommendList[indexPath.row].keyword
+            textCountLabel.text = "\(inputTextField.text!.count)/15"
+        case 1:
+            inputTextField.text = recentList[indexPath.row].keyword
+            textCountLabel.text = "\(inputTextField.text!.count)/15"
+        default:
+            return
+        }
+        
     }
 }

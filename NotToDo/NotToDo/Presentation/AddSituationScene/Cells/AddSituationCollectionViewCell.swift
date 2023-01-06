@@ -34,15 +34,12 @@ class AddSituationCollectionViewCell: UICollectionViewCell {
 // MARK: - Methods
 
 extension AddSituationCollectionViewCell {
-//    func setContentView() {
-//        
-//    }
-    
     private func setUI() {
         backgroundColor = .nottodoWhite
         layer.borderColor = UIColor.nottodoGray1?.cgColor
         layer.borderWidth = 0.5
         layer.cornerRadius = self.frame.height / 2
+        
         addSituationLabel.do {
             $0.font = .PretendardMedium(size: 14)
             $0.textColor = .nottodoGray1
@@ -50,8 +47,8 @@ extension AddSituationCollectionViewCell {
     }
     
     private func setLayout() {
-        
         addSubview(addSituationLabel)
+        
         addSituationLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
         }

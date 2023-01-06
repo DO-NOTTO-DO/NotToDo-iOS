@@ -9,17 +9,13 @@ import UIKit
 
 class NestedView: UIView {
     let itemList: [SortedItemModel] = SortedItemModel.sampleData
-  //  var itemArray : Array(SortedItemModel) = []
-    struct CategorizedList: Hashable {
-        let itemArray: SortedItemModel
-        let category: Section
-    }
+    var item : SortedItemModel?
 
     //data
     enum Section: Int,Hashable {
-        case main, main2
+        case main
     }
-    typealias Item = CategorizedList
+    typealias Item = AnyHashable
      var dataSource: UICollectionViewDiffableDataSource<Section,Item>! = nil
      lazy var collectionview = UICollectionView(frame: self.bounds, collectionViewLayout: layout()).then {
         $0.backgroundColor = .clear
@@ -54,6 +50,8 @@ class NestedView: UIView {
       //  초기 tapBar selectedItem 설정
     }
     private func setupCustomTabBar(){
+        collectionview.isScrollEnabled = false
+        collectionview.bounces = false
         collectionview.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.top.bottom.equalToSuperview()
@@ -61,21 +59,12 @@ class NestedView: UIView {
     }
     private func setupDataSource(){
         dataSource = UICollectionViewDiffableDataSource<Section,Item>(collectionView: collectionview, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            let section = Section(rawValue: indexPath.section)!
-            switch section{
-            case .main:
-                let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.reusedId, for: indexPath) as! NestedCollectionViewCell
+            
+            guard let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.reusedId, for: indexPath) as? NestedCollectionViewCell else { return UICollectionViewCell()}
                 let item = item as! ItemModel
                 cell.config(item)
                 print(item)
                 return cell
-            case .main2 :
-                let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.reusedId, for: indexPath) as! NestedCollectionViewCell
-                let item = item as! ItemModel
-                cell.config(item)
-                print(item)
-                return cell
-            }
         })
     }
     private func reloadData() {
@@ -84,35 +73,21 @@ class NestedView: UIView {
         defer{
             dataSource.apply(snapShot,animatingDifferences: true)
         }
-        snapShot.appendSections([.main,.main2])
-        let list = itemList[0]
-        let list1 = itemList[1]
-        print("list : \(list)")
-        print("list 1: \(list1)")
-
+        snapShot.appendSections([.main])
+        guard let item = item else { return }
+        snapShot.appendItems(item.itemsList,toSection: .main)
         
-//        snapShot.appendItems(,toSection: .main)
-//        snapShot.appendItems(itemList[1],toSection: .main2)
-
-//        snapShot.appendItems(Array(0..<4),toSection: .main2)
-//        snapShot.appendItems([Item(itemArray: list.itemsList.hashValue., category: .main)])
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendHeaderView.reuseId, for: indexPath) as? RecommendHeaderView else {return UICollectionReusableView()}
-            if (indexPath.section == 0) {
-                header.HeaderTitle(title: "유튜브 보지 않기")
-            }else if (indexPath.section == 1){
-                header.HeaderTitle(title: "인스타그램 스토리 보지않기")
-            }
+                header.titleLabel.text = item.title
                 return header
             }
         }
     
-    
-    
     private func layout() -> UICollectionViewCompositionalLayout{
         //layout
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension:.absolute(60)), subitems: [item])
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60.adjusted)))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension:.estimated(300)), subitems: [item])
          group.interItemSpacing = .fixed(20)
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)

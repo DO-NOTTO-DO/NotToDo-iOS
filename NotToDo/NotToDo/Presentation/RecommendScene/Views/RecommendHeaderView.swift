@@ -12,7 +12,7 @@ import SnapKit
 
 class RecommendHeaderView: UICollectionReusableView {
         static var reuseId : String = "RecommendHeaderView"
-    private lazy var titleLabel = CustomPaddingLabel(padding: .init(top: 7, left: 27, bottom: 10, right: 13))
+        lazy var titleLabel = CustomPaddingLabel(padding: .init(top: 7, left: 27, bottom: 10, right: 13))
         
         private lazy var iconImage = UIImageView()
         override init(frame: CGRect) {

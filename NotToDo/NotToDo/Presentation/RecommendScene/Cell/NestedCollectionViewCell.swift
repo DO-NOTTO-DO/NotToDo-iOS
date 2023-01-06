@@ -11,6 +11,7 @@ class NestedCollectionViewCell: UICollectionViewCell {
     static var reusedId = "NestedCollectionViewCell"
     
     var itemlist: [SortedItemModel] = SortedItemModel.sampleData
+    
     lazy var colorView = UIView().then{
         $0.layer.backgroundColor = UIColor.yellow_basic?.cgColor
         //$0.layer.borderWidth = 1

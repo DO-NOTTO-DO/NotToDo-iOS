@@ -17,24 +17,24 @@ final class AchievementViewController: UIViewController {
     
     private lazy var scrollView = UIScrollView()
     private lazy var calendarView = customCalendar(frame: .zero)
-    private lazy var segmentedControl = CustomSegmentedControl(items: ["낫투두 통계보기","상황별 통계보기"])
+    private lazy var segmentedControl = CustomSegmentedControl(items: ["낫투두 통계보기", "상황별 통계보기"])
     private lazy var missionVC = MissionStatisticsViewController()
     private lazy var situationVC = SituationStatisticsViewController()
     private lazy var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     var dataViewControllers: [UIViewController] {
-      [self.missionVC, self.situationVC]
+        [self.missionVC, self.situationVC]
     }
     var currentPage: Int = 0 {
-      didSet {
-        print(oldValue, self.currentPage)
-        let direction: UIPageViewController.NavigationDirection = oldValue <= self.currentPage ? .forward : .reverse
-        self.pageViewController.setViewControllers(
-          [dataViewControllers[self.currentPage]],
-          direction: direction,
-          animated: true,
-          completion: nil
-        )
-      }
+        didSet {
+            print(oldValue, self.currentPage)
+            let direction: UIPageViewController.NavigationDirection = oldValue <= self.currentPage ? .forward : .reverse
+            self.pageViewController.setViewControllers(
+                [dataViewControllers[self.currentPage]],
+                direction: direction,
+                animated: true,
+                completion: nil
+            )
+        }
     }
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
@@ -43,12 +43,12 @@ final class AchievementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .BG
-        setAttributes()
-        setViews()
-        setConstraints()
+        setUI()
+        setLayout()
     }
-    
-    private func setAttributes(){
+}
+extension AchievementViewController {
+    private func setUI() {
         scrollView.do {
             $0.showsHorizontalScrollIndicator = false
             $0.isScrollEnabled = true
@@ -63,11 +63,9 @@ final class AchievementViewController: UIViewController {
             $0.setViewControllers([self.dataViewControllers[0]], direction: .forward, animated: true)
         }
     }
-    private func setViews(){
+    private func setLayout() {
         view.addSubviews(scrollView)
-        scrollView.addSubviews(calendarView,segmentedControl,pageViewController.view)
-    }
-    private func setConstraints(){
+        scrollView.addSubviews(calendarView, segmentedControl, pageViewController.view)
         scrollView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea)
             $0.top.equalTo(safeArea)
@@ -102,4 +100,3 @@ extension AchievementViewController: FSCalendarDelegate {
         calendarView.headerLabel.text = calendarView.dateFormatter.string(from: calendar.currentPage)
     }
 }
-

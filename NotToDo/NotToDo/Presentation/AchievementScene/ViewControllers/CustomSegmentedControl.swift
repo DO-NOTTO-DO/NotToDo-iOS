@@ -7,8 +7,8 @@
 
 import UIKit
 
-import Then
 import SnapKit
+import Then
 
 class CustomSegmentedControl: UISegmentedControl {
     override init(items: [Any]?) {
@@ -22,7 +22,7 @@ class CustomSegmentedControl: UISegmentedControl {
     }
     
     // background color clear
-    private func removeBackgroundDivider(){
+    private func removeBackgroundDivider() {
         let image = UIImage()
         self.setBackgroundImage(image, for: .normal, barMetrics: .default)
         self.setBackgroundImage(image, for: .selected, barMetrics: .default)
@@ -30,11 +30,9 @@ class CustomSegmentedControl: UISegmentedControl {
         self.setDividerImage(image, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
     }
     // font color
-    private func setStyle(){
-        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoGray2,.font: UIFont.systemFont(ofSize: 16, weight: .semibold)], for: .normal)
-        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoBlack, .font: UIFont.systemFont(ofSize: 16, weight: .semibold), .backgroundColor : UIColor.yellow_deep], for: .selected)
+    private func setStyle() {
+        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoGray2, .font: UIFont.PretendardRegular(size: 16)], for: .normal)
+        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoBlack, .font: UIFont.PretendardBold(size: 16), .backgroundColor: UIColor.yellow_deep], for: .selected)
         self.setContentPositionAdjustment(UIOffset(horizontal: -20, vertical: 0), forSegmentType: .center, barMetrics: .default)
-        
     }
 }
-

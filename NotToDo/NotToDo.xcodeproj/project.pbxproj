@@ -20,7 +20,7 @@
 		096BDFF02965104B009ED396 /* MissionStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEF2965104B009ED396 /* MissionStatisticsViewController.swift */; };
 		096BDFF22965215D009ED396 /* MissionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF12965215D009ED396 /* MissionList.swift */; };
 		096BDFF529652270009ED396 /* MissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF429652270009ED396 /* MissionCollectionViewCell.swift */; };
-		096BDFF7296522C6009ED396 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF6296522C6009ED396 /* CustomLabel.swift */; };
+		096BDFF7296522C6009ED396 /* CustomAchieveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF6296522C6009ED396 /* CustomAchieveLabel.swift */; };
 		096BDFF9296523C0009ED396 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF8296523C0009ED396 /* EmptyCollectionViewCell.swift */; };
 		096BDFFD29654F63009ED396 /* SituationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFFC29654F63009ED396 /* SituationCollectionViewCell.swift */; };
 		096BDFFF29655424009ED396 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFFE29655424009ED396 /* CompositionalLayout.swift */; };
@@ -92,7 +92,7 @@
 		096BDFEF2965104B009ED396 /* MissionStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionStatisticsViewController.swift; sourceTree = "<group>"; };
 		096BDFF12965215D009ED396 /* MissionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionList.swift; sourceTree = "<group>"; };
 		096BDFF429652270009ED396 /* MissionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCollectionViewCell.swift; sourceTree = "<group>"; };
-		096BDFF6296522C6009ED396 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		096BDFF6296522C6009ED396 /* CustomAchieveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAchieveLabel.swift; sourceTree = "<group>"; };
 		096BDFF8296523C0009ED396 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		096BDFFC29654F63009ED396 /* SituationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationCollectionViewCell.swift; sourceTree = "<group>"; };
 		096BDFFE29655424009ED396 /* CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayout.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 				096BDFFC29654F63009ED396 /* SituationCollectionViewCell.swift */,
 				096BE0042965A209009ED396 /* BackgroundSupplementaryView.swift */,
 				096BDFF8296523C0009ED396 /* EmptyCollectionViewCell.swift */,
-				096BDFF6296522C6009ED396 /* CustomLabel.swift */,
+				096BDFF6296522C6009ED396 /* CustomAchieveLabel.swift */,
 				096BE00029659B3A009ED396 /* AchievementHeaderView.swift */,
 			);
 			path = Cells;
@@ -740,7 +740,7 @@
 				3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */,
 				3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */,
 				096BDFEE29651040009ED396 /* SituationStatisticsViewController.swift in Sources */,
-				096BDFF7296522C6009ED396 /* CustomLabel.swift in Sources */,
+				096BDFF7296522C6009ED396 /* CustomAchieveLabel.swift in Sources */,
 				096BE0052965A209009ED396 /* BackgroundSupplementaryView.swift in Sources */,
 				096BDFF9296523C0009ED396 /* EmptyCollectionViewCell.swift in Sources */,
 				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,

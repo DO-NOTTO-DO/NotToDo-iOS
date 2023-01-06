@@ -24,7 +24,7 @@ class CustomTabBarCell: UICollectionViewCell {
     
     // MARK: - Network
     
-    func config(_ item : CustomTabBarItem, isSelected : Bool){
+    func config(_ item: CustomTabBarItem, isSelected: Bool) {
         if isSelected {
             self.titleLabel.text = item.name
             self.titleLabel.textColor = .nottodoGray1
@@ -44,34 +44,31 @@ class CustomTabBarCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setAttributes()
-        setViews()
-        setConstraints()
+        setUI()
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension CustomTabBarCell{
+extension CustomTabBarCell {
     
-    private func setAttributes(){
-        titleLabel.do{
+    private func setUI() {
+        titleLabel.do {
             $0.textAlignment = .center
             $0.layer.backgroundColor = UIColor.clear.cgColor
         }
     }
-    private func setViews(){
-        self.addSubview(bgView)
-        bgView.addSubviews(icImage,titleLabel)
-    }
-    private func setConstraints(){
-        bgView.snp.makeConstraints{
+    private func setLayout() {
+        addSubview(bgView)
+        bgView.addSubviews(icImage, titleLabel)
+        bgView.snp.makeConstraints {
             $0.height.equalTo(82.adjusted)
             $0.width.equalTo(69.adjusted)
             $0.centerX.centerY.equalToSuperview()
         }
-        icImage.snp.makeConstraints{
+        icImage.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(6)
             $0.directionalHorizontalEdges.equalToSuperview().inset(12)

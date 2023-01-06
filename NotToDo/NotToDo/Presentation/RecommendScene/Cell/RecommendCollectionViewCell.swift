@@ -16,7 +16,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     // MARK: - UI Components
     
     lazy var nestedCollectionView = NestedView(frame: .zero)
-    var item : SortedItemModel?
+    var item: SortedItemModel?
     
     // MARK: - Life Cycle
     
@@ -29,26 +29,25 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension RecommendCollectionViewCell{
+extension RecommendCollectionViewCell {
     func config() {
-        setAttributes()
+        setUI()
         setViews()
-        setConstraints()
+        setLayout()
     }
-    private func setAttributes(){
-        
+    private func setUI() {
         nestedCollectionView.do {
             $0.backgroundColor = .clear
         }
     }
     
-    private func setViews(){
+    private func setViews() {
         self.addSubviews(nestedCollectionView)
         nestedCollectionView.item = item
         nestedCollectionView.config()
     }
     
-    private func setConstraints(){
+    private func setLayout() {
         nestedCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.directionalHorizontalEdges.equalToSuperview().inset(20)
@@ -56,5 +55,3 @@ extension RecommendCollectionViewCell{
         }
     }
 }
-
-

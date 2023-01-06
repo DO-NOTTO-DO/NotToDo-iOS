@@ -22,7 +22,7 @@ class NestedCollectionViewCell: UICollectionViewCell {
    
     // MARK: - Network
     
-    func config(_ item : ItemModel){
+    func config(_ item: ItemModel) {
         titleLabel.text = item.subTitle
     }
     // MARK: - Life Cycle
@@ -30,18 +30,16 @@ class NestedCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.backgroundColor = .white
-        setAttributes()
-        setViews()
-        setConstraints()
+        setUI()
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension NestedCollectionViewCell{
-    
-    private func setAttributes(){
+extension NestedCollectionViewCell {
+    private func setUI() {
         colorView.do {
             $0.layer.backgroundColor = UIColor.yellow_basic?.cgColor
         }
@@ -50,10 +48,8 @@ extension NestedCollectionViewCell{
             $0.font = .PretendardSemiBold(size: 16)
         }
     }
-    private func setViews(){
-        self.addSubviews(colorView,titleLabel)
-    }
-    private func setConstraints(){
+    private func setLayout() {
+        addSubviews(colorView, titleLabel)
         colorView.snp.makeConstraints {
             $0.top.bottom.leading.equalToSuperview()
             $0.width.equalTo(11)
@@ -64,4 +60,3 @@ extension NestedCollectionViewCell{
         }
     }
 }
-

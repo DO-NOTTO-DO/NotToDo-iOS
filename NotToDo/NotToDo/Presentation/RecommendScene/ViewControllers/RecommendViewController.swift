@@ -10,21 +10,21 @@ import UIKit
 import SnapKit
 import Then
 
-final class RecommendViewController: UIViewController , CustomTabBarDelegate{
+final class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     var itemList: [SortedItemModel] = SortedItemModel.sampleData
     
-    enum Section : Int , Hashable{
-        case sub,main
+    enum Section: Int, Hashable {
+        case sub, main
     }
     typealias Item = AnyHashable
-    var dataSource : UICollectionViewDiffableDataSource<Section,Item>! = nil
-    private lazy var pageCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: recommendlayout()).then {
+    var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
+    private lazy var contentsCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: recommendlayout()).then {
         $0.backgroundColor = .systemGray6
         $0.showsHorizontalScrollIndicator = false
         $0.isPagingEnabled = true
     }
-    //TabBar CollectionView
+
     var customTabBar = CustomTabBarView()
     var customTabBarCollectionView = CustomTabBarView().collectionview
     private lazy var safeArea = self.view.safeAreaLayoutGuide
@@ -36,15 +36,15 @@ final class RecommendViewController: UIViewController , CustomTabBarDelegate{
         setupCustomTabBar()
         setupPageCollectionView()
         registerSubViews()
-        setupDataSource() // presentation
+        setupDataSource()
         reloadData()
         
     }
     // MARK: setView
-    private func setViews(){
-        view.addSubviews(customTabBar,pageCollectionView)
+    private func setViews() {
+        view.addSubviews(customTabBar, contentsCollectionView)
     }
-    private func setupCustomTabBar(){
+    private func setupCustomTabBar() {
         //탭바에서 탭을 클릭했을 때, 콘텐츠 뷰 이동의 이벤트를 전달하기 위한 선언
         customTabBar.delegate = self
         customTabBar.snp.makeConstraints {
@@ -55,14 +55,9 @@ final class RecommendViewController: UIViewController , CustomTabBarDelegate{
     }
     // 탭바를 클릭했을 때, 콘텐츠 뷰 이동
     func scrollToIndex(to index: Int) {
-        //            let indexPath = IndexPath(row: 0, section: 0)
-        //        print(indexPath.item)
-        //            self.pageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        //        reloadData()
-        //        print(reloadData())
         fetchCategoryItems(index) { [weak self] itemList in
             self?.itemList = itemList
-            self?.pageCollectionView.reloadData()
+            self?.contentsCollectionView.reloadData()
         }
     }
     
@@ -80,27 +75,25 @@ final class RecommendViewController: UIViewController , CustomTabBarDelegate{
         default: completion(SortedItemModel.sampleData)
         }
     }
-    private func registerSubViews(){
-        pageCollectionView.register(LabelCollectionViewCell.self, forCellWithReuseIdentifier: LabelCollectionViewCell.reuseId)
-        pageCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.reusedId)
+    private func registerSubViews() {
+        contentsCollectionView.register(LabelCollectionViewCell.self, forCellWithReuseIdentifier: LabelCollectionViewCell.reuseId)
+        contentsCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.reusedId)
     }
-    private func setupPageCollectionView(){
-        pageCollectionView.snp.makeConstraints {
+    private func setupPageCollectionView() {
+        contentsCollectionView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.top.equalTo(customTabBar.snp.bottom)
             $0.bottom.equalTo(safeArea)
         }
     }
     // MARK: data
-    private func setupDataSource(){
-        //presentation
-        dataSource = UICollectionViewDiffableDataSource<Section,Item>(collectionView: pageCollectionView, cellProvider: { collectionView, indexPath, item in
+    private func setupDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section,Item>(collectionView: contentsCollectionView, cellProvider: { collectionView, indexPath, _ in
             let section = Section(rawValue: indexPath.section)!
             switch section {
             case .sub:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabelCollectionViewCell.reuseId, for: indexPath) as! LabelCollectionViewCell
                 return cell
-                
             case .main:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.reusedId, for: indexPath) as! RecommendCollectionViewCell
                 cell.item = self.itemList[indexPath.item]
@@ -109,51 +102,42 @@ final class RecommendViewController: UIViewController , CustomTabBarDelegate{
             }
         })
     }
-    private func reloadData(){
-        //data
-        var snapShot = NSDiffableDataSourceSnapshot<Section,Item>()
-              defer{
-                  dataSource.apply(snapShot,animatingDifferences: false)
+    private func reloadData() {
+        var snapShot = NSDiffableDataSourceSnapshot<Section, Item>()
+              defer {
+                  dataSource.apply(snapShot, animatingDifferences: false)
               }
-        snapShot.appendSections([.sub,.main])
-        snapShot.appendItems(Array(0..<1),toSection: .sub)
-        snapShot.appendItems(itemList,toSection: .main)
+        snapShot.appendSections([.sub, .main])
+        snapShot.appendItems(Array(0..<1), toSection: .sub)
+        snapShot.appendItems(itemList, toSection: .main)
     }
     // MARK: layout
-    func recommendlayout() -> UICollectionViewLayout{
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvirnment) -> NSCollectionLayoutSection? in
+    func recommendlayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
             let section = Section(rawValue: sectionIndex)!
             switch section {
-            case .sub :
+            case .sub:
                 return self.subTitleSection()
-            case .main :
+            case .main:
                 return self.mainSection()
             }
         }
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.interSectionSpacing = 20
         layout.configuration = config
-        
         return layout
         }
     private func subTitleSection() -> NSCollectionLayoutSection {
-        //item
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
-        //group
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension:   .estimated(15)), subitems: [item])
-        //section
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 14, leading: 0, bottom: 0, trailing: 0)
             return section
         }
-    private func mainSection() -> NSCollectionLayoutSection{
-        //item
+    private func mainSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200)))
-        //group
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension:   .estimated(200)), subitems: [item])
-        //section
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         return section
     }
 }
-

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct SortedItemModel: Hashable{
+struct SortedItemModel: Hashable {
     var title: String
     var itemsList: [ItemModel]
    
@@ -65,6 +65,6 @@ extension SortedItemModel {
                    )
                     ]
 }
-struct ItemModel: Hashable{
+struct ItemModel: Hashable {
     let subTitle: String
 }

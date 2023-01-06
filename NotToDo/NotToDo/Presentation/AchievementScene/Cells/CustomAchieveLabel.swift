@@ -7,8 +7,8 @@
 
 import UIKit
 
-class customLabel : UILabel{
-    var color : UIColor = .black
+class CustomAchieveLabel: UILabel {
+    var color: UIColor = .black
     convenience init(color: UIColor, font: UIFont) {
         self.init()
         self.textAlignment = .left

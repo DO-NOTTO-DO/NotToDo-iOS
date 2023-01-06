@@ -14,7 +14,7 @@ class RecommendHeaderView: UICollectionReusableView {
     
     // MARK: - Properties
     
-    static var reuseId : String = "RecommendHeaderView"
+    static var reuseId: String = "RecommendHeaderView"
     
     // MARK: - UI Components
     
@@ -23,7 +23,7 @@ class RecommendHeaderView: UICollectionReusableView {
     
     // MARK: - Network
     
-    func HeaderTitle(title : String?){
+    func HeaderTitle(title: String?) {
         self.titleLabel.text = title
     }
     
@@ -31,33 +31,30 @@ class RecommendHeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setAttributes()
-        setViews()
-        setConstraints()
+        setUI()
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension RecommendHeaderView{
+extension RecommendHeaderView {
     
-    func setAttributes(){
-        titleLabel.do{
+    func setUI() {
+        titleLabel.do {
             $0.textColor = .nottodoGray1
             $0.font = .PretendardMedium(size: 14)
             $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
             $0.layer.borderWidth = 1
         }
-        iconImage.do{
+        iconImage.do {
             $0.image = UIImage.recommend_star
         }
     }
-    func setViews(){
-        self.addSubview(titleLabel)
+    func setLayout() {
+        addSubview(titleLabel)
         titleLabel.addSubview(iconImage)
-    }
-    func setConstraints(){
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
@@ -70,5 +67,3 @@ extension RecommendHeaderView{
         }
     }
 }
-
-

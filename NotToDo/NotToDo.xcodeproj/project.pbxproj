@@ -58,7 +58,7 @@
 		3B3405C2295B0AAE00D44722 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405C1295B0AAD00D44722 /* Pretendard-SemiBold.otf */; };
 		3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405C3295B0ABB00D44722 /* UIFont+.swift */; };
 		3B3405D0295B101600D44722 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405CF295B101600D44722 /* RecommendViewController.swift */; };
-		3B3405D2295B105900D44722 /* NotTodoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D1295B105900D44722 /* NotTodoAddViewController.swift */; };
+		3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D1295B105900D44722 /* AddMissionViewController.swift */; };
 		3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D3295B108400D44722 /* AchievementViewController.swift */; };
 		3B3405D6295B109A00D44722 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D5295B109A00D44722 /* MyInfoViewController.swift */; };
 		3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D7295B10C900D44722 /* TabBarItem.swift */; };
@@ -82,6 +82,10 @@
 		3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34AB29618441002E1161 /* UIButton+.swift */; };
 		3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ED42B2961DC310052D2B8 /* HomeView.swift */; };
 		3BED5328295C018700157A3B /* adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED5327295C018700157A3B /* adjust+.swift */; };
+		6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */; };
+		6CDC2D1529641BE000BFF5F4 /* AddMissionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */; };
+		6CDC2D212966C86D00BFF5F4 /* AddMissionTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D202966C86D00BFF5F4 /* AddMissionTextFieldView.swift */; };
+		6CF0427829633E58000F40EB /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF0427729633E58000F40EB /* NavigationBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,7 +136,7 @@
 		3B3405C1295B0AAD00D44722 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		3B3405C3295B0ABB00D44722 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		3B3405CF295B101600D44722 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
-		3B3405D1295B105900D44722 /* NotTodoAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTodoAddViewController.swift; sourceTree = "<group>"; };
+		3B3405D1295B105900D44722 /* AddMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionViewController.swift; sourceTree = "<group>"; };
 		3B3405D3295B108400D44722 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		3B3405D5295B109A00D44722 /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		3B3405D7295B10C900D44722 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
@@ -156,6 +160,10 @@
 		3B5B34AB29618441002E1161 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		3B5ED42B2961DC310052D2B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3BED5327295C018700157A3B /* adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "adjust+.swift"; sourceTree = "<group>"; };
+		6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionView.swift; sourceTree = "<group>"; };
+		6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTitleView.swift; sourceTree = "<group>"; };
+		6CDC2D202966C86D00BFF5F4 /* AddMissionTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTextFieldView.swift; sourceTree = "<group>"; };
+		6CF0427729633E58000F40EB /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,7 +310,7 @@
 				3B5B34A729617D3C002E1161 /* Common */,
 				3B162894295AD92E0077AE7B /* HomeScene */,
 				3B162898295AD9650077AE7B /* RecommendScene */,
-				3B162899295AD9740077AE7B /* NotTodoAddScene */,
+				3B162899295AD9740077AE7B /* AddMissionScene */,
 				3B16289A295AD9850077AE7B /* AchievementScene */,
 				3B16289B295AD9980077AE7B /* MyInfoScene */,
 				3B162897295AD95B0077AE7B /* TabBar */,
@@ -357,13 +365,13 @@
 			path = RecommendScene;
 			sourceTree = "<group>";
 		};
-		3B162899295AD9740077AE7B /* NotTodoAddScene */ = {
+		3B162899295AD9740077AE7B /* AddMissionScene */ = {
 			isa = PBXGroup;
 			children = (
+				6CDC2D0A2963E2A100BFF5F4 /* Views */,
 				3B16289F295AD9DF0077AE7B /* ViewControllers */,
-				3B16289E295AD9DB0077AE7B /* Views */,
 			);
-			path = NotTodoAddScene;
+			path = AddMissionScene;
 			sourceTree = "<group>";
 		};
 		3B16289A295AD9850077AE7B /* AchievementScene */ = {
@@ -406,17 +414,10 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3B16289E295AD9DB0077AE7B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		3B16289F295AD9DF0077AE7B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3B3405D1295B105900D44722 /* NotTodoAddViewController.swift */,
+				3B3405D1295B105900D44722 /* AddMissionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -591,6 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				3B59AFB429633DE40050FF49 /* ActionSheet */,
+				6CF0427629633E0E000F40EB /* NavigationBarView */,
 				3B5B34A829617D6A002E1161 /* NotTodoButton */,
 			);
 			path = Common;
@@ -602,6 +604,24 @@
 				3B5B34A929617D88002E1161 /* NotTodoButton.swift */,
 			);
 			path = NotTodoButton;
+			sourceTree = "<group>";
+		};
+		6CDC2D0A2963E2A100BFF5F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */,
+				6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */,
+				6CDC2D202966C86D00BFF5F4 /* AddMissionTextFieldView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6CF0427629633E0E000F40EB /* NavigationBarView */ = {
+			isa = PBXGroup;
+			children = (
+				6CF0427729633E58000F40EB /* NavigationBarView.swift */,
+			);
+			path = NavigationBarView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -738,6 +758,7 @@
 				096BDFF02965104B009ED396 /* MissionStatisticsViewController.swift in Sources */,
 				096BE00129659B3A009ED396 /* AchievementHeaderView.swift in Sources */,
 				3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */,
+				6CF0427829633E58000F40EB /* NavigationBarView.swift in Sources */,
 				3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */,
 				096BDFEE29651040009ED396 /* SituationStatisticsViewController.swift in Sources */,
 				096BDFF7296522C6009ED396 /* CustomAchieveLabel.swift in Sources */,
@@ -754,10 +775,12 @@
 				3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */,
 				096BE01F2966A1FA009ED396 /* NestedView.swift in Sources */,
 				3B3405D2295B105900D44722 /* NotTodoAddViewController.swift in Sources */,
+				3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */,
 				3B1628AC295ADB440077AE7B /* NetworkLoggerPlugin.swift in Sources */,
 				3B4B90C62965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift in Sources */,
 				3B59AFB8296346650050FF49 /* Numbers.swift in Sources */,
 				3B3405B9295B090300D44722 /* UIColor+.swift in Sources */,
+				6CDC2D212966C86D00BFF5F4 /* AddMissionTextFieldView.swift in Sources */,
 				096BE0232966A296009ED396 /* RecommendCollectionViewCell.swift in Sources */,
 				3B162890295AD89C0077AE7B /* Strings.swift in Sources */,
 				096BE01B2966A1B3009ED396 /* RecommendHeaderView.swift in Sources */,
@@ -766,6 +789,8 @@
 				3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */,
 				3B1628B0295ADB640077AE7B /* NetworkConstant.swift in Sources */,
 				3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */,
+				6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */,
+				6CDC2D1529641BE000BFF5F4 /* AddMissionTitleView.swift in Sources */,
 				3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */,
 				3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */,
 				096BDFFD29654F63009ED396 /* SituationCollectionViewCell.swift in Sources */,

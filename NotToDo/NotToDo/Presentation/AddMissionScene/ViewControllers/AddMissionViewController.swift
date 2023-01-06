@@ -10,13 +10,21 @@ import UIKit
 import SnapKit
 import Then
 
-final class NotTodoAddViewController: UIViewController {
+final class AddMissionViewController: UIViewController {
     
     // MARK: - UI Components
+    
+    private var addMissionView: AddMissionView!
     
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func loadView() {
+        super.loadView()
+        addMissionView = AddMissionView()
+        view = addMissionView
     }
 }

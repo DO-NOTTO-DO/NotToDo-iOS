@@ -13,44 +13,59 @@ import Then
 final class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     var itemList: [SortedItemModel] = SortedItemModel.sampleData
-    
     enum Section: Int, Hashable {
         case sub, main
     }
     typealias Item = AnyHashable
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
-    private lazy var contentsCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: recommendlayout()).then {
-        $0.backgroundColor = .systemGray6
-        $0.showsHorizontalScrollIndicator = false
-        $0.isPagingEnabled = true
-    }
-
-    var customTabBar = CustomTabBarView()
-    var customTabBarCollectionView = CustomTabBarView().collectionview
+    
+    
+    private lazy var contentsCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: recommendlayout())
+    private lazy var customTabBar = CustomTabBarView()
+    private lazy var underLineView = UIView()
+    private lazy var customTabBarCollectionView = CustomTabBarView().collectionview
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        setViews()
-        setupCustomTabBar()
-        setupPageCollectionView()
+        setUI()
+        setLayout()
         registerSubViews()
         setupDataSource()
         reloadData()
         
     }
+    
     // MARK: setView
-    private func setViews() {
-        view.addSubviews(customTabBar, contentsCollectionView)
-    }
-    private func setupCustomTabBar() {
-        //탭바에서 탭을 클릭했을 때, 콘텐츠 뷰 이동의 이벤트를 전달하기 위한 선언
+    private func setUI() {
+        contentsCollectionView.do {
+            $0.backgroundColor = .systemGray6
+            $0.showsHorizontalScrollIndicator = false
+            $0.isPagingEnabled = true
+        }
+        underLineView.do {
+            $0.backgroundColor = .nottodoGray2
+        }
         customTabBar.delegate = self
+    }
+   
+    private func setLayout() {
+        view.addSubviews(customTabBar, underLineView,  contentsCollectionView)
         customTabBar.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.top.equalTo(safeArea).offset(50)
             $0.height.equalTo(104)
+        }
+        underLineView.snp.makeConstraints {
+            $0.directionalHorizontalEdges.equalToSuperview()
+            $0.top.equalTo(customTabBar.snp.bottom)
+            $0.height.equalTo(0.5)
+        }
+        contentsCollectionView.snp.makeConstraints {
+            $0.directionalHorizontalEdges.equalToSuperview()
+            $0.top.equalTo(underLineView.snp.bottom)
+            $0.bottom.equalTo(safeArea)
         }
     }
     // 탭바를 클릭했을 때, 콘텐츠 뷰 이동
@@ -79,13 +94,7 @@ final class RecommendViewController: UIViewController, CustomTabBarDelegate {
         contentsCollectionView.register(LabelCollectionViewCell.self, forCellWithReuseIdentifier: LabelCollectionViewCell.reuseId)
         contentsCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.reusedId)
     }
-    private func setupPageCollectionView() {
-        contentsCollectionView.snp.makeConstraints {
-            $0.directionalHorizontalEdges.equalToSuperview()
-            $0.top.equalTo(customTabBar.snp.bottom)
-            $0.bottom.equalTo(safeArea)
-        }
-    }
+    
     // MARK: data
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section,Item>(collectionView: contentsCollectionView, cellProvider: { collectionView, indexPath, _ in

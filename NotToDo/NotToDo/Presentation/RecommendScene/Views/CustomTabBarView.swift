@@ -25,11 +25,7 @@ class CustomTabBarView: UIView {
     typealias Item = AnyHashable
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
-    lazy var collectionview = UICollectionView(frame: self.bounds, collectionViewLayout: layout()).then {
-        $0.backgroundColor = .clear
-        $0.delegate = self
-        $0.showsHorizontalScrollIndicator = true
-    }
+    lazy var collectionview = UICollectionView(frame: self.bounds, collectionViewLayout: layout())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,7 +58,7 @@ class CustomTabBarView: UIView {
         collectionview.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
     private func setLayout() {
-        addSubview(collectionview)
+        addSubviews(collectionview, underLineView)
         collectionview.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.bottom.top.equalToSuperview()

@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class AddSituationView: UIView {
     
     // MARK: - UI Components
@@ -86,7 +89,7 @@ extension AddSituationView {
         
         textCountLabel.snp.makeConstraints {
             $0.top.equalTo(inputTextField.snp.bottom).offset(9.adjusted)
-            $0.trailing.equalToSuperview().inset(20.adjusted)
+            $0.trailing.equalToSuperview().offset(-20.adjusted)
         }
     }
     
@@ -164,7 +167,7 @@ extension AddSituationView: UICollectionViewDataSource {
 extension AddSituationView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddSituationCollectionViewCell", for: indexPath) as? AddSituationCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath) as? AddSituationCollectionViewCell else {
             return .zero
         }
         

@@ -7,48 +7,55 @@
 
 import UIKit
 
-class MissionCollectionViewCell: UICollectionViewCell {
-    static var reusedId = "MissionCollectionViewCell"
-    lazy var label = customLabel(color: .nottodoBlack!, font: UIFont(name: AppFontName.pretendardSemiBold, size: 14)!)
-    lazy var image = UIImageView().then {
-        $0.image = UIImage.rank1
+import SnapKit
+import Then
 
-    }
-    func config(_ item : MissionList){
+class MissionCollectionViewCell: UICollectionViewCell {
+    
+    static var identifier = "MissionCollectionViewCell"
+    
+    lazy var label = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardSemiBold(size: 14))
+    lazy var image = UIImageView()
+    
+    func config(_ item: MissionList) {
         label.text = item.title
         self.backgroundColor = item.color
-        
     }
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.label.layer.cornerRadius = 10
-        self.backgroundColor = .clear
-        setAttributes()
-        setViews()
-        setConstraints()
-        
+        setUI()
+        setLayout()
     }
-    private func setAttributes(){
-        self.label.layer.cornerRadius = 10
-        self.contentView.layer.borderWidth = 1
-        self.contentView.layer.borderColor = UIColor.nottodoGray2?.cgColor
-    }
-    private func setViews(){
-        self.addSubview(image)
-        image.addSubview(label)
-    }
-    private func setConstraints(){
-        image.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-       label.snp.makeConstraints {
-           $0.centerY.equalToSuperview()
-           $0.leading.equalToSuperview().offset(41)
-        }
-    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
+// MARK: - Methods
+
+extension MissionCollectionViewCell {
+    private func setUI() {
+        self.label.layer.cornerRadius = 10
+        self.backgroundColor = .clear
+        self.contentView.layer.borderWidth = 1
+        self.contentView.layer.borderColor = UIColor.nottodoGray2?.cgColor
+        
+        image.do {
+            $0.image = UIImage.rank1
+        }
+    }
+    private func setLayout() {
+        addSubview(image)
+        image.addSubview(label)
+        
+        image.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        label.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(41)
+        }
+    }
+}

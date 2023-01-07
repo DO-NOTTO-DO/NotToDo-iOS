@@ -14,7 +14,7 @@ import FSCalendar
 class customCalendar: UIView {
 
     var calendar: FSCalendar! = FSCalendar(frame: .zero)
-    private lazy var hStack = UIStackView(arrangedSubviews: [leftBtn,rightBtn])
+    private lazy var hStack = UIStackView(arrangedSubviews: [leftBtn, rightBtn])
     lazy var headerLabel = UILabel()
     private lazy var leftBtn = UIButton()
     private lazy var rightBtn = UIButton()
@@ -37,7 +37,7 @@ class customCalendar: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    private func setAttributes(){
+    private func setAttributes() {
         hStack.do {
             $0.axis = .horizontal
             $0.distribution = .fillProportionally
@@ -48,14 +48,14 @@ class customCalendar: UIView {
             $0.textColor = .black
         }
         headerImage.do {
-            $0.image = UIImage.headerImage
+            $0.image = .headerImage
         }
         leftBtn.do {
-            $0.setImage(UIImage.calendarLeftArrow, for: .normal)//에셋 변경
+            $0.setImage(.calendarLeftArrow, for: .normal)
             $0.addTarget(self, action: #selector(prevBtnTapped), for: .touchUpInside)
         }
         rightBtn.do {
-            $0.setImage(UIImage.calendarRightArrow, for: .normal) //에셋 변경
+            $0.setImage(.calendarRightArrow, for: .normal)
             $0.addTarget(self, action: #selector(nextBtnTapped), for: .touchUpInside)
         }
         dateFormatter.do {
@@ -63,11 +63,11 @@ class customCalendar: UIView {
             $0.dateFormat = "yyyy년 M월"
         }
     }
-    private func setViews(){
-        self.addSubviews(hStack,headerImage,calendar)
+    private func setViews() {
+        self.addSubviews(hStack, headerImage, calendar)
         headerImage.addSubview(headerLabel)
     }
-    private func setConstraints(){
+    private func setConstraints() {
         headerImage.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(23.adjusted)
             $0.top.equalToSuperview().offset(22.adjusted)
@@ -85,10 +85,10 @@ class customCalendar: UIView {
         calendar.snp.makeConstraints {
             $0.top.equalTo(headerImage.snp.bottom).offset(25.adjusted)
             $0.directionalHorizontalEdges.equalToSuperview().inset(23.adjusted)
-            $0.bottom.equalToSuperview().inset(26.adjusted) // 버튼이랑 다시 맞추기
+            $0.bottom.equalToSuperview().inset(26.adjusted) 
         }
     }
-    private func calendarText(){
+    private func calendarText() {
         calendar.calendarHeaderView.isHidden = true
         calendar.calendarWeekdayView.weekdayLabels[0].text = "일"
         calendar.calendarWeekdayView.weekdayLabels[1].text = "월"
@@ -99,17 +99,17 @@ class customCalendar: UIView {
         calendar.calendarWeekdayView.weekdayLabels[6].text = "토"
         calendar.appearance.headerMinimumDissolvedAlpha = 0
     }
-    private func calendarColor(){
-        calendar.appearance.weekdayTextColor = UIColor.nottodoGray2 // 달력의 요일 글자 색상
-        calendar.appearance.titleWeekendColor = UIColor.nottodoBlack
-        calendar.appearance.titleSelectionColor = UIColor.nottodoBlack //선택한 날짜 글자 색상
-        calendar.appearance.selectionColor = UIColor.yellow_basic // 선택한 날짜 색상
-        calendar.appearance.borderRadius = 0.4 //radius 0(사각형) ~ 1(원)
-        calendar.appearance.titleWeekendColor = UIColor.nottodoBlack
+    private func calendarColor() {
+        calendar.appearance.weekdayTextColor = .nottodoGray2
+        calendar.appearance.titleWeekendColor = .nottodoBlack
+        calendar.appearance.titleSelectionColor = .nottodoBlack
+        calendar.appearance.selectionColor = .yellow_basic
+        calendar.appearance.borderRadius = 0.4
+        calendar.appearance.titleWeekendColor = .nottodoBlack
         calendar.today = nil
         }
-    private func setUpCalendar(){
-        self.calendar.placeholderType = .fillHeadTail  //달력 필요한 부분만 보이게
+    private func setUpCalendar() {
+        self.calendar.placeholderType = .fillHeadTail
         calendar.headerHeight = 0
         calendar.scope = .month
         headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
@@ -126,10 +126,10 @@ class customCalendar: UIView {
         calendar.reloadData()
         self.headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
     }
-    @objc func prevBtnTapped(_sender : UIButton){
+    @objc func prevBtnTapped(_sender: UIButton) {
         scrollCurrentPage(isPrev: true)
     }
-    @objc func nextBtnTapped(_sender : UIButton){
+    @objc func nextBtnTapped(_sender: UIButton) {
         scrollCurrentPage(isPrev: false)
     }
 }

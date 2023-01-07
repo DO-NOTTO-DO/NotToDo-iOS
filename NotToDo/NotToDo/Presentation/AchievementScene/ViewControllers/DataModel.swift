@@ -12,8 +12,7 @@ struct DataModel {
     var answer: String?
 }
 extension DataModel {
-    
-    static var items : [DataModel] = [
+    static var items: [DataModel] = [
         DataModel(
             question: "Item 0",
             answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
@@ -41,7 +40,6 @@ extension DataModel {
         DataModel(
             question: "Item 6",
             answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident"
-        ),
-
+        )
     ]
 }

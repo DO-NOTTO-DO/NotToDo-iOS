@@ -37,9 +37,9 @@ class RecommendCollectionViewCell: UICollectionViewCell {
 extension RecommendCollectionViewCell {
     func config() {
         setUI()
-        setViews()
         setLayout()
     }
+    
     private func setUI() {
         backgroundColor = .clear
         
@@ -48,13 +48,11 @@ extension RecommendCollectionViewCell {
         }
     }
     
-    private func setViews() {
-        self.addSubviews(nestedCollectionView)
+    private func setLayout() {
+        addSubviews(nestedCollectionView)
         nestedCollectionView.item = item
         nestedCollectionView.config()
-    }
-    
-    private func setLayout() {
+        
         nestedCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.directionalHorizontalEdges.equalToSuperview().inset(20.adjusted)

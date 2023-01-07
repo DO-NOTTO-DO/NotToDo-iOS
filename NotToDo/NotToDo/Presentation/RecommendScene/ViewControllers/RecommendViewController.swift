@@ -135,7 +135,7 @@ extension RecommendViewController {
     // MARK: - Data
     
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section,Item>(collectionView: contentsCollectionView, cellProvider: { collectionView, indexPath, _ in
+        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: contentsCollectionView, cellProvider: { collectionView, indexPath, _ in
             let section = Section(rawValue: indexPath.section)!
             switch section {
             case .sub:

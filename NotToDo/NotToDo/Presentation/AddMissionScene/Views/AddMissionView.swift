@@ -35,6 +35,8 @@ class AddMissionView: UIView {
     private let goalTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: I18N.goalPlaceHolder)
     
     var date = Date()
+    let nowDate = Date()
+    let dateFormatter = DateFormatter()
     private let dateView = UIView()
     private let dateLabel = UILabel()
     private let dateButton = UIButton(configuration: .filled())
@@ -79,10 +81,11 @@ extension AddMissionView {
             $0.font = .PretendardMedium(size: 16)
         }
         
+        dateFormatter.do {
+            $0.dateFormat = "yyyy.MM.dd"
+        }
+        
         dateButton.do {
-            let nowDate = Date()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy.MM.dd"
             let str = dateFormatter.string(from: nowDate)
             $0.configuration?.title = str
             $0.configuration?.image = .addCalendar

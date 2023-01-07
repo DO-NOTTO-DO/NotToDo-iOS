@@ -51,7 +51,7 @@ extension AddSituationView {
             $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 15.adjusted, height: 0.0))
             $0.leftViewMode = .always
             $0.attributedPlaceholder = NSAttributedString(string: I18N.inputPlaceHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
-             $0.delegate = self
+            $0.delegate = self
         }
         
         textCountLabel.do {
@@ -192,13 +192,21 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
 extension AddSituationView: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
+        
         if textField.text?.count ?? 0 > maxLength {
             textField.deleteBackward()
         }
         textCountLabel.text = "\(textField.text!.count)/15"
-
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.becomeFirstResponder()
+        textField.borderColor = .nottodoGray2
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.borderColor = .nottodoGray4
     }
 }
 

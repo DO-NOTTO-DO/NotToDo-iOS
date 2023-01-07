@@ -52,8 +52,10 @@ extension RecommendHeaderView {
             $0.image = UIImage.recommend_star
         }
         bgView.do {
-            $0.layer.borderWidth = 0.5
-            $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
+            let firstLayer = CALayer()
+            firstLayer.addBorder([.top, .left, .right], color: .nottodoGray2!, width: 0.5)
+            firstLayer.frame = CGRect(x: 111, y: 111, width: 132, height: 194)
+            $0.layer.addSublayer(firstLayer)
         }
     }
     func setLayout() {

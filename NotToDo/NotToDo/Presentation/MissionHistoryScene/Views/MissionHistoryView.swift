@@ -16,6 +16,8 @@ class MissionHistoryView: UIView, UITextFieldDelegate {
     
     private var inputTextField = UITextField()
     private var backButton = UIButton()
+    private lazy var missionHistoryIcon = UIImageView()
+    private lazy var missionHistoryLabel = UILabel()
     private lazy var missionHistoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     let historyInset: UIEdgeInsets = UIEdgeInsets(top: 15.adjusted, left: 20.adjusted, bottom: 15.adjusted, right: 20.adjusted)
     let cellHeight: CGFloat = 49.adjusted
@@ -58,6 +60,16 @@ extension MissionHistoryView {
             $0.titleLabel?.font = .PretendardMedium(size: 16)
         }
         
+        missionHistoryIcon.do {
+            $0.image = .recentSearch
+        }
+        
+        missionHistoryLabel.do {
+            $0.text = I18N.missionHistory
+            $0.textColor = .nottodoBlack
+            $0.font = .PretendardMedium(size: 16.adjusted)
+        }
+        
         missionHistoryCollectionView.do {
             $0.isScrollEnabled = true
             $0.collectionViewLayout = layout()
@@ -70,7 +82,7 @@ extension MissionHistoryView {
     private func setLayout() {
         backgroundColor = .nottodoWhite
         
-        addSubviews(inputTextField, backButton, missionHistoryCollectionView)
+        addSubviews(inputTextField, backButton, missionHistoryIcon, missionHistoryLabel, missionHistoryCollectionView)
         
         inputTextField.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(31)
@@ -84,8 +96,19 @@ extension MissionHistoryView {
             $0.trailing.equalToSuperview().offset(-22.adjusted)
         }
         
+        missionHistoryIcon.snp.makeConstraints {
+            $0.top.equalTo(inputTextField.snp.bottom).offset(25)
+            $0.leading.equalToSuperview().offset(20)
+            $0.height.width.equalTo(30.adjusted)
+        }
+        
+        missionHistoryLabel.snp.makeConstraints {
+            $0.centerY.equalTo(missionHistoryIcon.snp.centerY)
+            $0.leading.equalTo(missionHistoryIcon.snp.trailing).offset(4.adjusted)
+        }
+        
         missionHistoryCollectionView.snp.makeConstraints {
-            $0.top.equalTo(inputTextField.snp.bottom).offset(25.adjusted)
+            $0.top.equalTo(missionHistoryIcon.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(20.adjusted)
             $0.bottom.equalTo(safeAreaLayoutGuide)
         }
@@ -103,9 +126,6 @@ extension MissionHistoryView {
     }
     
     private func register() {
-        missionHistoryCollectionView.register(MissionHistoryHeaderView.self,
-                                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                            withReuseIdentifier: MissionHistoryHeaderView.identifier)
         missionHistoryCollectionView.register(MissionHistoryCollectionViewCell.self,
                                             forCellWithReuseIdentifier: MissionHistoryCollectionViewCell.identifier)
     }
@@ -125,13 +145,6 @@ extension MissionHistoryView: UICollectionViewDataSource {
         cell.setBorder(indexPath)
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MissionHistoryHeaderView.identifier, for: indexPath) as? MissionHistoryHeaderView
-        else { return UICollectionReusableView() }
-        return headerView
-    }
 }
 
 extension MissionHistoryView: UICollectionViewDelegateFlowLayout {
@@ -139,11 +152,6 @@ extension MissionHistoryView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: width, height: cellHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: width, height: 30.adjusted)
     }
     
     func collectionView(_collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

@@ -658,7 +658,6 @@
 		6C8826092967D3280005E222 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6C8826062967D2EF0005E222 /* AddSituationView.swift */,
 				6C882613296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Views;
@@ -668,6 +667,7 @@
 			isa = PBXGroup;
 			children = (
 				6C88260B2967D36B0005E222 /* AddSituationViewController.swift */,
+				6C8826062967D2EF0005E222 /* AddSituationView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

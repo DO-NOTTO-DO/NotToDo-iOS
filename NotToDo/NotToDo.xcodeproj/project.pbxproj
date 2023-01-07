@@ -20,7 +20,7 @@
 		096BDFF02965104B009ED396 /* MissionStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEF2965104B009ED396 /* MissionStatisticsViewController.swift */; };
 		096BDFF22965215D009ED396 /* MissionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF12965215D009ED396 /* MissionList.swift */; };
 		096BDFF529652270009ED396 /* MissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF429652270009ED396 /* MissionCollectionViewCell.swift */; };
-		096BDFF7296522C6009ED396 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF6296522C6009ED396 /* CustomLabel.swift */; };
+		096BDFF7296522C6009ED396 /* CustomAchieveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF6296522C6009ED396 /* CustomAchieveLabel.swift */; };
 		096BDFF9296523C0009ED396 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF8296523C0009ED396 /* EmptyCollectionViewCell.swift */; };
 		096BDFFD29654F63009ED396 /* SituationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFFC29654F63009ED396 /* SituationCollectionViewCell.swift */; };
 		096BDFFF29655424009ED396 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFFE29655424009ED396 /* CompositionalLayout.swift */; };
@@ -33,7 +33,9 @@
 		096BE0212966A24A009ED396 /* NestedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0202966A24A009ED396 /* NestedCollectionViewCell.swift */; };
 		096BE0232966A296009ED396 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0222966A296009ED396 /* RecommendCollectionViewCell.swift */; };
 		096BE0252966A2B0009ED396 /* SortedItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0242966A2B0009ED396 /* SortedItemModel.swift */; };
-		096BE0272966A8DE009ED396 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0262966A8DE009ED396 /* CustomTabBarItem.swift */; };
+		099F06CD29672DCA0036CF55 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F06CC29672DCA0036CF55 /* CustomTabBarItem.swift */; };
+		099F06CF296732970036CF55 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F06CE296732970036CF55 /* CustomTabBarView.swift */; };
+		099F06FA2967EE9F0036CF55 /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F06F92967EE9E0036CF55 /* LabelCollectionViewCell.swift */; };
 		3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162873295AD7860077AE7B /* AppDelegate.swift */; };
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
@@ -100,7 +102,7 @@
 		096BDFEF2965104B009ED396 /* MissionStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionStatisticsViewController.swift; sourceTree = "<group>"; };
 		096BDFF12965215D009ED396 /* MissionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionList.swift; sourceTree = "<group>"; };
 		096BDFF429652270009ED396 /* MissionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCollectionViewCell.swift; sourceTree = "<group>"; };
-		096BDFF6296522C6009ED396 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		096BDFF6296522C6009ED396 /* CustomAchieveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAchieveLabel.swift; sourceTree = "<group>"; };
 		096BDFF8296523C0009ED396 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		096BDFFC29654F63009ED396 /* SituationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationCollectionViewCell.swift; sourceTree = "<group>"; };
 		096BDFFE29655424009ED396 /* CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayout.swift; sourceTree = "<group>"; };
@@ -113,7 +115,9 @@
 		096BE0202966A24A009ED396 /* NestedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedCollectionViewCell.swift; sourceTree = "<group>"; };
 		096BE0222966A296009ED396 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		096BE0242966A2B0009ED396 /* SortedItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedItemModel.swift; sourceTree = "<group>"; };
-		096BE0262966A8DE009ED396 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
+		099F06CC29672DCA0036CF55 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTabBarItem.swift; path = ../Views/CustomTabBarItem.swift; sourceTree = "<group>"; };
+		099F06CE296732970036CF55 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
+		099F06F92967EE9E0036CF55 /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B162870295AD7860077AE7B /* NotToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B162873295AD7860077AE7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B162875295AD7860077AE7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				096BDFF12965215D009ED396 /* MissionList.swift */,
+				096BE0042965A209009ED396 /* BackgroundSupplementaryView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -204,12 +209,39 @@
 			children = (
 				096BDFF429652270009ED396 /* MissionCollectionViewCell.swift */,
 				096BDFFC29654F63009ED396 /* SituationCollectionViewCell.swift */,
-				096BE0042965A209009ED396 /* BackgroundSupplementaryView.swift */,
 				096BDFF8296523C0009ED396 /* EmptyCollectionViewCell.swift */,
-				096BDFF6296522C6009ED396 /* CustomLabel.swift */,
+				096BDFF6296522C6009ED396 /* CustomAchieveLabel.swift */,
 				096BE00029659B3A009ED396 /* AchievementHeaderView.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		096BE0282966DA50009ED396 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				096BE0222966A296009ED396 /* RecommendCollectionViewCell.swift */,
+				096BE0162966A142009ED396 /* CustomTabBarCell.swift */,
+				096BE0202966A24A009ED396 /* NestedCollectionViewCell.swift */,
+				099F06F92967EE9E0036CF55 /* LabelCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		099F06C9296723EF0036CF55 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				096BE0242966A2B0009ED396 /* SortedItemModel.swift */,
+				099F06CC29672DCA0036CF55 /* CustomTabBarItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		099F06FB2967F7F30036CF55 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				096BE0182966A18A009ED396 /* CustomPaddingLabel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		3B162867295AD7860077AE7B = {
@@ -337,6 +369,9 @@
 		3B162898295AD9650077AE7B /* RecommendScene */ = {
 			isa = PBXGroup;
 			children = (
+				099F06FB2967F7F30036CF55 /* Common */,
+				099F06C9296723EF0036CF55 /* Model */,
+				096BE0282966DA50009ED396 /* Cell */,
 				3B16289C295AD9CB0077AE7B /* ViewControllers */,
 				3B16289D295AD9D20077AE7B /* Views */,
 			);
@@ -378,8 +413,6 @@
 			isa = PBXGroup;
 			children = (
 				3B3405CF295B101600D44722 /* RecommendViewController.swift */,
-				096BE0222966A296009ED396 /* RecommendCollectionViewCell.swift */,
-				096BE0242966A2B0009ED396 /* SortedItemModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -387,12 +420,9 @@
 		3B16289D295AD9D20077AE7B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				096BE0262966A8DE009ED396 /* CustomTabBarItem.swift */,
-				096BE0182966A18A009ED396 /* CustomPaddingLabel.swift */,
 				096BE01A2966A1B3009ED396 /* RecommendHeaderView.swift */,
+				099F06CE296732970036CF55 /* CustomTabBarView.swift */,
 				096BE01E2966A1FA009ED396 /* NestedView.swift */,
-				096BE0202966A24A009ED396 /* NestedCollectionViewCell.swift */,
-				096BE0162966A142009ED396 /* CustomTabBarCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -767,6 +797,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				099F06CD29672DCA0036CF55 /* CustomTabBarItem.swift in Sources */,
 				3B59AFBC29634D900050FF49 /* ActionSheetViewController.swift in Sources */,
 				6C88260C2967D36B0005E222 /* AddSituationViewController.swift in Sources */,
 				096BE0192966A18A009ED396 /* CustomPaddingLabel.swift in Sources */,
@@ -790,8 +821,9 @@
 				6C882614296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */,
 				096BDFEE29651040009ED396 /* SituationStatisticsViewController.swift in Sources */,
+				096BDFF7296522C6009ED396 /* CustomAchieveLabel.swift in Sources */,
 				6C8826072967D2EF0005E222 /* AddSituationView.swift in Sources */,
-				096BDFF7296522C6009ED396 /* CustomLabel.swift in Sources */,
+				096BDFF7296522C6009ED396 /* CustomAchieveLabel.swift in Sources */,
 				096BE0052965A209009ED396 /* BackgroundSupplementaryView.swift in Sources */,
 				096BDFF9296523C0009ED396 /* EmptyCollectionViewCell.swift in Sources */,
 				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,
@@ -825,9 +857,10 @@
 				6CDC2D1529641BE000BFF5F4 /* AddMissionTitleView.swift in Sources */,
 				3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */,
 				3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */,
-				096BE0272966A8DE009ED396 /* CustomTabBarItem.swift in Sources */,
 				6C8826162968221C0005E222 /* AddSituationHeaderView.swift in Sources */,
 				096BDFFD29654F63009ED396 /* SituationCollectionViewCell.swift in Sources */,
+				099F06CF296732970036CF55 /* CustomTabBarView.swift in Sources */,
+				099F06FA2967EE9F0036CF55 /* LabelCollectionViewCell.swift in Sources */,
 				3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */,
 				096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */,
 				3B4B90BD2965673E008C5CA8 /* AuthViewController.swift in Sources */,

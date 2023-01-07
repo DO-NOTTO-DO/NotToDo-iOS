@@ -166,8 +166,10 @@ extension AddSituationView: UICollectionViewDataSource {
 
 extension AddSituationView: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath) as? AddSituationCollectionViewCell else {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
+                as? AddSituationCollectionViewCell else {
             return .zero
         }
         
@@ -186,7 +188,8 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: 31.adjusted)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
         let width = collectionView.frame.width
         return CGSize(width: width, height: 31.adjusted)
     }

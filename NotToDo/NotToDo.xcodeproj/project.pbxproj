@@ -84,7 +84,6 @@
 		6C600BC229693B3B00421D7A /* MissionHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */; };
 		6C600BC429693B4B00421D7A /* MissionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */; };
 		6C600BC629693B5500421D7A /* MissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC529693B5500421D7A /* MissionHistoryView.swift */; };
-		6C600BC82969ACEF00421D7A /* MissionHistoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC72969ACEF00421D7A /* MissionHistoryHeaderView.swift */; };
 		6C8826072967D2EF0005E222 /* AddSituationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8826062967D2EF0005E222 /* AddSituationView.swift */; };
 		6C88260C2967D36B0005E222 /* AddSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88260B2967D36B0005E222 /* AddSituationViewController.swift */; };
 		6C88260F2967D8280005E222 /* AddSituationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88260E2967D8280005E222 /* AddSituationCollectionViewCell.swift */; };
@@ -171,7 +170,6 @@
 		6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryViewController.swift; sourceTree = "<group>"; };
 		6C600BC529693B5500421D7A /* MissionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryView.swift; sourceTree = "<group>"; };
-		6C600BC72969ACEF00421D7A /* MissionHistoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryHeaderView.swift; sourceTree = "<group>"; };
 		6C8826062967D2EF0005E222 /* AddSituationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationView.swift; sourceTree = "<group>"; };
 		6C88260B2967D36B0005E222 /* AddSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationViewController.swift; sourceTree = "<group>"; };
 		6C88260E2967D8280005E222 /* AddSituationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -630,7 +628,6 @@
 		6C600BBA29693A7D00421D7A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				6C600BC72969ACEF00421D7A /* MissionHistoryHeaderView.swift */,
 				6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */,
 			);
 			path = Cells;
@@ -658,6 +655,7 @@
 		6C8826092967D3280005E222 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6C8826062967D2EF0005E222 /* AddSituationView.swift */,
 				6C882613296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Views;
@@ -667,7 +665,6 @@
 			isa = PBXGroup;
 			children = (
 				6C88260B2967D36B0005E222 /* AddSituationViewController.swift */,
-				6C8826062967D2EF0005E222 /* AddSituationView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -839,7 +836,6 @@
 				096BE0252966A2B0009ED396 /* SortedItemModel.swift in Sources */,
 				3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */,
 				3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */,
-				6C600BC82969ACEF00421D7A /* MissionHistoryHeaderView.swift in Sources */,
 				3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */,
 				096BDFEC29650EB8009ED396 /* CustomSegmentedControl.swift in Sources */,
 				096BDFF02965104B009ED396 /* MissionStatisticsViewController.swift in Sources */,

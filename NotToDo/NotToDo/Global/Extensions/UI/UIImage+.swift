@@ -29,6 +29,7 @@ extension UIImage {
     static let checkCircle = UIImage(named: "Home/checkbox/circle")!.withRenderingMode(.alwaysOriginal)
     static let checkTriangle = UIImage(named: "Home/checkbox/triangle")!.withRenderingMode(.alwaysOriginal)
     static let dot = UIImage(named: "Home/btn_dot")!.withRenderingMode(.alwaysOriginal)
+    static let plus = UIImage(named: "Home/ic_plus")!.withRenderingMode(.alwaysOriginal)
 
     // Recent
     
@@ -91,10 +92,11 @@ extension UIImage {
     // Graphic
     
     static let graphic1 = UIImage(named: "Graphic/graphic1")!.withRenderingMode(.alwaysOriginal)
+    static let graphic2 = UIImage(named: "Graphic/graphic2")!.withRenderingMode(.alwaysOriginal)
     static let graphic3 = UIImage(named: "Graphic/graphic3")!.withRenderingMode(.alwaysOriginal)
     static let graphic4 = UIImage(named: "Graphic/graphic4")!.withRenderingMode(.alwaysOriginal)
     static let heartEmpty = UIImage(named: "Graphic/graphic5")!.withRenderingMode(.alwaysOriginal)
-    static let heartFill = UIImage(named: "Graphic/graphic2")!.withRenderingMode(.alwaysOriginal)
+    static let heartFill = UIImage(named: "Graphic/graphic6")!.withRenderingMode(.alwaysOriginal)
     
     // MyInfo
     

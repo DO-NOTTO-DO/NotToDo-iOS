@@ -18,9 +18,9 @@ public enum ActionSheetType {
     var viewHeight: CGFloat {
         switch self {
         case .meatball:
-            return (Numbers.height * 0.36).adjusted
+            return 306.adjusted
         case .calendar:
-            return (Numbers.height * 0.53).adjusted
+            return 443.adjusted
         }
     }
 }
@@ -30,7 +30,6 @@ final class ActionSheetView: UIView {
     // MARK: - Properties
     
     private var mode: ActionSheetType
-    private let weekdayLabels = ["일", "월", "화", "수", "목", "금", "토"]
     
     // MARK: - UI Components
     
@@ -128,7 +127,7 @@ extension ActionSheetView {
         hStack.do {
             $0.axis = .horizontal
             $0.distribution = .fillProportionally
-            $0.spacing = 14
+            $0.spacing = 14.adjusted
         }
         leftButton.do {
             $0.setImage(.calendarLeftArrow, for: .normal)
@@ -154,8 +153,8 @@ extension ActionSheetView {
     }
     
     private func setCalendarText() {
-        for i in 0...weekdayLabels.count-1 {
-            calendar.calendarWeekdayView.weekdayLabels[i].text = weekdayLabels[i]
+        for i in 0...I18N.startSunday.count-1 {
+            calendar.calendarWeekdayView.weekdayLabels[i].text = I18N.startSunday[i]
         }
     }
     

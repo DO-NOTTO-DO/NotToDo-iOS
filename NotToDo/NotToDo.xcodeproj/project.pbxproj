@@ -79,7 +79,10 @@
 		3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34A929617D88002E1161 /* NotTodoButton.swift */; };
 		3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34AB29618441002E1161 /* UIButton+.swift */; };
 		3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ED42B2961DC310052D2B8 /* HomeView.swift */; };
+		3B888AA729674BA4008209A8 /* RandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B888AA629674BA4008209A8 /* RandomData.swift */; };
 		3BED5328295C018700157A3B /* adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED5327295C018700157A3B /* adjust+.swift */; };
+		3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */; };
+		3BEF92AF29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */; };
 		6C8826072967D2EF0005E222 /* AddSituationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8826062967D2EF0005E222 /* AddSituationView.swift */; };
 		6C88260C2967D36B0005E222 /* AddSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88260B2967D36B0005E222 /* AddSituationViewController.swift */; };
 		6C88260F2967D8280005E222 /* AddSituationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88260E2967D8280005E222 /* AddSituationCollectionViewCell.swift */; };
@@ -161,6 +164,7 @@
 		3B5B34A929617D88002E1161 /* NotTodoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTodoButton.swift; sourceTree = "<group>"; };
 		3B5B34AB29618441002E1161 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		3B5ED42B2961DC310052D2B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3B888AA629674BA4008209A8 /* RandomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomData.swift; sourceTree = "<group>"; };
 		3BED5327295C018700157A3B /* adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "adjust+.swift"; sourceTree = "<group>"; };
 		6C8826062967D2EF0005E222 /* AddSituationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationView.swift; sourceTree = "<group>"; };
 		6C88260B2967D36B0005E222 /* AddSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 		6C8826112967D85F0005E222 /* AddSituationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationModel.swift; sourceTree = "<group>"; };
 		6C882613296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		6C8826152968221C0005E222 /* AddSituationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationHeaderView.swift; sourceTree = "<group>"; };
+		3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionReusableView.swift; sourceTree = "<group>"; };
+		3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionView.swift; sourceTree = "<group>"; };
 		6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTitleView.swift; sourceTree = "<group>"; };
 		6CDC2D202966C86D00BFF5F4 /* AddMissionTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTextFieldView.swift; sourceTree = "<group>"; };
@@ -302,6 +308,8 @@
 		3B162894295AD92E0077AE7B /* HomeScene */ = {
 			isa = PBXGroup;
 			children = (
+				3BEF92AB2967FADD0090A290 /* Cells */,
+				3B888AA529674B97008209A8 /* Data */,
 				3B162896295AD9380077AE7B /* ViewControllers */,
 				3B162895295AD9350077AE7B /* Views */,
 			);
@@ -634,6 +642,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		3B888AA529674B97008209A8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3B888AA629674BA4008209A8 /* RandomData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		3BEF92AB2967FADD0090A290 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */,
+				3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		6CDC2D0A2963E2A100BFF5F4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -772,6 +797,7 @@
 				096BE0192966A18A009ED396 /* CustomPaddingLabel.swift in Sources */,
 				3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */,
 				096BE0212966A24A009ED396 /* NestedCollectionViewCell.swift in Sources */,
+				3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */,
 				3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */,
 				3B16288D295AD8380077AE7B /* UIStackView+.swift in Sources */,
 				096BDFF529652270009ED396 /* MissionCollectionViewCell.swift in Sources */,
@@ -781,6 +807,7 @@
 				096BE0252966A2B0009ED396 /* SortedItemModel.swift in Sources */,
 				3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */,
 				3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */,
+				3B888AA729674BA4008209A8 /* RandomData.swift in Sources */,
 				3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */,
 				096BDFEC29650EB8009ED396 /* CustomSegmentedControl.swift in Sources */,
 				096BDFF02965104B009ED396 /* MissionStatisticsViewController.swift in Sources */,
@@ -801,6 +828,7 @@
 				3B42D1EE2966A1C20012898E /* myInfoMenuCollectionViewCell.swift in Sources */,
 				096BDFF22965215D009ED396 /* MissionList.swift in Sources */,
 				3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */,
+				3BEF92AF29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift in Sources */,
 				096BE0172966A142009ED396 /* CustomTabBarCell.swift in Sources */,
 				3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */,
 				096BE01F2966A1FA009ED396 /* NestedView.swift in Sources */,

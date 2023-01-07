@@ -12,6 +12,8 @@ import Then
 
 class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
+    // MARK: - Properties
+    
     var itemList: [SortedItemModel] = SortedItemModel.sampleData
     enum Section: Int, Hashable {
         case sub, main
@@ -21,17 +23,17 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     // MARK: - UI Components
     
-    private lazy var mainTitle = UILabel()
-    private lazy var createButton = UIButton()
-    private lazy var headerView = RecommendHeaderView()
+    private var mainTitle = UILabel()
+    private var createButton = UIButton()
+    private var underLineView = UIView()
+    private var headerView = RecommendHeaderView()
     private lazy var contentsCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: recommendlayout())
     private lazy var customTabBar = CustomTabBarView()
-    private lazy var underLineView = UIView()
     private lazy var customTabBarCollectionView = CustomTabBarView().collectionview
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
     // MARK: - Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -69,17 +71,11 @@ extension RecommendViewController {
         customTabBar.delegate = self
     }
     
-    // MARK: - @objc Methods
-    
-    @objc func btnTapped(_ sender: UIButton) {
-        print("tapped")
-    }
-    
     private func register() {
         contentsCollectionView.register(LabelCollectionViewCell.self, forCellWithReuseIdentifier: LabelCollectionViewCell.identifier)
         contentsCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.identifier)
     }
-   
+    
     private func setLayout() {
         view.addSubviews(mainTitle, createButton, customTabBar, underLineView, contentsCollectionView)
         
@@ -131,7 +127,7 @@ extension RecommendViewController {
         default: completion(SortedItemModel.sampleData)
         }
     }
-
+    
     // MARK: - Data
     
     private func setupDataSource() {
@@ -152,9 +148,9 @@ extension RecommendViewController {
     
     private func reloadData() {
         var snapShot = NSDiffableDataSourceSnapshot<Section, Item>()
-              defer {
-                  dataSource.apply(snapShot, animatingDifferences: false)
-              }
+        defer {
+            dataSource.apply(snapShot, animatingDifferences: false)
+        }
         snapShot.appendSections([.sub, .main])
         snapShot.appendItems(Array(0..<1), toSection: .sub)
         snapShot.appendItems(itemList, toSection: .main)
@@ -176,19 +172,26 @@ extension RecommendViewController {
         config.interSectionSpacing = 20
         layout.configuration = config
         return layout
-        }
+    }
     
     private func subTitleSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 14, leading: 0, bottom: 0, trailing: 0)
-            return section
-        }
+        return section
+    }
+    
     private func mainSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200)))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         return section
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc func btnTapped(_ sender: UIButton) {
+        print("tapped")
     }
 }

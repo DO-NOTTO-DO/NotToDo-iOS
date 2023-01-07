@@ -18,12 +18,12 @@ class RecommendHeaderView: UICollectionReusableView {
     
     // MARK: - UI Components
     
-    lazy var titleLabel = CustomPaddingLabel(padding: .init(top: 7, left: 27, bottom: 10, right: 13))
-    var bgView = UIView()
-    private lazy var iconImage = UIImageView()
+    var titleLabel = CustomPaddingLabel(padding: .init(top: 7, left: 27, bottom: 10, right: 13))
+    private var backgroundView = UIView()
+    private var iconImage = UIImageView()
     
     // MARK: - Life Cycle
- 
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setUI()
@@ -51,7 +51,7 @@ extension RecommendHeaderView {
     
     func setLayout() {
         addSubview(titleLabel)
-        titleLabel.addSubviews(bgView, iconImage)
+        titleLabel.addSubviews(backgroundView, iconImage)
         
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
@@ -63,11 +63,11 @@ extension RecommendHeaderView {
             $0.centerY.equalToSuperview()
             $0.height.width.equalTo(7)
         }
-        bgView.snp.makeConstraints {
+        backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
-
+    
     func HeaderTitle(title: String?) {
         self.titleLabel.text = title
     }

@@ -13,6 +13,7 @@ import Then
 protocol CustomTabBarDelegate: AnyObject {
     func scrollToIndex(to index: Int)
 }
+
 class CustomTabBarView: UIView {
     
     var defaultIndex: Int = 0
@@ -34,7 +35,6 @@ class CustomTabBarView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
         setUI()
         register()
         setLayout()
@@ -52,7 +52,9 @@ class CustomTabBarView: UIView {
 
 extension CustomTabBarView {
     private func setUI() {
+        backgroundColor = .white
         setupCollectioView()
+        
         collectionview.do {
             $0.backgroundColor = .clear
             $0.delegate = self

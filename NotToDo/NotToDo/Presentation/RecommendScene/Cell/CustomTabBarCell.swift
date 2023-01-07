@@ -18,9 +18,9 @@ class CustomTabBarCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
-    lazy var bgView = UIView()
-    lazy var icImage = UIImageView()
-    lazy var titleLabel = UILabel()
+    private var bgView = UIView()
+    private var icImage = UIImageView()
+    private var titleLabel = UILabel()
     
     // MARK: - Life Cycle
     
@@ -38,13 +38,13 @@ class CustomTabBarCell: UICollectionViewCell {
 // MARK: - Methods
 
 extension CustomTabBarCell {
-    
     private func setUI() {
         titleLabel.do {
             $0.textAlignment = .center
             $0.layer.backgroundColor = UIColor.clear.cgColor
         }
     }
+    
     private func setLayout() {
         addSubview(bgView)
         bgView.addSubviews(icImage, titleLabel)
@@ -68,17 +68,17 @@ extension CustomTabBarCell {
     
     func config(_ item: CustomTabBarItem, isSelected: Bool) {
         if isSelected {
-            self.titleLabel.text = item.name
-            self.titleLabel.textColor = .nottodoGray1
-            self.titleLabel.font = .PretendardBold(size: 12.adjusted)
-            self.icImage.image = UIImage(named: item.activeImage)
-            self.bgView.backgroundColor = .yellow_mild
+            titleLabel.text = item.name
+            titleLabel.textColor = .nottodoGray1
+            titleLabel.font = .PretendardBold(size: 12.adjusted)
+            icImage.image = UIImage(named: item.activeImage)
+            bgView.backgroundColor = .yellow_mild
         } else {
-            self.titleLabel.text = item.name
-            self.titleLabel.textColor = .nottodoGray2
-            self.titleLabel.font = .PretendardMedium(size: 12.adjusted)
-            self.icImage.image = UIImage(named: item.image)
-            self.bgView.backgroundColor = .clear
+            titleLabel.text = item.name
+            titleLabel.textColor = .nottodoGray2
+            titleLabel.font = .PretendardMedium(size: 12.adjusted)
+            icImage.image = UIImage(named: item.image)
+            bgView.backgroundColor = .clear
         }
     }
 }

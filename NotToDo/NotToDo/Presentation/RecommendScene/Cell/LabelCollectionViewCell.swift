@@ -18,7 +18,7 @@ class LabelCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
-    private lazy  var titleLabel = UILabel()
+    private var titleLabel = UILabel()
     
     // MARK: - Life Cycle
     
@@ -27,6 +27,7 @@ class LabelCollectionViewCell: UICollectionViewCell {
         setUI()
         setLayout()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -42,7 +43,8 @@ extension LabelCollectionViewCell {
             $0.font = .PretendardRegular(size: 12.adjusted)
             $0.textColor = .nottodoGray2
         }
-    }    
+    }
+    
     func setLayout() {
         contentView.addSubview(titleLabel)
         

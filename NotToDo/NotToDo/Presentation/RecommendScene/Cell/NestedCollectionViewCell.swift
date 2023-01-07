@@ -18,8 +18,8 @@ class NestedCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
-    lazy var colorView = UIView()
-    lazy var titleLabel = UILabel()
+    var colorView = UIView()
+    private var titleLabel = UILabel()
     
     // MARK: - Life Cycle
     

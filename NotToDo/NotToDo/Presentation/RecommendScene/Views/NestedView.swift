@@ -83,7 +83,7 @@ extension NestedView {
             case 0:
                 cell.layer.addBorder([.top, .bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
             default:
-                cell.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
+                cell.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5.adjusted)
             }
             cell.colorView.frame = .init(x: 0, y: 0, width: 11.adjusted, height: 60.adjusted)
             cell.colorView.layer.addBorder([.right], color: .nottodoGray2!, width: 0.5.adjusted)
@@ -119,7 +119,7 @@ extension NestedView {
         let layout = UICollectionViewCompositionalLayout(section: section)
         layout.register(BackgroundSupplementaryView.self, forDecorationViewOfKind: "background")
         let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 25
+        config.interSectionSpacing = 25.adjusted
         layout.configuration = config
         return layout
     }

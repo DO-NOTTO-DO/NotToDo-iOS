@@ -18,7 +18,7 @@ class RecommendHeaderView: UICollectionReusableView {
     
     // MARK: - UI Components
     
-    var titleLabel = CustomPaddingLabel(padding: .init(top: 7, left: 27, bottom: 10, right: 13))
+    var titleLabel = CustomPaddingLabel(padding: .init(top: 7.adjusted, left: 27.adjusted, bottom: 10.adjusted, right: 13.adjusted))
     private var backgroundView = UIView()
     private var iconImage = UIImageView()
     
@@ -41,7 +41,7 @@ extension RecommendHeaderView {
     func setUI() {
         titleLabel.do {
             $0.textColor = .nottodoGray1
-            $0.font = .PretendardMedium(size: 14)
+            $0.font = .PretendardMedium(size: 14.adjusted)
         }
         
         iconImage.do {
@@ -56,12 +56,12 @@ extension RecommendHeaderView {
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(34)
+            $0.height.equalTo(34.adjusted)
         }
         iconImage.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(10)
+            $0.leading.equalToSuperview().offset(10.adjusted)
             $0.centerY.equalToSuperview()
-            $0.height.width.equalTo(7)
+            $0.height.width.equalTo(7.adjusted)
         }
         backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()

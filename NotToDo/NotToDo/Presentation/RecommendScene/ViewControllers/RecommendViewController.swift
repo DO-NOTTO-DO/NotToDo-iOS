@@ -56,7 +56,7 @@ extension RecommendViewController {
         }
         createButton.do {
             $0.setTitle(I18N.recommendButtonTitle, for: .normal)
-            $0.titleLabel!.font = .PretendardMedium(size: 14)
+            $0.titleLabel!.font = .PretendardMedium(size: 14.adjusted)
             $0.setTitleColor(UIColor.nottodoGray2, for: .normal)
             $0.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
         }
@@ -80,16 +80,16 @@ extension RecommendViewController {
         view.addSubviews(mainTitle, createButton, customTabBar, underLineView, contentsCollectionView)
         
         mainTitle.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(17)
-            $0.leading.equalTo(safeArea).offset(20)
+            $0.top.equalTo(safeArea).offset(17.adjusted)
+            $0.leading.equalTo(safeArea).offset(20.adjusted)
         }
         createButton.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(26)
-            $0.trailing.equalTo(safeArea).inset(20)
+            $0.top.equalTo(safeArea).offset(26.adjusted)
+            $0.trailing.equalTo(safeArea).inset(20.adjusted)
         }
         customTabBar.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
-            $0.top.equalTo(mainTitle.snp.bottom).offset(19)
+            $0.top.equalTo(mainTitle.snp.bottom).offset(19.adjusted)
             $0.height.equalTo(104.adjusted)
         }
         underLineView.snp.makeConstraints {
@@ -169,7 +169,7 @@ extension RecommendViewController {
             }
         }
         let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
+        config.interSectionSpacing = 20.adjusted
         layout.configuration = config
         return layout
     }
@@ -178,7 +178,7 @@ extension RecommendViewController {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 14, leading: 0, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 14.adjusted, leading: 0, bottom: 0, trailing: 0)
         return section
     }
     

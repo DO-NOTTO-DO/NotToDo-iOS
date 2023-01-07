@@ -14,18 +14,13 @@ class NestedCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    static var reusedId = "NestedCollectionViewCell"
-        
+    static var identifier = "NestedCollectionViewCell"
+    
     // MARK: - UI Components
     
     lazy var colorView = UIView()
     lazy var titleLabel = UILabel()
-   
-    // MARK: - Network
     
-    func config(_ item: ItemModel) {
-        titleLabel.text = item.subTitle
-    }
     // MARK: - Life Cycle
     
     override init(frame: CGRect) {
@@ -39,6 +34,9 @@ class NestedCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension NestedCollectionViewCell {
     private func setUI() {
         colorView.do {
@@ -49,6 +47,7 @@ extension NestedCollectionViewCell {
             $0.font = .PretendardSemiBold(size: 16.adjusted)
         }
     }
+    
     private func setLayout() {
         addSubviews(colorView, titleLabel)
         
@@ -60,5 +59,9 @@ extension NestedCollectionViewCell {
             $0.leading.equalTo(colorView.snp.trailing).offset(13.adjusted)
             $0.centerY.equalToSuperview()
         }
+    }
+    
+    func config(_ item: ItemModel) {
+        titleLabel.text = item.subTitle
     }
 }

@@ -14,31 +14,13 @@ class CustomTabBarCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    static var reusedId = "CustomTabBarCell"
+    static var identifier = "CustomTabBarCell"
     
     // MARK: - UI Components
     
     lazy var bgView = UIView()
     lazy var icImage = UIImageView()
     lazy var titleLabel = UILabel()
-    
-    // MARK: - Network
-    
-    func config(_ item: CustomTabBarItem, isSelected: Bool) {
-        if isSelected {
-            self.titleLabel.text = item.name
-            self.titleLabel.textColor = .nottodoGray1
-            self.titleLabel.font = .PretendardBold(size: 12.adjusted)
-            self.icImage.image = UIImage(named: item.activeImage)
-            self.bgView.backgroundColor = .yellow_mild
-        } else {
-            self.titleLabel.text = item.name
-            self.titleLabel.textColor = .nottodoGray2
-            self.titleLabel.font = .PretendardMedium(size: 12.adjusted)
-            self.icImage.image = UIImage(named: item.image)
-            self.bgView.backgroundColor = .clear
-        }
-    }
     
     // MARK: - Life Cycle
     
@@ -52,6 +34,9 @@ class CustomTabBarCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension CustomTabBarCell {
     
     private func setUI() {
@@ -78,6 +63,22 @@ extension CustomTabBarCell {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(icImage.snp.bottom).offset(6.adjusted)
             $0.bottom.equalToSuperview().inset(11.adjusted)
+        }
+    }
+    
+    func config(_ item: CustomTabBarItem, isSelected: Bool) {
+        if isSelected {
+            self.titleLabel.text = item.name
+            self.titleLabel.textColor = .nottodoGray1
+            self.titleLabel.font = .PretendardBold(size: 12.adjusted)
+            self.icImage.image = UIImage(named: item.activeImage)
+            self.bgView.backgroundColor = .yellow_mild
+        } else {
+            self.titleLabel.text = item.name
+            self.titleLabel.textColor = .nottodoGray2
+            self.titleLabel.font = .PretendardMedium(size: 12.adjusted)
+            self.icImage.image = UIImage(named: item.image)
+            self.bgView.backgroundColor = .clear
         }
     }
 }

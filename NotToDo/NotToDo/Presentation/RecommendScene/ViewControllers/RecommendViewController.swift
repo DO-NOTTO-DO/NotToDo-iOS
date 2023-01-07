@@ -35,6 +35,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        register()
         setLayout()
         setupDataSource()
         reloadData()
@@ -70,6 +71,11 @@ extension RecommendViewController {
     @objc func btnTapped(_ sender: UIButton) {
         print("tapped")
     }
+    
+    private func register() {
+        contentsCollectionView.register(LabelCollectionViewCell.self, forCellWithReuseIdentifier: LabelCollectionViewCell.identifier)
+        contentsCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.identifier)
+    }
    
     private func setLayout() {
         view.addSubviews(mainTitle, createButton,customTabBar, underLineView, contentsCollectionView)
@@ -97,12 +103,8 @@ extension RecommendViewController {
             $0.top.equalTo(underLineView.snp.bottom)
             $0.bottom.equalToSuperview()
         }
-        registerSubViews()
     }
-    private func registerSubViews() {
-        contentsCollectionView.register(LabelCollectionViewCell.self, forCellWithReuseIdentifier: LabelCollectionViewCell.reuseId)
-        contentsCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.reusedId)
-    }
+    
     // 탭바를 클릭했을 때, 콘텐츠 뷰 이동
     func scrollToIndex(to index: Int) {
         fetchCategoryItems(index) { [weak self] itemList in
@@ -135,10 +137,10 @@ extension RecommendViewController {
             let section = Section(rawValue: indexPath.section)!
             switch section {
             case .sub:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabelCollectionViewCell.reuseId, for: indexPath) as! LabelCollectionViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabelCollectionViewCell.identifier, for: indexPath) as! LabelCollectionViewCell
                 return cell
             case .main:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.reusedId, for: indexPath) as! RecommendCollectionViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
                 cell.item = self.itemList[indexPath.item]
                 cell.config()
                 return cell

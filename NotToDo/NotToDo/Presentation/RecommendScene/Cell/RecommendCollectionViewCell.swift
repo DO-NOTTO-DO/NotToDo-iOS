@@ -14,7 +14,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    static var reusedId = "RecommendCollectionViewCell"
+    static var identifier = "RecommendCollectionViewCell"
     
     // MARK: - UI Components
     
@@ -25,13 +25,15 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension RecommendCollectionViewCell {
     func config() {
         setUI()
@@ -39,6 +41,8 @@ extension RecommendCollectionViewCell {
         setLayout()
     }
     private func setUI() {
+        backgroundColor = .clear
+        
         nestedCollectionView.do {
             $0.backgroundColor = .clear
         }

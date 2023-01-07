@@ -69,7 +69,7 @@ extension UIImage {
     static let rank = UIImage(named: "IC/ic_rank")!.withRenderingMode(.alwaysOriginal)
     static let recentSearch = UIImage(named: "IC/ic_recentsearch")!.withRenderingMode(.alwaysOriginal)
     static let recentUse = UIImage(named: "IC/ic_recentuse")!.withRenderingMode(.alwaysOriginal)
-    static let icRecommend = UIImage(named: "IC/ic_recommend")!.withRenderingMode(.alwaysOriginal)
+    static let icRecommend = UIImage(named: "IC/ic_recommand")!.withRenderingMode(.alwaysOriginal)
     static let trash = UIImage(named: "IC/ic_trash")!.withRenderingMode(.alwaysOriginal)
     static let warning = UIImage(named: "IC/ic_warning")!.withRenderingMode(.alwaysOriginal)
     static let star = UIImage(named: "IC/ic_star")!.withRenderingMode(.alwaysOriginal)

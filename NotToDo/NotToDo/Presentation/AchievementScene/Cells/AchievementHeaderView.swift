@@ -14,7 +14,7 @@ class AchievementHeaderView: UICollectionReusableView {
     
     // MARK: - Properties
     
-    static var reuseId: String = "AchievementHeaderView"
+    static var identifier = "AchievementHeaderView"
     
     // MARK: - UI Components
     
@@ -35,6 +35,8 @@ class AchievementHeaderView: UICollectionReusableView {
     }
 }
     
+// MARK: - Methods
+
 extension AchievementHeaderView {
     func HeaderTitle(title: String?) {
         self.subLabel.text = title

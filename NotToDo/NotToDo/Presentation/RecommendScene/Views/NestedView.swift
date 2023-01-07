@@ -36,13 +36,18 @@ class NestedView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension NestedView {
     func config() {
         setUI()
+        register()
         setLayout()
         setupDataSource()
         reloadData()
     }
+    
     private func setUI() {
         collectionview.do {
             $0.backgroundColor = .clear
@@ -52,10 +57,12 @@ extension NestedView {
             $0.bounces = false
         }
     }
-    private func registerSubViews() {
-        collectionview.register(NestedCollectionViewCell.self, forCellWithReuseIdentifier: NestedCollectionViewCell.reusedId)
+    
+    private func register() {
+        collectionview.register(NestedCollectionViewCell.self, forCellWithReuseIdentifier: NestedCollectionViewCell.identifier)
         collectionview.register(RecommendHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendHeaderView.reuseId)
     }
+    
     private func setLayout() {
         addSubview(collectionview)
         
@@ -63,14 +70,13 @@ extension NestedView {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.top.bottom.equalToSuperview()
         }
-        registerSubViews()
     }
     
     // MARK: - Data
     
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionview, cellProvider: { (_, indexPath, item) -> UICollectionViewCell? in
-            guard let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.reusedId, for: indexPath) as? NestedCollectionViewCell else { return UICollectionViewCell()}
+            guard let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.identifier, for: indexPath) as? NestedCollectionViewCell else { return UICollectionViewCell()}
             let item = item as! ItemModel
             cell.config(item)
             switch indexPath.row {
@@ -79,9 +85,12 @@ extension NestedView {
             default:
                 cell.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
             }
+            cell.colorView.frame = .init(x: 0, y: 0, width: 11.adjusted, height: 60.adjusted)
+            cell.colorView.layer.addBorder([.right], color: .nottodoGray2!, width: 0.5.adjusted)
             return cell
         })
     }
+    
     private func reloadData() {
         var snapShot = NSDiffableDataSourceSnapshot<Section, Item>()
         defer {

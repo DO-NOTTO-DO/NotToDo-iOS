@@ -14,7 +14,7 @@ class LabelCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    static var reuseId: String = "LabelCollectionViewCell"
+    static var identifier = "LabelCollectionViewCell"
     
     // MARK: - UI Components
     
@@ -31,6 +31,9 @@ class LabelCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension LabelCollectionViewCell {
     func setUI() {
         titleLabel.do {

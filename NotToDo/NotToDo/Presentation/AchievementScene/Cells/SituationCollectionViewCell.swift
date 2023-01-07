@@ -9,7 +9,7 @@ import UIKit
 
 class SituationCollectionViewCell: UICollectionViewCell {
     
-    static var reusedId = "SituationCollectionViewCell"
+    static var identifier = "SituationCollectionViewCell"
     lazy var label = CustomAchieveLabel(color: .nottodoBlack!, font: UIFont(name: AppFontName.pretendardSemiBold, size: 14)!)
     lazy var image = UIImageView().then {
         $0.image = UIImage.rank1
@@ -30,6 +30,9 @@ class SituationCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension SituationCollectionViewCell {
     private func setUI() {
         self.label.layer.cornerRadius = 10

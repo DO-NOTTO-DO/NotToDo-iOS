@@ -11,10 +11,11 @@ import SnapKit
 import Then
 
 class CustomSegmentedControl: UISegmentedControl {
+    
     override init(items: [Any]?) {
         super.init(items: items)
-        self.removeBackgroundDivider()
-        self.setStyle()
+        removeBackgroundDivider()
+        setStyle()
     }
     
     required init?(coder: NSCoder) {

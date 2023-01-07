@@ -22,12 +22,6 @@ class RecommendHeaderView: UICollectionReusableView {
     var bgView = UIView()
     private lazy var iconImage = UIImageView()
     
-    // MARK: - Network
-    
-    func HeaderTitle(title: String?) {
-        self.titleLabel.text = title
-    }
-    
     // MARK: - Life Cycle
  
     override init(frame: CGRect) {
@@ -40,8 +34,10 @@ class RecommendHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension RecommendHeaderView {
-    
     func setUI() {
         titleLabel.do {
             $0.textColor = .nottodoGray1
@@ -51,13 +47,14 @@ extension RecommendHeaderView {
         iconImage.do {
             $0.image = UIImage.recommend_star
         }
+
         bgView.do {
-            let firstLayer = CALayer()
-            firstLayer.addBorder([.top, .left, .right], color: .nottodoGray2!, width: 0.5)
-            firstLayer.frame = CGRect(x: 111, y: 111, width: 132, height: 194)
-            $0.layer.addSublayer(firstLayer)
+            $0.frame = .init(x: 0, y: 0, width: titleLabel.frame.width, height: 34.adjusted)
+            $0.layer.addBorder([.top, .left, .right], color: .nottodoGray2!, width: 0.5.adjusted)
+
         }
     }
+    
     func setLayout() {
         addSubview(titleLabel)
         titleLabel.addSubviews(bgView, iconImage)
@@ -75,5 +72,9 @@ extension RecommendHeaderView {
         bgView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+
+    func HeaderTitle(title: String?) {
+        self.titleLabel.text = title
     }
 }

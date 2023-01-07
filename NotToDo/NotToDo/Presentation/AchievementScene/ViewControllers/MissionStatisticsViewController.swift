@@ -35,9 +35,9 @@ class MissionStatisticsViewController: UIViewController {
         }
     }
     private func registerSubViews() {
-        collectionview.register(MissionCollectionViewCell.self, forCellWithReuseIdentifier: MissionCollectionViewCell.reusedId)
-        collectionview.register(EmptyCollectionViewCell.self, forCellWithReuseIdentifier: EmptyCollectionViewCell.reuseId)
-        collectionview.register(AchievementHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AchievementHeaderView.reuseId)
+        collectionview.register(MissionCollectionViewCell.self, forCellWithReuseIdentifier: MissionCollectionViewCell.identifier)
+        collectionview.register(EmptyCollectionViewCell.self, forCellWithReuseIdentifier: EmptyCollectionViewCell.identifier)
+        collectionview.register(AchievementHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AchievementHeaderView.identifier)
     }
     private func setLayout() {
         view.addSubviews(collectionview)
@@ -52,7 +52,7 @@ class MissionStatisticsViewController: UIViewController {
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
             switch section {
             case .main:
-                let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: MissionCollectionViewCell.reusedId, for: indexPath) as! MissionCollectionViewCell
+                let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: MissionCollectionViewCell.identifier, for: indexPath) as! MissionCollectionViewCell
                 cell.config(item as! MissionList)
                 switch indexPath.row {
                 case 0:
@@ -72,7 +72,7 @@ class MissionStatisticsViewController: UIViewController {
                     return cell
                 }
             case .empty:
-                let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseId, for: indexPath) as! EmptyCollectionViewCell
+                let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.identifier, for: indexPath) as! EmptyCollectionViewCell
                 return cell
             }
         })
@@ -87,7 +87,7 @@ class MissionStatisticsViewController: UIViewController {
 //                snapshot.appendSections([.main])
 //                snapshot.appendItems(missionList,toSection: .main)
         dataSource.supplementaryViewProvider = { (collectionView, _, indexPath) in
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AchievementHeaderView.reuseId, for: indexPath) as? AchievementHeaderView else {return UICollectionReusableView()}
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AchievementHeaderView.identifier, for: indexPath) as? AchievementHeaderView else {return UICollectionReusableView()}
                 header.HeaderTitle(title: "내가 달성한 낫투두의 순위는?")
             return header
             }

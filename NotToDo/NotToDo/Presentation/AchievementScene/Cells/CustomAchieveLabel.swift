@@ -11,7 +11,7 @@ class CustomAchieveLabel: UILabel {
     var color: UIColor = .black
     convenience init(color: UIColor, font: UIFont) {
         self.init()
-        self.textAlignment = .left
+        textAlignment = .left
         self.color = color
         self.font = font
     }

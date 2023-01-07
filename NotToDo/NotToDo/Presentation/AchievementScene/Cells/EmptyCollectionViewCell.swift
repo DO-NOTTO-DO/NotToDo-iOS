@@ -12,7 +12,7 @@ import Then
 
 class EmptyCollectionViewCell: UICollectionViewCell {
     
-    static var reuseId: String = "EmptyCollectionViewCell"
+    static var identifier = "EmptyCollectionViewCell"
     
     private lazy var mainTitle = UILabel()
     private lazy var iconImage = UIImageView()
@@ -28,6 +28,9 @@ class EmptyCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension EmptyCollectionViewCell {
     func setUI() {
         iconImage.do {

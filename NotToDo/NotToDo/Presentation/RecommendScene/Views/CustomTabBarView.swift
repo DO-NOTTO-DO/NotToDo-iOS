@@ -36,6 +36,7 @@ class CustomTabBarView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .white
         setUI()
+        register()
         setLayout()
         setupDataSource()
         reloadData()
@@ -46,6 +47,9 @@ class CustomTabBarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension CustomTabBarView {
     private func setUI() {
         setupCollectioView()
@@ -56,18 +60,20 @@ extension CustomTabBarView {
             $0.isScrollEnabled = false
         }
     }
+    
+    private func register() {
+        collectionview.register(CustomTabBarCell.self, forCellWithReuseIdentifier: CustomTabBarCell.identifier)
+    }
+    
     private func setLayout() {
         addSubviews(collectionview)
-        registerSubViews()
         
         collectionview.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.bottom.top.equalToSuperview()
         }
     }
-    private func registerSubViews() {
-        collectionview.register(CustomTabBarCell.self, forCellWithReuseIdentifier: CustomTabBarCell.reusedId)
-    }
+    
     private func setupCollectioView() {
         let indexPath = IndexPath(item: 0, section: 0)
         collectionview.selectItem(at: indexPath, animated: false, scrollPosition: [])
@@ -77,11 +83,12 @@ extension CustomTabBarView {
     
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionview, cellProvider: { collectionView, indexPath, item in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomTabBarCell.reusedId, for: indexPath) as? CustomTabBarCell else { return UICollectionViewCell()}
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomTabBarCell.identifier, for: indexPath) as? CustomTabBarCell else { return UICollectionViewCell()}
             cell.config(item as! CustomTabBarItem, isSelected: indexPath.item == self.defaultIndex)
             return cell
         })
     }
+    
     private func reloadData() {
         var snapShot = NSDiffableDataSourceSnapshot<Section, Item>()
         defer {

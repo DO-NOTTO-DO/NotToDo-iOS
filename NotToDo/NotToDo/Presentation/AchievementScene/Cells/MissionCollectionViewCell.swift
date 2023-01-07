@@ -12,7 +12,7 @@ import Then
 
 class MissionCollectionViewCell: UICollectionViewCell {
     
-    static var reusedId = "MissionCollectionViewCell"
+    static var identifier = "MissionCollectionViewCell"
     
     lazy var label = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardSemiBold(size: 14))
     lazy var image = UIImageView()
@@ -32,6 +32,9 @@ class MissionCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension MissionCollectionViewCell {
     private func setUI() {
         self.label.layer.cornerRadius = 10

@@ -47,6 +47,9 @@ final class AchievementViewController: UIViewController {
         setLayout()
     }
 }
+
+// MARK: - Methods
+
 extension AchievementViewController {
     private func setUI() {
         scrollView.do {

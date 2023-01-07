@@ -47,12 +47,6 @@ extension RecommendHeaderView {
         iconImage.do {
             $0.image = UIImage.recommend_star
         }
-
-        bgView.do {
-            $0.frame = .init(x: 0, y: 0, width: titleLabel.frame.width, height: 34.adjusted)
-            $0.layer.addBorder([.top, .left, .right], color: .nottodoGray2!, width: 0.5.adjusted)
-
-        }
     }
     
     func setLayout() {

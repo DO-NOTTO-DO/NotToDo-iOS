@@ -25,7 +25,6 @@ class NestedCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.backgroundColor = .white
         setUI()
         setLayout()
     }
@@ -39,6 +38,7 @@ class NestedCollectionViewCell: UICollectionViewCell {
 
 extension NestedCollectionViewCell {
     private func setUI() {
+        backgroundColor = .white
         colorView.do {
             $0.layer.backgroundColor = UIColor.yellow_basic?.cgColor
         }

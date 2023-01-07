@@ -20,7 +20,7 @@ class MissionStatisticsViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
         setUI()
-        registerSubViews()
+        register()
         setLayout()
         setupDataSource()
         reloadData()
@@ -34,7 +34,7 @@ class MissionStatisticsViewController: UIViewController {
             $0.isScrollEnabled = false
         }
     }
-    private func registerSubViews() {
+    private func register() {
         collectionview.register(MissionCollectionViewCell.self, forCellWithReuseIdentifier: MissionCollectionViewCell.identifier)
         collectionview.register(EmptyCollectionViewCell.self, forCellWithReuseIdentifier: EmptyCollectionViewCell.identifier)
         collectionview.register(AchievementHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AchievementHeaderView.identifier)
@@ -82,10 +82,10 @@ class MissionStatisticsViewController: UIViewController {
         defer {
             dataSource.apply(snapshot, animatingDifferences: false)
         }
-        snapshot.appendSections([.empty])
-        snapshot.appendItems(Array(0..<1), toSection: .empty)
-//                snapshot.appendSections([.main])
-//                snapshot.appendItems(missionList,toSection: .main)
+//        snapshot.appendSections([.empty])
+//        snapshot.appendItems(Array(0..<1), toSection: .empty)
+                snapshot.appendSections([.main])
+                snapshot.appendItems(missionList, toSection: .main)
         dataSource.supplementaryViewProvider = { (collectionView, _, indexPath) in
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AchievementHeaderView.identifier, for: indexPath) as? AchievementHeaderView else {return UICollectionReusableView()}
                 header.HeaderTitle(title: "내가 달성한 낫투두의 순위는?")

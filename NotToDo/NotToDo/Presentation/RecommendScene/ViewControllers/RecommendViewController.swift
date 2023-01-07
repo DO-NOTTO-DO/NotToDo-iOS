@@ -41,16 +41,19 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
         reloadData()
     }
 }
+
+// MARK: - Methods
+
 extension RecommendViewController {
     private func setUI() {
         view.backgroundColor = .white
         mainTitle.do {
-            $0.text = "추천"
+            $0.text = I18N.recommendMainTitle
             $0.font = .PretendardBold(size: 22)
             $0.textColor = .nottodoGray1
         }
         createButton.do {
-            $0.setTitle("직접 작성하기", for: .normal)
+            $0.setTitle(I18N.recommendButtonTitle, for: .normal)
             $0.titleLabel!.font = .PretendardMedium(size: 14)
             $0.setTitleColor(UIColor.nottodoGray2, for: .normal)
             $0.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
@@ -78,7 +81,7 @@ extension RecommendViewController {
     }
    
     private func setLayout() {
-        view.addSubviews(mainTitle, createButton,customTabBar, underLineView, contentsCollectionView)
+        view.addSubviews(mainTitle, createButton, customTabBar, underLineView, contentsCollectionView)
         
         mainTitle.snp.makeConstraints {
             $0.top.equalTo(safeArea).offset(17)
@@ -125,7 +128,6 @@ extension RecommendViewController {
         case 2: completion(SortedItemModel.sampleData2)
         case 3: completion(SortedItemModel.sampleData3)
         case 4: completion(SortedItemModel.sampleData4)
-
         default: completion(SortedItemModel.sampleData)
         }
     }
@@ -157,6 +159,7 @@ extension RecommendViewController {
         snapShot.appendItems(Array(0..<1), toSection: .sub)
         snapShot.appendItems(itemList, toSection: .main)
     }
+    
     // MARK: - Layout
     
     func recommendlayout() -> UICollectionViewLayout {

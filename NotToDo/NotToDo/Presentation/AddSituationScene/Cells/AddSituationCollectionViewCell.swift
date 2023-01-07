@@ -37,11 +37,11 @@ extension AddSituationCollectionViewCell {
     private func setUI() {
         backgroundColor = .nottodoWhite
         layer.borderColor = UIColor.nottodoGray1?.cgColor
-        layer.borderWidth = 0.5
+        layer.borderWidth = 0.5.adjusted
         layer.cornerRadius = self.frame.height / 2
         
         addSituationLabel.do {
-            $0.font = .PretendardMedium(size: 14)
+            $0.font = .PretendardMedium(size: 14.adjusted)
             $0.textColor = .nottodoGray1
         }
     }

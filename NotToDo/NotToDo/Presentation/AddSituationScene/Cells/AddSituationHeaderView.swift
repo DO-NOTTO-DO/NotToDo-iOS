@@ -33,11 +33,11 @@ class AddSituationHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func Icon(icon: UIImage?) {
+    func Icon(icon: UIImage?) {
         self.icon.image = icon
     }
     
-    public func HeaderTitle(title: String?) {
+    func HeaderTitle(title: String?) {
         self.titleLabel.text = title
     }
 }
@@ -46,16 +46,12 @@ class AddSituationHeaderView: UICollectionReusableView {
 
 extension AddSituationHeaderView {
     
-    // MARK: - UI Helpers
-    
     private func setUI() {
         titleLabel.do {
             $0.textColor = .nottodoGray1
-            $0.font = .PretendardMedium(size: 16)
+            $0.font = .PretendardMedium(size: 16.adjusted)
         }
     }
-    
-    // MARK: - Layout Helpers
     
     private func setLayout() {
         [titleLabel, icon].forEach {
@@ -64,13 +60,13 @@ extension AddSituationHeaderView {
         
         icon.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.equalToSuperview().offset(13)
-            $0.height.width.equalTo(30)
+            $0.leading.equalToSuperview().offset(13.adjusted)
+            $0.height.width.equalTo(30.adjusted)
         }
         
         titleLabel.snp.makeConstraints {
             $0.centerY.equalTo(icon.snp.centerY)
-            $0.leading.equalTo(icon.snp.trailing).offset(4)
+            $0.leading.equalTo(icon.snp.trailing).offset(4.adjusted)
         }
     }
 }

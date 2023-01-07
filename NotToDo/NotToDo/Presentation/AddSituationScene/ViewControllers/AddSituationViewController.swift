@@ -14,10 +14,6 @@ final class AddSituationViewController: UIViewController {
     private var addSituationView: AddSituationView!
     
     // MARK: - View Life Cycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func loadView() {
         super.loadView()

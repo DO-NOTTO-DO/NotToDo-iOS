@@ -17,27 +17,6 @@ class AddSituationView: UIView {
     private var textCountLabel = UILabel()
     let maxLength = 15
     
-    /// test variables
-    
-    var recommendList: [AddSituationModel] = [
-        AddSituationModel(keyword: "출근 시간"),
-        AddSituationModel(keyword: "아침"),
-        AddSituationModel(keyword: "업무"),
-        AddSituationModel(keyword: "아이엘츠"),
-        AddSituationModel(keyword: "밥 먹을 때"),
-        AddSituationModel(keyword: "치팅데이"),
-        AddSituationModel(keyword: "휴식시간")
-    ]
-    
-    var recentList: [AddSituationModel] = [
-        AddSituationModel(keyword: "흠냐흠냐"),
-        AddSituationModel(keyword: "아침"),
-        AddSituationModel(keyword: "떡볶이"),
-        AddSituationModel(keyword: "낫투두"),
-        AddSituationModel(keyword: "최고"),
-        AddSituationModel(keyword: "짱이얌")
-    ]
-    
     // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
@@ -120,8 +99,11 @@ extension AddSituationView {
     }
     
     private func register() {
-        addSituationCollectionView.register(AddSituationHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AddSituationHeaderView.identifier)
-        addSituationCollectionView.register(AddSituationCollectionViewCell.self, forCellWithReuseIdentifier: AddSituationCollectionViewCell.identifier)
+        addSituationCollectionView.register(AddSituationHeaderView.self,
+                                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                            withReuseIdentifier: AddSituationHeaderView.identifier)
+        addSituationCollectionView.register(AddSituationCollectionViewCell.self,
+                                            forCellWithReuseIdentifier: AddSituationCollectionViewCell.identifier)
     }
 }
 
@@ -219,9 +201,11 @@ extension AddSituationView: UITextFieldDelegate {
         return true
     }
 }
+
 extension AddSituationView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.reloadData()
+        
         switch indexPath.section {
         case 0:
             inputTextField.text = recommendList[indexPath.row].keyword
@@ -232,6 +216,5 @@ extension AddSituationView: UICollectionViewDelegate {
         default:
             return
         }
-        
     }
 }

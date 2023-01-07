@@ -24,6 +24,7 @@ final class AddMissionTextFieldView: UIView {
         setLayout()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -38,7 +39,7 @@ extension AddMissionTextFieldView {
             $0.layer.borderWidth = 1.adjusted
             $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
             $0.font = .PretendardMedium(size: 16)
-            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 13.15.adjusted, height: 0.0))
+            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 15.adjusted, height: 0.0))
             $0.leftViewMode = .always
             $0.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
         }

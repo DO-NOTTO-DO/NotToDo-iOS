@@ -71,4 +71,10 @@ struct I18N {
     static let recommendKeyword = "낫투두가 추천하는 상황 키워드"
     static let recentKeyword = "최근 사용한 키워드"
     static let inputPlaceHolder = "직접 입력하기..."
+    
+    // Recommend
+    
+    static let recommendViewTitle = "* 박스 터치 시, 낫투두가 아닌 환경만 입력됩니다."
+    static let recommendMainTitle = "성취"
+    static let recommendButtonTitle = "직접 작성하기"
 }

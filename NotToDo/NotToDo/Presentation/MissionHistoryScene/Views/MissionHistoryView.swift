@@ -16,8 +16,8 @@ class MissionHistoryView: UIView, UITextFieldDelegate {
     
     private var inputTextField = UITextField()
     private var backButton = UIButton()
-    private lazy var missionHistoryIcon = UIImageView()
-    private lazy var missionHistoryLabel = UILabel()
+    private var missionHistoryIcon = UIImageView()
+    private var missionHistoryLabel = UILabel()
     private lazy var missionHistoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     let historyInset: UIEdgeInsets = UIEdgeInsets(top: 15.adjusted, left: 20.adjusted, bottom: 15.adjusted, right: 20.adjusted)
     let cellHeight: CGFloat = 49.adjusted
@@ -42,6 +42,8 @@ class MissionHistoryView: UIView, UITextFieldDelegate {
 
 extension MissionHistoryView {
     private func setUI() {
+        backgroundColor = .nottodoWhite
+        
         inputTextField.do {
             $0.backgroundColor = .nottodoWhite
             $0.layer.borderWidth = 1.adjusted
@@ -73,14 +75,12 @@ extension MissionHistoryView {
         missionHistoryCollectionView.do {
             $0.isScrollEnabled = true
             $0.collectionViewLayout = layout()
-            // $0.showsVerticalScrollIndicator = false
             $0.delegate = self
             $0.dataSource = self
         }
     }
     
     private func setLayout() {
-        backgroundColor = .nottodoWhite
         
         addSubviews(inputTextField, backButton, missionHistoryIcon, missionHistoryLabel, missionHistoryCollectionView)
         
@@ -97,8 +97,8 @@ extension MissionHistoryView {
         }
         
         missionHistoryIcon.snp.makeConstraints {
-            $0.top.equalTo(inputTextField.snp.bottom).offset(25)
-            $0.leading.equalToSuperview().offset(20)
+            $0.top.equalTo(inputTextField.snp.bottom).offset(25.adjusted)
+            $0.leading.equalToSuperview().offset(20.adjusted)
             $0.height.width.equalTo(30.adjusted)
         }
         
@@ -141,14 +141,13 @@ extension MissionHistoryView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: MissionHistoryCollectionViewCell.identifier, for: indexPath)
                 as? MissionHistoryCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: historyList[indexPath.row])
+        cell.configure(model: historyList[indexPath.row])
         cell.setBorder(indexPath)
         return cell
     }
 }
 
 extension MissionHistoryView: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: width, height: cellHeight)

@@ -62,7 +62,7 @@ extension MissionHistoryCollectionViewCell {
         }
     }
     
-    func dataBind(model: MissionHistoryModel) {
+    func configure(model: MissionHistoryModel) {
         missionHistoryLabel.text = model.history
     }
 }

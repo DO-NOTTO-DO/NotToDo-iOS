@@ -100,6 +100,19 @@ extension SituationStatisticsViewController: UITableViewDataSource, UITableViewD
                                        action: #selector(self.hideSection(sender:)),
                                        for: .touchUpInside)
         customHeaderView.config(titleLists[section])
+         switch section {
+         case 0:
+             customHeaderView.headerButton.setImage(.situation_Rank1_off, for: .normal)
+             customHeaderView.headerButton.setImage(.situation_Rank1, for: .selected)
+         case 1:
+             customHeaderView.headerButton.setImage(.situation_Rank2_off, for: .normal)
+             customHeaderView.headerButton.setImage(.situation_Rank2, for: .selected)
+         case 2:
+             customHeaderView.headerButton.setImage(.situation_Rank3_off, for: .normal)
+             customHeaderView.headerButton.setImage(.situation_Rank3, for: .selected)
+         default:
+             break
+         }
         return customHeaderView
     }
     @objc

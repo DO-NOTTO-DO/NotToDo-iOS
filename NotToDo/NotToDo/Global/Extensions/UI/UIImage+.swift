@@ -113,4 +113,11 @@ extension UIImage {
     static let rank3 = UIImage(named: "Achieve/rank_3")!.withRenderingMode(.alwaysOriginal)
     static let rank4 = UIImage(named: "Achieve/rank_4")!.withRenderingMode(.alwaysOriginal)
     static let rank5 = UIImage(named: "Achieve/rank_5")!.withRenderingMode(.alwaysOriginal)
+    
+    static let situation_Rank1 = UIImage(named: "Achieve/situation_rank1")!.withRenderingMode(.alwaysOriginal)
+    static let situation_Rank1_off = UIImage(named: "Achieve/situation_rank1_off")!.withRenderingMode(.alwaysOriginal)
+    static let situation_Rank2 = UIImage(named: "Achieve/situation_rank2")!.withRenderingMode(.alwaysOriginal)
+    static let situation_Rank2_off = UIImage(named: "Achieve/situation_rank2_off")!.withRenderingMode(.alwaysOriginal)
+    static let situation_Rank3 = UIImage(named: "Achieve/situation_rank3")!.withRenderingMode(.alwaysOriginal)
+    static let situation_Rank3_off = UIImage(named: "Achieve/situation_rank3_off")!.withRenderingMode(.alwaysOriginal)
 }

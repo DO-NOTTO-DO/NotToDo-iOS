@@ -10,7 +10,7 @@ import UIKit
 class TableHeaderView: UITableViewHeaderFooterView {
     
     static var identifier = "TableHeaderVIew"
-    var isSelected = true
+    var isSelected: Bool = false
     
     var headerButton = UIButton()
     var headerLabel = UILabel()
@@ -31,8 +31,7 @@ extension TableHeaderView {
         headerButton.addSubview(headerLabel)
         
         headerButton.do {
-            $0.layer.cornerRadius = 10
-            $0.layer.borderWidth = 0.5
+            $0.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
             
         }
         headerLabel.do {
@@ -57,6 +56,10 @@ extension TableHeaderView {
     
     func config(_ title : TitleButton){
         headerLabel.text = title.title
+    }
+    
+    @objc func headerButtonTapped(_ sender: UIButton){
+        sender.isSelected.toggle()
     }
 }
 

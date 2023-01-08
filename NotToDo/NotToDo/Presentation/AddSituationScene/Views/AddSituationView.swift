@@ -13,7 +13,11 @@ class AddSituationView: UIView {
     
     private var navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
     lazy var addSituationCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-    var footerView = AddSituationFooterView()
+    var chagedText: String? {
+        didSet {
+            addSituationCollectionView.reloadData()
+        }
+    }
     
     // MARK: - View Life Cycle
     
@@ -149,6 +153,7 @@ extension AddSituationView: UICollectionViewDataSource {
             switch indexPath.section {
             case 1:
                 guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationFooterView.identifier, for: indexPath) as? AddSituationFooterView else { return UICollectionReusableView() }
+                footerView.setTextField(chagedText ?? "")
                 return footerView
             default:
                 return UICollectionReusableView()
@@ -159,8 +164,7 @@ extension AddSituationView: UICollectionViewDataSource {
 
 extension AddSituationView: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier,
-                                                                for: indexPath) as? AddSituationCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath) as? AddSituationCollectionViewCell else {
             return .zero
         }
         switch indexPath.section {
@@ -203,23 +207,23 @@ extension AddSituationView: UITextFieldDelegate {
         return textField.resignFirstResponder()
     }
 }
+
 extension AddSituationView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         collectionView.reloadData()
         
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
+                as? AddSituationCollectionViewCell
+        cell!.backgroundColor = .blue
+        
         switch indexPath.section {
         case 0:
-                footerView.inputTextField.text = recommendList[indexPath.row].keyword
-                footerView.inputTextField.layer.borderColor = UIColor.nottodoGray2!.cgColor
-                footerView.inputTextField.layer.borderWidth = 1
-                footerView.textCountLabel.text = "\(footerView.inputTextField.text!.count)/15"
+            chagedText = recommendList[indexPath.row].keyword
         case 1:
             if !recentList.isEmpty {
-                footerView.inputTextField.text = recentList[indexPath.row].keyword
-                footerView.inputTextField.layer.borderColor = UIColor.nottodoGray2!.cgColor
-                footerView.inputTextField.layer.borderWidth = 1
-                footerView.textCountLabel.text = "\(footerView.inputTextField.text!.count)/15"
+                chagedText = recentList[indexPath.row].keyword
             }
         default:
             return

@@ -41,7 +41,7 @@ class AddSituationFooterView: UICollectionReusableView {
             self.inputTextField.deleteBackward()
         }
         
-        self.textCountLabel.text = "\(self.inputTextField.text?.count ?? 0)/15"
+        self.textCountLabel.text = "\(self.inputTextField.text?.count ?? 0)/\(maxLength)"
         
         if self.inputTextField.text!.count > 0 {
             self.inputTextField.layer.borderColor = UIColor.nottodoGray2?.cgColor
@@ -68,7 +68,7 @@ extension AddSituationFooterView {
         }
         
         textCountLabel.do {
-            $0.text = "0/15"
+            $0.text = "0/\(maxLength)"
             $0.font = .PretendardRegular(size: 16.adjusted)
             $0.textColor = .nottodoGray2
         }
@@ -87,6 +87,15 @@ extension AddSituationFooterView {
             $0.top.equalTo(inputTextField.snp.bottom).offset(9.adjusted)
             $0.trailing.equalToSuperview().inset(20.adjusted)
         }
+    }
+    
+    func setTextField(_ text: String) {
+        inputTextField.do {
+            $0.text = text
+            $0.layer.borderColor = UIColor.nottodoGray2!.cgColor
+            $0.layer.borderWidth = 1
+        }
+        textCountLabel.text = "\(inputTextField.text!.count)/\(maxLength)"
     }
 }
 

@@ -50,8 +50,8 @@ final class ActionSheetView: UIView {
     var calendar: FSCalendar! = FSCalendar(frame: .zero)
     private lazy var hStack = UIStackView(arrangedSubviews: [leftButton, rightButton])
     var headerLabel = UILabel()
-    private lazy var leftButton = UIButton()
-    private lazy var rightButton = UIButton()
+    private var leftButton = UIButton()
+    private var rightButton = UIButton()
     private var currentPage: Date?
     private lazy var today: Date = { return Date() }()
     lazy var dateFormatter = DateFormatter()

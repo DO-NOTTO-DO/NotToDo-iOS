@@ -110,8 +110,7 @@ extension AddSituationView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
                     as? AddSituationCollectionViewCell else { return UICollectionViewCell() }
             cell.dataBind(model: recommendList[indexPath.row])
             return cell

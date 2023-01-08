@@ -19,6 +19,15 @@ class AddSituationCollectionViewCell: UICollectionViewCell {
     // MARK: - UI Components
     
     let addSituationLabel = UILabel()
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                backgroundColor = .blue
+            } else {
+                backgroundColor = .orange
+            }
+        }
+    }
     
     // MARK: - View Life Cycle
     
@@ -38,7 +47,7 @@ class AddSituationCollectionViewCell: UICollectionViewCell {
 
 extension AddSituationCollectionViewCell {
     private func setUI() {
-        backgroundColor = .nottodoWhite
+        // backgroundColor = .nottodoWhite
         layer.borderColor = UIColor.nottodoGray1?.cgColor
         layer.borderWidth = 0.5.adjusted
         layer.cornerRadius = self.frame.height / 2
@@ -59,5 +68,19 @@ extension AddSituationCollectionViewCell {
     
     func dataBind(model: AddSituationModel) {
         addSituationLabel.text = model.keyword
+    }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            guard self.isHighlighted else { return }
+            
+            UIView.animate(
+                withDuration: 0.05,
+                animations: {
+                    self.backgroundColor = .nottodoGray1
+                    self.addSituationLabel.textColor = .nottodoWhite
+                }
+            )
+        }
     }
 }

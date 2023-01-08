@@ -64,7 +64,6 @@ extension AddSituationFooterView {
             $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 15.adjusted, height: 0.0))
             $0.leftViewMode = .always
             $0.attributedPlaceholder = NSAttributedString(string: I18N.inputPlaceHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
-            //            $0.delegate = self
         }
         
         textCountLabel.do {
@@ -98,4 +97,3 @@ extension AddSituationFooterView {
         textCountLabel.text = "\(inputTextField.text!.count)/\(maxLength)"
     }
 }
-

@@ -112,7 +112,7 @@ extension AddSituationView: UICollectionViewDataSource {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
                     as? AddSituationCollectionViewCell else { return UICollectionViewCell() }
-            cell.dataBind(model: recommendList[indexPath.row])
+            cell.configure(model: recommendList[indexPath.row])
             return cell
         case 1:
             if recentList.isEmpty {
@@ -124,7 +124,7 @@ extension AddSituationView: UICollectionViewDataSource {
                 guard let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
                         as? AddSituationCollectionViewCell else { return UICollectionViewCell() }
-                cell.dataBind(model: recentList[indexPath.row])
+                cell.configure(model: recentList[indexPath.row])
                 return cell
             }
         default:

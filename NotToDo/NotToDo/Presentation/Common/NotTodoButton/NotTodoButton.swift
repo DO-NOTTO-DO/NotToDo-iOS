@@ -70,7 +70,7 @@ extension NotTodoButton {
         case .plain: break
         case .withImage:
             config.image = image!
-            config.imagePlacement = .trailing
+            config.imagePlacement = .leading
             config.imagePadding = 10.adjusted
         }
         self.configuration = config

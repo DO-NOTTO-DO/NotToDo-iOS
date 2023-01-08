@@ -65,6 +65,11 @@ struct I18N {
     static let addMissoinButton = "낫투두 추가"
     static let startSunday = ["일", "월", "화", "수", "목", "금", "토"]
     static let startMonday = ["월", "화", "수", "목", "금", "토", "일"]
+    static let empty = """
+                    아직 아무것도 없네요,
+                    새로운 낫투두를 작성해보세요!
+                    """
+    static let goal = "목표"
     
     // AddSituation
     

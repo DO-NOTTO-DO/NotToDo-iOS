@@ -1,9 +1,10 @@
 //
-//  CustomTabBarItem.swift
+//  TabBarItem.swift
 //  NotToDo
 //
-//  Created by JEONGEUN KIM on 2023/01/06.
+//  Created by JEONGEUN KIM on 2023/01/05.
 //
+
 import Foundation
 
 struct CustomTabBarItem: Hashable {

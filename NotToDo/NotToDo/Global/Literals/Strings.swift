@@ -69,6 +69,10 @@ struct I18N {
     // Recommend
     
     static let recommendViewTitle = "* 박스 터치 시, 낫투두가 아닌 환경만 입력됩니다."
-    static let recommendMainTitle = "성취"
+    static let recommendMainTitle = "추천"
     static let recommendButtonTitle = "직접 작성하기"
+    
+    // Achievement
+    
+    static let achievementMainTitle = "성취"
 }

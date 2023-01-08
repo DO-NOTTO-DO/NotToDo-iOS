@@ -7,20 +7,22 @@
 
 import UIKit
 
+import FSCalendar
 import SnapKit
 import Then
-import FSCalendar
 
 final class AchievementViewController: UIViewController {
     
     // MARK: - UI Components
     
     private lazy var scrollView = UIScrollView()
+    private var titleView = TitleView()
     private lazy var calendarView = customCalendar(frame: .zero)
-    private lazy var segmentedControl = CustomSegmentedControl(items: ["낫투두 통계보기", "상황별 통계보기"])
+    private lazy var segmentedControl = CustomSegmentedControl(items: [" 낫투두 통계보기 ", " 상황별 통계보기 "])
     private lazy var missionVC = MissionStatisticsViewController()
     private lazy var situationVC = SituationStatisticsViewController()
     private lazy var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+    
     var dataViewControllers: [UIViewController] {
         [self.missionVC, self.situationVC]
     }
@@ -42,7 +44,6 @@ final class AchievementViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .BG
         setUI()
         setLayout()
     }
@@ -52,33 +53,46 @@ final class AchievementViewController: UIViewController {
 
 extension AchievementViewController {
     private func setUI() {
+        view.backgroundColor = .BG
+        
         scrollView.do {
             $0.showsHorizontalScrollIndicator = false
             $0.isScrollEnabled = true
             $0.backgroundColor = .BG
         }
+        
         calendarView.do {
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
             $0.calendar.delegate = self
         }
+        
         pageViewController.do {
             $0.setViewControllers([self.dataViewControllers[0]], direction: .forward, animated: true)
         }
     }
     private func setLayout() {
-        view.addSubviews(scrollView)
+        view.addSubviews(titleView, scrollView)
         scrollView.addSubviews(calendarView, segmentedControl, pageViewController.view)
+        
+        titleView.snp.makeConstraints {
+            $0.top.equalTo(safeArea).offset(17.adjusted)
+            $0.directionalHorizontalEdges.equalTo(safeArea)
+            $0.height.equalTo(65.adjusted)
+        }
+        
         scrollView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea)
-            $0.top.equalTo(safeArea)
+            $0.top.equalTo(titleView.snp.bottom)
             $0.bottom.equalToSuperview()
         }
+        
         calendarView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(118.adjusted)
+            $0.top.equalToSuperview()
             $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
             $0.height.equalTo(380.adjusted)
         }
+        
         segmentedControl.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
             $0.top.equalTo(calendarView.snp.bottom).offset(30.adjusted)

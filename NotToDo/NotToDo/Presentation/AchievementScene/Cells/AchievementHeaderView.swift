@@ -38,21 +38,23 @@ class AchievementHeaderView: UICollectionReusableView {
 // MARK: - Methods
 
 extension AchievementHeaderView {
-    func HeaderTitle(title: String?) {
-        self.subLabel.text = title
-    }
     func setUI() {
         hStack.do {
             $0.axis = .horizontal
         }
         icon.do {
-            $0.image = .star
+            $0.image = .rank
         }
     }
+    
     func setLayout() {
         addSubview(hStack)
         hStack.snp.makeConstraints {
             $0.leading.equalToSuperview()
         }
+    }
+    
+    func HeaderTitle(title: String?) {
+        self.subLabel.text = title
     }
 }

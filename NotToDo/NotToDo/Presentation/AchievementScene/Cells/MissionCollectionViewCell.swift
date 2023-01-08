@@ -12,15 +12,16 @@ import Then
 
 class MissionCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
+
     static var identifier = "MissionCollectionViewCell"
+
+    // MARK: - UI Components
     
-    lazy var label = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardSemiBold(size: 14))
-    lazy var image = UIImageView()
+    private var label = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardSemiBold(size: 14))
+    var image = UIImageView()
     
-    func config(_ item: MissionList) {
-        label.text = item.title
-        self.backgroundColor = item.color
-    }
+    // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -46,6 +47,7 @@ extension MissionCollectionViewCell {
             $0.image = UIImage.rank1
         }
     }
+    
     private func setLayout() {
         addSubview(image)
         image.addSubview(label)
@@ -57,5 +59,10 @@ extension MissionCollectionViewCell {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(41)
         }
+    }
+    
+    func config(_ item: MissionList) {
+        label.text = item.title
+        self.backgroundColor = item.color
     }
 }

@@ -8,24 +8,30 @@
 import UIKit
 
 class MissionStatisticsViewController: UIViewController {
+    
     let missionList: [MissionList] = MissionList.titles
-
     enum Section: Int, Hashable {
         case main, empty
     }
     typealias Item = AnyHashable
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
+    
     lazy var collectionview = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout())
+    
+    // MARK: - View Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .clear
         setUI()
         register()
         setLayout()
         setupDataSource()
         reloadData()
     }
+    
     private func setUI() {
+        view.backgroundColor = .clear
+        
         collectionview.do {
             $0.backgroundColor = .clear
             $0.showsVerticalScrollIndicator = false
@@ -106,7 +112,7 @@ class MissionStatisticsViewController: UIViewController {
         return layout
     }
     func MainSection() -> NSCollectionLayoutSection {
-        return Layout.compositional_vertical(itemW: .fractionalWidth(1), itemH: .absolute(45), gWidth: .fractionalWidth(1), gHeight: .estimated(800), count: nil)
+        return Layout.compositional_vertical(itemW: .fractionalWidth(1), itemH: .absolute(45), gWidth: .fractionalWidth(1), gHeight: .estimated(1000), count: nil)
     }
     func EmptySection() -> NSCollectionLayoutSection {
             return   Layout.compositional_vertical(itemW: .fractionalWidth(1), itemH: .fractionalHeight(1), gWidth: .fractionalWidth(1), gHeight: .absolute(250), count: 1)

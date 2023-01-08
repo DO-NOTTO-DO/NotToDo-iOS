@@ -7,9 +7,9 @@
 
 import UIKit
 
+import FSCalendar
 import SnapKit
 import Then
-import FSCalendar
 
 class customCalendar: UIView {
 

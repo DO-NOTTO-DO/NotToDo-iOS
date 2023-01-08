@@ -12,11 +12,17 @@ import Then
 
 class EmptyCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
+
     static var identifier = "EmptyCollectionViewCell"
     
+    // MARK: - UI Components
+
     private lazy var mainTitle = UILabel()
     private lazy var iconImage = UIImageView()
     
+    // MARK: - View Life Cycle
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.backgroundColor = .clear
@@ -49,6 +55,7 @@ extension EmptyCollectionViewCell {
     }
     func setLayout() {
         addSubviews(iconImage, mainTitle)
+        
         iconImage.snp.makeConstraints {
             $0.width.equalTo(111.adjusted)
             $0.height.equalTo(124.adjusted)

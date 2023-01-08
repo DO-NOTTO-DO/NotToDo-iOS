@@ -62,7 +62,7 @@ extension NavigationBarView {
     private func setUI(mode: NavigationMode) {
         successButton.do {
             $0.setTitle(I18N.submit, for: .normal)
-            $0.setTitleColor(.nottodoGray3, for: .normal)
+            $0.setTitleColor(.nottodoBlack, for: .normal)
             $0.titleLabel?.font = .PretendardMedium(size: 18)
         }
         

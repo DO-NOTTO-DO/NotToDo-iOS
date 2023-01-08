@@ -24,11 +24,27 @@ class AddSituationView: UIView {
         setUI()
         setLayout()
         register()
+        
+        inputTextField.addTarget(self, action: #selector(changeText), for: .editingChanged)
     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func changeText() {
+        if self.inputTextField.text?.count ?? 0 > maxLength {
+            self.inputTextField.deleteBackward()
+        }
+        
+        textCountLabel.text = "\(self.inputTextField.text?.count ?? 0)/15"
+        
+        if self.inputTextField.text!.count > 0 {
+            self.inputTextField.layer.borderColor = UIColor.nottodoGray2?.cgColor
+        } else {
+            self.inputTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
+        }
     }
 }
 
@@ -79,7 +95,7 @@ extension AddSituationView {
         }
         
         inputTextField.snp.makeConstraints {
-            $0.top.equalTo(addSituationCollectionView.snp.bottom).offset(38.adjusted)
+            $0.top.equalTo(addSituationCollectionView.snp.bottom).offset(6.adjusted)
             $0.leading.trailing.equalToSuperview().inset(20.adjusted)
             $0.height.equalTo(46.adjusted)
         }
@@ -104,6 +120,7 @@ extension AddSituationView {
                                             withReuseIdentifier: AddSituationHeaderView.identifier)
         addSituationCollectionView.register(AddSituationCollectionViewCell.self,
                                             forCellWithReuseIdentifier: AddSituationCollectionViewCell.identifier)
+        addSituationCollectionView.register(EmptyRecentCollectionViewCell.self, forCellWithReuseIdentifier: EmptyRecentCollectionViewCell.identifier)
     }
 }
 
@@ -118,7 +135,11 @@ extension AddSituationView: UICollectionViewDataSource {
         case 0:
             return recommendList.count
         case 1:
-            return recentList.count
+            if recentList.isEmpty {
+                return 1
+            } else {
+                return recentList.count
+            }
         default:
             return 0
         }
@@ -133,11 +154,18 @@ extension AddSituationView: UICollectionViewDataSource {
             cell.dataBind(model: recommendList[indexPath.row])
             return cell
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
-                    as? AddSituationCollectionViewCell else { return UICollectionViewCell() }
-            cell.dataBind(model: recentList[indexPath.row])
-            return cell
+            if recentList.isEmpty {
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: EmptyRecentCollectionViewCell.identifier, for: indexPath)
+                        as? EmptyRecentCollectionViewCell else { return UICollectionViewCell() }
+                return cell
+            } else {
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
+                        as? AddSituationCollectionViewCell else { return UICollectionViewCell() }
+                cell.dataBind(model: recentList[indexPath.row])
+                return cell
+            }
         default:
             return UICollectionViewCell()
         }
@@ -162,17 +190,21 @@ extension AddSituationView: UICollectionViewDataSource {
 }
 
 extension AddSituationView: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddSituationCollectionViewCell", for: indexPath) as? AddSituationCollectionViewCell else {
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier,
+                                                                for: indexPath) as? AddSituationCollectionViewCell else {
+            
             return .zero
         }
-        
         switch indexPath.section {
         case 0:
             cell.addSituationLabel.text = recommendList[indexPath.row].keyword
         case 1:
-            cell.addSituationLabel.text = recentList[indexPath.row].keyword
+            if recentList.isEmpty {
+                return CGSize(width: addSituationCollectionView.frame.width, height: 35.adjusted)
+            } else {
+                cell.addSituationLabel.text = recentList[indexPath.row].keyword
+            }
         default:
             cell.addSituationLabel.text = recommendList[indexPath.row].keyword
         }
@@ -190,23 +222,8 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
 }
 
 extension AddSituationView: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if textField.text?.count ?? 0 > maxLength {
-            textField.deleteBackward()
-        }
-        textCountLabel.text = "\(textField.text!.count)/15"
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.becomeFirstResponder()
-        textField.borderColor = .nottodoGray2
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.borderColor = .nottodoGray4
+                                               func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
     }
 }
 
@@ -217,10 +234,16 @@ extension AddSituationView: UICollectionViewDelegate {
         switch indexPath.section {
         case 0:
             inputTextField.text = recommendList[indexPath.row].keyword
+            inputTextField.layer.borderColor = UIColor.nottodoGray2!.cgColor
+            inputTextField.layer.borderWidth = 1
             textCountLabel.text = "\(inputTextField.text!.count)/15"
         case 1:
-            inputTextField.text = recentList[indexPath.row].keyword
-            textCountLabel.text = "\(inputTextField.text!.count)/15"
+            if !recentList.isEmpty {
+                inputTextField.text = recentList[indexPath.row].keyword
+                inputTextField.layer.borderColor = UIColor.nottodoGray2!.cgColor
+                inputTextField.layer.borderWidth = 1
+                textCountLabel.text = "\(inputTextField.text!.count)/15"
+            }
         default:
             return
         }

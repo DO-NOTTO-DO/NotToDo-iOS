@@ -12,10 +12,8 @@ class AddSituationView: UIView {
     // MARK: - UI Components
     
     private var navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
-    private lazy var addSituationCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-    private var inputTextField = UITextField()
-    private var textCountLabel = UILabel()
-    let maxLength = 15
+    lazy var addSituationCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    var footerView = AddSituationFooterView()
     
     // MARK: - View Life Cycle
     
@@ -24,27 +22,11 @@ class AddSituationView: UIView {
         setUI()
         setLayout()
         register()
-        
-        inputTextField.addTarget(self, action: #selector(changeText), for: .editingChanged)
     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func changeText() {
-        if self.inputTextField.text?.count ?? 0 > maxLength {
-            self.inputTextField.deleteBackward()
-        }
-        
-        textCountLabel.text = "\(self.inputTextField.text?.count ?? 0)/15"
-        
-        if self.inputTextField.text!.count > 0 {
-            self.inputTextField.layer.borderColor = UIColor.nottodoGray2?.cgColor
-        } else {
-            self.inputTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
-        }
     }
 }
 
@@ -58,29 +40,12 @@ extension AddSituationView {
             $0.delegate = self
             $0.dataSource = self
         }
-        
-        inputTextField.do {
-            $0.backgroundColor = .nottodoWhite
-            $0.layer.borderWidth = 1.adjusted
-            $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
-            $0.font = .PretendardMedium(size: 16.adjusted)
-            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 15.adjusted, height: 0.0))
-            $0.leftViewMode = .always
-            $0.attributedPlaceholder = NSAttributedString(string: I18N.inputPlaceHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
-            $0.delegate = self
-        }
-        
-        textCountLabel.do {
-            $0.text = "0/15"
-            $0.font = .PretendardRegular(size: 16.adjusted)
-            $0.textColor = .nottodoGray2
-        }
     }
     
     private func setLayout() {
         backgroundColor = .nottodoWhite
         
-        addSubviews(navigationBarView, addSituationCollectionView, inputTextField, textCountLabel)
+        addSubviews(navigationBarView, addSituationCollectionView)
         
         navigationBarView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
@@ -91,18 +56,7 @@ extension AddSituationView {
         addSituationCollectionView.snp.makeConstraints {
             $0.top.equalTo(navigationBarView.snp.bottom).offset(32.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
-            $0.height.equalTo(270.adjusted)
-        }
-        
-        inputTextField.snp.makeConstraints {
-            $0.top.equalTo(addSituationCollectionView.snp.bottom).offset(6.adjusted)
-            $0.leading.trailing.equalToSuperview().inset(20.adjusted)
-            $0.height.equalTo(46.adjusted)
-        }
-        
-        textCountLabel.snp.makeConstraints {
-            $0.top.equalTo(inputTextField.snp.bottom).offset(9.adjusted)
-            $0.trailing.equalToSuperview().inset(20.adjusted)
+            $0.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     
@@ -120,7 +74,11 @@ extension AddSituationView {
                                             withReuseIdentifier: AddSituationHeaderView.identifier)
         addSituationCollectionView.register(AddSituationCollectionViewCell.self,
                                             forCellWithReuseIdentifier: AddSituationCollectionViewCell.identifier)
-        addSituationCollectionView.register(EmptyRecentCollectionViewCell.self, forCellWithReuseIdentifier: EmptyRecentCollectionViewCell.identifier)
+        addSituationCollectionView.register(EmptyRecentCollectionViewCell.self,
+                                            forCellWithReuseIdentifier: EmptyRecentCollectionViewCell.identifier)
+        addSituationCollectionView.register(AddSituationFooterView.self,
+                                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                            withReuseIdentifier: AddSituationFooterView.identifier)
     }
 }
 
@@ -172,19 +130,29 @@ extension AddSituationView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch indexPath.section {
-        case 0:
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationHeaderView.identifier, for: indexPath) as? AddSituationHeaderView else { return UICollectionReusableView() }
-            headerView.HeaderTitle(title: I18N.recommendKeyword)
-            headerView.Icon(icon: .icRecommend)
-            return headerView
-        case 1:
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationHeaderView.identifier, for: indexPath) as? AddSituationHeaderView else { return UICollectionReusableView() }
-            headerView.HeaderTitle(title: I18N.recentKeyword)
-            headerView.Icon(icon: .recentUse)
-            return headerView
-        default:
-            return UICollectionReusableView()
+        if kind == UICollectionView.elementKindSectionHeader {
+            switch indexPath.section {
+            case 0:
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationHeaderView.identifier, for: indexPath) as? AddSituationHeaderView else { return UICollectionReusableView() }
+                headerView.HeaderTitle(title: I18N.recommendKeyword)
+                headerView.Icon(icon: .icRecommend)
+                return headerView
+            case 1:
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationHeaderView.identifier, for: indexPath) as? AddSituationHeaderView else { return UICollectionReusableView() }
+                headerView.HeaderTitle(title: I18N.recentKeyword)
+                headerView.Icon(icon: .recentUse)
+                return headerView
+            default:
+                return UICollectionReusableView()
+            }
+        } else {
+            switch indexPath.section {
+            case 1:
+                guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationFooterView.identifier, for: indexPath) as? AddSituationFooterView else { return UICollectionReusableView() }
+                return footerView
+            default:
+                return UICollectionReusableView()
+            }
         }
     }
 }
@@ -193,7 +161,6 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier,
                                                                 for: indexPath) as? AddSituationCollectionViewCell else {
-            
             return .zero
         }
         switch indexPath.section {
@@ -219,6 +186,16 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
         let width = collectionView.frame.width
         return CGSize(width: width, height: 31.adjusted)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        let width = collectionView.frame.width
+        switch section {
+        case 1:
+            return CGSize(width: width, height: 74.adjusted)
+        default:
+            return CGSize(width: 0, height: 0)
+        }
+    }
 }
 
 extension AddSituationView: UITextFieldDelegate {
@@ -226,23 +203,23 @@ extension AddSituationView: UITextFieldDelegate {
         return textField.resignFirstResponder()
     }
 }
-
 extension AddSituationView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         collectionView.reloadData()
         
         switch indexPath.section {
         case 0:
-            inputTextField.text = recommendList[indexPath.row].keyword
-            inputTextField.layer.borderColor = UIColor.nottodoGray2!.cgColor
-            inputTextField.layer.borderWidth = 1
-            textCountLabel.text = "\(inputTextField.text!.count)/15"
+                footerView.inputTextField.text = recommendList[indexPath.row].keyword
+                footerView.inputTextField.layer.borderColor = UIColor.nottodoGray2!.cgColor
+                footerView.inputTextField.layer.borderWidth = 1
+                footerView.textCountLabel.text = "\(footerView.inputTextField.text!.count)/15"
         case 1:
             if !recentList.isEmpty {
-                inputTextField.text = recentList[indexPath.row].keyword
-                inputTextField.layer.borderColor = UIColor.nottodoGray2!.cgColor
-                inputTextField.layer.borderWidth = 1
-                textCountLabel.text = "\(inputTextField.text!.count)/15"
+                footerView.inputTextField.text = recentList[indexPath.row].keyword
+                footerView.inputTextField.layer.borderColor = UIColor.nottodoGray2!.cgColor
+                footerView.inputTextField.layer.borderWidth = 1
+                footerView.textCountLabel.text = "\(footerView.inputTextField.text!.count)/15"
             }
         default:
             return

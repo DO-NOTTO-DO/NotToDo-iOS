@@ -24,10 +24,10 @@ var recommendList: [AddSituationModel] = [
 ]
 
 var recentList: [AddSituationModel] = [
-//    AddSituationModel(keyword: "흠냐흠냐"),
-//    AddSituationModel(keyword: "아침"),
-//    AddSituationModel(keyword: "떡볶이"),
-//    AddSituationModel(keyword: "낫투두"),
-//    AddSituationModel(keyword: "최고"),
-//    AddSituationModel(keyword: "짱이얌")
+    AddSituationModel(keyword: "흠냐흠냐"),
+    AddSituationModel(keyword: "아침"),
+    AddSituationModel(keyword: "떡볶이"),
+    AddSituationModel(keyword: "낫투두"),
+    AddSituationModel(keyword: "최고"),
+    AddSituationModel(keyword: "짱이얌")
 ]

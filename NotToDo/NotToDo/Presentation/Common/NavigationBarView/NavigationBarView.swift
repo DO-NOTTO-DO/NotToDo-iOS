@@ -73,7 +73,7 @@ extension NavigationBarView {
             backButton.setImage(.deletePageBtn, for: .normal)
             titleLabel.do {
                 $0.text = I18N.addMission
-                $0.textColor = .nottodoGray1
+                $0.textColor = .nottodoBlack
                 $0.font = .PretendardSemiBold(size: 22)
             }
             successButton.isHidden = true

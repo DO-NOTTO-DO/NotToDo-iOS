@@ -67,6 +67,12 @@ struct I18N {
     static let inputPlaceHolder = "직접 입력하기..."
     static let emptyHistory = "* 키워드 없을 시 넣는 칸 멘트 모르겠다"
     
+    // MissionHistory
+    
+    static let historyPlaceHolder = "하지 않을 일을 적어주세요..."
+    static let cancel = "취소"
+    static let missionHistory = "낫투두 기록"
+    
     // Recommend
     
     static let recommendViewTitle = "* 박스 터치 시, 낫투두가 아닌 환경만 입력됩니다."

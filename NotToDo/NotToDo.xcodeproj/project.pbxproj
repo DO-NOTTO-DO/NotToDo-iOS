@@ -26,6 +26,7 @@
 		096BDFFF29655424009ED396 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFFE29655424009ED396 /* CompositionalLayout.swift */; };
 		096BE00129659B3A009ED396 /* AchievementHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE00029659B3A009ED396 /* AchievementHeaderView.swift */; };
 		096BE0052965A209009ED396 /* BackgroundSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0042965A209009ED396 /* BackgroundSupplementaryView.swift */; };
+		096BE0092965ED8D009ED396 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0082965ED8D009ED396 /* DataModel.swift */; };
 		096BE0172966A142009ED396 /* CustomTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0162966A142009ED396 /* CustomTabBarCell.swift */; };
 		096BE0192966A18A009ED396 /* CustomPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0182966A18A009ED396 /* CustomPaddingLabel.swift */; };
 		096BE01B2966A1B3009ED396 /* RecommendHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE01A2966A1B3009ED396 /* RecommendHeaderView.swift */; };
@@ -123,6 +124,7 @@
 		096BDFFE29655424009ED396 /* CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayout.swift; sourceTree = "<group>"; };
 		096BE00029659B3A009ED396 /* AchievementHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeaderView.swift; sourceTree = "<group>"; };
 		096BE0042965A209009ED396 /* BackgroundSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSupplementaryView.swift; sourceTree = "<group>"; };
+		096BE0082965ED8D009ED396 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		096BE0162966A142009ED396 /* CustomTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarCell.swift; sourceTree = "<group>"; };
 		096BE0182966A18A009ED396 /* CustomPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaddingLabel.swift; sourceTree = "<group>"; };
 		096BE01A2966A1B3009ED396 /* RecommendHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendHeaderView.swift; sourceTree = "<group>"; };
@@ -505,8 +507,13 @@
 			isa = PBXGroup;
 			children = (
 				3B3405D3295B108400D44722 /* AchievementViewController.swift */,
+				096BDFED29651040009ED396 /* SituationStatisticsViewController.swift */,
+				096BE0082965ED8D009ED396 /* DataModel.swift */,
 				096BDFEF2965104B009ED396 /* MissionStatisticsView.swift */,
 				096BDFED29651040009ED396 /* SituationStatisticsView.swift */,
+				096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */,
+				096BDFFE29655424009ED396 /* CompositionalLayout.swift */,
+				096BDFEF2965104B009ED396 /* MissionStatisticsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -933,6 +940,7 @@
 				096BE0052965A209009ED396 /* BackgroundSupplementaryView.swift in Sources */,
 				096BDFF9296523C0009ED396 /* EmptyCollectionViewCell.swift in Sources */,
 				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,
+				096BE00B2965EE96009ED396 /* SituationTableViewCell.swift in Sources */,
 				3B1628AA295ADB2F0077AE7B /* URLConstant.swift in Sources */,
 				3B576324296403CB00E03637 /* UILabel+.swift in Sources */,
 				099F0728296B94790036CF55 /* EmptyView.swift in Sources */,
@@ -964,6 +972,7 @@
 				3B4B90BF29656751008C5CA8 /* AuthView.swift in Sources */,
 				3B4B90CC2965D697008C5CA8 /* CALayer+.swift in Sources */,
 				3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */,
+				096BE00D2965EF5E009ED396 /* PaddingLabel.swift in Sources */,
 				3B1628B0295ADB640077AE7B /* NetworkConstant.swift in Sources */,
 				3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */,
 				6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */,
@@ -975,6 +984,7 @@
 				096BDFFD29654F63009ED396 /* SituationCollectionViewCell.swift in Sources */,
 				099F06CF296732970036CF55 /* CustomTabBarView.swift in Sources */,
 				099F06FA2967EE9F0036CF55 /* LabelCollectionViewCell.swift in Sources */,
+				096BE0092965ED8D009ED396 /* DataModel.swift in Sources */,
 				3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */,
 				096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */,
 				099F072A296B98B90036CF55 /* SituationTitleView.swift in Sources */,

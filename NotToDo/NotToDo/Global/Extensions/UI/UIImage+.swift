@@ -117,4 +117,25 @@ extension UIImage {
     static let rank3 = UIImage(named: "Achieve/rank_3")!.withRenderingMode(.alwaysOriginal)
     static let rank4 = UIImage(named: "Achieve/rank_4")!.withRenderingMode(.alwaysOriginal)
     static let rank5 = UIImage(named: "Achieve/rank_5")!.withRenderingMode(.alwaysOriginal)
+    
+    // Onboarding
+    
+    static let startOnboarding = UIImage(named: "Onboarding/img_onboarding_page1")!.withRenderingMode(.alwaysOriginal)
+    static let firstOnboarding = UIImage(named: "Onboarding/img_onboarding_page2")!.withRenderingMode(.alwaysOriginal)
+    static let secondOnboarding = UIImage(named: "Onboarding/img_onboarding_page3")!.withRenderingMode(.alwaysOriginal)
+    static let thirdOnboarding = UIImage(named: "Onboarding/img_onboarding_page4")!.withRenderingMode(.alwaysOriginal)
+    static let finishOnboarding = UIImage(named: "Onboarding/img_onboarding_page5")!.withRenderingMode(.alwaysOriginal)
+    static let onboardingLogo = UIImage(named: "Onboarding/onboarding_logo")!.withRenderingMode(.alwaysOriginal)
+    static let nextArrowButton = UIImage(named: "Onboarding/btn_next")!.withRenderingMode(.alwaysOriginal)
+    static let beforeArrowButton = UIImage(named: "Onboarding/btn_before")!.withRenderingMode(.alwaysOriginal)
+    
+    static let startSEOnboarding = UIImage(named: "Onboarding/SE2/img_SE2_onboarding_page1")!.withRenderingMode(.alwaysOriginal)
+    static let firstSEOnboarding = UIImage(named: "Onboarding/SE2/img_SE2_onboarding_page2")!.withRenderingMode(.alwaysOriginal)
+    static let secondSEOnboarding = UIImage(named: "Onboarding/SE2/img_SE2_onboarding_page3")!.withRenderingMode(.alwaysOriginal)
+    static let thirdSEOnboarding = UIImage(named: "Onboarding/SE2/img_SE2_onboarding_page4")!.withRenderingMode(.alwaysOriginal)
+    static let finishSEOnboarding = UIImage(named: "Onboarding/SE2/img_SE2_onboarding_page5")!.withRenderingMode(.alwaysOriginal)
+    
+    static let progressBarFirst = UIImage(named: "Onboarding/prgressbar_page1")!.withRenderingMode(.alwaysOriginal)
+    static let progressBarSecond = UIImage(named: "Onboarding/prgressbar_page2")!.withRenderingMode(.alwaysOriginal)
+    static let progressBarThird = UIImage(named: "Onboarding/prgressbar_page3")!.withRenderingMode(.alwaysOriginal)
 }

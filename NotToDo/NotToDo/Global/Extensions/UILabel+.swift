@@ -30,4 +30,21 @@ extension UILabel {
         attributedString.addAttribute(.font, value: font, range: range)
         self.attributedText = attributedString
     }
+    
+    /// 라벨 일부 font와 color 변경해주는 함수
+    func setAttributedText(targetFontList: [String: UIFont],
+                           targetColorList: [String: UIColor]) {
+        let fullText = self.text ?? ""
+        let attributedString = NSMutableAttributedString(string: fullText)
+        for dic in targetFontList {
+            let range = (fullText as NSString).range(of: dic.key)
+            attributedString.addAttribute(.font, value: dic.value, range: range)
+        }
+        
+        for dic in targetColorList {
+            let range = (fullText as NSString).range(of: dic.key)
+            attributedString.addAttribute(.foregroundColor, value: dic.value, range: range)
+        }
+        self.attributedText = attributedString
+    }
 }

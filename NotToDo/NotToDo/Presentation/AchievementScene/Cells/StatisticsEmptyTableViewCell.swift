@@ -1,20 +1,17 @@
 //
-//  EmptyCollectionViewCell.swift
+//  EmptyView.swift
 //  NotToDo
 //
-//  Created by JEONGEUN KIM on 2023/01/04.
+//  Created by JEONGEUN KIM on 2023/01/09.
 //
 
 import UIKit
 
-import SnapKit
-import Then
-
-class EmptyCollectionViewCell: UICollectionViewCell {
+class EmptyTableViewCell: UITableViewCell {
     
     // MARK: - Properties
 
-    static var identifier = "EmptyCollectionViewCell"
+    static var identifier = "EmptyTableViewCell"
     
     // MARK: - UI Components
 
@@ -23,9 +20,8 @@ class EmptyCollectionViewCell: UICollectionViewCell {
     
     // MARK: - View Life Cycle
 
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        self.backgroundColor = .clear
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()
         setLayout()
     }
@@ -37,8 +33,9 @@ class EmptyCollectionViewCell: UICollectionViewCell {
 
 // MARK: - Methods
 
-extension EmptyCollectionViewCell {
+extension EmptyTableViewCell {
     func setUI() {
+        backgroundColor = .clear
         iconImage.do {
             $0.image = UIImage.heartFill2
         }
@@ -54,7 +51,7 @@ extension EmptyCollectionViewCell {
         }
     }
     func setLayout() {
-        addSubviews(iconImage, mainTitle)
+        contentView.addSubviews(iconImage, mainTitle)
         
         iconImage.snp.makeConstraints {
             $0.width.equalTo(111.adjusted)

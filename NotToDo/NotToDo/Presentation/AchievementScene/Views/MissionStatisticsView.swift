@@ -9,11 +9,13 @@ import UIKit
 
 class MissionStatisticsView: UIView {
     
+    // MARK: - Properties
+    
     let missionList: [MissionList] = MissionList.titles
     
-    // MARK: - ui
+    // MARK: - UI Components
+    
     private lazy var missionTableView =  UITableView(frame: .zero, style: .grouped)
-    private var emptyView = EmptyView(frame: .zero)
     let situationTitleView = SituationTitleView()
     
     // MARK: - life cycle
@@ -28,6 +30,11 @@ class MissionStatisticsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - Methods
+
+extension MissionStatisticsView {
     func setUI() {
         backgroundColor = .nottodoWhite
         layer.borderWidth = 0.5
@@ -41,13 +48,6 @@ class MissionStatisticsView: UIView {
             $0.dataSource = self
             $0.sectionHeaderTopPadding = 0
             $0.sectionFooterHeight = 0
-            emptyView.do {
-                if self.missionList.count == 0 {
-                    $0.isHidden = false
-                } else {
-                    $0.isHidden = true
-                }
-            }
         }
         situationTitleView.do {
             $0.HeaderTitle(title: "내가 달성한 낫투두의 순위는?")
@@ -55,7 +55,7 @@ class MissionStatisticsView: UIView {
     }
     
     func setLayout() {
-        addSubviews(situationTitleView, missionTableView, emptyView)
+        addSubviews(situationTitleView, missionTableView)
         
         situationTitleView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20.adjusted)
@@ -67,9 +67,7 @@ class MissionStatisticsView: UIView {
             $0.bottom.equalToSuperview()
             $0.directionalHorizontalEdges.equalToSuperview().inset(20.adjusted)
         }
-        emptyView.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-        }
+        
     }
     func register() {
         missionTableView.register(MissionTableViewCell.self, forCellReuseIdentifier: MissionTableViewCell.identifier)
@@ -86,34 +84,41 @@ extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MissionTableViewCell.identifier, for: indexPath) as! MissionTableViewCell
-        let item = missionList[indexPath.row]
-        switch indexPath.row {
-        case 0:
-            cell.missionImage.image = UIImage.rank1
-            cell.selectionStyle = .none
-            cell.config(item)
+        if missionList.isEmpty {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: EmptyTableViewCell.identifier, for: indexPath) as? EmptyTableViewCell else { return UITableViewCell() }
+            situationTitleView.isHidden = true
             return cell
-        case 1:
-            cell.missionImage.image = UIImage.rank2
-            cell.selectionStyle = .none
-            cell.config(item)
-            return cell
-        case 2:
-            cell.missionImage.image = UIImage.rank3
-            cell.selectionStyle = .none
-            cell.config(item)
-            return cell
-        case 3:
-            cell.missionImage.image = UIImage.rank4
-            cell.selectionStyle = .none
-            cell.config(item)
-            return cell
-        default:
-            cell.missionImage.image = UIImage.rank5
-            cell.selectionStyle = .none
-            cell.config(item)
-            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MissionTableViewCell.identifier, for: indexPath) as? MissionTableViewCell else { return UITableViewCell() }
+            let item = missionList[indexPath.row]
+            switch indexPath.row {
+            case 0:
+                cell.missionImage.image = UIImage.rank1
+                cell.selectionStyle = .none
+                cell.config(item)
+                return cell
+            case 1:
+                cell.missionImage.image = UIImage.rank2
+                cell.selectionStyle = .none
+                cell.config(item)
+                return cell
+            case 2:
+                cell.missionImage.image = UIImage.rank3
+                cell.selectionStyle = .none
+                cell.config(item)
+                return cell
+            case 3:
+                cell.missionImage.image = UIImage.rank4
+                cell.selectionStyle = .none
+                cell.config(item)
+                return cell
+            default:
+                cell.missionImage.image = UIImage.rank5
+                cell.selectionStyle = .none
+                cell.config(item)
+                return cell
+            }
         }
     }
 }
+

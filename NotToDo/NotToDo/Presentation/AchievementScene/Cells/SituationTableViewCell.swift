@@ -30,7 +30,7 @@ class SituationTableViewCell: UITableViewCell {
             $0.image = .situation_1
         }
         titleLabel.do {
-            $0.textColor = .red
+            $0.textColor = .nottodoBlack
             $0.font = .PretendardBold(size: 14.adjusted)
         }
         numberLabel.do {
@@ -47,7 +47,7 @@ class SituationTableViewCell: UITableViewCell {
             $0.edges.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(50.adjusted)
+            $0.leading.equalToSuperview().offset(50)
             $0.centerY.equalToSuperview()
         }
         numberLabel.snp.makeConstraints {
@@ -57,3 +57,4 @@ class SituationTableViewCell: UITableViewCell {
     }
     
 }
+

@@ -7,23 +7,41 @@
 
 import UIKit
 
-class FirstOnboardingViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+final class FirstOnboardingViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private var onboardingView: FirstOnboardingView!
+    
+    // MARK: - View Life Cycle
+    
+    override func loadView() {
+        super.loadView()
+        onboardingView = FirstOnboardingView()
+        view = onboardingView
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setAddTarget()
     }
-    */
+}
 
+extension FirstOnboardingViewController {
+    private func setAddTarget() {
+        onboardingView.jumpButton.addTarget(self, action: #selector(jumpButtonDidTap), for: .touchUpInside)
+        onboardingView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc private func jumpButtonDidTap() {
+        let nextViewController = FinishOnboardingViewController()
+        navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
+    @objc private func nextButtonDidTap() {
+        let nextViewController = SecondOnboardingViewController()
+        navigationController?.pushViewController(nextViewController, animated: true)
+    }
 }

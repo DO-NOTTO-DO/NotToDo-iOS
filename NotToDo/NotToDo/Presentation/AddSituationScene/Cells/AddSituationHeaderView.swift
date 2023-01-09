@@ -18,8 +18,8 @@ class AddSituationHeaderView: UICollectionReusableView {
     
     // MARK: - UI Components
     
-    private lazy var icon = UIImageView()
-    private lazy var titleLabel = UILabel()
+    private var icon = UIImageView()
+    private var titleLabel = UILabel()
     
     // MARK: - View Life Cycles
     
@@ -54,9 +54,7 @@ extension AddSituationHeaderView {
     }
     
     private func setLayout() {
-        [titleLabel, icon].forEach {
-            addSubview($0)
-        }
+        addSubviews(titleLabel, icon)
         
         icon.snp.makeConstraints {
             $0.top.equalToSuperview()

@@ -57,7 +57,7 @@ struct I18N {
     static let goalPlaceHolder = "ex) 책 1권 완독하기"
     static let actionDate = "실천 날짜"
     static let add = "추가하기"
-    static let maxBehavior = "* 상황 추가는 낫투두 당 2개까지 가능합니다."
+    static let maxBehavior = "* 실천 행동 추가는 낫투두 당 2개까지 가능합니다."
     static let maxMission = "* 하루 최대 3개까지 낫투두를 작성할 수 있어요!"
     
     // Home
@@ -76,6 +76,13 @@ struct I18N {
     static let recommendKeyword = "낫투두가 추천하는 상황 키워드"
     static let recentKeyword = "최근 사용한 키워드"
     static let inputPlaceHolder = "직접 입력하기..."
+    static let emptyHistory = "* 키워드 없을 시 넣는 칸 멘트 모르겠다"
+    
+    // MissionHistory
+    
+    static let historyPlaceHolder = "하지 않을 일을 적어주세요..."
+    static let cancel = "취소"
+    static let missionHistory = "낫투두 기록"
     
     // Recommend
     

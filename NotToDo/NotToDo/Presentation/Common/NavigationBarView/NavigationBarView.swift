@@ -62,7 +62,7 @@ extension NavigationBarView {
     private func setUI(mode: NavigationMode) {
         successButton.do {
             $0.setTitle(I18N.submit, for: .normal)
-            $0.setTitleColor(.nottodoGray3, for: .normal)
+            $0.setTitleColor(.nottodoBlack, for: .normal)
             $0.titleLabel?.font = .PretendardMedium(size: 18)
         }
         
@@ -73,7 +73,7 @@ extension NavigationBarView {
             backButton.setImage(.deletePageBtn, for: .normal)
             titleLabel.do {
                 $0.text = I18N.addMission
-                $0.textColor = .nottodoGray1
+                $0.textColor = .nottodoBlack
                 $0.font = .PretendardSemiBold(size: 22)
             }
             successButton.isHidden = true

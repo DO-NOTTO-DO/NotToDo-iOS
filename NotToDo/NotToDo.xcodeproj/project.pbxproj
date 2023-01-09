@@ -36,7 +36,7 @@
 		099F06CD29672DCA0036CF55 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F06CC29672DCA0036CF55 /* CustomTabBarItem.swift */; };
 		099F06CF296732970036CF55 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F06CE296732970036CF55 /* CustomTabBarView.swift */; };
 		099F06FA2967EE9F0036CF55 /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F06F92967EE9E0036CF55 /* LabelCollectionViewCell.swift */; };
-		099F071A296A933A0036CF55 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0719296A933A0036CF55 /* TableViewCell.swift */; };
+		099F071A296A933A0036CF55 /* SituationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0719296A933A0036CF55 /* SituationTableViewCell.swift */; };
 		099F071C296A93810036CF55 /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F071B296A93810036CF55 /* TableHeaderView.swift */; };
 		099F0724296AA4A40036CF55 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0723296AA4A40036CF55 /* TitleView.swift */; };
 		099F0728296B94790036CF55 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0727296B94790036CF55 /* EmptyView.swift */; };
@@ -131,7 +131,7 @@
 		099F06CC29672DCA0036CF55 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTabBarItem.swift; path = ../Views/CustomTabBarItem.swift; sourceTree = "<group>"; };
 		099F06CE296732970036CF55 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		099F06F92967EE9E0036CF55 /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
-		099F0719296A933A0036CF55 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		099F0719296A933A0036CF55 /* SituationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationTableViewCell.swift; sourceTree = "<group>"; };
 		099F071B296A93810036CF55 /* TableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
 		099F0723296AA4A40036CF55 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		099F0727296B94790036CF55 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 			children = (
 				099F0735296BB5C40036CF55 /* Collectionview */,
 				099F0731296BAE6B0036CF55 /* MissionTableViewCell.swift */,
-				099F0719296A933A0036CF55 /* TableViewCell.swift */,
+				099F0719296A933A0036CF55 /* SituationTableViewCell.swift */,
 				099F072B296BA3360036CF55 /* CalendarTableViewCell.swift */,
 				099F072D296BA4040036CF55 /* StatisticsTableViewCell.swift */,
 				096BE00029659B3A009ED396 /* AchievementHeaderView.swift */,
@@ -943,7 +943,7 @@
 				3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */,
 				3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */,
 				3B1628AC295ADB440077AE7B /* NetworkLoggerPlugin.swift in Sources */,
-				099F071A296A933A0036CF55 /* TableViewCell.swift in Sources */,
+				099F071A296A933A0036CF55 /* SituationTableViewCell.swift in Sources */,
 				3B4B90C62965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift in Sources */,
 				099F072E296BA4040036CF55 /* StatisticsTableViewCell.swift in Sources */,
 				6C88260F2967D8280005E222 /* AddSituationCollectionViewCell.swift in Sources */,

@@ -46,6 +46,7 @@ class SituationStatisticsView: UIView {
         expangindTableView.do {
             $0.backgroundColor = .clear
             $0.separatorStyle = .none
+            $0.isScrollEnabled = false
             $0.delegate = self
             $0.dataSource = self
             $0.sectionHeaderTopPadding = 10
@@ -73,16 +74,16 @@ class SituationStatisticsView: UIView {
             $0.height.equalTo(30.adjusted)
         }
         expangindTableView.snp.makeConstraints {
-            $0.top.equalTo(situationTitleView.snp.bottom).offset(20.adjusted)
+            $0.top.equalTo(situationTitleView.snp.bottom).offset(5.adjusted)
             $0.bottom.equalToSuperview()
-            $0.directionalHorizontalEdges.equalToSuperview().inset(40.adjusted)
+            $0.directionalHorizontalEdges.equalToSuperview().inset(20.adjusted)
         }
         emptyView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
         }
     }
     func register() {
-        expangindTableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
+        expangindTableView.register(SituationTableViewCell.self, forCellReuseIdentifier: SituationTableViewCell.identifier)
     }
 }
 extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
@@ -103,12 +104,17 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: SituationTableViewCell.identifier, for: indexPath) as! SituationTableViewCell
          switch indexPath.row {
          case 0:
              cell.layer.addBorder([.top, .left, .right, .bottom], color: .nottodoGray2!, width: 0.5)
+             cell.backGroundImage.image = UIImage.situation_1
+         case 1:
+             cell.backGroundImage.image = UIImage.situation_2
+         case 2:
+             cell.backGroundImage.image = UIImage.situation_3
          default:
-             cell.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
+             cell.backGroundImage.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
          }
         cell.textLabel?.text = self.tableViewData[indexPath.section][indexPath.row]
         cell.selectionStyle = .none

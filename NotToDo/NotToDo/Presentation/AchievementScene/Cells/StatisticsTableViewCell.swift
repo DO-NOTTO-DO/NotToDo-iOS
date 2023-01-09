@@ -7,13 +7,24 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
+protocol SituationButtonDelegate {
+    func buttonTapped(cell: UITableViewCell)
+}
+
 class StatisticsTableViewCell: UITableViewCell {
+    
+    var delegate: SituationButtonDelegate?
     
     static var identifier = "StatisticsTableViewCell"
     
-    private lazy var segmentedControl = CustomSegmentedControl(items: [" 낫투두 통계보기 ", " 상황별 통계보기 "])
+     lazy var segmentedControl = CustomSegmentedControl(items: [" 낫투두 통계보기 ", " 상황별 통계보기 "])
     private lazy var missionView = MissionStatisticsView(frame: bounds)
+    
     private lazy var situationView = SituationStatisticsView(frame: bounds)
+    private var bottomLabel = UILabel()
 
     var shouldHideMissionView: Bool? {
       didSet {
@@ -25,7 +36,7 @@ class StatisticsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-      //  setUI()
+        setUI()
         setLayout()
     }
     
@@ -34,8 +45,16 @@ class StatisticsTableViewCell: UITableViewCell {
     }
 }
 extension StatisticsTableViewCell {
+    func setUI() {
+        bottomLabel.do {
+            $0.text = "* 올해의 낫투두가 누적된 통계예요!"
+            $0.font = .PretendardMedium(size: 12)
+            $0.textColor = .nottodoGray2
+        }
+    }
+    
     func setLayout() {
-        contentView.addSubviews(segmentedControl, missionView, situationView)
+        contentView.addSubviews(segmentedControl, missionView, situationView, bottomLabel)
         
         segmentedControl.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview().inset(20.adjusted)
@@ -45,25 +64,34 @@ extension StatisticsTableViewCell {
         missionView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview().inset(20.adjusted)
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
-            $0.height.equalTo(800)
-            $0.bottom.equalToSuperview()
+            $0.height.equalTo(missionView.missionList.count * 55 + 88 )
+            $0.bottom.equalToSuperview().offset(-78.adjusted)
         }
         situationView.snp.makeConstraints {
-            $0.leading.equalTo(missionView.snp.leading)
-            $0.trailing.equalTo(missionView.snp.trailing)
-            $0.top.equalTo(missionView.snp.top)
-            $0.height.equalTo(800)
-
-            $0.bottom.equalTo(missionView.snp.bottom)
+            $0.directionalHorizontalEdges.equalToSuperview().inset(20.adjusted)
+            $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
+          //  $0.height.equalTo(situationView.titleLists.count * 55 + 88 )
+            $0.height.equalTo(missionView.snp.height)
+            $0.bottom.equalToSuperview().offset(-78.adjusted)
+        }
+        
+      
+        bottomLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(20.adjusted)
+            if missionView.isHidden {
+            $0.top.equalTo(situationView.snp.bottom).offset(12.adjusted)
+            }
+            $0.top.equalTo(missionView.snp.bottom).offset(12.adjusted)
         }
         
         self.segmentedControl.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
-
+        
         self.segmentedControl.selectedSegmentIndex = 0
         self.didChangeValue(segment: self.segmentedControl)
-      }
-
-      @objc private func didChangeValue(segment: UISegmentedControl) {
+    }
+    
+    @objc private func didChangeValue(segment: UISegmentedControl) {
         self.shouldHideMissionView = segment.selectedSegmentIndex != 0
-      }
+        delegate?.buttonTapped(cell: self)
+    }
 }

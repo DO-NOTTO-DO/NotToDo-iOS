@@ -11,7 +11,8 @@ import FSCalendar
 import SnapKit
 import Then
 
-final class AchievementViewController: UIViewController {
+final class AchievementViewController: UIViewController, SituationButtonDelegate {
+  
     
     // MARK: - UI Components
     
@@ -85,7 +86,8 @@ extension AchievementViewController: UITableViewDelegate, UITableViewDataSource 
                 withIdentifier: StatisticsTableViewCell.identifier, for: indexPath) as? StatisticsTableViewCell else { return UITableViewCell() }
             statisticsCell.selectionStyle = .none
             statisticsCell.backgroundColor = .clear
-
+            statisticsCell.delegate = self
+            
             return statisticsCell
         default:
             return UITableViewCell()
@@ -97,4 +99,8 @@ extension AchievementViewController: UITableViewDelegate, UITableViewDataSource 
         return UITableView.automaticDimension
   
     }
+    func buttonTapped(cell: UITableViewCell) {
+        mainTableView.reloadData()
+    }
+    
 }

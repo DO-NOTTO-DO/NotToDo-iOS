@@ -7,12 +7,13 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class SituationTableViewCell: UITableViewCell {
     
-    static var identifier = "TableViewCell"
+    static var identifier = "SituationTableViewCell"
     
     let titleLabel = UILabel()
     let numberLabel = UILabel()
+    let backGroundImage = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,7 +26,9 @@ class TableViewCell: UITableViewCell {
     }
     
     func setUI() {
-        backgroundColor = .BG
+        backGroundImage.do {
+            $0.image = .situation_1
+        }
         titleLabel.do {
             $0.textColor = .red
             $0.font = .PretendardBold(size: 14.adjusted)
@@ -37,9 +40,14 @@ class TableViewCell: UITableViewCell {
         }
     }
     func setLayout() {
-        addSubviews(titleLabel, numberLabel)
+        addSubview(backGroundImage)
+        backGroundImage.addSubviews(titleLabel, numberLabel)
+        
+        backGroundImage.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         titleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(35)
+            $0.leading.equalToSuperview().offset(50.adjusted)
             $0.centerY.equalToSuperview()
         }
         numberLabel.snp.makeConstraints {

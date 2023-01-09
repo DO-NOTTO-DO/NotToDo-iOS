@@ -120,4 +120,8 @@ extension UIImage {
     static let situation_Rank2_off = UIImage(named: "Achieve/situation_rank2_off")!.withRenderingMode(.alwaysOriginal)
     static let situation_Rank3 = UIImage(named: "Achieve/situation_rank3")!.withRenderingMode(.alwaysOriginal)
     static let situation_Rank3_off = UIImage(named: "Achieve/situation_rank3_off")!.withRenderingMode(.alwaysOriginal)
+    
+    static let situation_1 = UIImage(named: "Achieve/situation_1")!.withRenderingMode(.alwaysOriginal)
+    static let situation_2 = UIImage(named: "Achieve/situation_2")!.withRenderingMode(.alwaysOriginal)
+    static let situation_3 = UIImage(named: "Achieve/situation_3")!.withRenderingMode(.alwaysOriginal)
 }

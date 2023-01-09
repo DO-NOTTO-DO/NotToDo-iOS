@@ -36,6 +36,7 @@ class MissionStatisticsView: UIView {
         missionTableView.do {
             $0.backgroundColor = .clear
             $0.separatorStyle = .none
+            $0.isScrollEnabled = false
             $0.delegate = self
             $0.dataSource = self
             $0.sectionHeaderTopPadding = 0
@@ -62,9 +63,9 @@ class MissionStatisticsView: UIView {
             $0.height.equalTo(30.adjusted)
         }
         missionTableView.snp.makeConstraints {
-            $0.top.equalTo(situationTitleView.snp.bottom).offset(20.adjusted)
+            $0.top.equalTo(situationTitleView.snp.bottom).offset(-30.adjusted)
             $0.bottom.equalToSuperview()
-            $0.directionalHorizontalEdges.equalToSuperview().inset(40.adjusted)
+            $0.directionalHorizontalEdges.equalToSuperview().inset(20.adjusted)
         }
         emptyView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()

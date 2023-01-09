@@ -38,6 +38,8 @@ class AddSituationView: UIView {
 
 extension AddSituationView {
     private func setUI() {
+        backgroundColor = .nottodoWhite
+        
         addSituationCollectionView.do {
             $0.isScrollEnabled = false
             $0.collectionViewLayout = layout()
@@ -47,8 +49,6 @@ extension AddSituationView {
     }
     
     private func setLayout() {
-        backgroundColor = .nottodoWhite
-        
         addSubviews(navigationBarView, addSituationCollectionView)
         
         navigationBarView.snp.makeConstraints {

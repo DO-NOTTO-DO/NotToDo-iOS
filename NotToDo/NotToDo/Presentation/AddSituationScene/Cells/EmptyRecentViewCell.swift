@@ -50,7 +50,7 @@ extension EmptyRecentCollectionViewCell {
         contentView.addSubview(emptyRecentLabel)
         
         emptyRecentLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview().offset(-20)
+            $0.centerX.equalToSuperview().offset(-20.adjusted)
             $0.bottom.equalToSuperview()
         }
     }

@@ -12,15 +12,16 @@ import Then
 
 class AddSituationFooterView: UICollectionReusableView {
     
-    // MARK: - Identifier
+    // MARK: - Properties
     
     static let identifier: String = "AddSituationFooterView"
-    let maxLength = 15
     
     // MARK: - UI Components
     
     var inputTextField = UITextField()
     var textCountLabel = UILabel()
+    let maxLength = 15
+
     
     // MARK: - View Life Cycles
     
@@ -28,8 +29,6 @@ class AddSituationFooterView: UICollectionReusableView {
         super.init(frame: frame)
         setUI()
         setLayout()
-        
-        inputTextField.addTarget(self, action: #selector(changeText), for: .editingChanged)
     }
     
     required init?(coder: NSCoder) {
@@ -37,16 +36,16 @@ class AddSituationFooterView: UICollectionReusableView {
     }
     
     @objc func changeText() {
-        if self.inputTextField.text?.count ?? 0 > maxLength {
-            self.inputTextField.deleteBackward()
+        if inputTextField.text?.count ?? 0 > maxLength {
+            inputTextField.deleteBackward()
         }
         
-        self.textCountLabel.text = "\(self.inputTextField.text?.count ?? 0)/\(maxLength)"
+        textCountLabel.text = "\(inputTextField.text?.count ?? 0)/\(maxLength)"
         
-        if self.inputTextField.text!.count > 0 {
-            self.inputTextField.layer.borderColor = UIColor.nottodoGray2?.cgColor
+        if inputTextField.text!.count > 0 {
+            inputTextField.layer.borderColor = UIColor.nottodoGray2?.cgColor
         } else {
-            self.inputTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
+            inputTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
         }
     }
 }
@@ -64,6 +63,7 @@ extension AddSituationFooterView {
             $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 15.adjusted, height: 0.0))
             $0.leftViewMode = .always
             $0.attributedPlaceholder = NSAttributedString(string: I18N.inputPlaceHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
+            $0.addTarget(self, action: #selector(changeText), for: .editingChanged)
         }
         
         textCountLabel.do {
@@ -92,7 +92,7 @@ extension AddSituationFooterView {
         inputTextField.do {
             $0.text = text
             $0.layer.borderColor = UIColor.nottodoGray2!.cgColor
-            $0.layer.borderWidth = 1
+            $0.layer.borderWidth = 1.adjusted
         }
         textCountLabel.text = "\(inputTextField.text!.count)/\(maxLength)"
     }

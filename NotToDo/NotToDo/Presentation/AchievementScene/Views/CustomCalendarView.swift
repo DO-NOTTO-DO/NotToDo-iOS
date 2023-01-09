@@ -11,7 +11,7 @@ import FSCalendar
 import SnapKit
 import Then
 
-class customCalendar: UIView {
+class CustomCalendar: UIView {
 
     var calendar: FSCalendar! = FSCalendar(frame: .zero)
     private lazy var hStack = UIStackView(arrangedSubviews: [leftBtn, rightBtn])

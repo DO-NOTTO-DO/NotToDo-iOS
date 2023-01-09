@@ -17,7 +17,7 @@ final class AchievementViewController: UIViewController {
     
     private lazy var scrollView = UIScrollView()
     private var titleView = TitleView()
-    private lazy var calendarView = customCalendar(frame: .zero)
+    private lazy var calendarView = CustomCalendar(frame: .zero)
     private lazy var segmentedControl = CustomSegmentedControl(items: [" 낫투두 통계보기 ", " 상황별 통계보기 "])
     private lazy var missionVC = MissionStatisticsViewController()
     private lazy var situationVC = SituationStatisticsViewController()

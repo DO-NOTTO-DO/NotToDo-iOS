@@ -18,11 +18,12 @@ class SituationStatisticsViewController: UIViewController {
         ["1", "2", "3"],
         ["1", "2"]    ]
     let titleLists: [TitleButton] = TitleButton.titles
-    let sectionButton = UIButton()
     
     // MARK: - ui
     private lazy var expangindTableView =  UITableView(frame: .zero, style: .grouped)
-    private lazy var emptyView = EmptyView(frame: .zero)
+    private var emptyView = EmptyView(frame: .zero)
+    let sectionButton = UIButton()
+    let situationTitleView = SituationTitleView()
     
     // MARK: - life cycle
     
@@ -41,7 +42,6 @@ class SituationStatisticsViewController: UIViewController {
             $0.dataSource = self
             $0.sectionHeaderTopPadding = 10
             $0.sectionFooterHeight = 0
-            //  $0.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
             emptyView.do {
                 if self.tableViewData.count == 0 {
                     $0.isHidden = false
@@ -50,15 +50,24 @@ class SituationStatisticsViewController: UIViewController {
                 }
             }
         }
+        situationTitleView.do {
+            $0.HeaderTitle(title: "언제 낫투두를 가장 많이 시도했을까요?")
+        }
     }
     
     func setLayout() {
-        view.addSubviews(expangindTableView, emptyView)
+        view.addSubviews(situationTitleView, expangindTableView, emptyView)
         expangindTableView.register(TableHeaderView.self, forHeaderFooterViewReuseIdentifier: TableHeaderView.identifier)
         
+        situationTitleView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(26.adjusted)
+            $0.leading.equalToSuperview().inset(37.adjusted)
+            $0.height.equalTo(30.adjusted)
+        }
         expangindTableView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.directionalHorizontalEdges.equalToSuperview().inset(40)
+            $0.top.equalTo(situationTitleView.snp.bottom).offset(20.adjusted)
+            $0.bottom.equalToSuperview()
+            $0.directionalHorizontalEdges.equalToSuperview().inset(40.adjusted)
         }
         emptyView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
@@ -94,6 +103,7 @@ extension SituationStatisticsViewController: UITableViewDataSource, UITableViewD
              cell.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
          }
         cell.textLabel?.text = self.tableViewData[indexPath.section][indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
     

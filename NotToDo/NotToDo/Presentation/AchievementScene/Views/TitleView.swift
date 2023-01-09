@@ -25,6 +25,8 @@ class TitleView: UIView {
     }
 }
 
+// MARK: - Methods
+
 extension TitleView {
     func setUI() {
         addSubview(titleLabel)

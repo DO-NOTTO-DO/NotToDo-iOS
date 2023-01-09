@@ -40,6 +40,7 @@
 		099F071C296A93810036CF55 /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F071B296A93810036CF55 /* TableHeaderView.swift */; };
 		099F0724296AA4A40036CF55 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0723296AA4A40036CF55 /* TitleView.swift */; };
 		099F0728296B94790036CF55 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0727296B94790036CF55 /* EmptyView.swift */; };
+		099F072A296B98B90036CF55 /* SituationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0729296B98B90036CF55 /* SituationTitleView.swift */; };
 		3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162873295AD7860077AE7B /* AppDelegate.swift */; };
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
@@ -130,6 +131,7 @@
 		099F071B296A93810036CF55 /* TableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
 		099F0723296AA4A40036CF55 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		099F0727296B94790036CF55 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		099F0729296B98B90036CF55 /* SituationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationTitleView.swift; sourceTree = "<group>"; };
 		3B162870295AD7860077AE7B /* NotToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B162873295AD7860077AE7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B162875295AD7860077AE7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				096BDFF8296523C0009ED396 /* EmptyCollectionViewCell.swift */,
 				096BDFF6296522C6009ED396 /* CustomAchieveLabel.swift */,
 				096BE0042965A209009ED396 /* BackgroundSupplementaryView.swift */,
+				099F0719296A933A0036CF55 /* TableViewCell.swift */,
 				096BE00029659B3A009ED396 /* AchievementHeaderView.swift */,
 			);
 			path = Cells;
@@ -478,7 +481,7 @@
 				096BDFEF2965104B009ED396 /* MissionStatisticsViewController.swift */,
 				096BDFED29651040009ED396 /* SituationStatisticsViewController.swift */,
 				099F071B296A93810036CF55 /* TableHeaderView.swift */,
-				099F0719296A933A0036CF55 /* TableViewCell.swift */,
+				099F0729296B98B90036CF55 /* SituationTitleView.swift */,
 				096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */,
 			);
 			path = ViewControllers;
@@ -942,6 +945,7 @@
 				099F06FA2967EE9F0036CF55 /* LabelCollectionViewCell.swift in Sources */,
 				3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */,
 				096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */,
+				099F072A296B98B90036CF55 /* SituationTitleView.swift in Sources */,
 				3B4B90BD2965673E008C5CA8 /* AuthViewController.swift in Sources */,
 				3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */,
 				099F0724296AA4A40036CF55 /* TitleView.swift in Sources */,

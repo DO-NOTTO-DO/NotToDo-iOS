@@ -24,10 +24,11 @@ class CustomSegmentedControl: UISegmentedControl {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension CustomSegmentedControl {
-    
-    // background color clear
-    
+        
     private func removeBackgroundDivider() {
         let image = UIImage()
         self.setBackgroundImage(image, for: .normal, barMetrics: .default)
@@ -35,9 +36,7 @@ extension CustomSegmentedControl {
         self.setBackgroundImage(image, for: .highlighted, barMetrics: .default)
         self.setDividerImage(image, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
     }
-    
-    // font color
-    
+        
     private func setStyle() {
         self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoGray2, .font: UIFont.PretendardRegular(size: 16)], for: .normal)
         self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoBlack, .font: UIFont.PretendardBold(size: 16), .backgroundColor: UIColor.yellow_deep], for: .selected)

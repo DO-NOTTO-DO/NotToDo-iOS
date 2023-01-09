@@ -38,10 +38,7 @@ class MissionCollectionViewCell: UICollectionViewCell {
 
 extension MissionCollectionViewCell {
     private func setUI() {
-        self.label.layer.cornerRadius = 10
-        self.backgroundColor = .clear
-        self.contentView.layer.borderWidth = 1
-        self.contentView.layer.borderColor = UIColor.nottodoGray2?.cgColor
+        backgroundColor = .clear
         
         image.do {
             $0.image = UIImage.rank1
@@ -63,6 +60,5 @@ extension MissionCollectionViewCell {
     
     func config(_ item: MissionList) {
         label.text = item.title
-        self.backgroundColor = item.color
     }
 }

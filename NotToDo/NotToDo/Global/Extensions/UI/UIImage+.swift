@@ -30,6 +30,8 @@ extension UIImage {
     static let checkTriangle = UIImage(named: "Home/checkbox/triangle")!.withRenderingMode(.alwaysOriginal)
     static let dot = UIImage(named: "Home/btn_dot")!.withRenderingMode(.alwaysOriginal)
     static let plus = UIImage(named: "Home/ic_plus")!.withRenderingMode(.alwaysOriginal)
+    static let firstSolutionView = UIImage(named: "Home/img_label1")!.withRenderingMode(.alwaysOriginal)
+    static let secondSolutionView = UIImage(named: "Home/img_label2")!.withRenderingMode(.alwaysOriginal)
 
     // Recent
     

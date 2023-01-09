@@ -61,9 +61,9 @@ extension HomeView {
                                     forCellWithReuseIdentifier: HomeCalendarCollectionViewCell.identifier)
         homeCollectionView.register(HomeMissionCollectionViewCell.self,
                                     forCellWithReuseIdentifier: HomeMissionCollectionViewCell.identifier)
-        homeCollectionView.register(HomeMissionCollectionReusableView.self,
-                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                    withReuseIdentifier: HomeMissionCollectionReusableView.identifier)
+//        homeCollectionView.register(HomeMissionCollectionReusableView.self,
+//                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+//                                    withReuseIdentifier: HomeMissionCollectionReusableView.identifier)
     }
     
     private func setUI() {
@@ -105,7 +105,7 @@ extension HomeView {
 
 extension HomeView: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return missionList.isEmpty ? 2 : missionList.count + 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -119,43 +119,30 @@ extension HomeView: UICollectionViewDataSource {
                 return cell
             } else {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMissionCollectionViewCell.identifier, for: indexPath) as? HomeMissionCollectionViewCell else { return UICollectionViewCell() }
-                cell.configure(missionList[indexPath.section - 1].actions[indexPath.row])
+                cell.configure(missionList[indexPath.row])
                 return cell
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = missionList.map { $0.actions.count }
         switch section {
         case 0:
             return 1
         default:
-            return count[section - 1]
+            return missionList.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch indexPath.section {
-        case 0:
-            guard kind == UICollectionView.elementKindSectionHeader,
-                  let header = collectionView.dequeueReusableSupplementaryView(
-                    ofKind: kind,
-                    withReuseIdentifier: HomeCollectionReusableView.identifier,
-                    for: indexPath
-                  ) as? HomeCollectionReusableView else { return UICollectionReusableView() }
-            header.setRandomData()
-            return header
-        default:
-            guard kind == UICollectionView.elementKindSectionHeader,
-                  let header = collectionView.dequeueReusableSupplementaryView(
-                    ofKind: kind,
-                    withReuseIdentifier: HomeMissionCollectionReusableView.identifier,
-                    for: indexPath
-                  ) as? HomeMissionCollectionReusableView else { return UICollectionReusableView() }
-            header.configure(missionList[indexPath.section - 1])
-            return header
-        }
+        guard kind == UICollectionView.elementKindSectionHeader,
+              let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: HomeCollectionReusableView.identifier,
+                for: indexPath
+              ) as? HomeCollectionReusableView else { return UICollectionReusableView() }
+        header.setRandomData()
+        return header
     }
 }
 
@@ -165,11 +152,12 @@ extension HomeView: UICollectionViewDelegateFlowLayout {
         case 0:
             return CGSize(width: Numbers.width, height: 183.adjusted)
         default:
-            return CGSize(width: 383.adjusted, height: 80.adjusted)
+            return CGSize()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellHeight = missionList[indexPath.row].actions.count < 2 ? 144.adjusted : 183.adjusted
         switch indexPath.section {
         case 0:
             return CGSize(width: Numbers.width, height: 106.adjusted)
@@ -177,7 +165,7 @@ extension HomeView: UICollectionViewDelegateFlowLayout {
             if missionList.isEmpty {
                 return CGSize(width: Numbers.width, height: (collectionView.frame.height - 105).adjusted)            // 수정 필요
             } else {
-                return CGSize(width: Numbers.width, height: 40.adjusted)
+                return CGSize(width: Numbers.width, height: cellHeight)
             }
         }
     }
@@ -190,10 +178,8 @@ extension HomeView: UICollectionViewDelegateFlowLayout {
         switch section {
         case 0:
             return UIEdgeInsets()
-        case 1:
-            return UIEdgeInsets(top: 7.adjusted, left: 20.adjusted, bottom: 17.adjusted, right: 20.adjusted)
         default:
-            return UIEdgeInsets(top: 7.adjusted, left: 20.adjusted, bottom: 17.adjusted, right: 20.adjusted)
+            return UIEdgeInsets(top: 7.adjusted, left: 0, bottom: 17.adjusted, right: 0)
         }
     }
 }

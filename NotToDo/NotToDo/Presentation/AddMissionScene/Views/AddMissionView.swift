@@ -20,11 +20,11 @@ class AddMissionView: UIView {
     
     private let missionView = UIView()
     private let missionTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.missionTitle, buttonLabel: nil, icon: nil)
-    private let missionTextFieldView = AddMissionTextField(frame: .zero, placeHolder: I18N.missionPlaceHolder)
+    private let missionTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.missionPlaceHolder)
     
     private let behaviorView = UIView()
     private let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.behaviorTitle, buttonLabel: I18N.recommend, icon: .rightArrow)
-    private let behaviorTextFieldView = AddMissionTextField(frame: .zero, placeHolder: I18N.behaviorPlaceHolder)
+    private let behaviorTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.behaviorPlaceHolder)
     private let addBehaviorButton = UIButton()
     private let maxBehaviorLabel = UILabel()
     
@@ -32,16 +32,18 @@ class AddMissionView: UIView {
     
     private let goalView = UIView()
     private let goalTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.goalTitle, buttonLabel: nil, icon: nil)
-    private let goalTextFieldView = AddMissionTextField(frame: .zero, placeHolder: I18N.goalPlaceHolder)
+    private let goalTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.goalPlaceHolder)
     
-    var date = Date()
-    let nowDate = Date()
-    let dateFormatter = DateFormatter()
     private let dateView = UIView()
     private let dateLabel = UILabel()
     private let dateButton = UIButton(configuration: .filled())
+    var date = Date()
+    let nowDate = Date()
+    let dateFormatter = DateFormatter()
     
+    private let maxMissionLabelView = UIView()
     private let maxMissionLabel = UILabel()
+    
     private let addMissionButton = UIButton()
     
     // MARK: - View Life Cycle
@@ -118,11 +120,12 @@ extension AddMissionView {
         backgroundColor = .nottodoWhite
         
         addSubviews(navigationBarView, scrollView, addMissionButton)
-        scrollView.addSubviews(missionView, behaviorView, vStack, maxMissionLabel)
-        missionView.addSubviews(missionTitleView, missionTextFieldView)
-        behaviorView.addSubviews(behaviorTitleView, behaviorTextFieldView, addBehaviorButton, maxBehaviorLabel)
-        goalView.addSubviews(goalTitleView, goalTextFieldView)
+        scrollView.addSubviews(missionView, behaviorView, vStack, maxMissionLabelView)
+        missionView.addSubviews(missionTitleView, missionTextField)
+        behaviorView.addSubviews(behaviorTitleView, behaviorTextField, addBehaviorButton, maxBehaviorLabel)
+        goalView.addSubviews(goalTitleView, goalTextField)
         dateView.addSubviews(dateLabel, dateButton)
+        maxMissionLabelView.addSubview(maxMissionLabel)
         
         navigationBarView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
@@ -132,7 +135,7 @@ extension AddMissionView {
         
         scrollView.snp.makeConstraints {
             $0.top.equalTo(navigationBarView.snp.bottom)
-            $0.leading.trailing.bottom.equalTo(safeAreaLayoutGuide)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
         
         addMissionButton.snp.makeConstraints {
@@ -173,10 +176,11 @@ extension AddMissionView {
             $0.height.equalTo(37.adjusted)
         }
         
-        maxMissionLabel.snp.makeConstraints {
-            $0.top.equalTo(addMissionButton.snp.top).offset(-46.adjusted)
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-103.adjusted)
+        maxMissionLabelView.snp.makeConstraints {
+            $0.top.equalTo(vStack.snp.bottom).offset(128)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(45)
+            $0.bottom.equalToSuperview().offset(-75)
         }
         
         missionTitleView.snp.makeConstraints {
@@ -184,7 +188,7 @@ extension AddMissionView {
             $0.height.equalTo(24.adjusted)
         }
         
-        missionTextFieldView.snp.makeConstraints {
+        missionTextField.snp.makeConstraints {
             $0.top.equalTo(missionTitleView.snp.bottom).offset(11.adjusted)
             $0.leading.trailing.equalToSuperview().inset(20.adjusted)
             $0.height.equalTo(46.adjusted)
@@ -196,7 +200,7 @@ extension AddMissionView {
             $0.height.equalTo(24.adjusted)
         }
         
-        behaviorTextFieldView.snp.makeConstraints {
+        behaviorTextField.snp.makeConstraints {
             $0.top.equalTo(behaviorTitleView.snp.bottom).offset(11.adjusted)
             $0.leading.equalToSuperview().offset(20.adjusted)
             $0.trailing.equalToSuperview().offset(-73.adjusted)
@@ -204,14 +208,14 @@ extension AddMissionView {
         }
         
         addBehaviorButton.snp.makeConstraints {
-            $0.centerY.equalTo(behaviorTextFieldView.snp.centerY)
-            $0.leading.equalTo(behaviorTextFieldView.snp.trailing).offset(7.adjusted)
+            $0.centerY.equalTo(behaviorTextField.snp.centerY)
+            $0.leading.equalTo(behaviorTextField.snp.trailing).offset(7.adjusted)
             $0.trailing.equalToSuperview().offset(-20.adjusted)
             $0.height.equalTo(46.adjusted)
         }
         
         maxBehaviorLabel.snp.makeConstraints {
-            $0.top.equalTo(behaviorTextFieldView.snp.bottom).offset(9.adjusted)
+            $0.top.equalTo(behaviorTextField.snp.bottom).offset(9.adjusted)
             $0.leading.equalToSuperview().offset(20.adjusted)
         }
         
@@ -220,7 +224,7 @@ extension AddMissionView {
             $0.height.equalTo(24.adjusted)
         }
         
-        goalTextFieldView.snp.makeConstraints {
+        goalTextField.snp.makeConstraints {
             $0.top.equalTo(goalTitleView.snp.bottom).offset(11.adjusted)
             $0.leading.trailing.equalToSuperview().inset(20.adjusted)
             $0.height.equalTo(46.adjusted)
@@ -238,9 +242,33 @@ extension AddMissionView {
             $0.height.equalTo(35.adjusted)
             $0.width.equalTo(150.adjusted)
         }
+        
+        maxMissionLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.centerX.equalToSuperview()
+        }
     }
     
     func updateData(date: String) {
         dateButton.setTitle(date, for: .normal)
+    }
+    
+    func availableButton(bool: Bool) {
+        switch bool {
+        case true:
+            addMissionButton.isUserInteractionEnabled = true
+            addMissionButton.backgroundColor = .nottodoBlack
+        case false:
+            addMissionButton.isUserInteractionEnabled = false
+            addMissionButton.backgroundColor = .nottodoGray2
+        }
+    }
+}
+    
+extension AddMissionView: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if missionTextField.text?.isEmpty == true {
+            
+        }
     }
 }

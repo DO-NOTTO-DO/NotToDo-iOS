@@ -60,6 +60,17 @@ struct I18N {
     static let maxBehavior = "* 실천 행동 추가는 낫투두 당 2개까지 가능합니다."
     static let maxMission = "* 하루 최대 3개까지 낫투두를 작성할 수 있어요!"
     
+    // Home
+    
+    static let addMissoinButton = "낫투두 추가"
+    static let startSunday = ["일", "월", "화", "수", "목", "금", "토"]
+    static let startMonday = ["월", "화", "수", "목", "금", "토", "일"]
+    static let empty = """
+                    아직 아무것도 없네요,
+                    새로운 낫투두를 작성해보세요!
+                    """
+    static let goal = "목표"
+    
     // AddSituation
     
     static let recommendKeyword = "낫투두가 추천하는 상황 키워드"

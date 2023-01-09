@@ -4,8 +4,10 @@
 //
 //  Created by JEONGEUN KIM on 2023/01/08.
 //
-
 import UIKit
+
+import SnapKit
+import Then
 
 class TableHeaderView: UITableViewHeaderFooterView {
     
@@ -65,7 +67,7 @@ extension TableHeaderView {
         }
     }
     
-    func config(_ title: TitleButton){
+    func config(_ title: TitleButtonList) {
         headerLabel.text = title.title
     }
     
@@ -74,5 +76,3 @@ extension TableHeaderView {
         numberLabel.textColor = sender.isSelected ? .yellow_basic : .nottodoGray2
     }
 }
-
-

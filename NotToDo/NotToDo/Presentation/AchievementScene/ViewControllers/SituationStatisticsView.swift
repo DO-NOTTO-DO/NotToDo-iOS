@@ -4,22 +4,23 @@
 //
 //  Created by JEONGEUN KIM on 2023/01/04.
 //
-
 import UIKit
 
 import SnapKit
 import Then
 
-class SituationStatisticsViewController: UIViewController {
+class SituationStatisticsView: UIView {
     
     var hiddenSections = Set<Int>()
     let tableViewData = [
         ["야", "호", "3"],
         ["1", "2", "3"],
         ["1", "2"]    ]
-    let titleLists: [TitleButton] = TitleButton.titles
+    
+    let titleLists: [TitleButtonList] = TitleButtonList.titles
     
     // MARK: - ui
+    
     private lazy var expangindTableView =  UITableView(frame: .zero, style: .grouped)
     private var emptyView = EmptyView(frame: .zero)
     let sectionButton = UIButton()
@@ -27,14 +28,21 @@ class SituationStatisticsViewController: UIViewController {
     
     // MARK: - life cycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
         setUI()
         register()
         setLayout()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     func setUI() {
-        self.view.backgroundColor = .white
+        backgroundColor = .nottodoWhite
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.nottodoGray2?.cgColor
+
         expangindTableView.do {
             $0.backgroundColor = .clear
             $0.separatorStyle = .none
@@ -56,12 +64,12 @@ class SituationStatisticsViewController: UIViewController {
     }
     
     func setLayout() {
-        view.addSubviews(situationTitleView, expangindTableView, emptyView)
+        addSubviews(situationTitleView, expangindTableView, emptyView)
         expangindTableView.register(TableHeaderView.self, forHeaderFooterViewReuseIdentifier: TableHeaderView.identifier)
         
         situationTitleView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(26.adjusted)
-            $0.leading.equalToSuperview().inset(37.adjusted)
+            $0.top.equalToSuperview().offset(20.adjusted)
+            $0.leading.equalToSuperview().inset(20.adjusted)
             $0.height.equalTo(30.adjusted)
         }
         expangindTableView.snp.makeConstraints {
@@ -77,7 +85,7 @@ class SituationStatisticsViewController: UIViewController {
         expangindTableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
     }
 }
-extension SituationStatisticsViewController: UITableViewDataSource, UITableViewDelegate {
+extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     
      func numberOfSections(in tableView: UITableView) -> Int {
         return self.tableViewData.count
@@ -107,7 +115,7 @@ extension SituationStatisticsViewController: UITableViewDataSource, UITableViewD
         return cell
     }
     
-    func config(_ title: TitleButton) {
+     func config(_ title: TitleButtonList) {
         sectionButton.setTitle(title.title, for: .normal)
     }
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -149,24 +157,9 @@ extension SituationStatisticsViewController: UITableViewDataSource, UITableViewD
         
         if self.hiddenSections.contains(section) {
             self.hiddenSections.remove(section)
-//            self.expangindTableView.insertRows(at: indexPathsForSection(),
-//                                      with: .fade)
         } else {
             self.hiddenSections.insert(section)
-//            self.expangindTableView.deleteRows(at: indexPathsForSection(),
-//                                      with: .fade)
         }
         expangindTableView.reloadData()
     }
-}
-
-struct TitleButton {
-    let title: String
-}
-extension TitleButton {
-    static var titles: [TitleButton] = [TitleButton(title: "딸기"),
-                                     TitleButton(title: "바나나"),
-                                     TitleButton(title: "망고")
-
-    ]
 }

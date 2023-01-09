@@ -17,27 +17,9 @@ final class AchievementViewController: UIViewController {
     
     private lazy var scrollView = UIScrollView()
     private var titleView = TitleView()
+    private var mainTableView = UITableView(frame: .zero, style: .grouped)
+
     private lazy var calendarView = CustomCalendar(frame: .zero)
-    private lazy var segmentedControl = CustomSegmentedControl(items: [" 낫투두 통계보기 ", " 상황별 통계보기 "])
-    private lazy var missionVC = MissionStatisticsViewController()
-    private lazy var situationVC = SituationStatisticsViewController()
-    private lazy var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-    
-    var dataViewControllers: [UIViewController] {
-        [self.missionVC, self.situationVC]
-    }
-    var currentPage: Int = 0 {
-        didSet {
-            print(oldValue, self.currentPage)
-            let direction: UIPageViewController.NavigationDirection = oldValue <= self.currentPage ? .forward : .reverse
-            self.pageViewController.setViewControllers(
-                [dataViewControllers[self.currentPage]],
-                direction: direction,
-                animated: true,
-                completion: nil
-            )
-        }
-    }
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
     // MARK: - View Life Cycle
@@ -45,6 +27,7 @@ final class AchievementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        register()
         setLayout()
     }
 }
@@ -55,65 +38,63 @@ extension AchievementViewController {
     private func setUI() {
         view.backgroundColor = .BG
         
-        scrollView.do {
-            $0.showsHorizontalScrollIndicator = false
-            $0.isScrollEnabled = true
-            $0.backgroundColor = .BG
-        }
-        
-        calendarView.do {
-            $0.layer.borderWidth = 1
-            $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
-            $0.calendar.delegate = self
-        }
-        
-        pageViewController.do {
-            $0.setViewControllers([self.dataViewControllers[0]], direction: .forward, animated: true)
+        mainTableView.do {
+            $0.rowHeight = UITableView.automaticDimension
+            $0.separatorStyle = .none
+            $0.delegate = self
+            $0.dataSource = self
         }
     }
+    private func register() {
+        mainTableView.register(CalendarTableViewCell.self, forCellReuseIdentifier: CalendarTableViewCell.identifier)
+        mainTableView.register(StatisticsTableViewCell.self, forCellReuseIdentifier: StatisticsTableViewCell.identifier)
+    }
     private func setLayout() {
-        view.addSubviews(titleView, scrollView)
-        scrollView.addSubviews(calendarView, segmentedControl, pageViewController.view)
+        view.addSubviews(titleView, mainTableView)
         
         titleView.snp.makeConstraints {
             $0.top.equalTo(safeArea).offset(17.adjusted)
             $0.directionalHorizontalEdges.equalTo(safeArea)
-            $0.height.equalTo(65.adjusted)
+            $0.height.equalTo(30.adjusted)
         }
-        
-        scrollView.snp.makeConstraints {
-            $0.directionalHorizontalEdges.equalTo(safeArea)
+        mainTableView.snp.makeConstraints {
             $0.top.equalTo(titleView.snp.bottom)
+            $0.leading.trailing.equalTo(safeArea)
             $0.bottom.equalToSuperview()
         }
         
-        calendarView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
-            $0.height.equalTo(380.adjusted)
-        }
-        
-        segmentedControl.snp.makeConstraints {
-            $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
-            $0.top.equalTo(calendarView.snp.bottom).offset(30.adjusted)
-            $0.height.equalTo(20.adjusted)
-        }
-        pageViewController.view.snp.makeConstraints {
-            $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
-            $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
-            $0.height.equalTo(400.adjusted)
-            $0.bottom.equalTo(scrollView.snp.bottom).inset(35.adjusted)
-        }
-        self.segmentedControl.addTarget(self, action: #selector(changeValue(control:)), for: .valueChanged)
-        self.segmentedControl.selectedSegmentIndex = 0
-    }
-    @objc private func changeValue(control: UISegmentedControl) {
-        self.currentPage = control.selectedSegmentIndex
     }
 }
-extension AchievementViewController: FSCalendarDelegate {
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        calendarView.calendar.reloadData()
-        calendarView.headerLabel.text = calendarView.dateFormatter.string(from: calendar.currentPage)
+
+extension AchievementViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            guard let calendarCell = tableView.dequeueReusableCell(
+                withIdentifier: CalendarTableViewCell.identifier, for: indexPath) as? CalendarTableViewCell else { return UITableViewCell() }
+            calendarCell.selectionStyle = .none
+            calendarCell.backgroundColor = .clear
+            
+            return calendarCell
+        case 1:
+            guard let statisticsCell = tableView.dequeueReusableCell(
+                withIdentifier: StatisticsTableViewCell.identifier, for: indexPath) as? StatisticsTableViewCell else { return UITableViewCell() }
+            statisticsCell.selectionStyle = .none
+            statisticsCell.backgroundColor = .clear
+
+            return statisticsCell
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableView.automaticDimension
+  
     }
 }

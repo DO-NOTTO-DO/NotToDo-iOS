@@ -32,6 +32,8 @@ class SituationTitleView: UIView {
 
 extension SituationTitleView {
     func setUI() {
+        backgroundColor = .clear
+        
         hStack.do {
             $0.axis = .horizontal
         }

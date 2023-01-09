@@ -50,7 +50,6 @@
 		3B1628B2295ADB710077AE7B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628B1295ADB710077AE7B /* NetworkResult.swift */; };
 		3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628B3295ADBA20077AE7B /* HomeViewController.swift */; };
 		3B1628B9295ADD750077AE7B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1628B8295ADD750077AE7B /* Colors.xcassets */; };
-		3B1D074F296A083200AF0F50 /* HomeMissionCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D074E296A083200AF0F50 /* HomeMissionCollectionReusableView.swift */; };
 		3B3405B7295B05D400D44722 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405B6295B05D400D44722 /* .swiftlint.yml */; };
 		3B3405B9295B090300D44722 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405B8295B090300D44722 /* UIColor+.swift */; };
 		3B3405BC295B0A2400D44722 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BB295B0A2400D44722 /* Pretendard-Bold.otf */; };
@@ -83,18 +82,17 @@
 		3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34AB29618441002E1161 /* UIButton+.swift */; };
 		3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ED42B2961DC310052D2B8 /* HomeView.swift */; };
 		3B888AA729674BA4008209A8 /* RandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B888AA629674BA4008209A8 /* RandomData.swift */; };
-		3BE6CBBD2969798E003A8A7B /* HoMissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6CBBC2969798E003A8A7B /* HoMissionCollectionViewCell.swift */; };
 		3BE6CBC32969D700003A8A7B /* MissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6CBC22969D700003A8A7B /* MissionModel.swift */; };
 		3BED5328295C018700157A3B /* adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED5327295C018700157A3B /* adjust+.swift */; };
-		6C600BCC2969FCBC00421D7A /* EmptyRecentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BCB2969FCBC00421D7A /* EmptyRecentViewCell.swift */; };
-		6C600BC029693B3100421D7A /* MissionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */; };
-		6C600BC229693B3B00421D7A /* MissionHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */; };
-		6C600BC429693B4B00421D7A /* MissionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */; };
-		6C600BC629693B5500421D7A /* MissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC529693B5500421D7A /* MissionHistoryView.swift */; };
 		3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */; };
 		3BEF92AF29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */; };
 		3BEF92B129696CC90090A290 /* HomeEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92B029696CC90090A290 /* HomeEmptyCollectionViewCell.swift */; };
 		3BF7CE9E296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */; };
+		6C600BC029693B3100421D7A /* MissionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */; };
+		6C600BC229693B3B00421D7A /* MissionHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */; };
+		6C600BC429693B4B00421D7A /* MissionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */; };
+		6C600BC629693B5500421D7A /* MissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC529693B5500421D7A /* MissionHistoryView.swift */; };
+		6C600BCC2969FCBC00421D7A /* EmptyRecentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BCB2969FCBC00421D7A /* EmptyRecentViewCell.swift */; };
 		6C8826072967D2EF0005E222 /* AddSituationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8826062967D2EF0005E222 /* AddSituationView.swift */; };
 		6C88260C2967D36B0005E222 /* AddSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88260B2967D36B0005E222 /* AddSituationViewController.swift */; };
 		6C88260F2967D8280005E222 /* AddSituationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88260E2967D8280005E222 /* AddSituationCollectionViewCell.swift */; };
@@ -148,7 +146,6 @@
 		3B1628B1295ADB710077AE7B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		3B1628B3295ADBA20077AE7B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3B1628B8295ADD750077AE7B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		3B1D074E296A083200AF0F50 /* HomeMissionCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMissionCollectionReusableView.swift; sourceTree = "<group>"; };
 		3B3405B6295B05D400D44722 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3B3405B8295B090300D44722 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		3B3405BB295B0A2400D44722 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -181,18 +178,17 @@
 		3B5B34AB29618441002E1161 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		3B5ED42B2961DC310052D2B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3B888AA629674BA4008209A8 /* RandomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomData.swift; sourceTree = "<group>"; };
-		3BE6CBBC2969798E003A8A7B /* HoMissionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoMissionCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BE6CBC22969D700003A8A7B /* MissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionModel.swift; sourceTree = "<group>"; };
 		3BED5327295C018700157A3B /* adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "adjust+.swift"; sourceTree = "<group>"; };
-		6C600BCB2969FCBC00421D7A /* EmptyRecentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRecentViewCell.swift; sourceTree = "<group>"; };
-		6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryModel.swift; sourceTree = "<group>"; };
-		6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
-		6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryViewController.swift; sourceTree = "<group>"; };
-		6C600BC529693B5500421D7A /* MissionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryView.swift; sourceTree = "<group>"; };
 		3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionReusableView.swift; sourceTree = "<group>"; };
 		3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BEF92B029696CC90090A290 /* HomeEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMissionCollectionViewCell.swift; sourceTree = "<group>"; };
+		6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryModel.swift; sourceTree = "<group>"; };
+		6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryViewController.swift; sourceTree = "<group>"; };
+		6C600BC529693B5500421D7A /* MissionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryView.swift; sourceTree = "<group>"; };
+		6C600BCB2969FCBC00421D7A /* EmptyRecentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRecentViewCell.swift; sourceTree = "<group>"; };
 		6C8826062967D2EF0005E222 /* AddSituationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationView.swift; sourceTree = "<group>"; };
 		6C88260B2967D36B0005E222 /* AddSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationViewController.swift; sourceTree = "<group>"; };
 		6C88260E2967D8280005E222 /* AddSituationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -650,6 +646,26 @@
 			path = NotTodoButton;
 			sourceTree = "<group>";
 		};
+		3B888AA529674B97008209A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3B888AA629674BA4008209A8 /* RandomData.swift */,
+				3BE6CBC22969D700003A8A7B /* MissionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3BEF92AB2967FADD0090A290 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */,
+				3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */,
+				3BEF92B029696CC90090A290 /* HomeEmptyCollectionViewCell.swift */,
+				3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		6C600BB729693A0300421D7A /* MissionHistoryScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,28 +707,6 @@
 				6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		3B888AA529674B97008209A8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3B888AA629674BA4008209A8 /* RandomData.swift */,
-				3BE6CBC22969D700003A8A7B /* MissionModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		3BEF92AB2967FADD0090A290 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */,
-				3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */,
-				3BEF92B029696CC90090A290 /* HomeEmptyCollectionViewCell.swift */,
-				3BE6CBBC2969798E003A8A7B /* HoMissionCollectionViewCell.swift */,
-				3B1D074E296A083200AF0F50 /* HomeMissionCollectionReusableView.swift */,
-				3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		6C8826082967D30C0005E222 /* AddSituationScene */ = {
@@ -904,7 +898,6 @@
 				6C600BC429693B4B00421D7A /* MissionHistoryViewController.swift in Sources */,
 				096BE0212966A24A009ED396 /* NestedCollectionViewCell.swift in Sources */,
 				3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */,
-				3B1D074F296A083200AF0F50 /* HomeMissionCollectionReusableView.swift in Sources */,
 				3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */,
 				3B16288D295AD8380077AE7B /* UIStackView+.swift in Sources */,
 				096BDFF529652270009ED396 /* MissionCollectionViewCell.swift in Sources */,
@@ -930,7 +923,6 @@
 				6C8826072967D2EF0005E222 /* AddSituationView.swift in Sources */,
 				096BDFF7296522C6009ED396 /* CustomAchieveLabel.swift in Sources */,
 				096BDFF7296522C6009ED396 /* CustomAchieveLabel.swift in Sources */,
-				3BE6CBBD2969798E003A8A7B /* HoMissionCollectionViewCell.swift in Sources */,
 				096BE0052965A209009ED396 /* BackgroundSupplementaryView.swift in Sources */,
 				096BDFF9296523C0009ED396 /* EmptyCollectionViewCell.swift in Sources */,
 				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,

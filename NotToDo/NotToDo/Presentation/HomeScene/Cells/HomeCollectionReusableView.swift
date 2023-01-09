@@ -95,7 +95,6 @@ extension HomeCollectionReusableView {
     
     func setRandomData() {
         graphicImageView.image = graphicData.shuffled().first
-//        motivationLabel.text = motivationStringData.shuffled().first
         let randomText = motivationStringData.shuffled().first!
         self.typingAnimation(randomText)
     }

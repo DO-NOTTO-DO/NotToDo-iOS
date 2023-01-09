@@ -61,7 +61,6 @@ extension HomeCalendarCollectionViewCell {
             $0.appearance.headerMinimumDissolvedAlpha = 0
             $0.appearance.borderRadius = 9.adjusted
             $0.weekdayHeight = 17.adjusted
-//            $0.calendarWeekdayView.removeFromSuperview()
             $0.calendarWeekdayView.fs_height = 0
             $0.headerHeight = 0
             $0.scope = .week

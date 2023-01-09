@@ -10,11 +10,13 @@ import UIKit
 class TableHeaderView: UITableViewHeaderFooterView {
     
     static var identifier = "TableHeaderVIew"
-    var isSelected: Bool = false
     
     var headerButton = UIButton()
     var headerLabel = UILabel()
-    
+    var numberLabel = UILabel()
+    var iconImageView = UIImageView()
+    let isSelected: Bool = false
+   
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setUI()
@@ -27,17 +29,19 @@ class TableHeaderView: UITableViewHeaderFooterView {
 }
 extension TableHeaderView {
     func setUI() {
-        contentView.addSubviews(headerButton)
+        contentView.addSubviews(headerButton, numberLabel)
         headerButton.addSubview(headerLabel)
         
         headerButton.do {
             $0.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
-            
         }
         headerLabel.do {
             $0.textColor = UIColor.nottodoBlack
             $0.font = .PretendardBold(size: 14)
-            
+        }
+        numberLabel.do {
+            $0.text = "n 회"
+            $0.font = .PretendardRegular(size: 14.adjusted)
         }
     }
     
@@ -52,14 +56,19 @@ extension TableHeaderView {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(37.adjusted)
         }
+        numberLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(30)
+            $0.centerY.equalTo(headerLabel.snp.centerY)
+        }
     }
     
-    func config(_ title : TitleButton){
+    func config(_ title: TitleButton){
         headerLabel.text = title.title
     }
     
-    @objc func headerButtonTapped(_ sender: UIButton){
+    @objc func headerButtonTapped(_ sender: UIButton) {
         sender.isSelected.toggle()
+        numberLabel.textColor = sender.isSelected ? .yellow_basic : .nottodoGray2
     }
 }
 

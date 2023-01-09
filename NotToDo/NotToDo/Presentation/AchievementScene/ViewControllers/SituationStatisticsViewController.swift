@@ -16,10 +16,7 @@ class SituationStatisticsViewController: UIViewController {
     let tableViewData = [
         ["야", "호", "3"],
         ["1", "2", "3"],
-        ["1", "2"],
-        ["1"],
-        ["1", "2"]
-    ]
+        ["1", "2"]    ]
     let titleLists: [TitleButton] = TitleButton.titles
     let sectionButton = UIButton()
     
@@ -43,7 +40,7 @@ class SituationStatisticsViewController: UIViewController {
             $0.dataSource = self
             $0.sectionHeaderTopPadding = 10
             $0.sectionFooterHeight = 0
-            $0.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+          //  $0.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
 
         }
     }
@@ -54,7 +51,7 @@ class SituationStatisticsViewController: UIViewController {
         
         expangindTableView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
-            $0.directionalHorizontalEdges.equalToSuperview().inset(20)
+            $0.directionalHorizontalEdges.equalToSuperview().inset(40)
         }
     }
     func register() {
@@ -72,25 +69,25 @@ extension SituationStatisticsViewController: UITableViewDataSource, UITableViewD
         }
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.hiddenSections.contains(section) {
-            return 0
+            
+            return self.tableViewData[section].count
         }
-        return self.tableViewData[section].count
+         return 0
     }
-    
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath)
          switch indexPath.row {
          case 0:
-             cell.layer.addBorder([.top,.left,.right,.bottom], color: .nottodoGray2!, width: 0.5)
+             cell.layer.addBorder([.top, .left, .right, .bottom], color: .nottodoGray2!, width: 0.5)
          default:
-             cell.layer.addBorder([.bottom,.left,.right], color: .nottodoGray2!, width: 0.5)
+             cell.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
          }
         cell.textLabel?.text = self.tableViewData[indexPath.section][indexPath.row]
         return cell
     }
     
-    func config(_ title : TitleButton) {
+    func config(_ title: TitleButton) {
         sectionButton.setTitle(title.title, for: .normal)
     }
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -113,7 +110,7 @@ extension SituationStatisticsViewController: UITableViewDataSource, UITableViewD
          default:
              break
          }
-        return customHeaderView
+         return customHeaderView
     }
     @objc
     private func hideSection(sender: UIButton) {
@@ -121,34 +118,35 @@ extension SituationStatisticsViewController: UITableViewDataSource, UITableViewD
         
         func indexPathsForSection() -> [IndexPath] {
             var indexPaths = [IndexPath]()
-            
+
             for row in 0..<self.tableViewData[section].count {
                 indexPaths.append(IndexPath(row: row,
                                             section: section))
             }
+
             return indexPaths
         }
         
         if self.hiddenSections.contains(section) {
             self.hiddenSections.remove(section)
-            self.expangindTableView.insertRows(at: indexPathsForSection(),
-                                      with: .fade)
+//            self.expangindTableView.insertRows(at: indexPathsForSection(),
+//                                      with: .fade)
         } else {
             self.hiddenSections.insert(section)
-            self.expangindTableView.deleteRows(at: indexPathsForSection(),
-                                      with: .fade)
+//            self.expangindTableView.deleteRows(at: indexPathsForSection(),
+//                                      with: .fade)
         }
+        expangindTableView.reloadData()
     }
 }
 
 struct TitleButton {
-    let title : String
+    let title: String
 }
 extension TitleButton {
-    static var titles : [TitleButton] = [TitleButton(title: "딸기"),
+    static var titles: [TitleButton] = [TitleButton(title: "딸기"),
                                      TitleButton(title: "바나나"),
-                                     TitleButton(title: "망고"),
-                                     TitleButton(title: "ㅇㅇㅇ"),
-                                     TitleButton(title: "호멓")
+                                     TitleButton(title: "망고")
+
     ]
 }

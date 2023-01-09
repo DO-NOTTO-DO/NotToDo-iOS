@@ -11,14 +11,28 @@ import Then
 
 class TableHeaderView: UITableViewHeaderFooterView {
     
+    // MARK: - Properties
+
     static var identifier = "TableHeaderVIew"
     
+    // MARK: - UI Components
+
     var headerButton = UIButton()
+    var headerImage = UIImageView()
     var headerLabel = UILabel()
     var numberLabel = UILabel()
     var iconImageView = UIImageView()
     let isSelected: Bool = false
    
+    // MARK: - View Life Cycle
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        headerImage.image = nil
+        numberLabel.textColor = nil
+    }
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setUI()
@@ -35,7 +49,7 @@ class TableHeaderView: UITableViewHeaderFooterView {
 extension TableHeaderView {
     func setUI() {
         contentView.addSubviews(headerButton, numberLabel)
-        headerButton.addSubview(headerLabel)
+        headerButton.addSubviews(headerImage, headerLabel)
         
         headerButton.do {
             $0.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
@@ -57,9 +71,12 @@ extension TableHeaderView {
             $0.bottom.equalToSuperview().inset(6)
             $0.height.equalTo(45)
         }
+        headerImage.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         headerLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(37.adjusted)
+            $0.leading.equalToSuperview().offset(50.adjusted)
         }
         numberLabel.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(30)
@@ -72,7 +89,7 @@ extension TableHeaderView {
     }
     
     @objc func headerButtonTapped(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        numberLabel.textColor = sender.isSelected ? .yellow_basic : .nottodoGray2
+        headerButton.isSelected.toggle()
+        numberLabel.textColor = isSelected ? UIColor.yellow_basic : UIColor.nottodoGray1
     }
 }

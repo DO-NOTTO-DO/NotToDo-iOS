@@ -33,7 +33,6 @@ class SituationTitleView: UIView {
 extension SituationTitleView {
     func setUI() {
         backgroundColor = .clear
-        
         hStack.do {
             $0.axis = .horizontal
         }
@@ -44,6 +43,7 @@ extension SituationTitleView {
     
     func setLayout() {
         addSubview(hStack)
+        
         hStack.snp.makeConstraints {
             $0.leading.equalToSuperview()
         }

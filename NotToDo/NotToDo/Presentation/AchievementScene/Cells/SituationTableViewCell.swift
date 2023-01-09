@@ -9,8 +9,12 @@ import UIKit
 
 class SituationTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
+    
     static var identifier = "SituationTableViewCell"
     
+    // MARK: - UI Components
+
     let titleLabel = UILabel()
     let numberLabel = UILabel()
     let backGroundImage = UIImageView()
@@ -55,6 +59,5 @@ class SituationTableViewCell: UITableViewCell {
             $0.trailing.equalToSuperview().inset(17.adjusted)
         }
     }
-    
 }
 

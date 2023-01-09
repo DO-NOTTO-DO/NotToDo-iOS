@@ -10,7 +10,7 @@ import UIKit
 import Then
 import SnapKit
 
-class Section{
+class Section {
     let title: String
     let options: [String]
     
@@ -56,7 +56,7 @@ class SituationStatisticsViewController: UIViewController {
             super.viewDidLayoutSubviews()
             tableView.reloadData()
         }
-    private func setViews(){
+    private func setViews() {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self

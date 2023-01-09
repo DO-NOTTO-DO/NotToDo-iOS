@@ -13,6 +13,8 @@ import Then
 
 class CustomCalendar: UIView {
     
+    // MARK: - UI Components
+
     var calendar: FSCalendar! = FSCalendar(frame: .zero)
     private lazy var hStack = UIStackView(arrangedSubviews: [leftBtn, rightBtn])
     lazy var headerLabel = UILabel()
@@ -23,6 +25,8 @@ class CustomCalendar: UIView {
     private lazy var today: Date = { return Date() }()
     lazy var dateFormatter = DateFormatter()
     
+    // MARK: - View Life Cycle
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setUI()
@@ -36,6 +40,9 @@ class CustomCalendar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension CustomCalendar {
     private func setUI() {
         backgroundColor = .nottodoWhite
@@ -108,7 +115,8 @@ extension CustomCalendar {
         calendar.appearance.selectionColor = .yellow_basic
         calendar.appearance.borderRadius = 0.4
         calendar.appearance.titleWeekendColor = .nottodoBlack
-        calendar.today = nil
+        calendar.appearance.titleTodayColor = .blue
+        calendar.appearance.todayColor = .clear
         }
     
     private func setUpCalendar() {
@@ -130,6 +138,7 @@ extension CustomCalendar {
         calendar.reloadData()
         self.headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
     }
+    
     @objc func prevBtnTapped(_sender: UIButton) {
         scrollCurrentPage(isPrev: true)
     }

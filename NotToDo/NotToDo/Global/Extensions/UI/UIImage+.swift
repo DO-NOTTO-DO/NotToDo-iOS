@@ -80,6 +80,7 @@ extension UIImage {
     static let calendarLeftArrow = UIImage(named: "Calendar/btn_arrow/_left")!.withRenderingMode(.alwaysOriginal)
     static let calendarRightArrow = UIImage(named: "Calendar/btn_arrow/_right")!.withRenderingMode(.alwaysOriginal)
     static let selectedDateBtn = UIImage(named: "Calendar/btn_selected")!.withRenderingMode(.alwaysOriginal)
+    static let rectangle_Clear = UIImage(named: "Calendar/Rectangle_Clear")!.withRenderingMode(.alwaysOriginal)
     
     // Shape
     

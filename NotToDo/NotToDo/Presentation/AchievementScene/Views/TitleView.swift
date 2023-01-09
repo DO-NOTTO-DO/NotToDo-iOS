@@ -12,8 +12,12 @@ import Then
 
 class TitleView: UIView {
     
+    // MARK: - UI Components
+
     private let titleLabel = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardBold(size: 22))
     
+    // MARK: - View Life Cycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -29,12 +33,13 @@ class TitleView: UIView {
 
 extension TitleView {
     func setUI() {
-        addSubview(titleLabel)
-        
+        backgroundColor = .BG
         titleLabel.text = I18N.achievementMainTitle
     }
     
     func setLayout() {
+        addSubview(titleLabel)
+
         titleLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(20.adjusted)

@@ -43,7 +43,7 @@ extension MissionStatisticsView {
         missionTableView.do {
             $0.backgroundColor = .clear
             $0.separatorStyle = .none
-            $0.isScrollEnabled = false
+//            $0.isScrollEnabled = false
             $0.delegate = self
             $0.dataSource = self
             $0.sectionHeaderTopPadding = 0
@@ -71,24 +71,27 @@ extension MissionStatisticsView {
     }
     func register() {
         missionTableView.register(MissionTableViewCell.self, forCellReuseIdentifier: MissionTableViewCell.identifier)
+        missionTableView.register(StatisticsEmptyTableViewCell.self, forCellReuseIdentifier: StatisticsEmptyTableViewCell.identifier)
     }
 }
 extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.missionList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if missionList.isEmpty {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: EmptyTableViewCell.identifier, for: indexPath) as? EmptyTableViewCell else { return UITableViewCell() }
+        if missionList.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsEmptyTableViewCell.identifier, for: indexPath) as! StatisticsEmptyTableViewCell
             situationTitleView.isHidden = true
+
             return cell
         } else {
+        print(missionList.count, "A?DF?SF")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MissionTableViewCell.identifier, for: indexPath) as? MissionTableViewCell else { return UITableViewCell() }
             let item = missionList[indexPath.row]
             switch indexPath.row {

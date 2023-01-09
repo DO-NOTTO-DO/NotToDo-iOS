@@ -52,7 +52,7 @@ extension SituationStatisticsView {
         expangindTableView.do {
             $0.backgroundColor = .clear
             $0.separatorStyle = .none
-            $0.isScrollEnabled = false
+//            $0.isScrollEnabled = false
             $0.delegate = self
             $0.dataSource = self
             $0.sectionHeaderTopPadding = 10
@@ -101,8 +101,9 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableViewData.isEmpty {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: EmptyTableViewCell.identifier, for: indexPath) as? EmptyTableViewCell else { return UITableViewCell() }
-            situationTitleView.isHidden = true
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsEmptyTableViewCell.identifier, for: indexPath) as? StatisticsEmptyTableViewCell else { return UITableViewCell() }
+            situationTitleView.icon.isHidden = true
+            situationTitleView.subLabel.isHidden = true
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SituationTableViewCell.identifier, for: indexPath) as? SituationTableViewCell else { return UITableViewCell() }

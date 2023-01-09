@@ -7,11 +7,11 @@
 
 import UIKit
 
-class EmptyTableViewCell: UITableViewCell {
+class StatisticsEmptyTableViewCell: UITableViewCell {
     
     // MARK: - Properties
 
-    static var identifier = "EmptyTableViewCell"
+    static var identifier = "StatisticsEmptyTableViewCell"
     
     // MARK: - UI Components
 
@@ -33,7 +33,7 @@ class EmptyTableViewCell: UITableViewCell {
 
 // MARK: - Methods
 
-extension EmptyTableViewCell {
+extension StatisticsEmptyTableViewCell {
     func setUI() {
         backgroundColor = .clear
         iconImage.do {

@@ -15,10 +15,12 @@ class AddSituationView: UIView {
     // MARK: - UI Components
     
     private var navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
-    private lazy var addSituationCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-    private var inputTextField = UITextField()
-    private var textCountLabel = UILabel()
-    let maxLength = 15
+    lazy var addSituationCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    var chagedText: String? {
+        didSet {
+            addSituationCollectionView.reloadData()
+        }
+    }
     
     // MARK: - View Life Cycle
     
@@ -39,35 +41,18 @@ class AddSituationView: UIView {
 
 extension AddSituationView {
     private func setUI() {
+        backgroundColor = .nottodoWhite
+        
         addSituationCollectionView.do {
             $0.isScrollEnabled = false
             $0.collectionViewLayout = layout()
             $0.delegate = self
             $0.dataSource = self
         }
-        
-        inputTextField.do {
-            $0.backgroundColor = .nottodoWhite
-            $0.layer.borderWidth = 1.adjusted
-            $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
-            $0.font = .PretendardMedium(size: 16.adjusted)
-            $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 15.adjusted, height: 0.0))
-            $0.leftViewMode = .always
-            $0.attributedPlaceholder = NSAttributedString(string: I18N.inputPlaceHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
-             $0.delegate = self
-        }
-        
-        textCountLabel.do {
-            $0.text = "0/15"
-            $0.font = .PretendardRegular(size: 16.adjusted)
-            $0.textColor = .nottodoGray2
-        }
     }
     
     private func setLayout() {
-        backgroundColor = .nottodoWhite
-        
-        addSubviews(navigationBarView, addSituationCollectionView, inputTextField, textCountLabel)
+        addSubviews(navigationBarView, addSituationCollectionView)
         
         navigationBarView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
@@ -78,6 +63,9 @@ extension AddSituationView {
         addSituationCollectionView.snp.makeConstraints {
             $0.top.equalTo(navigationBarView.snp.bottom).offset(32.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+<<<<<<< HEAD
+            $0.bottom.equalTo(safeAreaLayoutGuide)
+=======
             $0.height.equalTo(270.adjusted)
         }
         
@@ -90,6 +78,7 @@ extension AddSituationView {
         textCountLabel.snp.makeConstraints {
             $0.top.equalTo(inputTextField.snp.bottom).offset(9.adjusted)
             $0.trailing.equalToSuperview().offset(-20.adjusted)
+>>>>>>> 33e616237eef452af124984d7c6b9803e460c23e
         }
     }
     
@@ -107,6 +96,11 @@ extension AddSituationView {
                                             withReuseIdentifier: AddSituationHeaderView.identifier)
         addSituationCollectionView.register(AddSituationCollectionViewCell.self,
                                             forCellWithReuseIdentifier: AddSituationCollectionViewCell.identifier)
+        addSituationCollectionView.register(EmptyRecentCollectionViewCell.self,
+                                            forCellWithReuseIdentifier: EmptyRecentCollectionViewCell.identifier)
+        addSituationCollectionView.register(AddSituationFooterView.self,
+                                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                            withReuseIdentifier: AddSituationFooterView.identifier)
     }
 }
 
@@ -121,7 +115,11 @@ extension AddSituationView: UICollectionViewDataSource {
         case 0:
             return recommendList.count
         case 1:
-            return recentList.count
+            if recentList.isEmpty {
+                return 1
+            } else {
+                return recentList.count
+            }
         default:
             return 0
         }
@@ -130,54 +128,79 @@ extension AddSituationView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
                     as? AddSituationCollectionViewCell else { return UICollectionViewCell() }
-            cell.dataBind(model: recommendList[indexPath.row])
+            cell.configure(model: recommendList[indexPath.row])
             return cell
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
-                    as? AddSituationCollectionViewCell else { return UICollectionViewCell() }
-            cell.dataBind(model: recentList[indexPath.row])
-            return cell
+            if recentList.isEmpty {
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: EmptyRecentCollectionViewCell.identifier, for: indexPath)
+                        as? EmptyRecentCollectionViewCell else { return UICollectionViewCell() }
+                return cell
+            } else {
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
+                        as? AddSituationCollectionViewCell else { return UICollectionViewCell() }
+                cell.configure(model: recentList[indexPath.row])
+                return cell
+            }
         default:
             return UICollectionViewCell()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch indexPath.section {
-        case 0:
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationHeaderView.identifier, for: indexPath) as? AddSituationHeaderView else { return UICollectionReusableView() }
-            headerView.HeaderTitle(title: I18N.recommendKeyword)
-            headerView.Icon(icon: .icRecommend)
-            return headerView
-        case 1:
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationHeaderView.identifier, for: indexPath) as? AddSituationHeaderView else { return UICollectionReusableView() }
-            headerView.HeaderTitle(title: I18N.recentKeyword)
-            headerView.Icon(icon: .recentUse)
-            return headerView
-        default:
-            return UICollectionReusableView()
+        if kind == UICollectionView.elementKindSectionHeader {
+            switch indexPath.section {
+            case 0:
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationHeaderView.identifier, for: indexPath) as? AddSituationHeaderView else { return UICollectionReusableView() }
+                headerView.HeaderTitle(title: I18N.recommendKeyword)
+                headerView.Icon(icon: .icRecommend)
+                return headerView
+            case 1:
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationHeaderView.identifier, for: indexPath) as? AddSituationHeaderView else { return UICollectionReusableView() }
+                headerView.HeaderTitle(title: I18N.recentKeyword)
+                headerView.Icon(icon: .recentUse)
+                return headerView
+            default:
+                return UICollectionReusableView()
+            }
+        } else {
+            switch indexPath.section {
+            case 1:
+                guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationFooterView.identifier, for: indexPath) as? AddSituationFooterView else { return UICollectionReusableView() }
+                footerView.setTextField(chagedText ?? "")
+                return footerView
+            default:
+                return UICollectionReusableView()
+            }
         }
     }
 }
 
 extension AddSituationView: UICollectionViewDelegateFlowLayout {
+<<<<<<< HEAD
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath) as? AddSituationCollectionViewCell else {
+=======
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
                 as? AddSituationCollectionViewCell else {
+>>>>>>> 33e616237eef452af124984d7c6b9803e460c23e
             return .zero
         }
-        
         switch indexPath.section {
         case 0:
             cell.addSituationLabel.text = recommendList[indexPath.row].keyword
         case 1:
-            cell.addSituationLabel.text = recentList[indexPath.row].keyword
+            if recentList.isEmpty {
+                return CGSize(width: addSituationCollectionView.frame.width, height: 35.adjusted)
+            } else {
+                cell.addSituationLabel.text = recentList[indexPath.row].keyword
+            }
         default:
             cell.addSituationLabel.text = recommendList[indexPath.row].keyword
         }
@@ -193,32 +216,41 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
         let width = collectionView.frame.width
         return CGSize(width: width, height: 31.adjusted)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        let width = collectionView.frame.width
+        switch section {
+        case 1:
+            return CGSize(width: width, height: 74.adjusted)
+        default:
+            return CGSize(width: 0, height: 0)
+        }
+    }
 }
 
 extension AddSituationView: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        if textField.text?.count ?? 0 > maxLength {
-            textField.deleteBackward()
-        }
-        textCountLabel.text = "\(textField.text!.count)/15"
-
-        return true
+                                               func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
     }
 }
 
 extension AddSituationView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         collectionView.reloadData()
+        
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
+                as? AddSituationCollectionViewCell
+        cell!.backgroundColor = .blue
         
         switch indexPath.section {
         case 0:
-            inputTextField.text = recommendList[indexPath.row].keyword
-            textCountLabel.text = "\(inputTextField.text!.count)/15"
+            chagedText = recommendList[indexPath.row].keyword
         case 1:
-            inputTextField.text = recentList[indexPath.row].keyword
-            textCountLabel.text = "\(inputTextField.text!.count)/15"
+            if !recentList.isEmpty {
+                chagedText = recentList[indexPath.row].keyword
+            }
         default:
             return
         }

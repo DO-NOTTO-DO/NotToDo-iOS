@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 class AddSituationCollectionViewCell: UICollectionViewCell {
-  
+    
     // MARK: - Properties
     
     static let identifier = "AddSituationCollectionViewCell"
@@ -19,15 +19,15 @@ class AddSituationCollectionViewCell: UICollectionViewCell {
     // MARK: - UI Components
     
     let addSituationLabel = UILabel()
-  
-  // MARK: - View Life Cycle
+    
+    // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
         setLayout()
-  }
-  
+    }
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -57,7 +57,21 @@ extension AddSituationCollectionViewCell {
         }
     }
     
-    func dataBind(model: AddSituationModel) {
+    func configure(model: AddSituationModel) {
         addSituationLabel.text = model.keyword
+    }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            guard self.isHighlighted else { return }
+            
+            UIView.animate(
+                withDuration: 0.05,
+                animations: {
+                    self.backgroundColor = .nottodoGray1
+                    self.addSituationLabel.textColor = .nottodoWhite
+                }
+            )
+        }
     }
 }

@@ -90,6 +90,7 @@ extension UIImage {
     static let backBtn = UIImage(named: "Other/btn_back")!.withRenderingMode(.alwaysOriginal)
     static let rightArrow = UIImage(named: "Arrow/ic_right_arrow")!.withRenderingMode(.alwaysOriginal)
     static let leftArrow = UIImage(named: "Arrow/ic_left_arrow")!.withRenderingMode(.alwaysOriginal)
+    static let gray4RightArrow = UIImage(named: "Arrow/ic_gray4_right")!.withRenderingMode(.alwaysOriginal)
 
     // Graphic
     

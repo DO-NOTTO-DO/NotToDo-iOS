@@ -15,7 +15,7 @@ final class MyInfoView: UIView {
     // MARK: - Properties
     
     private var isLogin: Bool {
-        return false
+        return true
     }
     
     // MARK: - UI Components
@@ -165,7 +165,7 @@ extension MyInfoView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         switch section {
         case 2:
-            return CGSize(width: 150.adjusted, height: 17.adjusted)
+            return CGSize(width: 150.adjusted, height: 57.adjusted)
         default:
             return CGSize()
         }

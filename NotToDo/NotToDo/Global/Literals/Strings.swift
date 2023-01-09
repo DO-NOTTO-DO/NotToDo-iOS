@@ -78,4 +78,37 @@ struct I18N {
     static let recommendViewTitle = "* 박스 터치 시, 낫투두가 아닌 환경만 입력됩니다."
     static let recommendMainTitle = "성취"
     static let recommendButtonTitle = "직접 작성하기"
+    
+    // Onboarding
+    
+    static let startButton = "시작할래요!"
+    static let gotoNottodo = "낫투두 등록하러 갈래요!"
+    static let startOnboardingTitle = """
+                                    나만의 규율을 지키고
+                                    더 나은 일상을 지속하세요
+                                    """
+    static let startOnboardingSubTitle = "이제부터 낫투두가 도와줄게요!"
+    static let firstOnboardingIndex = "첫 번째,"
+    static let firstOnboardingMessage = """
+                                        하지않을 것을
+                                        구체적으로 작성하며
+                                        목표 실현에 가까워지세요
+                                        """
+    static let jump = "건너뛰기"
+    static let secondOnboardingIndex = "두 번째,"
+    static let secondOnboardingMessage = """
+                                        정확하게 달성을 기록하고
+                                        변화를 체계적으로 관리하세요
+                                        """
+    static let thirdOnboardingIndex = "세 번째,"
+    static let thirdOnboardingMessage = """
+                                        낫투두 실천이 막막할 때는
+                                        구체적인 방법을 추천해드려요
+                                        """
+    static let finishOnboardingIndex = "마지막으로,"
+    static let finishOnboardingMessage = """
+                                        나의 성취 기록을
+                                        통계로 만나보세요
+                                        """
+    static let enroll = "낫투두 등록하러 갈래요!"
 }

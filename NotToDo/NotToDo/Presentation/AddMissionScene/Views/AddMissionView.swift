@@ -20,11 +20,11 @@ class AddMissionView: UIView {
     
     private let missionView = UIView()
     private let missionTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.missionTitle, buttonLabel: nil, icon: nil)
-    private let missionTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: I18N.missionPlaceHolder)
+    private let missionTextFieldView = AddMissionTextField(frame: .zero, placeHolder: I18N.missionPlaceHolder)
     
     private let behaviorView = UIView()
     private let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.behaviorTitle, buttonLabel: I18N.recommend, icon: .rightArrow)
-    private let behaviorTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: I18N.behaviorPlaceHolder)
+    private let behaviorTextFieldView = AddMissionTextField(frame: .zero, placeHolder: I18N.behaviorPlaceHolder)
     private let addBehaviorButton = UIButton()
     private let maxBehaviorLabel = UILabel()
     
@@ -32,7 +32,7 @@ class AddMissionView: UIView {
     
     private let goalView = UIView()
     private let goalTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.goalTitle, buttonLabel: nil, icon: nil)
-    private let goalTextFieldView = AddMissionTextFieldView(frame: .zero, placeHolder: I18N.goalPlaceHolder)
+    private let goalTextFieldView = AddMissionTextField(frame: .zero, placeHolder: I18N.goalPlaceHolder)
     
     var date = Date()
     let nowDate = Date()

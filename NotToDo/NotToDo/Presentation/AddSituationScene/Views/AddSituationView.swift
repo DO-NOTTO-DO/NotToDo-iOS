@@ -63,22 +63,7 @@ extension AddSituationView {
         addSituationCollectionView.snp.makeConstraints {
             $0.top.equalTo(navigationBarView.snp.bottom).offset(32.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
-<<<<<<< HEAD
             $0.bottom.equalTo(safeAreaLayoutGuide)
-=======
-            $0.height.equalTo(270.adjusted)
-        }
-        
-        inputTextField.snp.makeConstraints {
-            $0.top.equalTo(addSituationCollectionView.snp.bottom).offset(38.adjusted)
-            $0.leading.trailing.equalToSuperview().inset(20.adjusted)
-            $0.height.equalTo(46.adjusted)
-        }
-        
-        textCountLabel.snp.makeConstraints {
-            $0.top.equalTo(inputTextField.snp.bottom).offset(9.adjusted)
-            $0.trailing.equalToSuperview().offset(-20.adjusted)
->>>>>>> 33e616237eef452af124984d7c6b9803e460c23e
         }
     }
     
@@ -180,18 +165,8 @@ extension AddSituationView: UICollectionViewDataSource {
 }
 
 extension AddSituationView: UICollectionViewDelegateFlowLayout {
-<<<<<<< HEAD
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath) as? AddSituationCollectionViewCell else {
-=======
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
-                as? AddSituationCollectionViewCell else {
->>>>>>> 33e616237eef452af124984d7c6b9803e460c23e
-            return .zero
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath) as? AddSituationCollectionViewCell else { return .zero }
         switch indexPath.section {
         case 0:
             cell.addSituationLabel.text = recommendList[indexPath.row].keyword
@@ -207,7 +182,7 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
         
         cell.addSituationLabel.sizeToFit()
         let cellWidth = cell.addSituationLabel.frame.width + 42.adjusted
-        
+
         return CGSize(width: cellWidth, height: 31.adjusted)
     }
     

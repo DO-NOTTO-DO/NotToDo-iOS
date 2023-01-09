@@ -7,23 +7,37 @@
 
 import UIKit
 
-class FinishOnboardingViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+final class FinishOnboardingViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private var onboardingView: FinishOnboardingView!
+    
+    // MARK: - View Life Cycle
+    
+    override func loadView() {
+        super.loadView()
+        onboardingView = FinishOnboardingView()
+        view = onboardingView
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setAddTarget()
     }
-    */
+}
 
+extension FinishOnboardingViewController {
+    private func setAddTarget() {
+        onboardingView.enrollButton.addTarget(self, action: #selector(enrollButtonDidTap), for: .touchUpInside)
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc private func enrollButtonDidTap() {
+        let TabBarController = TabBarController()
+        if let window = view.window?.windowScene?.keyWindow {
+            window.rootViewController = TabBarController
+        }
+    }
 }

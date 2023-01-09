@@ -60,6 +60,17 @@ struct I18N {
     static let maxBehavior = "* 실천 행동 추가는 낫투두 당 2개까지 가능합니다."
     static let maxMission = "* 하루 최대 3개까지 낫투두를 작성할 수 있어요!"
     
+    // Home
+    
+    static let addMissoinButton = "낫투두 추가"
+    static let startSunday = ["일", "월", "화", "수", "목", "금", "토"]
+    static let startMonday = ["월", "화", "수", "목", "금", "토", "일"]
+    static let empty = """
+                    아직 아무것도 없네요,
+                    새로운 낫투두를 작성해보세요!
+                    """
+    static let goal = "목표"
+    
     // AddSituation
     
     static let recommendKeyword = "낫투두가 추천하는 상황 키워드"
@@ -78,4 +89,37 @@ struct I18N {
     static let recommendViewTitle = "* 박스 터치 시, 낫투두가 아닌 환경만 입력됩니다."
     static let recommendMainTitle = "성취"
     static let recommendButtonTitle = "직접 작성하기"
+    
+    // Onboarding
+    
+    static let startButton = "시작할래요!"
+    static let gotoNottodo = "낫투두 등록하러 갈래요!"
+    static let startOnboardingTitle = """
+                                    나만의 규율을 지키고
+                                    더 나은 일상을 지속하세요
+                                    """
+    static let startOnboardingSubTitle = "이제부터 낫투두가 도와줄게요!"
+    static let firstOnboardingIndex = "첫 번째,"
+    static let firstOnboardingMessage = """
+                                        하지않을 것을
+                                        구체적으로 작성하며
+                                        목표 실현에 가까워지세요
+                                        """
+    static let jump = "건너뛰기"
+    static let secondOnboardingIndex = "두 번째,"
+    static let secondOnboardingMessage = """
+                                        정확하게 달성을 기록하고
+                                        변화를 체계적으로 관리하세요
+                                        """
+    static let thirdOnboardingIndex = "세 번째,"
+    static let thirdOnboardingMessage = """
+                                        낫투두 실천이 막막할 때는
+                                        구체적인 방법을 추천해드려요
+                                        """
+    static let finishOnboardingIndex = "마지막으로,"
+    static let finishOnboardingMessage = """
+                                        나의 성취 기록을
+                                        통계로 만나보세요
+                                        """
+    static let enroll = "낫투두 등록하러 갈래요!"
 }

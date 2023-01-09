@@ -22,6 +22,7 @@ class SituationStatisticsViewController: UIViewController {
     
     // MARK: - ui
     private lazy var expangindTableView =  UITableView(frame: .zero, style: .grouped)
+    private lazy var emptyView = EmptyView(frame: .zero)
     
     // MARK: - life cycle
     
@@ -40,18 +41,27 @@ class SituationStatisticsViewController: UIViewController {
             $0.dataSource = self
             $0.sectionHeaderTopPadding = 10
             $0.sectionFooterHeight = 0
-          //  $0.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-
+            //  $0.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+            emptyView.do {
+                if self.tableViewData.count == 0 {
+                    $0.isHidden = false
+                } else {
+                    $0.isHidden = true
+                }
+            }
         }
     }
     
     func setLayout() {
-        view.addSubview(expangindTableView)
+        view.addSubviews(expangindTableView, emptyView)
         expangindTableView.register(TableHeaderView.self, forHeaderFooterViewReuseIdentifier: TableHeaderView.identifier)
         
         expangindTableView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.directionalHorizontalEdges.equalToSuperview().inset(40)
+        }
+        emptyView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
         }
     }
     func register() {

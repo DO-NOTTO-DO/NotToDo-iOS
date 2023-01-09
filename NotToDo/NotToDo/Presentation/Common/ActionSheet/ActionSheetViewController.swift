@@ -15,11 +15,11 @@ final class ActionSheetViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var mode: ActionSheetType! = .calendar
+    private var mode: ActionSheetType! = .meatball
     
     // MARK: - UI Components
 
-    private var actionSheetView = ActionSheetView(frame: CGRect(), mode: .calendar)
+    private var actionSheetView = ActionSheetView(frame: CGRect(), mode: .meatball)
     
     // MARK: - View Life Cycle
     

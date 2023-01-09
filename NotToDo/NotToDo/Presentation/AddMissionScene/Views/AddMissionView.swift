@@ -11,7 +11,7 @@ import Then
 import SnapKit
 
 class AddMissionView: UIView {
-    
+   
     // MARK: - UI Components
     
     private lazy var navigationBarView = NavigationBarView(frame: CGRect(), mode: .plain)
@@ -27,6 +27,8 @@ class AddMissionView: UIView {
     private let behaviorTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.behaviorPlaceHolder)
     private let addBehaviorButton = UIButton()
     private let maxBehaviorLabel = UILabel()
+    
+    lazy var addBehaviorCollectionView = UICollectionView(frame: self.bounds, collectionViewLayout: layout())
     
     private let situationView = AddMissionTitleView(frame: .zero, titleLabel: I18N.situationTitle, buttonLabel: I18N.input, icon: .rightArrow)
     
@@ -52,6 +54,7 @@ class AddMissionView: UIView {
         super.init(frame: frame)
         setUI()
         setLayout()
+        register()
     }
     
     @available(*, unavailable)
@@ -75,6 +78,12 @@ extension AddMissionView {
             $0.text = I18N.maxBehavior
             $0.font = .PretendardRegular(size: 12)
             $0.textColor = .nottodoGray2
+        }
+        
+        addBehaviorCollectionView.do {
+            $0.isScrollEnabled = false
+            $0.collectionViewLayout = layout()
+            $0.dataSource = self
         }
         
         dateLabel.do {
@@ -120,7 +129,7 @@ extension AddMissionView {
         backgroundColor = .nottodoWhite
         
         addSubviews(navigationBarView, scrollView, addMissionButton)
-        scrollView.addSubviews(missionView, behaviorView, vStack, maxMissionLabelView)
+        scrollView.addSubviews(missionView, behaviorView, addBehaviorCollectionView, vStack, maxMissionLabelView)
         missionView.addSubviews(missionTitleView, missionTextField)
         behaviorView.addSubviews(behaviorTitleView, behaviorTextField, addBehaviorButton, maxBehaviorLabel)
         goalView.addSubviews(goalTitleView, goalTextField)
@@ -135,7 +144,8 @@ extension AddMissionView {
         
         scrollView.snp.makeConstraints {
             $0.top.equalTo(navigationBarView.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-75)
         }
         
         addMissionButton.snp.makeConstraints {
@@ -155,8 +165,21 @@ extension AddMissionView {
             $0.height.equalTo(107.adjusted)
         }
         
+        addBehaviorCollectionView.snp.makeConstraints {
+            $0.top.equalTo(behaviorView.snp.bottom).offset(6)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            
+            if behaviorList.count == 1 {
+                $0.height.equalTo(40)
+            } else if behaviorList.count == 2 {
+                $0.height.equalTo(88)
+            } else {
+                $0.height.equalTo(0)
+            }
+        }
+        
         vStack.snp.makeConstraints {
-            $0.top.equalTo(behaviorView.snp.bottom).offset(35.adjusted)
+            $0.top.equalTo(addBehaviorCollectionView.snp.bottom).offset(35.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(212.adjusted)
         }
@@ -179,8 +202,8 @@ extension AddMissionView {
         maxMissionLabelView.snp.makeConstraints {
             $0.top.equalTo(vStack.snp.bottom).offset(128)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview()
             $0.height.equalTo(45)
-            $0.bottom.equalToSuperview().offset(-75)
         }
         
         missionTitleView.snp.makeConstraints {
@@ -248,6 +271,23 @@ extension AddMissionView {
             $0.centerX.equalToSuperview()
         }
     }
+        
+    private func layout() -> UICollectionViewCompositionalLayout {
+        
+        let spacing: CGFloat = 8
+        let itemLayout = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40)))
+        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(80)), subitem: itemLayout, count: 2)
+        groupLayout.interItemSpacing = .fixed(spacing)
+        let section = NSCollectionLayoutSection(group: groupLayout)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        section.interGroupSpacing = spacing
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    private func register() {
+        addBehaviorCollectionView.register(AddBehaviorCollectionViewCell.self,
+                                           forCellWithReuseIdentifier: AddBehaviorCollectionViewCell.identifier)
+    }
     
     func updateData(date: String) {
         dateButton.setTitle(date, for: .normal)
@@ -264,11 +304,26 @@ extension AddMissionView {
         }
     }
 }
-    
+
 extension AddMissionView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if missionTextField.text?.isEmpty == true {
             
         }
+    }
+}
+
+extension AddMissionView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return behaviorList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddBehaviorCollectionViewCell.identifier, for: indexPath) as? AddBehaviorCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.configure(model: behaviorList[indexPath.row])
+        return cell
     }
 }

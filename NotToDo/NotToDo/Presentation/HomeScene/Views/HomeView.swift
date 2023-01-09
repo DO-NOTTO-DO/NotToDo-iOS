@@ -22,8 +22,6 @@ final class HomeView: UIView {
     var calendar = FSCalendar(frame: .zero)
     private var motivationLabel = UILabel()
     private var graphicImageView = UIImageView()
-    private 
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

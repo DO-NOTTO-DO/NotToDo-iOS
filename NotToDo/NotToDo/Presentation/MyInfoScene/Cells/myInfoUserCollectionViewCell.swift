@@ -42,7 +42,7 @@ final class myInfoUserCollectionViewCell: UICollectionViewCell {
 extension myInfoUserCollectionViewCell {
     private func setUI() {
         backgroundImageView.image = .myInfoBackground
-        userImageView.image = .home         // 이미지 에셋 추가 후 변경
+        userImageView.image = .myInfoUser
         userNameLabel.do {
             $0.text = "홍서현"
             $0.textColor = .nottodoBlack
@@ -63,7 +63,7 @@ extension myInfoUserCollectionViewCell {
             $0.textColor = .nottodoGray2
             $0.font = .PretendardRegular(size: 12)
         }
-        goToLoginImageView.image = .rightArrow      // rightArrow 색 다름 변경
+        goToLoginImageView.image = .gray4RightArrow
         contentView.layer.addBorder([.top, .bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
     }
     

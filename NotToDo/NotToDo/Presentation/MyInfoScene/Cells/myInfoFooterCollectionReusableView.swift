@@ -69,7 +69,7 @@ extension myInfoFooterCollectionReusableView {
         
         stackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(22.adjusted)
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
         }
     }
 }

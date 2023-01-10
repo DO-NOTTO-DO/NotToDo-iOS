@@ -15,8 +15,8 @@ struct menu {
 
 // 이미지 에셋 추가 후 이미지 변경
 var myInfoFirstMenuList: [menu] = [
-    menu(icon: .myInfoRightButton, title: I18N.missionGuide, goToButton: .myInfoRightButton),
-    menu(icon: .myInfoRightButton, title: I18N.oftenQuestion, goToButton: .myInfoRightButton)
+    menu(icon: .guide, title: I18N.missionGuide, goToButton: .myInfoRightButton),
+    menu(icon: .question, title: I18N.oftenQuestion, goToButton: .myInfoRightButton)
 ]
 
 var myInfoSecondMenuList: [menu] = [

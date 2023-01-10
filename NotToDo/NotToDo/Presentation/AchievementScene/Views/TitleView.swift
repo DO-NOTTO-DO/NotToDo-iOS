@@ -14,7 +14,7 @@ class TitleView: UIView {
     
     // MARK: - UI Components
 
-    private let titleLabel = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardBold(size: 22))
+    private let titleLabel = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardBold(size: 22.adjusted))
     
     // MARK: - View Life Cycle
 

@@ -14,11 +14,7 @@ class SituationStatisticsView: UIView {
     // MARK: - Properties
     
     var hiddenSections = Set<Int>()
-    var tableViewData = [
-        ["유튜브 보지 않기", "알람 끄고 다시 자지 않기", "뭐있냐"],
-        ["뭐있냐", "유튜브 보지 않기", "3"],
-        ["유튜브 보지 않기", "뭐있냐"]
-    ]
+    var tableViewData = [[]]
     
     var titleLists: [TitleButtonList] = TitleButtonList.titles
     var isSelected: [Bool] = []
@@ -56,7 +52,7 @@ extension SituationStatisticsView {
             $0.separatorStyle = .none
             $0.delegate = self
             $0.dataSource = self
-            $0.sectionHeaderTopPadding = 25
+            $0.sectionHeaderTopPadding = 10.adjusted
             $0.sectionFooterHeight = 0
         }
         situationTitleView.do {
@@ -122,7 +118,7 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
             default:
                 cell.backGroundImage.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
             }
-            cell.titleLabel.text = self.tableViewData[indexPath.section][indexPath.row]
+            cell.titleLabel.text = (tableViewData[indexPath.section][indexPath.row] as! String)
             cell.selectionStyle = .none
             return cell
         }

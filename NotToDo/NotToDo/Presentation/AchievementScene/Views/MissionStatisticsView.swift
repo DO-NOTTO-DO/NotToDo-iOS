@@ -96,31 +96,23 @@ extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MissionTableViewCell.identifier, for: indexPath) as? MissionTableViewCell else { return UITableViewCell() }
             let item = missionList[indexPath.row]
+            cell.selectionStyle = .none
+            cell.configure(item)
             switch indexPath.row {
             case 0:
                 cell.missionImage.image = UIImage.rank1
-                cell.selectionStyle = .none
-                cell.configure(item)
                 return cell
             case 1:
                 cell.missionImage.image = UIImage.rank2
-                cell.selectionStyle = .none
-                cell.configure(item)
                 return cell
             case 2:
                 cell.missionImage.image = UIImage.rank3
-                cell.selectionStyle = .none
-                cell.configure(item)
                 return cell
             case 3:
                 cell.missionImage.image = UIImage.rank4
-                cell.selectionStyle = .none
-                cell.configure(item)
                 return cell
             default:
                 cell.missionImage.image = UIImage.rank5
-                cell.selectionStyle = .none
-                cell.configure(item)
                 return cell
             }
         }

@@ -38,8 +38,8 @@ extension CustomSegmentedControl {
     }
     
     private func setStyle() {
-        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoGray2!, .font: UIFont.PretendardRegular(size: 16)], for: .normal)
-        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoBlack!, .font: UIFont.PretendardBold(size: 16), .backgroundColor: UIColor.yellow_deep!], for: .selected)
-        self.setContentPositionAdjustment(UIOffset(horizontal: -20, vertical: 0), forSegmentType: .center, barMetrics: .default)
+        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoGray2!, .font: UIFont.PretendardRegular(size: 16.adjusted)], for: .normal)
+        self.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.nottodoBlack!, .font: UIFont.PretendardBold(size: 16.adjusted), .backgroundColor: UIColor.yellow_deep!], for: .selected)
+        self.setContentPositionAdjustment(UIOffset(horizontal: -20.adjusted, vertical: 0), forSegmentType: .center, barMetrics: .default)
     }
 }

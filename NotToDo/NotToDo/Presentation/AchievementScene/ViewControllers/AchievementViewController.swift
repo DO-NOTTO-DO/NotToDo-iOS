@@ -28,8 +28,7 @@ final class AchievementViewController: UIViewController {
     private var titleView = TitleView()
     private lazy var segmentedControl = CustomSegmentedControl(items: [I18N.missionStatisticsMessage, I18N.situationStatisticsMessage])
     private lazy var calendarView = CustomCalendar(frame: .zero)
-    fileprivate let gregorian = Calendar(identifier: .gregorian)
-
+    
     private lazy var missionView = MissionStatisticsView(frame: view.bounds)
     private lazy var situationView = SituationStatisticsView(frame: view.bounds)
     private var bottomLabel = UILabel()
@@ -67,10 +66,9 @@ extension AchievementViewController {
         }
         bottomLabel.do {
             $0.text = I18N.statistcisBottomMessage
-            $0.font = .PretendardMedium(size: 12)
+            $0.font = .PretendardMedium(size: 12.adjusted)
             $0.textColor = .nottodoGray2
         }
-        
     }
     
     func configView() {
@@ -118,22 +116,26 @@ extension AchievementViewController {
         missionView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
-            $0.height.equalTo(missionView.missionList.count * 55 + 88)
+            $0.height.equalTo(CGFloat(missionView.missionList.count) * 55.adjusted + 92.adjusted)
             $0.bottom.equalTo(scrollView.snp.bottom).offset(-78.adjusted)
         }
         
         situationView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
-            $0.height.equalTo(situationView.titleLists.count * 65 + 100 )
+//            $0.height.equalTo(CGFloat(situationView.titleLists.count) * 65.adjusted + 148.adjusted)
+            $0.height.equalTo(CGFloat(situationView.titleLists.count) * 55.adjusted + 92.adjusted)
+
         }
         
         bottomLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20.adjusted)
             if missionView.isHidden {
-                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 65.adjusted + 100.adjusted)
+//                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 65.adjusted + 168.adjusted)
+                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 55.adjusted + 102.adjusted)
+
             } else {
-                $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 100.adjusted)
+                $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 102.adjusted)
             }
         }
         segmentedControl.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
@@ -146,12 +148,14 @@ extension AchievementViewController {
         bottomLabel.snp.remakeConstraints {
             $0.leading.equalToSuperview().offset(20.adjusted)
             if missionView.isHidden {
-                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 65.adjusted + 100.adjusted)
+                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 55.adjusted + 102.adjusted)
+
+//                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 65.adjusted + 168.adjusted)
             } else {
-                $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 100.adjusted)
+                $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 102.adjusted)
             }
         }
-    
+        
     }
     
     @objc private func didChangeValue(segment: UISegmentedControl) {

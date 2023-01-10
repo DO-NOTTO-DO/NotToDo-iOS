@@ -12,11 +12,11 @@ import Then
 class TableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
-
+    
     static var identifier = "TableHeaderVIew"
     
     // MARK: - UI Components
-
+    
     var headerButton = UIButton()
     var headerImage = UIImageView()
     var headerLabel = UILabel()
@@ -24,9 +24,9 @@ class TableHeaderView: UITableViewHeaderFooterView {
     var iconImageView = UIImageView()
     var isSelected: Bool = false
     var isClickedClosure: ((_ result: Bool) -> Void)?
-   
+    
     // MARK: - View Life Cycle
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         isSelected = false
@@ -70,8 +70,8 @@ extension TableHeaderView {
         headerButton.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.top.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(6)
-            $0.height.equalTo(45)
+            $0.bottom.equalToSuperview().inset(6.adjusted)
+            $0.height.equalTo(45.adjusted)
         }
         headerImage.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -81,7 +81,7 @@ extension TableHeaderView {
             $0.leading.equalToSuperview().offset(50.adjusted)
         }
         numberLabel.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(30)
+            $0.trailing.equalToSuperview().inset(30.adjusted)
             $0.centerY.equalTo(headerLabel.snp.centerY)
         }
     }

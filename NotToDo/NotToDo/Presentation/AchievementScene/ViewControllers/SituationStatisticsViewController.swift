@@ -27,7 +27,7 @@ class SituationStatisticsViewController: UIViewController {
     private let tableView = UITableView()
     private var sections = [Section]()
     var isExpanded = [Bool]()
-    //var isExpanded: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()

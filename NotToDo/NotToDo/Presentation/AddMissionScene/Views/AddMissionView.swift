@@ -14,7 +14,7 @@ class AddMissionView: UIView {
 
     // MARK: - UI Components
     
-    private lazy var navigationBarView = NavigationBarView(frame: CGRect(), mode: .plain)
+    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .plain)
     private lazy var scrollView = UIScrollView()
     private lazy var vStack = UIStackView(arrangedSubviews: [situationView, goalView, dateView])
     

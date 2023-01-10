@@ -17,6 +17,7 @@ final class AddMissionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         setAddTarget()
     }
     
@@ -63,6 +64,15 @@ extension AddMissionViewController {
     private func touchupRecommendButton() {
         presentToRecommendViewController()
     }
+extension AddMissionViewController {
+    private func setAddTarget() {
+        addMissionView.navigationBarView.backButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
+    }
+    
+    @objc private func dismissAddMissionViewController() {
+        dismiss(animated: true)
+    }
+}
 
     @objc
     private func touchupSituationButton() {

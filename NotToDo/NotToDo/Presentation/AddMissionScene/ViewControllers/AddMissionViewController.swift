@@ -17,6 +17,7 @@ final class AddMissionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboard()
     }
     
     override func loadView() {

@@ -113,9 +113,11 @@
 		6C882614296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C882613296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		6C8826162968221C0005E222 /* AddSituationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8826152968221C0005E222 /* AddSituationHeaderView.swift */; };
 		6CA38696296A82B10049D28A /* AddSituationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA38695296A82B10049D28A /* AddSituationFooterView.swift */; };
+		6CC79FF9296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC79FF8296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift */; };
+		6CC79FFC296C64AD00A29DFE /* AddBehaviorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC79FFB296C64AD00A29DFE /* AddBehaviorModel.swift */; };
 		6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */; };
 		6CDC2D1529641BE000BFF5F4 /* AddMissionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */; };
-		6CDC2D212966C86D00BFF5F4 /* AddMissionTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D202966C86D00BFF5F4 /* AddMissionTextFieldView.swift */; };
+		6CDC2D212966C86D00BFF5F4 /* AddMissionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D202966C86D00BFF5F4 /* AddMissionTextField.swift */; };
 		6CF0427829633E58000F40EB /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF0427729633E58000F40EB /* NavigationBarView.swift */; };
 /* End PBXBuildFile section */
 
@@ -222,9 +224,11 @@
 		6C882613296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		6C8826152968221C0005E222 /* AddSituationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationHeaderView.swift; sourceTree = "<group>"; };
 		6CA38695296A82B10049D28A /* AddSituationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSituationFooterView.swift; sourceTree = "<group>"; };
+		6CC79FF8296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBehaviorCollectionViewCell.swift; sourceTree = "<group>"; };
+		6CC79FFB296C64AD00A29DFE /* AddBehaviorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBehaviorModel.swift; sourceTree = "<group>"; };
 		6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionView.swift; sourceTree = "<group>"; };
 		6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTitleView.swift; sourceTree = "<group>"; };
-		6CDC2D202966C86D00BFF5F4 /* AddMissionTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTextFieldView.swift; sourceTree = "<group>"; };
+		6CDC2D202966C86D00BFF5F4 /* AddMissionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMissionTextField.swift; sourceTree = "<group>"; };
 		6CF0427729633E58000F40EB /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -443,6 +447,8 @@
 		3B162899295AD9740077AE7B /* AddMissionScene */ = {
 			isa = PBXGroup;
 			children = (
+				6CC79FFA296C649000A29DFE /* Models */,
+				6CC79FF7296C62D500A29DFE /* Cells */,
 				3B16289F295AD9DF0077AE7B /* ViewControllers */,
 				6CDC2D0A2963E2A100BFF5F4 /* Views */,
 			);
@@ -827,12 +833,28 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		6CC79FF7296C62D500A29DFE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6CC79FF8296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		6CC79FFA296C649000A29DFE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6CC79FFB296C64AD00A29DFE /* AddBehaviorModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		6CDC2D0A2963E2A100BFF5F4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */,
 				6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */,
-				6CDC2D202966C86D00BFF5F4 /* AddMissionTextFieldView.swift */,
+				6CDC2D202966C86D00BFF5F4 /* AddMissionTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -973,12 +995,15 @@
 				3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */,
 				3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */,
 				3B16288D295AD8380077AE7B /* UIStackView+.swift in Sources */,
+				096BDFF529652270009ED396 /* MissionCollectionViewCell.swift in Sources */,
+				6CC79FFC296C64AD00A29DFE /* AddBehaviorModel.swift in Sources */,
 				3B1628AE295ADB550077AE7B /* GeneralResponse.swift in Sources */,
 				3BBE56E1296C206300771DE4 /* OnboardingStartViewController.swift in Sources */,
 				6C600BC229693B3B00421D7A /* MissionHistoryCollectionViewCell.swift in Sources */,
 				3B4B90BB29656684008C5CA8 /* MyInfoView.swift in Sources */,
 				3B1628B2295ADB710077AE7B /* NetworkResult.swift in Sources */,
 				096BE0252966A2B0009ED396 /* SortedItemModel.swift in Sources */,
+				6CC79FF9296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift in Sources */,
 				3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */,
 				3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */,
 				3B888AA729674BA4008209A8 /* RandomData.swift in Sources */,
@@ -1027,7 +1052,7 @@
 				6C88260F2967D8280005E222 /* AddSituationCollectionViewCell.swift in Sources */,
 				3B59AFB8296346650050FF49 /* Numbers.swift in Sources */,
 				3B3405B9295B090300D44722 /* UIColor+.swift in Sources */,
-				6CDC2D212966C86D00BFF5F4 /* AddMissionTextFieldView.swift in Sources */,
+				6CDC2D212966C86D00BFF5F4 /* AddMissionTextField.swift in Sources */,
 				096BE0232966A296009ED396 /* RecommendCollectionViewCell.swift in Sources */,
 				3B162890295AD89C0077AE7B /* Strings.swift in Sources */,
 				3BBE56ED296C21A400771DE4 /* FinishOnboardingView.swift in Sources */,

@@ -10,11 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class AddMissionTextFieldView: UIView {
-    
-    // MARK: - UI Components
-    
-    private let AddMissionTextField = UITextField()
+final class AddMissionTextField: UITextField {
     
     // MARK: - View Life Cycles
     
@@ -32,9 +28,9 @@ final class AddMissionTextFieldView: UIView {
 
 // MARK: - Methods
 
-extension AddMissionTextFieldView {
+extension AddMissionTextField {
     private func setUI(placeHolder: String) {
-        AddMissionTextField.do {
+        self.do {
             $0.backgroundColor = .nottodoWhite
             $0.layer.borderWidth = 1.adjusted
             $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
@@ -42,15 +38,23 @@ extension AddMissionTextFieldView {
             $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 15.adjusted, height: 0.0))
             $0.leftViewMode = .always
             $0.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
+            $0.addTarget(self, action: #selector(changeText), for: .editingChanged)
         }
     }
     
     private func setLayout() {
-        addSubview(AddMissionTextField)
-        
-        AddMissionTextField.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+        snp.makeConstraints {
             $0.height.equalTo(46.adjusted)
+        }
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc func changeText() {
+        if text!.count > 0 {
+            layer.borderColor = UIColor.nottodoGray2?.cgColor
+        } else {
+            layer.borderColor = UIColor.nottodoGray4?.cgColor
         }
     }
 }

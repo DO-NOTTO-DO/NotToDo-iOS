@@ -15,9 +15,10 @@ final class AddMissionViewController: UIViewController {
     
     // MARK: - View Life Cycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        setAddTarget()
+//    }
     
     override func loadView() {
         super.loadView()
@@ -25,3 +26,33 @@ final class AddMissionViewController: UIViewController {
         view = addMissionView
     }
 }
+
+//extension AddMissionViewController {
+//    private func setAddTarget() {
+//        addMissionView.situationView.AddMissionButton.do {
+//            $0.addTarget(self, action: #selector(touchupSituationButton), for:.touchUpInside)
+//        }
+//    }
+//
+//    /// 페이지 이동
+//
+//    private func presentToAddSituationViewController() {
+//        let AddSituationViewController = AddSituationViewController()
+//        AddSituationViewController.modalPresentationStyle = .formSheet
+//
+//        // WelcomeVC.name = idTextField.text
+//        // WelcomeVC.dataBind()
+//
+////        if let situationKeyword = idTextField.text {
+////            WelcomeVC.dataBind(name:id)
+////        }
+//        self.navigationController?.pushViewController(AddSituationViewController, animated:true)
+//    }
+//
+//    // MARK: - @objc Methods
+//
+//    @objc
+//    private func touchupSituationButton() {
+//        presentToAddSituationViewController()
+//    }
+//}

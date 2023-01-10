@@ -33,20 +33,6 @@ class AddSituationFooterView: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @objc func changeText() {
-        if inputTextField.text?.count ?? 0 > maxLength {
-            inputTextField.deleteBackward()
-        }
-        
-        textCountLabel.text = "\(inputTextField.text?.count ?? 0)/\(maxLength)"
-        
-        if inputTextField.text!.count > 0 {
-            inputTextField.layer.borderColor = UIColor.nottodoGray2?.cgColor
-        } else {
-            inputTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
-        }
-    }
 }
 
 // MARK: - Extensions
@@ -94,5 +80,21 @@ extension AddSituationFooterView {
             $0.layer.borderWidth = 1.adjusted
         }
         textCountLabel.text = "\(inputTextField.text!.count)/\(maxLength)"
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc func changeText() {
+        if inputTextField.text?.count ?? 0 > maxLength {
+            inputTextField.deleteBackward()
+        }
+        
+        textCountLabel.text = "\(inputTextField.text?.count ?? 0)/\(maxLength)"
+        
+        if inputTextField.text!.count > 0 {
+            inputTextField.layer.borderColor = UIColor.nottodoGray2?.cgColor
+        } else {
+            inputTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
+        }
     }
 }

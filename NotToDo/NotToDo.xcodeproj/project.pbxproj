@@ -67,6 +67,7 @@
 		3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */; };
 		3B4187CF296D342900F0FBF4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4187CE296D342900F0FBF4 /* UIViewController+.swift */; };
 		3B4187D1296D37CC00F0FBF4 /* SituationStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4187D0296D37CC00F0FBF4 /* SituationStatisticsViewController.swift */; };
+		3B4187D5296D5D8700F0FBF4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B4187D4296D5D8700F0FBF4 /* IQKeyboardManagerSwift */; };
 		3B42D1EE2966A1C20012898E /* myInfoMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */; };
 		3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */; };
 		3B4B90BB29656684008C5CA8 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90BA29656684008C5CA8 /* MyInfoView.swift */; };
@@ -229,6 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B4187D5296D5D8700F0FBF4 /* IQKeyboardManagerSwift in Frameworks */,
 				090FA2FB2960B87500918AED /* Moya in Frameworks */,
 				090FA2EA295F563C00918AED /* FirebaseAnalytics in Frameworks */,
 				096BDFD52960B910009ED396 /* FSCalendar in Frameworks */,
@@ -855,6 +857,7 @@
 				090FA2F72960B74000918AED /* Then */,
 				090FA2FA2960B87500918AED /* Moya */,
 				096BDFD42960B910009ED396 /* FSCalendar */,
+				3B4187D4296D5D8700F0FBF4 /* IQKeyboardManagerSwift */,
 			);
 			productName = NotToDo;
 			productReference = 3B162870295AD7860077AE7B /* NotToDo.app */;
@@ -890,6 +893,7 @@
 				090FA2F62960B74000918AED /* XCRemoteSwiftPackageReference "Then" */,
 				090FA2F92960B87500918AED /* XCRemoteSwiftPackageReference "Moya" */,
 				096BDFD32960B910009ED396 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				3B4187D3296D5D8700F0FBF4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 3B162871295AD7860077AE7B /* Products */;
 			projectDirPath = "";
@@ -1305,6 +1309,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		3B4187D3296D5D8700F0FBF4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1337,6 +1349,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 096BDFD32960B910009ED396 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		3B4187D4296D5D8700F0FBF4 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B4187D3296D5D8700F0FBF4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -171,4 +171,3 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
         expangindTableView.reloadData()
     }
 }
-

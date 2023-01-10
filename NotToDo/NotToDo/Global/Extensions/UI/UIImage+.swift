@@ -38,6 +38,7 @@ extension UIImage {
     static let addEnabledBtn = UIImage(named: "Recent/btn_add/enabled")!.withRenderingMode(.alwaysOriginal)
     static let addDisabledBtn = UIImage(named: "Recent/btn_add/disabled")!.withRenderingMode(.alwaysOriginal)
     static let plusBtn = UIImage(named: "Recent/btn_plus")!.withRenderingMode(.alwaysOriginal)
+    static let unavailablePlusBtn = UIImage(named: "Recent/btn_plus_unavailable")!.withRenderingMode(.alwaysOriginal)
     static let deleteBtn = UIImage(named: "Recent/btn_delete_create")!.withRenderingMode(.alwaysOriginal)
     static let recentCalendar = UIImage(named: "Recent/ic_calender")!.withRenderingMode(.alwaysOriginal)
     

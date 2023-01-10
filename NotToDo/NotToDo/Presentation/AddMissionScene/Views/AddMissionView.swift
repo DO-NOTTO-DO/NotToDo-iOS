@@ -29,11 +29,12 @@ class AddMissionView: UIView {
     private let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.behaviorTitle, buttonLabel: I18N.recommend, icon: .rightArrow)
     private let behaviorTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.behaviorPlaceHolder)
     private let addBehaviorButton = UIButton()
+    private let unavailableAddBehaviorButton = UIButton()
     private let maxBehaviorLabel = UILabel()
     
     lazy var addBehaviorCollectionView = UICollectionView(frame: self.bounds, collectionViewLayout: layout())
     
-    private let situationView = AddMissionTitleView(frame: .zero, titleLabel: I18N.situationTitle, buttonLabel: I18N.input, icon: .rightArrow)
+    let situationView = AddMissionTitleView(frame: .zero, titleLabel: I18N.situationTitle, buttonLabel: I18N.input, icon: .rightArrow)
     
     private let goalView = UIView()
     private let goalTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.goalTitle, buttonLabel: nil, icon: nil)
@@ -67,9 +68,8 @@ class AddMissionView: UIView {
 
 extension AddMissionView {
     private func setUI() {
-        missionTextField.addTarget(self, action: #selector(availableAddMissionButton), for: .editingChanged)
-        behaviorTextField.addTarget(self, action: #selector(availableAddMissionButton), for: .editingChanged)
-        goalTextField.addTarget(self, action: #selector(availableAddMissionButton), for: .editingChanged)
+        missionTextField.addTarget(self, action: #selector(availableAddMission), for: .editingChanged)
+        goalTextField.addTarget(self, action: #selector(availableAddMission), for: .editingChanged)
         
         vStack.do {
             $0.axis = .vertical
@@ -89,6 +89,11 @@ extension AddMissionView {
         addBehaviorButton.do {
             $0.setImage(.plusBtn, for: .normal)
             $0.addTarget(self, action: #selector(addBehaviorCell), for: .touchUpInside)
+        }
+        
+        unavailableAddBehaviorButton.do {
+            $0.setImage(.unavailablePlusBtn, for: .normal)
+            $0.isHidden = true
         }
         
         maxBehaviorLabel.do {
@@ -142,7 +147,7 @@ extension AddMissionView {
         addSubviews(navigationBarView, scrollView, addMissionButton)
         scrollView.addSubviews(maxMissionLabelView, missionView, behaviorView, addBehaviorCollectionView, vStack)
         missionView.addSubviews(missionTitleView, missionTextField)
-        behaviorView.addSubviews(behaviorTitleView, behaviorTextField, addBehaviorButton, maxBehaviorLabel)
+        behaviorView.addSubviews(behaviorTitleView, behaviorTextField, addBehaviorButton, unavailableAddBehaviorButton, maxBehaviorLabel)
         goalView.addSubviews(goalTitleView, goalTextField)
         dateView.addSubviews(dateLabel, dateButton)
         maxMissionLabelView.addSubview(maxMissionLabel)
@@ -245,6 +250,13 @@ extension AddMissionView {
             $0.height.equalTo(46.adjusted)
         }
         
+        unavailableAddBehaviorButton.snp.makeConstraints {
+            $0.centerY.equalTo(behaviorTextField.snp.centerY)
+            $0.leading.equalTo(behaviorTextField.snp.trailing).offset(7.adjusted)
+            $0.trailing.equalToSuperview().offset(-20.adjusted)
+            $0.height.equalTo(46.adjusted)
+        }
+        
         maxBehaviorLabel.snp.makeConstraints {
             $0.top.equalTo(behaviorTextField.snp.bottom).offset(9.adjusted)
             $0.leading.equalToSuperview().offset(20.adjusted)
@@ -277,7 +289,6 @@ extension AddMissionView {
     }
     
     private func layout() -> UICollectionViewCompositionalLayout {
-        
         let spacing: CGFloat = 8
         let itemLayout = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40)))
         let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(80)), subitem: itemLayout, count: 2)
@@ -299,7 +310,7 @@ extension AddMissionView {
     
     // MARK: - @objc Methods
     
-    @objc func availableAddMissionButton() {
+    @objc func availableAddMission() {
         if missionTextField.text!.count > 0 && behaviorList.count > 0
             && goalTextField.text!.count > 0 {
             addMissionButton.isUserInteractionEnabled = true
@@ -311,19 +322,27 @@ extension AddMissionView {
     }
     
     @objc func addBehaviorCell(_ sender: UIButton) {
-        print("buttonTapped")
-        // else { 삭제 버튼에 넣어야될듯
-//            addMissionButton.isUserInteractionEnabled = true
-//            addMissionButton.setImage(.plusBtn, for: .normal)
-//        }
+        
         if behaviorTextField.text!.count > 0 && behaviorList.count < 2 {
             behaviorList.append(AddBehaviorModel(behavior: behaviorTextField.text!))
             behaviorTextField.text = ""
+            behaviorTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
             addBehaviorCollectionView.reloadData()
         }
         
         addBehaviorCollectionView.snp.updateConstraints {
             $0.height.equalTo(behaviorList.count * 48)
+        }
+        
+        if behaviorList.count >= 2 {
+            unavailableAddBehaviorButton.isHidden = false
+            addBehaviorButton.isHidden = true
+        }
+        
+        // 추가하는 순간에 다른 칸들이 차있다면
+        if missionTextField.text!.count > 0 && goalTextField.text!.count > 0 {
+            addMissionButton.isUserInteractionEnabled = true
+            addMissionButton.backgroundColor = .nottodoBlack
         }
     }
     
@@ -334,7 +353,12 @@ extension AddMissionView {
         addBehaviorCollectionView.snp.updateConstraints {
             $0.height.equalTo(behaviorList.count * 48)
         }
-     }
+        
+        if behaviorList.count < 2 {
+            unavailableAddBehaviorButton.isHidden = true
+            addBehaviorButton.isHidden = false
+        }
+    }
 }
 
 extension AddMissionView: UICollectionViewDataSource {
@@ -351,6 +375,7 @@ extension AddMissionView: UICollectionViewDataSource {
         print(cell.configure(model: behaviorList[indexPath.row]))
         cell.deleteBehaviorButton.tag = indexPath.row
         cell.deleteBehaviorButton.addTarget(self, action: #selector(deleteBehaviorButton), for: .touchUpInside)
+        cell.deleteBehaviorButton.addTarget(self, action: #selector(availableAddMission), for: .touchUpInside)
         return cell
     }
 }

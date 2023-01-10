@@ -19,7 +19,7 @@ final class ActionSheetViewController: UIViewController {
     
     // MARK: - UI Components
 
-    private var actionSheetView = ActionSheetView(frame: CGRect(), mode: .meatball)
+    private var actionSheetView = ActionSheetView(frame: CGRect(), mode: .meatball, situation: "9시 이후", mission: "밥 먹기")
     
     // MARK: - View Life Cycle
     

@@ -33,6 +33,8 @@ final class ActionSheetView: UIView {
     
     // MARK: - UI Components
     
+    private let labelStackView = UIStackView()
+    private let situationLabel = UILabel()
     private let missionLabel = UILabel()
     private let deleteView = UIView()
     private let deleteIcon = UIImageView()
@@ -60,11 +62,12 @@ final class ActionSheetView: UIView {
 
     // MARK: - View Life Cycle
     
-    init(frame: CGRect, mode: ActionSheetType) {
+    init(frame: CGRect, mode: ActionSheetType, situation: String, mission: String) {
         self.mode = mode
         super.init(frame: frame)
         addShape()
         setupMode(mode: mode)
+        setLabel(situation, mission)
     }
     
     @available(*, unavailable)
@@ -98,13 +101,28 @@ extension ActionSheetView {
         }
     }
     
+    private func setLabel(_ situation: String, _ mission: String) {
+        situationLabel.text = situation
+        missionLabel.text = mission
+    }
+    
     private func setMeatballUI() {
         [deleteLabel, editLabel, duplicateLabel].forEach {
             $0.font = .PretendardMedium(size: 16.adjusted)
             $0.textColor = .nottodoGray1
         }
-        missionLabel.text = "9시 이전 유튜브 보지 않기"
-        missionLabel.font = .PretendardRegular(size: 16)
+        situationLabel.do {
+            $0.text = "9시 이전"
+            $0.font = .PretendardRegular(size: 16.adjusted)
+            $0.textColor = .nottodoGray2
+        }
+        
+        missionLabel.do {
+            $0.text = "유튜브 보지 않기"
+            $0.font = .PretendardRegular(size: 16.adjusted)
+            $0.textColor = .nottodoBlack
+        }
+        
         deleteLabel.text = I18N.delete
         editLabel.text = I18N.edit
         duplicateLabel.text = I18N.duplicate
@@ -113,11 +131,19 @@ extension ActionSheetView {
             $0.font = .PretendardRegular(size: 12.adjusted)
             $0.textColor = .nottodoGray2
         }
-        deleteIcon.image = .backBtn
-        editIcon.image = .backBtn
-        duplicateIcon.image = .backBtn
+        
+        deleteIcon.image = .trash
+        editIcon.image = .edit
+        duplicateIcon.image = .anotherDay
         [divisionLine1, divisionLine2].forEach {
             $0.backgroundColor = .nottodoGray4
+        }
+        
+        labelStackView.do {
+            $0.distribution = .fill
+            $0.spacing = 5.adjusted
+            $0.axis = .horizontal
+            $0.addArrangedSubviews(situationLabel, missionLabel)
         }
     }
     
@@ -185,13 +211,26 @@ extension ActionSheetView {
     }
     
     private func setMeatballLayout() {
-        addSubviews(missionLabel, deleteIcon, deleteLabel,
+        addSubviews(labelStackView, deleteIcon, deleteLabel,
                     editIcon, editLabel, duplicateIcon,
                     duplicateLabel, subDuplicateLabel, divisionLine1, divisionLine2)
+        
         missionLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(34.adjusted)
+            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.leading.equalTo(situationLabel.snp.trailing).offset(5.adjusted)
         }
+        
+        situationLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
+        }
+        
+        labelStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(34.adjusted)
+            $0.centerX.equalToSuperview()
+        }
+
         deleteIcon.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(44.adjusted)
             $0.top.equalTo(missionLabel.snp.bottom).offset(29.adjusted)

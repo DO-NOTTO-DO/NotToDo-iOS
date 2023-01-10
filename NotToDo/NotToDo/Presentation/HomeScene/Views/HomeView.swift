@@ -22,13 +22,9 @@ final class HomeView: UIView {
     private(set) lazy var refreshControl = UIRefreshControl()
     private lazy var homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     var calendar = FSCalendar(frame: .zero)
-<<<<<<< HEAD
-    private var motivationLabel = UILabel()
-    private var graphicImageView = UIImageView()
-=======
+
     
     private let addMissionButton = NotTodoButton(frame: CGRect(), mode: .withImage, text: I18N.addMissoinButton, image: .plus, font: .semiBold, size: 16)
->>>>>>> fc077c18a8acecc20edc64ef38fbcb3944b99401
     
     // MARK: - Life Cycle
     

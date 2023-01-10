@@ -11,12 +11,15 @@ import Then
 import SnapKit
 
 class AddMissionView: UIView {
-   
+
     // MARK: - UI Components
     
     private lazy var navigationBarView = NavigationBarView(frame: CGRect(), mode: .plain)
     private lazy var scrollView = UIScrollView()
     private lazy var vStack = UIStackView(arrangedSubviews: [situationView, goalView, dateView])
+    
+    private let maxMissionLabelView = UIView()
+    private let maxMissionLabel = UILabel()
     
     private let missionView = UIView()
     private let missionTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.missionTitle, buttonLabel: nil, icon: nil)
@@ -43,9 +46,6 @@ class AddMissionView: UIView {
     let nowDate = Date()
     let dateFormatter = DateFormatter()
     
-    private let maxMissionLabelView = UIView()
-    private let maxMissionLabel = UILabel()
-    
     private let addMissionButton = UIButton()
     
     // MARK: - View Life Cycle
@@ -67,12 +67,29 @@ class AddMissionView: UIView {
 
 extension AddMissionView {
     private func setUI() {
+        missionTextField.addTarget(self, action: #selector(availableAddMissionButton), for: .editingChanged)
+        behaviorTextField.addTarget(self, action: #selector(availableAddMissionButton), for: .editingChanged)
+        goalTextField.addTarget(self, action: #selector(availableAddMissionButton), for: .editingChanged)
+        
         vStack.do {
             $0.axis = .vertical
             $0.spacing = 35.adjusted
         }
         
-        addBehaviorButton.setImage(.plusBtn, for: .normal)
+        maxMissionLabelView.do {
+            $0.backgroundColor = .BG
+        }
+        
+        maxMissionLabel.do {
+            $0.text = I18N.maxMission
+            $0.font = .PretendardRegular(size: 14)
+            $0.textColor = .nottodoGray2
+        }
+        
+        addBehaviorButton.do {
+            $0.setImage(.plusBtn, for: .normal)
+            $0.addTarget(self, action: #selector(addBehaviorCell), for: .touchUpInside)
+        }
         
         maxBehaviorLabel.do {
             $0.text = I18N.maxBehavior
@@ -111,12 +128,6 @@ extension AddMissionView {
             $0.titleLabel?.font = .PretendardMedium(size: 16)
         }
         
-        maxMissionLabel.do {
-            $0.text = I18N.maxMission
-            $0.font = .PretendardRegular(size: 14)
-            $0.textColor = .nottodoGray1
-        }
-        
         addMissionButton.do {
             $0.setTitle(I18N.add, for: .normal)
             $0.setTitleColor(.nottodoWhite, for: .normal)
@@ -129,7 +140,7 @@ extension AddMissionView {
         backgroundColor = .nottodoWhite
         
         addSubviews(navigationBarView, scrollView, addMissionButton)
-        scrollView.addSubviews(missionView, behaviorView, addBehaviorCollectionView, vStack, maxMissionLabelView)
+        scrollView.addSubviews(maxMissionLabelView, missionView, behaviorView, addBehaviorCollectionView, vStack)
         missionView.addSubviews(missionTitleView, missionTextField)
         behaviorView.addSubviews(behaviorTitleView, behaviorTextField, addBehaviorButton, maxBehaviorLabel)
         goalView.addSubviews(goalTitleView, goalTextField)
@@ -153,8 +164,14 @@ extension AddMissionView {
             $0.height.equalTo(74.adjusted)
         }
         
+        maxMissionLabelView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(37.adjusted)
+        }
+        
         missionView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20.adjusted)
+            $0.top.equalTo(maxMissionLabelView.snp.bottom).offset(17.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(83.adjusted)
         }
@@ -168,20 +185,22 @@ extension AddMissionView {
         addBehaviorCollectionView.snp.makeConstraints {
             $0.top.equalTo(behaviorView.snp.bottom).offset(6)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(200) // test
             
-            if behaviorList.count == 1 {
-                $0.height.equalTo(40)
-            } else if behaviorList.count == 2 {
-                $0.height.equalTo(88)
-            } else {
-                $0.height.equalTo(0)
-            }
+//            if behaviorList.count == 1 {
+//                $0.height.equalTo(40)
+//            } else if behaviorList.count == 2 {
+//                $0.height.equalTo(88)
+//            } else {
+//                $0.height.equalTo(0)
+//            }
         }
         
         vStack.snp.makeConstraints {
             $0.top.equalTo(addBehaviorCollectionView.snp.bottom).offset(35.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(212.adjusted)
+            $0.bottom.equalToSuperview().offset(-35)
         }
         
         situationView.snp.makeConstraints {
@@ -199,11 +218,8 @@ extension AddMissionView {
             $0.height.equalTo(37.adjusted)
         }
         
-        maxMissionLabelView.snp.makeConstraints {
-            $0.top.equalTo(vStack.snp.bottom).offset(128)
-            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(45)
+        maxMissionLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
         }
         
         missionTitleView.snp.makeConstraints {
@@ -266,12 +282,8 @@ extension AddMissionView {
             $0.width.equalTo(150.adjusted)
         }
         
-        maxMissionLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.centerX.equalToSuperview()
-        }
     }
-        
+    
     private func layout() -> UICollectionViewCompositionalLayout {
         
         let spacing: CGFloat = 8
@@ -293,22 +305,43 @@ extension AddMissionView {
         dateButton.setTitle(date, for: .normal)
     }
     
-    func availableButton(bool: Bool) {
-        switch bool {
-        case true:
+//    func availableButton(bool: Bool) {
+//        switch bool {
+//        case true:
+//            addMissionButton.isUserInteractionEnabled = true
+//            addMissionButton.backgroundColor = .nottodoBlack
+//        case false:
+//            addMissionButton.isUserInteractionEnabled = false
+//            addMissionButton.backgroundColor = .nottodoGray2
+//        }
+//    }
+    
+    // MARK: - @objc Methods
+    
+    @objc func availableAddMissionButton() {
+        if missionTextField.text!.count > 0 && behaviorList.count > 0
+            && goalTextField.text!.count > 0 {
             addMissionButton.isUserInteractionEnabled = true
             addMissionButton.backgroundColor = .nottodoBlack
-        case false:
+        } else {
             addMissionButton.isUserInteractionEnabled = false
             addMissionButton.backgroundColor = .nottodoGray2
         }
     }
-}
-
-extension AddMissionView: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if missionTextField.text?.isEmpty == true {
-            
+    
+    @objc func addBehaviorCell(_ sender: UIButton) {
+        print("buttonTapped")
+//        if behaviorList.count >= 2 {
+//            addMissionButton.isUserInteractionEnabled = false
+//            addMissionButton.setImage(.deleteBtn, for: .normal) // 수정 필요
+//        } else {
+//            addMissionButton.isUserInteractionEnabled = true
+//            addMissionButton.setImage(.plusBtn, for: .normal)
+//        }
+        if behaviorTextField.text!.count > 0 && behaviorList.count < 2 {
+            behaviorList.append(AddBehaviorModel(behavior: behaviorTextField.text!))
+            behaviorTextField.text = ""
+            addBehaviorCollectionView.reloadData()
         }
     }
 }
@@ -323,7 +356,8 @@ extension AddMissionView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddBehaviorCollectionViewCell.identifier, for: indexPath) as? AddBehaviorCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(model: behaviorList[indexPath.row])
+      
+        print(  cell.configure(model: behaviorList[indexPath.row]))
         return cell
     }
 }

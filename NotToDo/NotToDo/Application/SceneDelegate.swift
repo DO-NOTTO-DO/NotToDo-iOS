@@ -26,11 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             window.overrideUserInterfaceStyle = UIUserInterfaceStyle.light
             
-<<<<<<< HEAD
-            let rootViewController = AddMissionViewController() //TabBarController()
-=======
-            let rootViewController = OnboardingStartViewController()
->>>>>>> fc077c18a8acecc20edc64ef38fbcb3944b99401
+            let rootViewController = AddMissionViewController() // OnboardingStartViewController()
             let navigationController = UINavigationController(rootViewController: rootViewController)
             navigationController.isNavigationBarHidden = true
             window.rootViewController = navigationController

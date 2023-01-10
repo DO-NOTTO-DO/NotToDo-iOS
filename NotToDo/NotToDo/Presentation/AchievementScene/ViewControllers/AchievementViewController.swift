@@ -28,6 +28,8 @@ final class AchievementViewController: UIViewController {
     private var titleView = TitleView()
     private lazy var segmentedControl = CustomSegmentedControl(items: [I18N.missionStatisticsMessage, I18N.situationStatisticsMessage])
     private lazy var calendarView = CustomCalendar(frame: .zero)
+    fileprivate let gregorian = Calendar(identifier: .gregorian)
+
     private lazy var missionView = MissionStatisticsView(frame: view.bounds)
     private lazy var situationView = SituationStatisticsView(frame: view.bounds)
     private var bottomLabel = UILabel()
@@ -35,10 +37,13 @@ final class AchievementViewController: UIViewController {
     
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
+    var data: [Situation] = Situation.dummy()
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configView()
         setUI()
         setLayout()
     }
@@ -68,6 +73,20 @@ extension AchievementViewController {
         
     }
     
+    func configView() {
+        var tableViewData: [[String]] = []
+        var titleList: [TitleButtonList] = []
+        var isSelected: [Bool] = []
+        for item in data {
+            tableViewData.append(item.convert())
+            titleList.append(TitleButtonList(title: item.name))
+            isSelected.append(false)
+        }
+        situationView.tableViewData = tableViewData
+        situationView.titleLists = titleList
+        situationView.isSelected = isSelected
+    }
+    
     func setLayout() {
         view.addSubviews(titleView, scrollView)
         scrollView.addSubviews(calendarView, segmentedControl, missionView, situationView, bottomLabel)
@@ -81,7 +100,7 @@ extension AchievementViewController {
         scrollView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea)
             $0.top.equalTo(titleView.snp.bottom)
-            $0.bottom.equalTo(safeArea )
+            $0.bottom.equalTo(safeArea)
         }
         
         calendarView.snp.makeConstraints {
@@ -108,12 +127,13 @@ extension AchievementViewController {
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
             $0.height.equalTo(situationView.titleLists.count * 65 + 100 )
         }
+        
         bottomLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20.adjusted)
             if missionView.isHidden {
-                $0.top.equalTo(situationView.snp.top).offset(situationView.titleLists.count * 55 + 100)
+                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 65.adjusted + 100.adjusted)
             } else {
-                $0.top.equalTo(missionView.snp.top).offset(missionView.missionList.count * 55 + 100)
+                $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 100.adjusted)
             }
         }
         segmentedControl.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
@@ -122,12 +142,25 @@ extension AchievementViewController {
         didChangeValue(segment: self.segmentedControl)
     }
     
+    func relayout() {
+        bottomLabel.snp.remakeConstraints {
+            $0.leading.equalToSuperview().offset(20.adjusted)
+            if missionView.isHidden {
+                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 65.adjusted + 100.adjusted)
+            } else {
+                $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 100.adjusted)
+            }
+        }
+    
+    }
+    
     @objc private func didChangeValue(segment: UISegmentedControl) {
         self.shouldHideMissionView = segment.selectedSegmentIndex != 0
+        relayout()
     }
 }
 
-extension AchievementViewController: FSCalendarDelegate {
+extension AchievementViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendarView.calendar.reloadData()
         calendarView.headerLabel.text = calendarView.dateFormatter.string(from: calendar.currentPage)

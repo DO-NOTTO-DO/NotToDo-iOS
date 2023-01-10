@@ -39,6 +39,7 @@
 		09F695DB296C52B600877EA7 /* MissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DA296C52B600877EA7 /* MissionTableViewCell.swift */; };
 		09F695DD296C52F000877EA7 /* SituationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DC296C52F000877EA7 /* SituationTableViewCell.swift */; };
 		09F695DF296C533200877EA7 /* BackgroundSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DE296C533200877EA7 /* BackgroundSupplementaryView.swift */; };
+		09F695E3296D68DD00877EA7 /* SituationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695E2296D68DD00877EA7 /* SituationList.swift */; };
 		3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162873295AD7860077AE7B /* AppDelegate.swift */; };
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
@@ -85,7 +86,6 @@
 		3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34AB29618441002E1161 /* UIButton+.swift */; };
 		3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ED42B2961DC310052D2B8 /* HomeView.swift */; };
 		3B888AA729674BA4008209A8 /* RandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B888AA629674BA4008209A8 /* RandomData.swift */; };
-		3BE6CBC32969D700003A8A7B /* MissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6CBC22969D700003A8A7B /* MissionModel.swift */; };
 		3BBE56E1296C206300771DE4 /* OnboardingStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E0296C206300771DE4 /* OnboardingStartViewController.swift */; };
 		3BBE56E5296C213900771DE4 /* StartOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E4296C213900771DE4 /* StartOnboardingView.swift */; };
 		3BBE56E7296C214600771DE4 /* FirstOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E6296C214600771DE4 /* FirstOnboardingView.swift */; };
@@ -96,6 +96,7 @@
 		3BBE56F3296C4EB000771DE4 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F2296C4EB000771DE4 /* SecondOnboardingViewController.swift */; };
 		3BBE56F5296C4ED100771DE4 /* ThirdOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F4296C4ED100771DE4 /* ThirdOnboardingViewController.swift */; };
 		3BBE56F7296C4EEB00771DE4 /* FinishOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F6296C4EEB00771DE4 /* FinishOnboardingViewController.swift */; };
+		3BE6CBC32969D700003A8A7B /* MissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6CBC22969D700003A8A7B /* MissionModel.swift */; };
 		3BED5328295C018700157A3B /* adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED5327295C018700157A3B /* adjust+.swift */; };
 		3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */; };
 		3BEF92AF29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */; };
@@ -146,6 +147,7 @@
 		09F695DA296C52B600877EA7 /* MissionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionTableViewCell.swift; sourceTree = "<group>"; };
 		09F695DC296C52F000877EA7 /* SituationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SituationTableViewCell.swift; sourceTree = "<group>"; };
 		09F695DE296C533200877EA7 /* BackgroundSupplementaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundSupplementaryView.swift; sourceTree = "<group>"; };
+		09F695E2296D68DD00877EA7 /* SituationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationList.swift; sourceTree = "<group>"; };
 		3B162870295AD7860077AE7B /* NotToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B162873295AD7860077AE7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B162875295AD7860077AE7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		3B5B34A929617D88002E1161 /* NotTodoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTodoButton.swift; sourceTree = "<group>"; };
 		3B5B34AB29618441002E1161 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		3B5ED42B2961DC310052D2B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3B888AA629674BA4008209A8 /* RandomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomData.swift; sourceTree = "<group>"; };
 		3BBE56E0296C206300771DE4 /* OnboardingStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStartViewController.swift; sourceTree = "<group>"; };
 		3BBE56E4296C213900771DE4 /* StartOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartOnboardingView.swift; sourceTree = "<group>"; };
 		3BBE56E6296C214600771DE4 /* FirstOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingView.swift; sourceTree = "<group>"; };
@@ -203,7 +206,6 @@
 		3BBE56F2296C4EB000771DE4 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
 		3BBE56F4296C4ED100771DE4 /* ThirdOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingViewController.swift; sourceTree = "<group>"; };
 		3BBE56F6296C4EEB00771DE4 /* FinishOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishOnboardingViewController.swift; sourceTree = "<group>"; };
-		3B888AA629674BA4008209A8 /* RandomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomData.swift; sourceTree = "<group>"; };
 		3BE6CBC22969D700003A8A7B /* MissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionModel.swift; sourceTree = "<group>"; };
 		3BED5327295C018700157A3B /* adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "adjust+.swift"; sourceTree = "<group>"; };
 		3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				096BDFF12965215D009ED396 /* MissionList.swift */,
 				099F0738296BD0990036CF55 /* TitleButtonList.swift */,
+				09F695E2296D68DD00877EA7 /* SituationList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1040,6 +1043,7 @@
 				3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */,
 				6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */,
 				6CDC2D1529641BE000BFF5F4 /* AddMissionTitleView.swift in Sources */,
+				09F695E3296D68DD00877EA7 /* SituationList.swift in Sources */,
 				3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */,
 				3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */,
 				6C8826162968221C0005E222 /* AddSituationHeaderView.swift in Sources */,

@@ -14,13 +14,14 @@ class SituationStatisticsView: UIView {
     // MARK: - Properties
     
     var hiddenSections = Set<Int>()
-    let tableViewData = [
+    var tableViewData = [
         ["유튜브 보지 않기", "알람 끄고 다시 자지 않기", "뭐있냐"],
         ["뭐있냐", "유튜브 보지 않기", "3"],
         ["유튜브 보지 않기", "뭐있냐"]
     ]
     
-    let titleLists: [TitleButtonList] = TitleButtonList.titles
+    var titleLists: [TitleButtonList] = TitleButtonList.titles
+    var isSelected: [Bool] = []
     
     // MARK: - UI Components
     
@@ -111,11 +112,13 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
             switch indexPath.row {
             case 0:
                 cell.layer.addBorder([.top, .left, .right, .bottom], color: .nottodoGray2!, width: 0.5)
-                cell.backGroundImage.image = UIImage.situation_1
+                cell.backGroundImage.image = UIImage.situation1
             case 1:
-                cell.backGroundImage.image = UIImage.situation_2
+                cell.backGroundImage.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
+                cell.backGroundImage.image = UIImage.situation2
             case 2:
-                cell.backGroundImage.image = UIImage.situation_3
+                cell.backGroundImage.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
+                cell.backGroundImage.image = UIImage.situation3
             default:
                 cell.backGroundImage.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
             }
@@ -136,13 +139,20 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
                                                 action: #selector(self.hideSection(sender:)),
                                                 for: .touchUpInside)
         customHeaderView.config(titleLists[section])
+        customHeaderView.isClickedClosure = { [weak self] result in
+            if result {
+                self?.isSelected[section].toggle()
+                tableView.reloadData()
+            }
+        }
+        customHeaderView.numberLabel.textColor = isSelected[section] ? UIColor.yellow_basic : UIColor.nottodoGray1
         switch section {
         case 0:
-            customHeaderView.headerImage.image = customHeaderView.headerButton.isSelected ?  .situation_Rank1 : .situation_Rank1_off
+            customHeaderView.headerImage.image = isSelected[section] ?  .situationRank1 : .situationRank1off
         case 1:
-            customHeaderView.headerImage.image = customHeaderView.headerButton.isSelected ?  .situation_Rank2 : .situation_Rank2_off
+            customHeaderView.headerImage.image = isSelected[section] ?  .situationRank2 : .situationRank2off
         case 2:
-            customHeaderView.headerImage.image = customHeaderView.headerButton.isSelected ?  .situation_Rank3 : .situation_Rank3_off
+            customHeaderView.headerImage.image = isSelected[section] ?  .situationRank3 : .situationRank3off
         default:
             break
         }
@@ -164,6 +174,7 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
         
         if self.hiddenSections.contains(section) {
             self.hiddenSections.remove(section)
+            
         } else {
             self.hiddenSections.insert(section)
             
@@ -171,4 +182,3 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
         expangindTableView.reloadData()
     }
 }
-

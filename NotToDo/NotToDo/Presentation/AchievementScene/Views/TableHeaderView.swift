@@ -22,15 +22,17 @@ class TableHeaderView: UITableViewHeaderFooterView {
     var headerLabel = UILabel()
     var numberLabel = UILabel()
     var iconImageView = UIImageView()
-    let isSelected: Bool = false
+    var isSelected: Bool = false
+    var isClickedClosure: ((_ result: Bool) -> Void)?
    
     // MARK: - View Life Cycle
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        isSelected = false
+        numberLabel.textColor = isSelected ? UIColor.yellow_basic : UIColor.nottodoGray1
         headerImage.image = nil
-        numberLabel.textColor = nil
+        
     }
     
     override init(reuseIdentifier: String?) {
@@ -89,7 +91,6 @@ extension TableHeaderView {
     }
     
     @objc func headerButtonTapped(_ sender: UIButton) {
-        headerButton.isSelected.toggle()
-        numberLabel.textColor = isSelected ? UIColor.yellow_basic : UIColor.nottodoGray1
+        isClickedClosure?(true)
     }
 }

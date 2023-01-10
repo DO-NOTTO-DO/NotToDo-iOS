@@ -36,7 +36,7 @@ class SituationTableViewCell: UITableViewCell {
 extension SituationTableViewCell {
     func setUI() {
         backGroundImage.do {
-            $0.image = .situation_1
+            $0.image = .situation1
         }
         titleLabel.do {
             $0.textColor = .nottodoBlack

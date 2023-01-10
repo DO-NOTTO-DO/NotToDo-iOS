@@ -18,7 +18,7 @@ class RecommendHeaderView: UICollectionReusableView {
     
     // MARK: - UI Components
     
-    var titleLabel = CustomPaddingLabel(padding: .init(top: 7.adjusted, left: 27.adjusted, bottom: 10.adjusted, right: 13.adjusted))
+    var titleLabel = CustomPaddingLabel(padding: .init(top: 7, left: 27, bottom: 10, right: 13))
     private var backgroundView = UIView()
     private var iconImage = UIImageView()
     

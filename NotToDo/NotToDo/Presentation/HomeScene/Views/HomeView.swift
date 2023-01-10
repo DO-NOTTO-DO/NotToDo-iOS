@@ -62,9 +62,6 @@ extension HomeView {
                                     forCellWithReuseIdentifier: HomeCalendarCollectionViewCell.identifier)
         homeCollectionView.register(HomeMissionCollectionViewCell.self,
                                     forCellWithReuseIdentifier: HomeMissionCollectionViewCell.identifier)
-//        homeCollectionView.register(HomeMissionCollectionReusableView.self,
-//                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-//                                    withReuseIdentifier: HomeMissionCollectionReusableView.identifier)
     }
     
     private func setUI() {
@@ -92,7 +89,8 @@ extension HomeView {
         addSubviews(homeCollectionView, addMissionButton)
         
         homeCollectionView.snp.makeConstraints {
-            $0.edges.equalTo(safeAreaLayoutGuide)
+            $0.top.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview().inset(62.adjusted)
         }
         
         addMissionButton.snp.makeConstraints {

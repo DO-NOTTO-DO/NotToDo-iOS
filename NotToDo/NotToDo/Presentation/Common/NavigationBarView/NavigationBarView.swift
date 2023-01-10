@@ -26,7 +26,7 @@ class NavigationBarView: UIView {
     
     var backButton = UIButton()
     private var titleLabel = UILabel()
-    private var successButton = UIButton()
+    var successButton = UIButton()
     private var line = UIView()
     
     // MARK: - View Life Cycle

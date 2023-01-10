@@ -39,9 +39,8 @@ extension AddMissionViewController {
     /// 페이지 이동
     
     private func presentToRecommendViewController() {
-        let RecommendViewController = RecommendViewController()
-        self.navigationController?.pushViewController(RecommendViewController, animated: true)
-        print("추천뷰 가기")
+        let recommendViewController = RecommendViewController()
+        self.present(recommendViewController, animated:true, completion:nil)
     }
     
     private func dismissToHomeViewController() {
@@ -59,10 +58,8 @@ extension AddMissionViewController {
     }
     
     @objc private func presentToAddSituationViewController() {
-        print("ASDFA")
         let addSituationViewController = AddSituationViewController()
-        dismiss(animated: true)
-        navigationController?.pushViewController(addSituationViewController, animated: true)
+        self.present(addSituationViewController, animated:true, completion:nil)
     }
     
     @objc private func touchupAddMissionButton() {

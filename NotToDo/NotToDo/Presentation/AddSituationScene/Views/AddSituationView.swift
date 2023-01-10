@@ -14,7 +14,7 @@ class AddSituationView: UIView {
     
     // MARK: - UI Components
     
-    private var navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
+    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
     lazy var addSituationCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     var chagedText: String? {
         didSet {

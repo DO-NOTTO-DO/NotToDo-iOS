@@ -22,9 +22,7 @@ final class HomeView: UIView {
     private(set) lazy var refreshControl = UIRefreshControl()
     private lazy var homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     var calendar = FSCalendar(frame: .zero)
-
-    
-    private let addMissionButton = NotTodoButton(frame: CGRect(), mode: .withImage, text: I18N.addMissoinButton, image: .plus, font: .semiBold, size: 16)
+    let addMissionButton = NotTodoButton(frame: CGRect(), mode: .withImage, text: I18N.addMissoinButton, image: .plus, font: .semiBold, size: 16)
     
     // MARK: - Life Cycle
     
@@ -71,7 +69,6 @@ extension HomeView {
             $0.refreshControl = refreshControl
             $0.refreshControl?.addTarget(self, action: #selector(handleRefreshControl),
                                          for: .valueChanged)
-            
         }
     }
     
@@ -181,8 +178,4 @@ extension HomeView: UICollectionViewDelegateFlowLayout {
             return UIEdgeInsets(top: 7.adjusted, left: 0, bottom: 17.adjusted, right: 0)
         }
     }
-}
-
-extension HomeView: UICollectionViewDelegate {
-    
 }

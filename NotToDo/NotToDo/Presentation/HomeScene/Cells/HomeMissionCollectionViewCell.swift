@@ -15,6 +15,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     // MARK: Properties
     
     static let identifier = "HomeMissionCollectionViewCell"
+    var clickedEvent: ((Bool) -> Void)?
     
     // MARK: - UI Components
     
@@ -34,12 +35,18 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     private var firstSolutionLabel = UILabel()
     private var secondSolutionLabel = UILabel()
     
+    private let missionStateButtonBackView = UIImageView()
+    private let missionStateButtonStackView = UIStackView()
+    private let missionSuccessButton = UIButton()
+    private let missionAmbiguousButton = UIButton()
+    
     // MARK: Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
         setLayout()
+        setAddTarget()
     }
     
     @available(*, unavailable)
@@ -84,7 +91,9 @@ extension HomeMissionCollectionViewCell {
         }
         
         meatballButton.setBackgroundImage(.dot, for: .normal)
-        statusButton.setBackgroundImage(.checkDefault, for: .normal)
+        statusButton.do {
+            $0.setBackgroundImage(.checkDefault, for: .normal)
+        }
         
         solutionStackview.do {
             $0.distribution = .fill
@@ -99,18 +108,54 @@ extension HomeMissionCollectionViewCell {
             $0.textColor = .nottodoGray1
             $0.font = .PretendardBold(size: 14.adjusted)
         }
+        
+        missionSuccessButton.backgroundColor = .clear
+        missionAmbiguousButton.backgroundColor = .clear
+        
+        missionStateButtonBackView.image = .checkStatusBox
+        missionStateButtonStackView.do {
+            $0.isHidden = true
+            $0.axis = .horizontal
+            $0.distribution = .fill
+            $0.addArrangedSubviews(missionStateButtonBackView, missionSuccessButton, missionAmbiguousButton)
+        }
+        
+        headerView.clipsToBounds = false
     }
     
     private func setLayout() {
-        headerBackView.addSubview(headerView)
-        headerView.addSubviews(statusButton, situationLabel, missionTitleLabel,
-                             goalView, goalTitleLabel, meatballButton)
+        let stackViewWidth = missionStateButtonStackView.frame.width
+    
         goalView.addSubview(goalLabel)
-        
         firstSolusionView.addSubview(firstSolutionLabel)
         secondSolustionView.addSubview(secondSolutionLabel)
         solutionStackview.addArrangedSubviews(firstSolusionView, secondSolustionView)
         addSubviews(headerBackView, solutionStackview)
+        headerBackView.addSubview(headerView)
+        headerView.addSubviews(statusButton, situationLabel, missionTitleLabel,
+                             goalView, goalTitleLabel, meatballButton,
+                               missionStateButtonStackView)
+        
+        missionStateButtonBackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        missionSuccessButton.snp.makeConstraints {
+            $0.height.leading.equalToSuperview()
+            $0.width.equalTo((stackViewWidth / 2).adjusted)
+        }
+        
+        missionAmbiguousButton.snp.makeConstraints {
+            $0.height.trailing.equalToSuperview()
+            $0.width.equalTo((stackViewWidth / 2).adjusted)
+        }
+        
+        missionStateButtonStackView.snp.makeConstraints {
+            $0.width.equalTo(174.adjusted)
+            $0.height.equalTo(104.adjusted)
+            $0.bottom.equalTo(statusButton.snp.bottom).offset(-16.adjusted)
+            $0.leading.equalToSuperview().offset(-18.adjusted)
+        }
 
         headerBackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(17.adjusted)
@@ -193,5 +238,13 @@ extension HomeMissionCollectionViewCell {
             secondSolustionView.image = .secondSolutionView
         }
         firstSolutionLabel.text = actionList[0]
+    }
+    
+    private func setAddTarget() {
+        statusButton.addTarget(self, action: #selector(pressCheckBox), for: .touchUpInside)
+    }
+    
+    @objc private func pressCheckBox() {
+        print("눌렀져")
     }
 }

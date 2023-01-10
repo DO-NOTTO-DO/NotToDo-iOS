@@ -2,7 +2,7 @@
 //  SituationStatisticsViewController.swift
 //  NotToDo
 //
-//  Created by JEONGEUN KIM on 2023/01/04.
+//  Created by 강윤서 on 2023/01/10.
 //
 
 import UIKit
@@ -24,47 +24,12 @@ class Section {
 
 class SituationStatisticsViewController: UIViewController {
 
-    private let tableView = UITableView()
-    private var sections = [Section]()
-    var isExpanded = [Bool]()
-    //var isExpanded: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        setAttributes()
-        setViews()
-        setConstraints()
-        registerSubViews()
-        sections = [
-            Section(title: "section1", options: [1,2,3].compactMap({ return "Cell \($0)"})),
-            Section(title: "section2", options: [1,2,3].compactMap({ return "Cell \($0)"})),
-            Section(title: "section3", options: [1,2,3].compactMap({ return "Cell \($0)"})),
-            Section(title: "section4", options: [1,2,3].compactMap({ return "Cell \($0)"}))
-        ]
-    }
-    private func registerSubViews(){
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
-    private func setAttributes(){
 
+        // Do any additional setup after loading the view.
     }
-    private func setCellState() {
-            for _ in 0..<sections.count {
-                isExpanded[sections]
-            }
-        }
-    override func viewDidLayoutSubviews() {
-            super.viewDidLayoutSubviews()
-            tableView.reloadData()
-        }
-    private func setViews() {
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.frame = view.bounds
-    }
-    private func setConstraints(){
 
-    }
 }
 extension SituationStatisticsViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {

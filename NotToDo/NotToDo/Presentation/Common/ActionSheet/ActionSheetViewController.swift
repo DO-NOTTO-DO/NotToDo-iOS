@@ -30,10 +30,6 @@ final class ActionSheetViewController: UIViewController {
         setCalendarDelegate()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        showActionSheetWithAnimation()
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first,
            touch.view != actionSheetView {
@@ -51,23 +47,12 @@ extension ActionSheetViewController {
     }
     
     private func setLayout() {
+        let actionSheetViewHeight = mode.viewHeight
         view.addSubviews(actionSheetView)
         
         actionSheetView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(Numbers.height)
-            $0.bottom.leading.trailing.equalToSuperview()
-        }
-    }
-    
-    private func showActionSheetWithAnimation() {
-        let actionSheetViewHeight = mode.viewHeight
-        self.actionSheetView.snp.updateConstraints {
             $0.top.equalToSuperview().inset(Numbers.height - actionSheetViewHeight)
-        }
-        UIView.animate(withDuration: 0.3) {
-            self.actionSheetView.transform = CGAffineTransform(translationX: 0, y: 0)
-            self.view.backgroundColor = .nottodoBlack?.withAlphaComponent(0.7)
-            self.view.layoutIfNeeded()
+            $0.bottom.leading.trailing.equalToSuperview()
         }
     }
     

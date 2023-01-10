@@ -116,6 +116,16 @@ extension HomeView: UICollectionViewDataSource {
             } else {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMissionCollectionViewCell.identifier, for: indexPath) as? HomeMissionCollectionViewCell else { return UICollectionViewCell() }
                 cell.configure(missionList[indexPath.row])
+                cell.meatballClickedEvent = { result in
+                    if result {
+                        let actionSheetViewController = ActionSheetViewController()
+                        actionSheetViewController.modalPresentationStyle = .overFullScreen
+                        actionSheetViewController.modalTransitionStyle = .crossDissolve
+                        HomeView.topViewController()?.present(actionSheetViewController, animated: true)
+                        
+                    }
+                    
+                }
                 return cell
             }
         }

@@ -236,20 +236,24 @@ extension ActionSheetView {
             $0.top.equalTo(missionLabel.snp.bottom).offset(29.adjusted)
             $0.size.equalTo(30.adjusted)
         }
+        
         deleteLabel.snp.makeConstraints {
             $0.top.equalTo(missionLabel.snp.bottom).offset(35.adjusted)
             $0.leading.equalTo(deleteIcon.snp.trailing).offset(11.adjusted)
         }
+        
         divisionLine1.snp.makeConstraints {
             $0.top.equalTo(deleteIcon.snp.bottom).offset(14.adjusted)
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.height.equalTo(0.5.adjusted)
         }
+        
         editIcon.snp.makeConstraints {
             $0.leading.equalTo(deleteIcon.snp.leading)
             $0.size.equalTo(30.adjusted)
             $0.top.equalTo(divisionLine1.snp.bottom).offset(15.adjusted)
         }
+        
         editLabel.snp.makeConstraints {
             $0.top.equalTo(divisionLine1.snp.bottom).offset(20.adjusted)
             $0.leading.equalTo(editIcon.snp.trailing).offset(11.adjusted)
@@ -259,15 +263,18 @@ extension ActionSheetView {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.height.equalTo(0.5.adjusted)
         }
+        
         duplicateIcon.snp.makeConstraints {
             $0.top.equalTo(divisionLine2.snp.bottom).offset(14.adjusted)
             $0.leading.equalTo(deleteIcon.snp.leading)
             $0.size.equalTo(30.adjusted)
         }
+        
         duplicateLabel.snp.makeConstraints {
             $0.top.equalTo(divisionLine2.snp.bottom).offset(19.adjusted)
             $0.leading.equalTo(duplicateIcon.snp.trailing).offset(10.adjusted)
         }
+        
         subDuplicateLabel.snp.makeConstraints {
             $0.top.equalTo(duplicateLabel.snp.bottom).offset(6.adjusted)
             $0.leading.equalTo(duplicateIcon.snp.trailing).offset(10.adjusted)

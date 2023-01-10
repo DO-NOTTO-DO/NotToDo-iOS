@@ -15,10 +15,10 @@ final class AddMissionViewController: UIViewController {
     
     // MARK: - View Life Cycle
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        setAddTarget()
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setAddTarget()
+    }
     
     override func loadView() {
         super.loadView()
@@ -27,32 +27,45 @@ final class AddMissionViewController: UIViewController {
     }
 }
 
-//extension AddMissionViewController {
-//    private func setAddTarget() {
-//        addMissionView.situationView.AddMissionButton.do {
-//            $0.addTarget(self, action: #selector(touchupSituationButton), for:.touchUpInside)
-//        }
-//    }
-//
-//    /// 페이지 이동
-//
-//    private func presentToAddSituationViewController() {
-//        let AddSituationViewController = AddSituationViewController()
-//        AddSituationViewController.modalPresentationStyle = .formSheet
-//
-//        // WelcomeVC.name = idTextField.text
-//        // WelcomeVC.dataBind()
-//
-////        if let situationKeyword = idTextField.text {
-////            WelcomeVC.dataBind(name:id)
-////        }
-//        self.navigationController?.pushViewController(AddSituationViewController, animated:true)
-//    }
-//
-//    // MARK: - @objc Methods
-//
-//    @objc
-//    private func touchupSituationButton() {
-//        presentToAddSituationViewController()
-//    }
-//}
+extension AddMissionViewController {
+    private func setAddTarget() {
+        addMissionView.behaviorTitleView.AddMissionButton.do {
+            $0.addTarget(self, action: #selector(touchupRecommendButton), for: .touchUpInside)
+        }
+        addMissionView.situationView.AddMissionButton.do {
+            $0.addTarget(self, action: #selector(touchupSituationButton), for: .touchUpInside)
+        }
+    }
+    
+    /// 페이지 이동
+    
+    private func presentToRecommendViewController() {
+        let RecommendViewController = RecommendViewController()
+        self.navigationController?.pushViewController(RecommendViewController, animated: true)
+    }
+    
+    private func presentToAddSituationViewController() {
+        let AddSituationViewController = AddSituationViewController()
+        AddSituationViewController.modalPresentationStyle = .formSheet
+        
+        // WelcomeVC.name = idTextField.text
+        // WelcomeVC.dataBind()
+        
+        //        if let situationKeyword = idTextField.text {
+        //            WelcomeVC.dataBind(name:id)
+        //        }
+        self.navigationController?.pushViewController(AddSituationViewController, animated: true)
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc
+    private func touchupRecommendButton() {
+        presentToRecommendViewController()
+    }
+
+    @objc
+    private func touchupSituationButton() {
+        presentToAddSituationViewController()
+    }
+}

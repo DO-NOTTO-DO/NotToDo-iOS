@@ -26,7 +26,7 @@ class AddMissionView: UIView {
     private let missionTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.missionPlaceHolder)
     
     private let behaviorView = UIView()
-    private let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.behaviorTitle, buttonLabel: I18N.recommend, icon: .rightArrow)
+    let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.behaviorTitle, buttonLabel: I18N.recommend, icon: .rightArrow)
     private let behaviorTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.behaviorPlaceHolder)
     private let addBehaviorButton = UIButton()
     private let unavailableAddBehaviorButton = UIButton()

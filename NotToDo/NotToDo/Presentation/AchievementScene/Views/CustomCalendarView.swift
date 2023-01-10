@@ -7,11 +7,13 @@
 
 import UIKit
 
+import FSCalendar
 import SnapKit
 import Then
-import FSCalendar
 
-class customCalendar: UIView {
+class CustomCalendar: UIView {
+    
+    // MARK: - UI Components
 
     var calendar: FSCalendar! = FSCalendar(frame: .zero)
     private lazy var hStack = UIStackView(arrangedSubviews: [leftBtn, rightBtn])
@@ -23,12 +25,12 @@ class customCalendar: UIView {
     private lazy var today: Date = { return Date() }()
     lazy var dateFormatter = DateFormatter()
     
+    // MARK: - View Life Cycle
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.backgroundColor = UIColor.nottodoWhite
-        setAttributes()
-        setViews()
-        setConstraints()
+        setUI()
+        setLayout()
         calendarText()
         calendarColor()
         setUpCalendar()
@@ -37,7 +39,13 @@ class customCalendar: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    private func setAttributes() {
+}
+
+// MARK: - Methods
+
+extension CustomCalendar {
+    private func setUI() {
+        backgroundColor = .nottodoWhite
         hStack.do {
             $0.axis = .horizontal
             $0.distribution = .fillProportionally
@@ -63,11 +71,11 @@ class customCalendar: UIView {
             $0.dateFormat = "yyyy년 M월"
         }
     }
-    private func setViews() {
-        self.addSubviews(hStack, headerImage, calendar)
+    
+    private func setLayout() {
+        addSubviews(hStack, headerImage, calendar)
         headerImage.addSubview(headerLabel)
-    }
-    private func setConstraints() {
+        
         headerImage.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(23.adjusted)
             $0.top.equalToSuperview().offset(22.adjusted)
@@ -87,6 +95,7 @@ class customCalendar: UIView {
             $0.directionalHorizontalEdges.equalToSuperview().inset(23.adjusted)
             $0.bottom.equalToSuperview().inset(26.adjusted) 
         }
+        
     }
     private func calendarText() {
         calendar.calendarHeaderView.isHidden = true
@@ -106,14 +115,17 @@ class customCalendar: UIView {
         calendar.appearance.selectionColor = .yellow_basic
         calendar.appearance.borderRadius = 0.4
         calendar.appearance.titleWeekendColor = .nottodoBlack
-        calendar.today = nil
+        calendar.appearance.titleTodayColor = .blue
+        calendar.appearance.todayColor = .clear
         }
+    
     private func setUpCalendar() {
         self.calendar.placeholderType = .fillHeadTail
         calendar.headerHeight = 0
         calendar.scope = .month
         headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
     }
+    
     private func scrollCurrentPage(isPrev: Bool) {
         let cal = Calendar.current
         var dateComponents = DateComponents()
@@ -126,6 +138,7 @@ class customCalendar: UIView {
         calendar.reloadData()
         self.headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
     }
+    
     @objc func prevBtnTapped(_sender: UIButton) {
         scrollCurrentPage(isPrev: true)
     }

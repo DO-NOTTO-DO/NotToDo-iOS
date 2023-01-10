@@ -204,7 +204,7 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
 }
 
 extension AddSituationView: UITextFieldDelegate {
-                                               func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
 }

@@ -22,6 +22,7 @@ final class HomeView: UIView {
     private(set) lazy var refreshControl = UIRefreshControl()
     private lazy var homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     var calendar = FSCalendar(frame: .zero)
+
     
     let addMissionButton = NotTodoButton(frame: CGRect(), mode: .withImage, text: I18N.addMissoinButton, image: .plus, font: .semiBold, size: 16)
     

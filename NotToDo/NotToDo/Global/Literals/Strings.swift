@@ -87,7 +87,7 @@ struct I18N {
     // Recommend
     
     static let recommendViewTitle = "* 박스 터치 시, 낫투두가 아닌 환경만 입력됩니다."
-    static let recommendMainTitle = "성취"
+    static let recommendMainTitle = "추천"
     static let recommendButtonTitle = "직접 작성하기"
     
     // Onboarding
@@ -122,4 +122,14 @@ struct I18N {
                                         통계로 만나보세요
                                         """
     static let enroll = "낫투두 등록하러 갈래요!"
+    
+    // Achievement
+    
+    static let achievementMainTitle = "성취"
+    static let statisticsEmptyTitle = "아직 아무것도 없네요,\n새로운 낫투두를 작성해보세요!"
+    static let statistcisBottomMessage = "* 올해의 낫투두가 누적된 통계예요!"
+    static let missionStatisticsMessage = "  낫투두 통계보기  "
+    static let situationStatisticsMessage = "  상황별 통계보기  "
+    static let situationStatisticsTitle = "언제 낫투두를 가장 많이 시도했을까요?"
+    static let missionStatisticsTitle = "내가 달성한 낫투두의 순위는?"
 }

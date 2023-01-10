@@ -38,6 +38,7 @@ extension UIImage {
     static let addEnabledBtn = UIImage(named: "Recent/btn_add/enabled")!.withRenderingMode(.alwaysOriginal)
     static let addDisabledBtn = UIImage(named: "Recent/btn_add/disabled")!.withRenderingMode(.alwaysOriginal)
     static let plusBtn = UIImage(named: "Recent/btn_plus")!.withRenderingMode(.alwaysOriginal)
+    static let unavailablePlusBtn = UIImage(named: "Recent/btn_plus_unavailable")!.withRenderingMode(.alwaysOriginal)
     static let deleteBtn = UIImage(named: "Recent/btn_delete_create")!.withRenderingMode(.alwaysOriginal)
     static let recentCalendar = UIImage(named: "Recent/ic_calender")!.withRenderingMode(.alwaysOriginal)
     
@@ -83,6 +84,7 @@ extension UIImage {
     static let calendarLeftArrow = UIImage(named: "Calendar/btn_arrow/_left")!.withRenderingMode(.alwaysOriginal)
     static let calendarRightArrow = UIImage(named: "Calendar/btn_arrow/_right")!.withRenderingMode(.alwaysOriginal)
     static let selectedDateBtn = UIImage(named: "Calendar/btn_selected")!.withRenderingMode(.alwaysOriginal)
+    static let rectangle_Clear = UIImage(named: "Calendar/Rectangle_Clear")!.withRenderingMode(.alwaysOriginal)
     
     // Shape
     
@@ -139,4 +141,15 @@ extension UIImage {
     static let progressBarFirst = UIImage(named: "Onboarding/prgressbar_page1")!.withRenderingMode(.alwaysOriginal)
     static let progressBarSecond = UIImage(named: "Onboarding/prgressbar_page2")!.withRenderingMode(.alwaysOriginal)
     static let progressBarThird = UIImage(named: "Onboarding/prgressbar_page3")!.withRenderingMode(.alwaysOriginal)
+    
+    static let situation_Rank1 = UIImage(named: "Achieve/situation_rank1")!.withRenderingMode(.alwaysOriginal)
+    static let situation_Rank1_off = UIImage(named: "Achieve/situation_rank1_off")!.withRenderingMode(.alwaysOriginal)
+    static let situation_Rank2 = UIImage(named: "Achieve/situation_rank2")!.withRenderingMode(.alwaysOriginal)
+    static let situation_Rank2_off = UIImage(named: "Achieve/situation_rank2_off")!.withRenderingMode(.alwaysOriginal)
+    static let situation_Rank3 = UIImage(named: "Achieve/situation_rank3")!.withRenderingMode(.alwaysOriginal)
+    static let situation_Rank3_off = UIImage(named: "Achieve/situation_rank3_off")!.withRenderingMode(.alwaysOriginal)
+    
+    static let situation_1 = UIImage(named: "Achieve/situation_1")!.withRenderingMode(.alwaysOriginal)
+    static let situation_2 = UIImage(named: "Achieve/situation_2")!.withRenderingMode(.alwaysOriginal)
+    static let situation_3 = UIImage(named: "Achieve/situation_3")!.withRenderingMode(.alwaysOriginal)
 }

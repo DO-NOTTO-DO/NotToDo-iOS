@@ -17,7 +17,4 @@ struct AddBehaviorModel {
 
 /// test variables
 
-var behaviorList: [AddBehaviorModel] = [
-//    AddBehaviorModel(behavior: "유튜브 어플 삭제하기"),
-//    AddBehaviorModel(behavior: "아침 마니마니 먹기")
-]
+var behaviorList: [AddBehaviorModel] = []

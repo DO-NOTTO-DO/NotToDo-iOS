@@ -161,7 +161,7 @@ extension AddMissionView {
         scrollView.snp.makeConstraints {
             $0.top.equalTo(navigationBarView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-75)
+            $0.bottom.equalToSuperview().offset(-75.adjusted)
         }
         
         addMissionButton.snp.makeConstraints {
@@ -188,7 +188,7 @@ extension AddMissionView {
         }
         
         addBehaviorCollectionView.snp.makeConstraints {
-            $0.top.equalTo(behaviorView.snp.bottom).offset(6)
+            $0.top.equalTo(behaviorView.snp.bottom).offset(6.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(0)
         }
@@ -197,7 +197,7 @@ extension AddMissionView {
             $0.top.equalTo(addBehaviorCollectionView.snp.bottom).offset(27.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(212.adjusted)
-            $0.bottom.equalToSuperview().offset(-35)
+            $0.bottom.equalToSuperview().offset(-35.adjusted)
         }
         
         situationView.snp.makeConstraints {
@@ -339,7 +339,6 @@ extension AddMissionView {
             addBehaviorButton.isHidden = true
         }
         
-        // 추가하는 순간에 다른 칸들이 차있다면
         if missionTextField.text!.count > 0 && goalTextField.text!.count > 0 {
             addMissionButton.isUserInteractionEnabled = true
             addMissionButton.backgroundColor = .nottodoBlack
@@ -351,7 +350,7 @@ extension AddMissionView {
         behaviorList.remove(at: sender.tag)
         
         addBehaviorCollectionView.snp.updateConstraints {
-            $0.height.equalTo(behaviorList.count * 48)
+            $0.height.equalTo(CGFloat(behaviorList.count) * 48.adjusted)
         }
         
         if behaviorList.count < 2 {

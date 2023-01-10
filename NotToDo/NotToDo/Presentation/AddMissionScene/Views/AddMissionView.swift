@@ -185,19 +185,11 @@ extension AddMissionView {
         addBehaviorCollectionView.snp.makeConstraints {
             $0.top.equalTo(behaviorView.snp.bottom).offset(6)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
-            $0.height.equalTo(200) // test
-            
-//            if behaviorList.count == 1 {
-//                $0.height.equalTo(40)
-//            } else if behaviorList.count == 2 {
-//                $0.height.equalTo(88)
-//            } else {
-//                $0.height.equalTo(0)
-//            }
+            $0.height.equalTo(0)
         }
         
         vStack.snp.makeConstraints {
-            $0.top.equalTo(addBehaviorCollectionView.snp.bottom).offset(35.adjusted)
+            $0.top.equalTo(addBehaviorCollectionView.snp.bottom).offset(27.adjusted)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(212.adjusted)
             $0.bottom.equalToSuperview().offset(-35)
@@ -328,15 +320,20 @@ extension AddMissionView {
             behaviorList.append(AddBehaviorModel(behavior: behaviorTextField.text!))
             behaviorTextField.text = ""
             addBehaviorCollectionView.reloadData()
-        } else if behaviorList.count >= 2 {
-            // 버튼 비활성화 시키기
+        }
+        
+        addBehaviorCollectionView.snp.updateConstraints {
+            $0.height.equalTo(behaviorList.count * 48)
         }
     }
     
     @objc func deleteBehaviorButton(sender: UIButton) {
-         addBehaviorCollectionView.deleteItems(at: [IndexPath.init(row: sender.tag, section: 0)])
-       //이미지 아이템 배열의 데이터 삭제 // delete item at index of item array
-       behaviorList.remove(at: sender.tag)
+        addBehaviorCollectionView.deleteItems(at: [IndexPath.init(row: sender.tag, section: 0)])
+        behaviorList.remove(at: sender.tag)
+        
+        addBehaviorCollectionView.snp.updateConstraints {
+            $0.height.equalTo(behaviorList.count * 48)
+        }
      }
 }
 
@@ -350,9 +347,10 @@ extension AddMissionView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddBehaviorCollectionViewCell.identifier, for: indexPath) as? AddBehaviorCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
+        print(cell.configure(model: behaviorList[indexPath.row]))
         cell.deleteBehaviorButton.tag = indexPath.row
         cell.deleteBehaviorButton.addTarget(self, action: #selector(deleteBehaviorButton), for: .touchUpInside)
-        print(cell.configure(model: behaviorList[indexPath.row]))
         return cell
     }
 }

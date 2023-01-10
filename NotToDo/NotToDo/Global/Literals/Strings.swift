@@ -126,4 +126,10 @@ struct I18N {
     // Achievement
     
     static let achievementMainTitle = "성취"
+    static let statisticsEmptyTitle = "아직 아무것도 없네요,\n새로운 낫투두를 작성해보세요!"
+    static let statistcisBottomMessage = "* 올해의 낫투두가 누적된 통계예요!"
+    static let missionStatisticsMessage = "  낫투두 통계보기  "
+    static let situationStatisticsMessage = "  상황별 통계보기  "
+    static let situationStatisticsTitle = "언제 낫투두를 가장 많이 시도했을까요?"
+    static let missionStatisticsTitle = "내가 달성한 낫투두의 순위는?"
 }

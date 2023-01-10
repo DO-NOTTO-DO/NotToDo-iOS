@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class MissionStatisticsView: UIView {
     
     // MARK: - Properties
@@ -18,7 +21,7 @@ class MissionStatisticsView: UIView {
     private lazy var missionTableView =  UITableView(frame: .zero, style: .grouped)
     let situationTitleView = SituationTitleView()
     
-    // MARK: - life cycle
+    // MARK: - Life cycle
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -43,15 +46,19 @@ extension MissionStatisticsView {
         missionTableView.do {
             $0.backgroundColor = .clear
             $0.separatorStyle = .none
-//            $0.isScrollEnabled = false
             $0.delegate = self
             $0.dataSource = self
             $0.sectionHeaderTopPadding = 0
             $0.sectionFooterHeight = 0
         }
         situationTitleView.do {
-            $0.HeaderTitle(title: "내가 달성한 낫투두의 순위는?")
+            $0.HeaderTitle(title: I18N.missionStatisticsTitle)
         }
+    }
+    
+    func register() {
+        missionTableView.register(MissionTableViewCell.self, forCellReuseIdentifier: MissionTableViewCell.identifier)
+        missionTableView.register(StatisticsEmptyTableViewCell.self, forCellReuseIdentifier: StatisticsEmptyTableViewCell.identifier)
     }
     
     func setLayout() {
@@ -69,10 +76,6 @@ extension MissionStatisticsView {
         }
         
     }
-    func register() {
-        missionTableView.register(MissionTableViewCell.self, forCellReuseIdentifier: MissionTableViewCell.identifier)
-        missionTableView.register(StatisticsEmptyTableViewCell.self, forCellReuseIdentifier: StatisticsEmptyTableViewCell.identifier)
-    }
 }
 extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -88,40 +91,39 @@ extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
         if missionList.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsEmptyTableViewCell.identifier, for: indexPath) as! StatisticsEmptyTableViewCell
             situationTitleView.isHidden = true
-
+            
             return cell
         } else {
-        print(missionList.count, "A?DF?SF")
+            print(missionList.count, "A?DF?SF")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MissionTableViewCell.identifier, for: indexPath) as? MissionTableViewCell else { return UITableViewCell() }
             let item = missionList[indexPath.row]
             switch indexPath.row {
             case 0:
                 cell.missionImage.image = UIImage.rank1
                 cell.selectionStyle = .none
-                cell.config(item)
+                cell.configure(item)
                 return cell
             case 1:
                 cell.missionImage.image = UIImage.rank2
                 cell.selectionStyle = .none
-                cell.config(item)
+                cell.configure(item)
                 return cell
             case 2:
                 cell.missionImage.image = UIImage.rank3
                 cell.selectionStyle = .none
-                cell.config(item)
+                cell.configure(item)
                 return cell
             case 3:
                 cell.missionImage.image = UIImage.rank4
                 cell.selectionStyle = .none
-                cell.config(item)
+                cell.configure(item)
                 return cell
             default:
                 cell.missionImage.image = UIImage.rank5
                 cell.selectionStyle = .none
-                cell.config(item)
+                cell.configure(item)
                 return cell
             }
         }
     }
 }
-

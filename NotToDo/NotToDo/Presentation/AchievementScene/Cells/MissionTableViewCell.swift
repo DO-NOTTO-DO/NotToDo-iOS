@@ -10,9 +10,9 @@ import UIKit
 class MissionTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-
+    
     static var identifier = "MissionTableViewCell"
-
+    
     // MARK: - UI Components
     
     private var label = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardSemiBold(size: 14))
@@ -25,9 +25,10 @@ class MissionTableViewCell: UITableViewCell {
         setUI()
         setLayout()
     }
+    
     override func layoutSubviews() {
-      super.layoutSubviews()
-      contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
     }
     
     required init?(coder: NSCoder) {
@@ -59,7 +60,7 @@ extension MissionTableViewCell {
         }
     }
     
-    func config(_ item: MissionList) {
+    func configure(_ item: MissionList) {
         label.text = item.title
     }
 }

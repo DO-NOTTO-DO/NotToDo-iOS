@@ -18,7 +18,7 @@ class StatisticsEmptyTableViewCell: UITableViewCell {
     private lazy var mainTitle = UILabel()
     private lazy var iconImage = UIImageView()
     
-    // MARK: - View Life Cycle
+    // MARK: - Life Cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,7 +46,7 @@ extension StatisticsEmptyTableViewCell {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.13
             $0.font = UIFont(name: AppFontName.pretendardSemiBold, size: 16)
-            $0.attributedText = NSMutableAttributedString(string: "아직 아무것도 없네요,\n새로운 낫투두를 작성해보세요!", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+            $0.attributedText = NSMutableAttributedString(string: I18N.statisticsEmptyTitle, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
             $0.textAlignment = .center
         }
     }
@@ -60,8 +60,8 @@ extension StatisticsEmptyTableViewCell {
             $0.top.equalToSuperview()
         }
         mainTitle.snp.makeConstraints {
-            $0.top.equalTo(iconImage.snp.bottom).offset(10)
-            $0.directionalHorizontalEdges.equalToSuperview().inset(80)
+            $0.top.equalTo(iconImage.snp.bottom).offset(10.adjusted)
+            $0.directionalHorizontalEdges.equalToSuperview().inset(80.adjusted)
         }
     }
 }

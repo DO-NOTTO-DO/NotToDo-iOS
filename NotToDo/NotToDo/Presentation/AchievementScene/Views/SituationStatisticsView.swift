@@ -25,8 +25,8 @@ class SituationStatisticsView: UIView {
     // MARK: - UI Components
     
     private lazy var expangindTableView =  UITableView(frame: .zero, style: .grouped)
-    let sectionButton = UIButton()
-    let situationTitleView = SituationTitleView()
+    private let sectionButton = UIButton()
+    private let situationTitleView = SituationTitleView()
     
     // MARK: - View Life Cycle
     
@@ -53,15 +53,18 @@ extension SituationStatisticsView {
         expangindTableView.do {
             $0.backgroundColor = .clear
             $0.separatorStyle = .none
-//            $0.isScrollEnabled = false
             $0.delegate = self
             $0.dataSource = self
-            $0.sectionHeaderTopPadding = 10
+            $0.sectionHeaderTopPadding = 25
             $0.sectionFooterHeight = 0
         }
         situationTitleView.do {
-            $0.HeaderTitle(title: "언제 낫투두를 가장 많이 시도했을까요?")
+            $0.HeaderTitle(title: I18N.situationStatisticsTitle)
         }
+    }
+    
+    func register() {
+        expangindTableView.register(SituationTableViewCell.self, forCellReuseIdentifier: SituationTableViewCell.identifier)
     }
     
     func setLayout() {
@@ -79,9 +82,6 @@ extension SituationStatisticsView {
             $0.directionalHorizontalEdges.equalToSuperview().inset(20.adjusted)
         }
     }
-    func register() {
-        expangindTableView.register(SituationTableViewCell.self, forCellReuseIdentifier: SituationTableViewCell.identifier)
-    }
 }
 extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     
@@ -92,9 +92,9 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.hiddenSections.contains(section) {
-            
             return self.tableViewData[section].count
         }
         return 0
@@ -128,6 +128,7 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     func config(_ title: TitleButtonList) {
         sectionButton.setTitle(title.title, for: .normal)
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let customHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableHeaderView.identifier) as? TableHeaderView else { return UIView() }
         customHeaderView.headerButton.tag = section
@@ -147,8 +148,8 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
         }
         return customHeaderView
     }
-    @objc
-    private func hideSection(sender: UIButton) {
+    
+    @objc private func hideSection(sender: UIButton) {
         let section = sender.tag
         
         func indexPathsForSection() -> [IndexPath] {

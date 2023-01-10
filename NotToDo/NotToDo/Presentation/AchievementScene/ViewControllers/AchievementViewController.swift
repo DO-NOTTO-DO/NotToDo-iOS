@@ -13,28 +13,6 @@ import Then
 final class AchievementViewController: UIViewController {
     
     // MARK: - Properties
-    fileprivate let datesWithCat = ["20231010", "20150605"]
-    private var missionHidden: Bool = false {
-        didSet {
-            print(missionHidden)
-            setUpdateConstraint()
-        }
-    }
-    
-    // MARK: - UI Components
-    
-    private lazy var scrollView = UIScrollView()
-    private var titleView = TitleView()
-    private lazy var segmentedControl = CustomSegmentedControl(items: [" 낫투두 통계보기 ", " 상황별 통계보기 "])
-    private lazy var calendarView = CustomCalendar(frame: .zero)
-    private lazy var missionView = MissionStatisticsView(frame: view.bounds)
-    private lazy var situationView = SituationStatisticsView(frame: view.bounds)
-    private var bottomLabel = UILabel()
-    private lazy var dateFormatter = DateFormatter()
-
-    private lazy var safeArea = self.view.safeAreaLayoutGuide
-
-    // MARK: - Properties
     
     var shouldHideMissionView: Bool? {
         didSet {
@@ -43,6 +21,19 @@ final class AchievementViewController: UIViewController {
             situationView.isHidden = !self.missionView.isHidden
         }
     }
+    
+    // MARK: - UI Components
+    
+    private lazy var scrollView = UIScrollView()
+    private var titleView = TitleView()
+    private lazy var segmentedControl = CustomSegmentedControl(items: [I18N.missionStatisticsMessage, I18N.situationStatisticsMessage])
+    private lazy var calendarView = CustomCalendar(frame: .zero)
+    private lazy var missionView = MissionStatisticsView(frame: view.bounds)
+    private lazy var situationView = SituationStatisticsView(frame: view.bounds)
+    private var bottomLabel = UILabel()
+    private lazy var dateFormatter = DateFormatter()
+    
+    private lazy var safeArea = self.view.safeAreaLayoutGuide
     
     // MARK: - View Life Cycle
     
@@ -58,6 +49,7 @@ final class AchievementViewController: UIViewController {
 extension AchievementViewController {
     func setUI() {
         view.backgroundColor = .BG
+        
         scrollView.do {
             $0.showsHorizontalScrollIndicator = false
             $0.isScrollEnabled = true
@@ -69,7 +61,7 @@ extension AchievementViewController {
             $0.calendar.delegate = self
         }
         bottomLabel.do {
-            $0.text = "* 올해의 낫투두가 누적된 통계예요!"
+            $0.text = I18N.statistcisBottomMessage
             $0.font = .PretendardMedium(size: 12)
             $0.textColor = .nottodoGray2
         }
@@ -85,7 +77,7 @@ extension AchievementViewController {
             $0.directionalHorizontalEdges.equalTo(safeArea)
             $0.height.equalTo(65.adjusted)
         }
-    
+        
         scrollView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea)
             $0.top.equalTo(titleView.snp.bottom)
@@ -114,7 +106,7 @@ extension AchievementViewController {
         situationView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
-            $0.height.equalTo(situationView.titleLists.count * 55 + 88 )
+            $0.height.equalTo(situationView.titleLists.count * 65 + 100 )
         }
         bottomLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20.adjusted)
@@ -130,13 +122,10 @@ extension AchievementViewController {
         didChangeValue(segment: self.segmentedControl)
     }
     
-    private func setUpdateConstraint() {
-    }
-    
     @objc private func didChangeValue(segment: UISegmentedControl) {
         self.shouldHideMissionView = segment.selectedSegmentIndex != 0
-        }
     }
+}
 
 extension AchievementViewController: FSCalendarDelegate {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
@@ -147,20 +136,4 @@ extension AchievementViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         return false
     }
-    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
-            switch dateFormatter.string(from: date) {
-            case dateFormatter.string(from: Date()):
-                return "오늘"
-            default:
-                return nil
-            }
-        }
-    
-    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-           let imageDateFormatter = DateFormatter()
-           imageDateFormatter.dateFormat = "yyyyMMdd"
-           var dateStr = imageDateFormatter.string(from: date)
-           print("date : \(dateStr)")
-        return datesWithCat.contains(dateStr) ? .rectangle_Clear : nil
-           }
 }

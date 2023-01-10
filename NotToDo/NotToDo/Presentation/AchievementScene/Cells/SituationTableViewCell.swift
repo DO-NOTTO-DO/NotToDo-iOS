@@ -4,8 +4,10 @@
 //
 //  Created by JEONGEUN KIM on 2023/01/08.
 //
-
 import UIKit
+
+import SnapKit
+import Then
 
 class SituationTableViewCell: UITableViewCell {
     
@@ -14,10 +16,12 @@ class SituationTableViewCell: UITableViewCell {
     static var identifier = "SituationTableViewCell"
     
     // MARK: - UI Components
-
+    
     let titleLabel = UILabel()
     let numberLabel = UILabel()
     let backGroundImage = UIImageView()
+    
+    // MARK: - Life cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,7 +32,8 @@ class SituationTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+extension SituationTableViewCell {
     func setUI() {
         backGroundImage.do {
             $0.image = .situation_1
@@ -60,4 +65,3 @@ class SituationTableViewCell: UITableViewCell {
         }
     }
 }
-

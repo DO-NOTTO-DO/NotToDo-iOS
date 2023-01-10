@@ -71,7 +71,6 @@
 		3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DD295B162600D44722 /* UITabBar+.swift */; };
 		3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */; };
 		3B4187CF296D342900F0FBF4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4187CE296D342900F0FBF4 /* UIViewController+.swift */; };
-		3B4187D1296D37CC00F0FBF4 /* SituationStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4187D0296D37CC00F0FBF4 /* SituationStatisticsViewController.swift */; };
 		3B4187D5296D5D8700F0FBF4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B4187D4296D5D8700F0FBF4 /* IQKeyboardManagerSwift */; };
 		3B42D1EE2966A1C20012898E /* myInfoMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */; };
 		3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */; };
@@ -186,7 +185,6 @@
 		3B3405DD295B162600D44722 /* UITabBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+.swift"; sourceTree = "<group>"; };
 		3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		3B4187CE296D342900F0FBF4 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
-		3B4187D0296D37CC00F0FBF4 /* SituationStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationStatisticsViewController.swift; sourceTree = "<group>"; };
 		3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		3B4B90BA29656684008C5CA8 /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
@@ -1074,7 +1072,6 @@
 				3B4B90BF29656751008C5CA8 /* AuthView.swift in Sources */,
 				3B4B90CC2965D697008C5CA8 /* CALayer+.swift in Sources */,
 				3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */,
-				3B4187D1296D37CC00F0FBF4 /* SituationStatisticsViewController.swift in Sources */,
 				3B1628B0295ADB640077AE7B /* NetworkConstant.swift in Sources */,
 				3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */,
 				6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */,

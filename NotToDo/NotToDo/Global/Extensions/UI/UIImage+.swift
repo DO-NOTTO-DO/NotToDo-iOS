@@ -24,6 +24,7 @@ extension UIImage {
     
     static let addNotToDo = UIImage(named: "Home/btn_nottodo")!.withRenderingMode(.alwaysOriginal)
     static let target = UIImage(named: "Home/ic_target")!.withRenderingMode(.alwaysOriginal)
+    static let checkStatusBox = UIImage(named: "Home/checkbox/checkBox")!.withRenderingMode(.alwaysOriginal)
     static let checkBox = UIImage(named: "Home/checkbox/btn_check_blank")!.withRenderingMode(.alwaysOriginal)
     static let checkDefault = UIImage(named: "Home/checkbox/Default")!.withRenderingMode(.alwaysOriginal)
     static let checkCircle = UIImage(named: "Home/checkbox/circle")!.withRenderingMode(.alwaysOriginal)
@@ -38,6 +39,7 @@ extension UIImage {
     static let addEnabledBtn = UIImage(named: "Recent/btn_add/enabled")!.withRenderingMode(.alwaysOriginal)
     static let addDisabledBtn = UIImage(named: "Recent/btn_add/disabled")!.withRenderingMode(.alwaysOriginal)
     static let plusBtn = UIImage(named: "Recent/btn_plus")!.withRenderingMode(.alwaysOriginal)
+    static let unavailablePlusBtn = UIImage(named: "Recent/btn_plus_unavailable")!.withRenderingMode(.alwaysOriginal)
     static let deleteBtn = UIImage(named: "Recent/btn_delete_create")!.withRenderingMode(.alwaysOriginal)
     static let recentCalendar = UIImage(named: "Recent/ic_calender")!.withRenderingMode(.alwaysOriginal)
     

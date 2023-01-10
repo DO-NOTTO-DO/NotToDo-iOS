@@ -20,7 +20,26 @@ final class HomeViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        homeView = HomeView(frame: CGRect())
+        homeView = HomeView(frame: CGRect(), motivationText: "초기화 값입니다.")
         view = homeView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setAddTarget()
+    }
+}
+
+extension HomeViewController {
+    private func setAddTarget() {
+        homeView.addMissionButton.addTarget(self, action: #selector(addMission), for: .touchUpInside)
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc private func addMission() {
+        let addMissionViewController = AddMissionViewController()
+        addMissionViewController.modalPresentationStyle = .overFullScreen
+        present(addMissionViewController, animated: true)
     }
 }

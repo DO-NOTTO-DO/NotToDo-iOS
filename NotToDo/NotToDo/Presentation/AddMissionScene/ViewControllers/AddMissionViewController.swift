@@ -17,11 +17,23 @@ final class AddMissionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+        setAddTarget()
     }
     
     override func loadView() {
         super.loadView()
         addMissionView = AddMissionView()
         view = addMissionView
+    }
+}
+
+extension AddMissionViewController {
+    private func setAddTarget() {
+        addMissionView.navigationBarView.backButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
+    }
+    
+    @objc private func dismissAddMissionViewController() {
+        dismiss(animated: true)
     }
 }

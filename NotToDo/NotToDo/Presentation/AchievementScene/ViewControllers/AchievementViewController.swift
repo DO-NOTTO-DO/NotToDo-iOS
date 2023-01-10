@@ -123,17 +123,13 @@ extension AchievementViewController {
         situationView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
-//            $0.height.equalTo(CGFloat(situationView.titleLists.count) * 65.adjusted + 148.adjusted)
-            $0.height.equalTo(CGFloat(situationView.titleLists.count) * 55.adjusted + 92.adjusted)
-
+            $0.height.equalTo(CGFloat(situationView.titleLists.count) * 60.adjusted + 120.adjusted)
         }
         
         bottomLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20.adjusted)
             if missionView.isHidden {
-//                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 65.adjusted + 168.adjusted)
-                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 55.adjusted + 102.adjusted)
-
+                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 60.adjusted + 130.adjusted)
             } else {
                 $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 102.adjusted)
             }

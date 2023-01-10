@@ -48,7 +48,9 @@ extension AddBehaviorCollectionViewCell {
             $0.layer.borderWidth = 0.5.adjusted
         }
         
-        deleteBehaviorButton.setImage(.deleteBtn, for: .normal)
+        deleteBehaviorButton.do {
+            $0.setImage(.deleteBtn, for: .normal)
+        }
     }
     
     private func setLayout() {

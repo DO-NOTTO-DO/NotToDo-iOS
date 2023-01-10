@@ -305,17 +305,6 @@ extension AddMissionView {
         dateButton.setTitle(date, for: .normal)
     }
     
-//    func availableButton(bool: Bool) {
-//        switch bool {
-//        case true:
-//            addMissionButton.isUserInteractionEnabled = true
-//            addMissionButton.backgroundColor = .nottodoBlack
-//        case false:
-//            addMissionButton.isUserInteractionEnabled = false
-//            addMissionButton.backgroundColor = .nottodoGray2
-//        }
-//    }
-    
     // MARK: - @objc Methods
     
     @objc func availableAddMissionButton() {
@@ -331,10 +320,7 @@ extension AddMissionView {
     
     @objc func addBehaviorCell(_ sender: UIButton) {
         print("buttonTapped")
-//        if behaviorList.count >= 2 {
-//            addMissionButton.isUserInteractionEnabled = false
-//            addMissionButton.setImage(.deleteBtn, for: .normal) // 수정 필요
-//        } else {
+        // else { 삭제 버튼에 넣어야될듯
 //            addMissionButton.isUserInteractionEnabled = true
 //            addMissionButton.setImage(.plusBtn, for: .normal)
 //        }
@@ -342,8 +328,16 @@ extension AddMissionView {
             behaviorList.append(AddBehaviorModel(behavior: behaviorTextField.text!))
             behaviorTextField.text = ""
             addBehaviorCollectionView.reloadData()
+        } else if behaviorList.count >= 2 {
+            // 버튼 비활성화 시키기
         }
     }
+    
+    @objc func deleteBehaviorButton(sender: UIButton) {
+         addBehaviorCollectionView.deleteItems(at: [IndexPath.init(row: sender.tag, section: 0)])
+       //이미지 아이템 배열의 데이터 삭제 // delete item at index of item array
+       behaviorList.remove(at: sender.tag)
+     }
 }
 
 extension AddMissionView: UICollectionViewDataSource {
@@ -356,8 +350,9 @@ extension AddMissionView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddBehaviorCollectionViewCell.identifier, for: indexPath) as? AddBehaviorCollectionViewCell else {
             return UICollectionViewCell()
         }
-      
-        print(  cell.configure(model: behaviorList[indexPath.row]))
+        cell.deleteBehaviorButton.tag = indexPath.row
+        cell.deleteBehaviorButton.addTarget(self, action: #selector(deleteBehaviorButton), for: .touchUpInside)
+        print(cell.configure(model: behaviorList[indexPath.row]))
         return cell
     }
 }

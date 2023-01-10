@@ -14,7 +14,7 @@ final class AddMissionViewController: UIViewController {
     private var addMissionView: AddMissionView!
     
     // MARK: - View Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
@@ -30,12 +30,10 @@ final class AddMissionViewController: UIViewController {
 
 extension AddMissionViewController {
     private func setAddTarget() {
-        addMissionView.behaviorTitleView.AddMissionButton.do {
-            $0.addTarget(self, action: #selector(touchupRecommendButton), for: .touchUpInside)
-        }
-        addMissionView.situationView.AddMissionButton.do {
-            $0.addTarget(self, action: #selector(touchupSituationButton), for: .touchUpInside)
-        }
+        addMissionView.navigationBarView.backButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
+        addMissionView.behaviorTitleView.AddMissionButton.addTarget(self, action: #selector(touchupRecommendButton), for: .touchUpInside)
+        addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(presentToAddSituationViewController), for: .touchUpInside)
+        addMissionView.addMissionButton.addTarget(self, action: #selector(touchupAddMissionButton), for: .touchUpInside)
     }
     
     /// 페이지 이동
@@ -43,39 +41,31 @@ extension AddMissionViewController {
     private func presentToRecommendViewController() {
         let RecommendViewController = RecommendViewController()
         self.navigationController?.pushViewController(RecommendViewController, animated: true)
+        print("추천뷰 가기")
     }
     
-    private func presentToAddSituationViewController() {
-        let AddSituationViewController = AddSituationViewController()
-        AddSituationViewController.modalPresentationStyle = .formSheet
-        
-        // WelcomeVC.name = idTextField.text
-        // WelcomeVC.dataBind()
-        
-        //        if let situationKeyword = idTextField.text {
-        //            WelcomeVC.dataBind(name:id)
-        //        }
-        self.navigationController?.pushViewController(AddSituationViewController, animated: true)
+    private func dismissToHomeViewController() {
+        dismiss(animated: true)
     }
     
     // MARK: - @objc Methods
     
-    @objc
-    private func touchupRecommendButton() {
-        presentToRecommendViewController()
-    }
-extension AddMissionViewController {
-    private func setAddTarget() {
-        addMissionView.navigationBarView.backButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
-    }
-    
     @objc private func dismissAddMissionViewController() {
         dismiss(animated: true)
     }
-}
-
-    @objc
-    private func touchupSituationButton() {
-        presentToAddSituationViewController()
+    
+    @objc private func touchupRecommendButton() {
+        presentToRecommendViewController()
+    }
+    
+    @objc private func presentToAddSituationViewController() {
+        print("ASDFA")
+        let addSituationViewController = AddSituationViewController()
+        dismiss(animated: true)
+        navigationController?.pushViewController(addSituationViewController, animated: true)
+    }
+    
+    @objc private func touchupAddMissionButton() {
+        dismissToHomeViewController()
     }
 }

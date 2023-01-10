@@ -47,7 +47,7 @@ class AddMissionView: UIView {
     let nowDate = Date()
     let dateFormatter = DateFormatter()
     
-    private let addMissionButton = UIButton()
+    let addMissionButton = UIButton()
     
     // MARK: - View Life Cycle
     
@@ -138,6 +138,7 @@ extension AddMissionView {
             $0.setTitleColor(.nottodoWhite, for: .normal)
             $0.titleLabel?.font = .PretendardBold(size: 18)
             $0.backgroundColor = .nottodoGray2
+            $0.addTarget(self, action: #selector(resetBehaviorModel), for: .touchUpInside)
         }
     }
     
@@ -290,11 +291,11 @@ extension AddMissionView {
     
     private func layout() -> UICollectionViewCompositionalLayout {
         let spacing: CGFloat = 8
-        let itemLayout = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40)))
-        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(80)), subitem: itemLayout, count: 2)
+        let itemLayout = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40.adjusted)))
+        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(88.adjusted)), subitem: itemLayout, count: 2)
         groupLayout.interItemSpacing = .fixed(spacing)
         let section = NSCollectionLayoutSection(group: groupLayout)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20.adjusted, bottom: 0, trailing: 20.adjusted)
         section.interGroupSpacing = spacing
         return UICollectionViewCompositionalLayout(section: section)
     }
@@ -345,7 +346,7 @@ extension AddMissionView {
         }
     }
     
-    @objc func deleteBehaviorButton(sender: UIButton) {
+    @objc func deleteBehaviorButton(_ sender: UIButton) {
         addBehaviorCollectionView.deleteItems(at: [IndexPath.init(row: sender.tag, section: 0)])
         behaviorList.remove(at: sender.tag)
         
@@ -357,6 +358,10 @@ extension AddMissionView {
             unavailableAddBehaviorButton.isHidden = true
             addBehaviorButton.isHidden = false
         }
+    }
+    
+    @objc func resetBehaviorModel() {
+        behaviorList.removeAll()
     }
 }
 

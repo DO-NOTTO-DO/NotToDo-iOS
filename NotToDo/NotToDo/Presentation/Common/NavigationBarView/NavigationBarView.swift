@@ -24,7 +24,7 @@ class NavigationBarView: UIView {
     
     // MARK: - UI Components
     
-    private var backButton = UIButton()
+    var backButton = UIButton()
     private var titleLabel = UILabel()
     private var successButton = UIButton()
     private var line = UIView()
@@ -46,7 +46,6 @@ class NavigationBarView: UIView {
 // MARK: - Methods
 
 extension NavigationBarView {
-    
     private func setupMode(mode: NavigationMode) {
         switch mode {
         case .plain:
@@ -103,7 +102,7 @@ extension NavigationBarView {
     }
     
     private func setLayout() {
-            addSubviews(backButton, titleLabel, successButton, line)
+        addSubviews(backButton, titleLabel, successButton, line)
         
         backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()

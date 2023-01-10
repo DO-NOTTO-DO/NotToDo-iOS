@@ -13,7 +13,7 @@ import Then
 final class AchievementViewController: UIViewController {
     
     // MARK: - Properties
-    
+    fileprivate let datesWithCat = ["20231010", "20150605"]
     private var missionHidden: Bool = false {
         didSet {
             print(missionHidden)
@@ -39,8 +39,8 @@ final class AchievementViewController: UIViewController {
     var shouldHideMissionView: Bool? {
         didSet {
             guard let shouldHideMissionView = self.shouldHideMissionView else { return }
-            self.missionView.isHidden = shouldHideMissionView
-            self.situationView.isHidden = !self.missionView.isHidden
+            missionView.isHidden = shouldHideMissionView
+            situationView.isHidden = !self.missionView.isHidden
         }
     }
     
@@ -73,6 +73,7 @@ extension AchievementViewController {
             $0.font = .PretendardMedium(size: 12)
             $0.textColor = .nottodoGray2
         }
+        
     }
     
     func setLayout() {
@@ -88,7 +89,7 @@ extension AchievementViewController {
         scrollView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea)
             $0.top.equalTo(titleView.snp.bottom)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(safeArea )
         }
         
         calendarView.snp.makeConstraints {
@@ -107,7 +108,7 @@ extension AchievementViewController {
             $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
             $0.height.equalTo(missionView.missionList.count * 55 + 88)
-            $0.bottom.equalToSuperview().offset(-78.adjusted)
+            $0.bottom.equalTo(scrollView.snp.bottom).offset(-78.adjusted)
         }
         
         situationView.snp.makeConstraints {
@@ -115,12 +116,14 @@ extension AchievementViewController {
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
             $0.height.equalTo(situationView.titleLists.count * 55 + 88 )
         }
-        
         bottomLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20.adjusted)
-            $0.top.equalTo(situationView.snp.bottom).offset(12.adjusted)
+            if missionView.isHidden {
+                $0.top.equalTo(situationView.snp.top).offset(situationView.titleLists.count * 55 + 100)
+            } else {
+                $0.top.equalTo(missionView.snp.top).offset(missionView.missionList.count * 55 + 100)
+            }
         }
-        
         segmentedControl.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.setNeedsLayout()
@@ -152,4 +155,12 @@ extension AchievementViewController: FSCalendarDelegate {
                 return nil
             }
         }
+    
+    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+           let imageDateFormatter = DateFormatter()
+           imageDateFormatter.dateFormat = "yyyyMMdd"
+           var dateStr = imageDateFormatter.string(from: date)
+           print("date : \(dateStr)")
+        return datesWithCat.contains(dateStr) ? .rectangle_Clear : nil
+           }
 }

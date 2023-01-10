@@ -17,7 +17,8 @@ class SituationStatisticsView: UIView {
     let tableViewData = [
         ["유튜브 보지 않기", "알람 끄고 다시 자지 않기", "뭐있냐"],
         ["뭐있냐", "유튜브 보지 않기", "3"],
-        ["유튜브 보지 않기", "뭐있냐"]    ]
+        ["유튜브 보지 않기", "뭐있냐"]
+    ]
     
     let titleLists: [TitleButtonList] = TitleButtonList.titles
     

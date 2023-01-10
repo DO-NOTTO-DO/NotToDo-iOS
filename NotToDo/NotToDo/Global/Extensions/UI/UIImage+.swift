@@ -29,6 +29,9 @@ extension UIImage {
     static let checkCircle = UIImage(named: "Home/checkbox/circle")!.withRenderingMode(.alwaysOriginal)
     static let checkTriangle = UIImage(named: "Home/checkbox/triangle")!.withRenderingMode(.alwaysOriginal)
     static let dot = UIImage(named: "Home/btn_dot")!.withRenderingMode(.alwaysOriginal)
+    static let plus = UIImage(named: "Home/ic_plus")!.withRenderingMode(.alwaysOriginal)
+    static let firstSolutionView = UIImage(named: "Home/img_label1")!.withRenderingMode(.alwaysOriginal)
+    static let secondSolutionView = UIImage(named: "Home/img_label2")!.withRenderingMode(.alwaysOriginal)
 
     // Recent
     
@@ -92,10 +95,11 @@ extension UIImage {
     // Graphic
     
     static let graphic1 = UIImage(named: "Graphic/graphic1")!.withRenderingMode(.alwaysOriginal)
+    static let graphic2 = UIImage(named: "Graphic/graphic2")!.withRenderingMode(.alwaysOriginal)
     static let graphic3 = UIImage(named: "Graphic/graphic3")!.withRenderingMode(.alwaysOriginal)
     static let graphic4 = UIImage(named: "Graphic/graphic4")!.withRenderingMode(.alwaysOriginal)
     static let heartEmpty = UIImage(named: "Graphic/graphic5")!.withRenderingMode(.alwaysOriginal)
-    static let heartFill = UIImage(named: "Graphic/graphic2")!.withRenderingMode(.alwaysOriginal)
+    static let heartFill = UIImage(named: "Graphic/graphic6")!.withRenderingMode(.alwaysOriginal)
     
     // MyInfo
     
@@ -114,6 +118,27 @@ extension UIImage {
     static let rank3 = UIImage(named: "Achieve/rank_3")!.withRenderingMode(.alwaysOriginal)
     static let rank4 = UIImage(named: "Achieve/rank_4")!.withRenderingMode(.alwaysOriginal)
     static let rank5 = UIImage(named: "Achieve/rank_5")!.withRenderingMode(.alwaysOriginal)
+    
+    // Onboarding
+    
+    static let startOnboarding = UIImage(named: "Onboarding/img_onboarding_page1")!.withRenderingMode(.alwaysOriginal)
+    static let firstOnboarding = UIImage(named: "Onboarding/img_onboarding_page2")!.withRenderingMode(.alwaysOriginal)
+    static let secondOnboarding = UIImage(named: "Onboarding/img_onboarding_page3")!.withRenderingMode(.alwaysOriginal)
+    static let thirdOnboarding = UIImage(named: "Onboarding/img_onboarding_page4")!.withRenderingMode(.alwaysOriginal)
+    static let finishOnboarding = UIImage(named: "Onboarding/img_onboarding_page5")!.withRenderingMode(.alwaysOriginal)
+    static let onboardingLogo = UIImage(named: "Onboarding/onboarding_logo")!.withRenderingMode(.alwaysOriginal)
+    static let nextArrowButton = UIImage(named: "Onboarding/btn_next")!.withRenderingMode(.alwaysOriginal)
+    static let beforeArrowButton = UIImage(named: "Onboarding/btn_before")!.withRenderingMode(.alwaysOriginal)
+    
+    static let startSEOnboarding = UIImage(named: "Onboarding/SE2/img_SE2_onboarding_page1")!.withRenderingMode(.alwaysOriginal)
+    static let firstSEOnboarding = UIImage(named: "Onboarding/SE2/img_SE2_onboarding_page2")!.withRenderingMode(.alwaysOriginal)
+    static let secondSEOnboarding = UIImage(named: "Onboarding/SE2/img_SE2_onboarding_page3")!.withRenderingMode(.alwaysOriginal)
+    static let thirdSEOnboarding = UIImage(named: "Onboarding/SE2/img_SE2_onboarding_page4")!.withRenderingMode(.alwaysOriginal)
+    static let finishSEOnboarding = UIImage(named: "Onboarding/SE2/img_SE2_onboarding_page5")!.withRenderingMode(.alwaysOriginal)
+    
+    static let progressBarFirst = UIImage(named: "Onboarding/prgressbar_page1")!.withRenderingMode(.alwaysOriginal)
+    static let progressBarSecond = UIImage(named: "Onboarding/prgressbar_page2")!.withRenderingMode(.alwaysOriginal)
+    static let progressBarThird = UIImage(named: "Onboarding/prgressbar_page3")!.withRenderingMode(.alwaysOriginal)
     
     static let situation_Rank1 = UIImage(named: "Achieve/situation_rank1")!.withRenderingMode(.alwaysOriginal)
     static let situation_Rank1_off = UIImage(named: "Achieve/situation_rank1_off")!.withRenderingMode(.alwaysOriginal)

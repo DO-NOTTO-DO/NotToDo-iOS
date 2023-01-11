@@ -16,7 +16,8 @@ var motivationStringData = [
     "나는야 토마토",
     "비타오백 먹고싶... ",
     "딸기라떼 먹고싶다",
-    "맥주 마시고 싶ㄷ.ㅏ.."
+    "맥주 마시고 싶ㄷ.ㅏ..",
+    "나 집가고 싶어 얘들아"
 ]
 
 var graphicData: [UIImage] = [

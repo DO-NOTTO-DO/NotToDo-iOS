@@ -26,7 +26,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     private var statusButton = UIButton()
     private let situationLabel = UILabel()
     private let missionTitleLabel = UILabel()
-    private let meatBallView = UIView()
+    private let meatballView = UIView()
     private let meatballButton = UIButton()
     private let goalView = UIView()
     private let goalTitleLabel = UILabel()
@@ -39,7 +39,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     private var secondSolutionLabel = UILabel()
     
     private let missionStateButtonBackView = UIImageView()
-    private let missionStateButtonStackView = UIStackView()
+    let missionStateButtonStackView = UIStackView()
     private let missionSuccessButton = UIButton()
     private let missionAmbiguousButton = UIButton()
     
@@ -55,6 +55,14 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+  
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first,
+           touch.view !=  missionStateButtonStackView {
+            selectStatusButton = true
+            clickedStatusButton?(selectStatusButton ?? true)
+        }
     }
 }
 
@@ -93,7 +101,7 @@ extension HomeMissionCollectionViewCell {
             $0.font = .PretendardMedium(size: 12.adjusted)
         }
         
-        meatBallView.backgroundColor = .clear
+        meatballView.backgroundColor = .clear
         meatballButton.setBackgroundImage(.dot, for: .normal)
         statusButton.do {
             $0.setBackgroundImage(.checkDefault, for: .normal)
@@ -119,6 +127,7 @@ extension HomeMissionCollectionViewCell {
         missionStateButtonBackView.image = .checkStatusBox
         missionStateButtonStackView.do {
             $0.isHidden = true
+            $0.alpha = 0
             $0.axis = .horizontal
             $0.distribution = .fill
             $0.addArrangedSubviews(missionStateButtonBackView, missionSuccessButton, missionAmbiguousButton)
@@ -128,8 +137,6 @@ extension HomeMissionCollectionViewCell {
     }
     
     private func setLayout() {
-        let stackViewWidth = missionStateButtonStackView.frame.width
-    
         goalView.addSubview(goalLabel)
         firstSolusionView.addSubview(firstSolutionLabel)
         secondSolustionView.addSubview(secondSolutionLabel)
@@ -138,7 +145,7 @@ extension HomeMissionCollectionViewCell {
         meatballView.addSubview(meatballButton)
         headerView.addSubviews(statusButton, situationLabel, missionTitleLabel,
                                goalView, goalTitleLabel, meatballButton,
-                               meatBallView, missionStateButtonStackView)
+                               meatballView, missionStateButtonStackView)
         addSubviews(headerBackView, solutionStackview)
         
         missionStateButtonBackView.snp.makeConstraints {
@@ -146,13 +153,15 @@ extension HomeMissionCollectionViewCell {
         }
         
         missionSuccessButton.snp.makeConstraints {
+            $0.leading.equalToSuperview()
             $0.height.leading.equalToSuperview()
-            $0.width.equalTo((stackViewWidth / 2).adjusted)
+            $0.trailing.equalTo(missionStateButtonBackView.snp.centerX)
         }
         
         missionAmbiguousButton.snp.makeConstraints {
             $0.height.trailing.equalToSuperview()
-            $0.width.equalTo((stackViewWidth / 2).adjusted)
+            $0.leading.equalTo(missionStateButtonStackView.snp.centerX)
+            $0.trailing.equalToSuperview()
         }
         
         missionStateButtonStackView.snp.makeConstraints {
@@ -161,7 +170,7 @@ extension HomeMissionCollectionViewCell {
             $0.bottom.equalTo(statusButton.snp.bottom).offset(-16.adjusted)
             $0.leading.equalToSuperview().offset(-18.adjusted)
         }
-
+        
         headerBackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(17.adjusted)
             $0.height.equalTo(81.adjusted)
@@ -214,7 +223,7 @@ extension HomeMissionCollectionViewCell {
             $0.centerY.equalToSuperview()
         }
         
-        meatBallView.snp.makeConstraints {
+        meatballView.snp.makeConstraints {
             $0.trailing.directionalVerticalEdges.equalToSuperview()
             $0.width.equalTo(50.adjusted)
         }
@@ -259,7 +268,7 @@ extension HomeMissionCollectionViewCell {
     private func setRecognizer() {
         let meatballRecognizer = UITapGestureRecognizer(target: self,
                                                         action: #selector(meatballButtonTapped))
-        meatBallView.addGestureRecognizer(meatballRecognizer)
+        meatballView.addGestureRecognizer(meatballRecognizer)
     }
     
     @objc func statusButtonTapped(_ sender: UIButton) {

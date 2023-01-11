@@ -16,6 +16,8 @@ protocol CustomTabBarDelegate: AnyObject {
 
 class CustomTabBarView: UIView {
     
+    // MARK: - Properties
+
     var defaultIndex: Int = 0
     weak var delegate: CustomTabBarDelegate?
     let titleList: [CustomTabBarItem] = CustomTabBarItem.items

@@ -12,6 +12,8 @@ import Then
 
 class NestedView: UIView {
     
+    // MARK: - Properties
+
     let itemList: [SortedItemModel] = SortedItemModel.sampleData
     var item: SortedItemModel?
     

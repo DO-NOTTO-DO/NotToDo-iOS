@@ -15,7 +15,8 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     // MARK: Properties
     
     static let identifier = "HomeMissionCollectionViewCell"
-    var clickedEvent: ((Bool) -> Void)?
+    var selectStatusButton: Bool? = true
+    var clickedStatusButton: ((Bool) -> Void)?
     
     // MARK: - UI Components
     
@@ -36,7 +37,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     private var secondSolutionLabel = UILabel()
     
     private let missionStateButtonBackView = UIImageView()
-    private let missionStateButtonStackView = UIStackView()
+    let missionStateButtonStackView = UIStackView()
     private let missionSuccessButton = UIButton()
     private let missionAmbiguousButton = UIButton()
     
@@ -52,6 +53,14 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+  
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first,
+           touch.view !=  missionStateButtonStackView {
+            selectStatusButton = true
+            clickedStatusButton?(selectStatusButton ?? true)
+        }
     }
 }
 
@@ -115,6 +124,7 @@ extension HomeMissionCollectionViewCell {
         missionStateButtonBackView.image = .checkStatusBox
         missionStateButtonStackView.do {
             $0.isHidden = true
+            $0.alpha = 0
             $0.axis = .horizontal
             $0.distribution = .fill
             $0.addArrangedSubviews(missionStateButtonBackView, missionSuccessButton, missionAmbiguousButton)
@@ -124,8 +134,6 @@ extension HomeMissionCollectionViewCell {
     }
     
     private func setLayout() {
-        let stackViewWidth = missionStateButtonStackView.frame.width
-    
         goalView.addSubview(goalLabel)
         firstSolusionView.addSubview(firstSolutionLabel)
         secondSolustionView.addSubview(secondSolutionLabel)
@@ -133,7 +141,7 @@ extension HomeMissionCollectionViewCell {
         addSubviews(headerBackView, solutionStackview)
         headerBackView.addSubview(headerView)
         headerView.addSubviews(statusButton, situationLabel, missionTitleLabel,
-                             goalView, goalTitleLabel, meatballButton,
+                               goalView, goalTitleLabel, meatballButton,
                                missionStateButtonStackView)
         
         missionStateButtonBackView.snp.makeConstraints {
@@ -141,13 +149,15 @@ extension HomeMissionCollectionViewCell {
         }
         
         missionSuccessButton.snp.makeConstraints {
+            $0.leading.equalToSuperview()
             $0.height.leading.equalToSuperview()
-            $0.width.equalTo((stackViewWidth / 2).adjusted)
+            $0.trailing.equalTo(missionStateButtonBackView.snp.centerX)
         }
         
         missionAmbiguousButton.snp.makeConstraints {
             $0.height.trailing.equalToSuperview()
-            $0.width.equalTo((stackViewWidth / 2).adjusted)
+            $0.leading.equalTo(missionStateButtonStackView.snp.centerX)
+            $0.trailing.equalToSuperview()
         }
         
         missionStateButtonStackView.snp.makeConstraints {
@@ -156,7 +166,7 @@ extension HomeMissionCollectionViewCell {
             $0.bottom.equalTo(statusButton.snp.bottom).offset(-16.adjusted)
             $0.leading.equalToSuperview().offset(-18.adjusted)
         }
-
+        
         headerBackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(17.adjusted)
             $0.height.equalTo(81.adjusted)
@@ -241,10 +251,12 @@ extension HomeMissionCollectionViewCell {
     }
     
     private func setAddTarget() {
-        statusButton.addTarget(self, action: #selector(pressCheckBox), for: .touchUpInside)
+        statusButton.addTarget(self,
+                               action: #selector(statusButtonTapped),
+                               for: .touchUpInside)
     }
     
-    @objc private func pressCheckBox() {
-        print("눌렀져")
+    @objc func statusButtonTapped(_ sender: UIButton) {
+        clickedStatusButton?(isSelected)
     }
 }

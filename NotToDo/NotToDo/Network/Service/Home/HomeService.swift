@@ -39,7 +39,7 @@ extension HomeService: TargetType {
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         switch self {
         case .banner:
             return NetworkConstant.hasTokenHeader

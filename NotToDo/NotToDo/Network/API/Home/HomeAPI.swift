@@ -29,7 +29,7 @@ final class HomeAPI {
                     self.bannerData = try response.map(GeneralResponse<BannerResponse>?.self)
                     guard let bannerData = self.bannerData else { return }
                     completion(bannerData)
-                } catch(let err) {
+                } catch (let err) {
                     print(err.localizedDescription, 500)
                 }
             case .failure(let err):

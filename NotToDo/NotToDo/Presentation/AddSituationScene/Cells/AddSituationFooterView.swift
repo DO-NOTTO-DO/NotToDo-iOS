@@ -10,6 +10,10 @@ import UIKit
 import SnapKit
 import Then
 
+protocol AddSituationFooterViewDelegate: class {
+    func sendSituationTextFieldData(text: String)
+}
+
 class AddSituationFooterView: UICollectionReusableView {
     
     // MARK: - Properties
@@ -21,6 +25,7 @@ class AddSituationFooterView: UICollectionReusableView {
     var inputTextField = UITextField()
     var textCountLabel = UILabel()
     let maxLength = 15
+    weak var delegate: AddSituationFooterViewDelegate?
     
     // MARK: - View Life Cycles
     
@@ -28,6 +33,7 @@ class AddSituationFooterView: UICollectionReusableView {
         super.init(frame: frame)
         setUI()
         setLayout()
+        inputTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -56,6 +62,11 @@ extension AddSituationFooterView {
             $0.font = .PretendardRegular(size: 16.adjusted)
             $0.textColor = .nottodoGray2
         }
+        
+        inputTextField.do {
+            $0.layer.borderColor = UIColor.nottodoGray2!.cgColor
+            $0.layer.borderWidth = 1.adjusted
+        }
     }
     
     private func setLayout() {
@@ -73,22 +84,20 @@ extension AddSituationFooterView {
         }
     }
     
-    func setTextField(_ text: String) {
-        inputTextField.do {
-            $0.text = text
-            $0.layer.borderColor = UIColor.nottodoGray2!.cgColor
-            $0.layer.borderWidth = 1.adjusted
-        }
+    func setData(_ text: String) {
+        inputTextField.text = text
         textCountLabel.text = "\(inputTextField.text!.count)/\(maxLength)"
     }
     
     // MARK: - @objc Methods
     
     @objc func changeText() {
+        let addSituationView = AddSituationView()
+        addSituationView.addSituationCollectionView.reloadData()
+        
         if inputTextField.text?.count ?? 0 > maxLength {
             inputTextField.deleteBackward()
         }
-        
         textCountLabel.text = "\(inputTextField.text?.count ?? 0)/\(maxLength)"
         
         if inputTextField.text!.count > 0 {
@@ -96,5 +105,11 @@ extension AddSituationFooterView {
         } else {
             inputTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
         }
+    }
+}
+
+extension AddSituationFooterView: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.sendSituationTextFieldData(text: self.inputTextField.text ?? "")
     }
 }

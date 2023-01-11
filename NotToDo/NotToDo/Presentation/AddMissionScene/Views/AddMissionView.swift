@@ -11,6 +11,8 @@ import Then
 import SnapKit
 
 class AddMissionView: UIView {
+    
+    // MARK: - Properties
 
     // MARK: - UI Components
     
@@ -23,22 +25,23 @@ class AddMissionView: UIView {
     
     private let missionView = UIView()
     private let missionTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.missionTitle, buttonLabel: nil, icon: nil)
-    private let missionTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.missionPlaceHolder)
+    let missionTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.missionPlaceHolder)
     
     private let behaviorView = UIView()
-    private let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.behaviorTitle, buttonLabel: I18N.recommend, icon: .rightArrow)
+    let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.behaviorTitle, buttonLabel: I18N.recommend, icon: .rightArrow)
     private let behaviorTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.behaviorPlaceHolder)
-    private let addBehaviorButton = UIButton()
-    private let unavailableAddBehaviorButton = UIButton()
+    let addBehaviorButton = UIButton()
+    let unavailableAddBehaviorButton = UIButton()
     private let maxBehaviorLabel = UILabel()
     
     lazy var addBehaviorCollectionView = UICollectionView(frame: self.bounds, collectionViewLayout: layout())
     
     let situationView = AddMissionTitleView(frame: .zero, titleLabel: I18N.situationTitle, buttonLabel: I18N.input, icon: .rightArrow)
+    var situationAvailable = 0
     
     private let goalView = UIView()
     private let goalTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.goalTitle, buttonLabel: nil, icon: nil)
-    private let goalTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.goalPlaceHolder)
+    let goalTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.goalPlaceHolder)
     
     private let dateView = UIView()
     private let dateLabel = UILabel()
@@ -47,7 +50,7 @@ class AddMissionView: UIView {
     let nowDate = Date()
     let dateFormatter = DateFormatter()
     
-    private let addMissionButton = UIButton()
+    let addMissionButton = UIButton()
     
     // MARK: - View Life Cycle
     
@@ -68,9 +71,6 @@ class AddMissionView: UIView {
 
 extension AddMissionView {
     private func setUI() {
-        missionTextField.addTarget(self, action: #selector(availableAddMission), for: .editingChanged)
-        goalTextField.addTarget(self, action: #selector(availableAddMission), for: .editingChanged)
-        
         vStack.do {
             $0.axis = .vertical
             $0.spacing = 35.adjusted
@@ -105,7 +105,6 @@ extension AddMissionView {
         addBehaviorCollectionView.do {
             $0.isScrollEnabled = false
             $0.collectionViewLayout = layout()
-            $0.dataSource = self
         }
         
         dateLabel.do {
@@ -138,6 +137,7 @@ extension AddMissionView {
             $0.setTitleColor(.nottodoWhite, for: .normal)
             $0.titleLabel?.font = .PretendardBold(size: 18)
             $0.backgroundColor = .nottodoGray2
+            $0.addTarget(self, action: #selector(resetBehaviorModel), for: .touchUpInside)
         }
     }
     
@@ -290,11 +290,11 @@ extension AddMissionView {
     
     private func layout() -> UICollectionViewCompositionalLayout {
         let spacing: CGFloat = 8
-        let itemLayout = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40)))
-        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(80)), subitem: itemLayout, count: 2)
+        let itemLayout = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40.adjusted)))
+        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(88.adjusted)), subitem: itemLayout, count: 2)
         groupLayout.interItemSpacing = .fixed(spacing)
         let section = NSCollectionLayoutSection(group: groupLayout)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20.adjusted, bottom: 0, trailing: 20.adjusted)
         section.interGroupSpacing = spacing
         return UICollectionViewCompositionalLayout(section: section)
     }
@@ -310,15 +310,9 @@ extension AddMissionView {
     
     // MARK: - @objc Methods
     
-    @objc func availableAddMission() {
-        if missionTextField.text!.count > 0 && behaviorList.count > 0
-            && goalTextField.text!.count > 0 {
-            addMissionButton.isUserInteractionEnabled = true
-            addMissionButton.backgroundColor = .nottodoBlack
-        } else {
-            addMissionButton.isUserInteractionEnabled = false
-            addMissionButton.backgroundColor = .nottodoGray2
-        }
+    func availableAddMission(_ enable: Bool) {
+        addMissionButton.isUserInteractionEnabled = enable
+        addMissionButton.backgroundColor = enable ? .nottodoBlack : .nottodoGray2
     }
     
     @objc func addBehaviorCell(_ sender: UIButton) {
@@ -345,36 +339,7 @@ extension AddMissionView {
         }
     }
     
-    @objc func deleteBehaviorButton(sender: UIButton) {
-        addBehaviorCollectionView.deleteItems(at: [IndexPath.init(row: sender.tag, section: 0)])
-        behaviorList.remove(at: sender.tag)
-        
-        addBehaviorCollectionView.snp.updateConstraints {
-            $0.height.equalTo(CGFloat(behaviorList.count) * 48.adjusted)
-        }
-        
-        if behaviorList.count < 2 {
-            unavailableAddBehaviorButton.isHidden = true
-            addBehaviorButton.isHidden = false
-        }
-    }
-}
-
-extension AddMissionView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return behaviorList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddBehaviorCollectionViewCell.identifier, for: indexPath) as? AddBehaviorCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        
-        print(cell.configure(model: behaviorList[indexPath.row]))
-        cell.deleteBehaviorButton.tag = indexPath.row
-        cell.deleteBehaviorButton.addTarget(self, action: #selector(deleteBehaviorButton), for: .touchUpInside)
-        cell.deleteBehaviorButton.addTarget(self, action: #selector(availableAddMission), for: .touchUpInside)
-        return cell
+    @objc func resetBehaviorModel() {
+        behaviorList.removeAll()
     }
 }

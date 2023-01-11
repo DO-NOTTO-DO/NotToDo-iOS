@@ -13,22 +13,22 @@ final class HomeAPI {
     
     static let shared: HomeAPI = HomeAPI()
     
-    private let mainProvider = MoyaProvider<HomeService>(plugins: [MoyaLoggingPlugin()])
+    private let homeProvider = MoyaProvider<HomeService>(plugins: [MoyaLoggingPlugin()])
     
     private init() { }
     
-    public private(set) var mainData: GeneralResponse<BannerResponse>?
+    public private(set) var bannerData: GeneralResponse<BannerResponse>?
     
     // MARK: - GET
     
-    func getMain(completion: @escaping (GeneralResponse<BannerResponse>?) -> ()) {
-        mainProvider.request(.banner) { result in
+    func getBanner(completion: @escaping (GeneralResponse<BannerResponse>?) -> ()) {
+        homeProvider.request(.banner) { result in
             switch result {
             case .success(let response):
                 do {
-                    self.mainData = try response.map(GeneralResponse<BannerResponse>?.self)
-                    guard let mainData = self.mainData else { return }
-                    completion(mainData)
+                    self.bannerData = try response.map(GeneralResponse<BannerResponse>?.self)
+                    guard let bannerData = self.bannerData else { return }
+                    completion(bannerData)
                 } catch(let err) {
                     print(err.localizedDescription, 500)
                 }

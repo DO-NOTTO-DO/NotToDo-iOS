@@ -15,6 +15,7 @@
 		090FA2FB2960B87500918AED /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2FA2960B87500918AED /* Moya */; };
 		096BDFD52960B910009ED396 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 096BDFD42960B910009ED396 /* FSCalendar */; };
 		096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFD82964FEF6009ED396 /* CustomCalendarView.swift */; };
+		096BDFEC29650EB8009ED396 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */; };
 		096BDFEE29651040009ED396 /* SituationStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFED29651040009ED396 /* SituationStatisticsView.swift */; };
 		096BDFF02965104B009ED396 /* MissionStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEF2965104B009ED396 /* MissionStatisticsView.swift */; };
 		096BDFF22965215D009ED396 /* MissionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF12965215D009ED396 /* MissionList.swift */; };
@@ -43,85 +44,111 @@
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
 		3B162880295AD7870077AE7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287E295AD7870077AE7B /* LaunchScreen.storyboard */; };
-		3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16288A295AD82F0077AE7B /* UIView+.swift */; };
-		3B16288D295AD8380077AE7B /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16288C295AD8380077AE7B /* UIStackView+.swift */; };
-		3B162890295AD89C0077AE7B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16288F295AD89C0077AE7B /* Strings.swift */; };
-		3B1628AA295ADB2F0077AE7B /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628A9295ADB2F0077AE7B /* URLConstant.swift */; };
-		3B1628AC295ADB440077AE7B /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628AB295ADB440077AE7B /* NetworkLoggerPlugin.swift */; };
-		3B1628AE295ADB550077AE7B /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628AD295ADB550077AE7B /* GeneralResponse.swift */; };
-		3B1628B0295ADB640077AE7B /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628AF295ADB640077AE7B /* NetworkConstant.swift */; };
-		3B1628B2295ADB710077AE7B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628B1295ADB710077AE7B /* NetworkResult.swift */; };
-		3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628B3295ADBA20077AE7B /* HomeViewController.swift */; };
 		3B1628B9295ADD750077AE7B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1628B8295ADD750077AE7B /* Colors.xcassets */; };
 		3B3405B7295B05D400D44722 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405B6295B05D400D44722 /* .swiftlint.yml */; };
-		3B3405B9295B090300D44722 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405B8295B090300D44722 /* UIColor+.swift */; };
 		3B3405BC295B0A2400D44722 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BB295B0A2400D44722 /* Pretendard-Bold.otf */; };
 		3B3405BE295B0A8200D44722 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BD295B0A8200D44722 /* Pretendard-Medium.otf */; };
 		3B3405C0295B0A8C00D44722 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BF295B0A8C00D44722 /* Pretendard-Regular.otf */; };
 		3B3405C2295B0AAE00D44722 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405C1295B0AAD00D44722 /* Pretendard-SemiBold.otf */; };
-		3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405C3295B0ABB00D44722 /* UIFont+.swift */; };
-		3B3405D0295B101600D44722 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405CF295B101600D44722 /* RecommendViewController.swift */; };
-		3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D1295B105900D44722 /* AddMissionViewController.swift */; };
-		3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D3295B108400D44722 /* AchievementViewController.swift */; };
-		3B3405D6295B109A00D44722 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D5295B109A00D44722 /* MyInfoViewController.swift */; };
-		3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D7295B10C900D44722 /* TabBarItem.swift */; };
-		3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D9295B12BC00D44722 /* UIImage+.swift */; };
-		3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DB295B146E00D44722 /* TabBarController.swift */; };
-		3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DD295B162600D44722 /* UITabBar+.swift */; };
-		3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */; };
-		3B4187CF296D342900F0FBF4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4187CE296D342900F0FBF4 /* UIViewController+.swift */; };
 		3B4187D5296D5D8700F0FBF4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B4187D4296D5D8700F0FBF4 /* IQKeyboardManagerSwift */; };
-		3B42D1EE2966A1C20012898E /* myInfoMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */; };
-		3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */; };
-		3B4B90BB29656684008C5CA8 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90BA29656684008C5CA8 /* MyInfoView.swift */; };
-		3B4B90BD2965673E008C5CA8 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90BC2965673E008C5CA8 /* AuthViewController.swift */; };
-		3B4B90BF29656751008C5CA8 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90BE29656751008C5CA8 /* AuthView.swift */; };
-		3B4B90C62965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90C52965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift */; };
-		3B4B90CC2965D697008C5CA8 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90CB2965D697008C5CA8 /* CALayer+.swift */; };
-		3B4B90CF2965F17A008C5CA8 /* menuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90CE2965F17A008C5CA8 /* menuModel.swift */; };
-		3B576324296403CB00E03637 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B576323296403CB00E03637 /* UILabel+.swift */; };
-		3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */; };
-		3B59AFB8296346650050FF49 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFB7296346650050FF49 /* Numbers.swift */; };
-		3B59AFBC29634D900050FF49 /* ActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */; };
-		3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34A929617D88002E1161 /* NotTodoButton.swift */; };
-		3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34AB29618441002E1161 /* UIButton+.swift */; };
-		3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ED42B2961DC310052D2B8 /* HomeView.swift */; };
-		3B882607296DDC0E00A51B50 /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B882606296DDC0E00A51B50 /* UIDevice+.swift */; };
-		3B888AA729674BA4008209A8 /* RandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B888AA629674BA4008209A8 /* RandomData.swift */; };
-		3BBE56E1296C206300771DE4 /* OnboardingStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E0296C206300771DE4 /* OnboardingStartViewController.swift */; };
-		3BBE56E5296C213900771DE4 /* StartOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E4296C213900771DE4 /* StartOnboardingView.swift */; };
-		3BBE56E7296C214600771DE4 /* FirstOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E6296C214600771DE4 /* FirstOnboardingView.swift */; };
-		3BBE56E9296C215700771DE4 /* ThirdOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E8296C215700771DE4 /* ThirdOnboardingView.swift */; };
-		3BBE56EB296C218D00771DE4 /* SecondOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56EA296C218D00771DE4 /* SecondOnboardingView.swift */; };
-		3BBE56ED296C21A400771DE4 /* FinishOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56EC296C21A400771DE4 /* FinishOnboardingView.swift */; };
-		3BBE56F1296C4EA400771DE4 /* FirstOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F0296C4EA400771DE4 /* FirstOnboardingViewController.swift */; };
-		3BBE56F3296C4EB000771DE4 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F2296C4EB000771DE4 /* SecondOnboardingViewController.swift */; };
-		3BBE56F5296C4ED100771DE4 /* ThirdOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F4296C4ED100771DE4 /* ThirdOnboardingViewController.swift */; };
-		3BBE56F7296C4EEB00771DE4 /* FinishOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F6296C4EEB00771DE4 /* FinishOnboardingViewController.swift */; };
-		3BE6CBC32969D700003A8A7B /* MissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6CBC22969D700003A8A7B /* MissionModel.swift */; };
-		3BED5328295C018700157A3B /* adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED5327295C018700157A3B /* adjust+.swift */; };
-		3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */; };
-		3BEF92AF29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */; };
-		3BEF92B129696CC90090A290 /* HomeEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92B029696CC90090A290 /* HomeEmptyCollectionViewCell.swift */; };
-		3BF7CE9E296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */; };
-		6C600BC029693B3100421D7A /* MissionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */; };
-		6C600BC229693B3B00421D7A /* MissionHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */; };
-		6C600BC429693B4B00421D7A /* MissionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */; };
-		6C600BC629693B5500421D7A /* MissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC529693B5500421D7A /* MissionHistoryView.swift */; };
-		6C600BCC2969FCBC00421D7A /* EmptyRecentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BCB2969FCBC00421D7A /* EmptyRecentViewCell.swift */; };
-		6C8826072967D2EF0005E222 /* AddSituationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8826062967D2EF0005E222 /* AddSituationView.swift */; };
-		6C88260C2967D36B0005E222 /* AddSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88260B2967D36B0005E222 /* AddSituationViewController.swift */; };
-		6C88260F2967D8280005E222 /* AddSituationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88260E2967D8280005E222 /* AddSituationCollectionViewCell.swift */; };
-		6C8826122967D85F0005E222 /* AddSituationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8826112967D85F0005E222 /* AddSituationModel.swift */; };
-		6C882614296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C882613296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift */; };
-		6C8826162968221C0005E222 /* AddSituationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8826152968221C0005E222 /* AddSituationHeaderView.swift */; };
-		6CA38696296A82B10049D28A /* AddSituationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA38695296A82B10049D28A /* AddSituationFooterView.swift */; };
-		6CC79FF9296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC79FF8296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift */; };
-		6CC79FFC296C64AD00A29DFE /* AddBehaviorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC79FFB296C64AD00A29DFE /* AddBehaviorModel.swift */; };
-		6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */; };
-		6CDC2D1529641BE000BFF5F4 /* AddMissionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */; };
-		6CDC2D212966C86D00BFF5F4 /* AddMissionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D202966C86D00BFF5F4 /* AddMissionTextField.swift */; };
-		6CF0427829633E58000F40EB /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF0427729633E58000F40EB /* NavigationBarView.swift */; };
+		6C78AA67296F1BC200B81796 /* CustomPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0182966A18A009ED396 /* CustomPaddingLabel.swift */; };
+		6C78AA68296F1C3D00B81796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162873295AD7860077AE7B /* AppDelegate.swift */; };
+		6C78AA69296F1CA700B81796 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
+		6C78AA6A296F1CAC00B81796 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16288F295AD89C0077AE7B /* Strings.swift */; };
+		6C78AA6B296F1CB100B81796 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFB7296346650050FF49 /* Numbers.swift */; };
+		6C78AA6C296F1CD200B81796 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405B8295B090300D44722 /* UIColor+.swift */; };
+		6C78AA6D296F1CD400B81796 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405C3295B0ABB00D44722 /* UIFont+.swift */; };
+		6C78AA6E296F1CD600B81796 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D9295B12BC00D44722 /* UIImage+.swift */; };
+		6C78AA6F296F1CD900B81796 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90CB2965D697008C5CA8 /* CALayer+.swift */; };
+		6C78AA70296F1CDB00B81796 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16288A295AD82F0077AE7B /* UIView+.swift */; };
+		6C78AA71296F1CDF00B81796 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16288C295AD8380077AE7B /* UIStackView+.swift */; };
+		6C78AA72296F1CDF00B81796 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34AB29618441002E1161 /* UIButton+.swift */; };
+		6C78AA73296F1CDF00B81796 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B576323296403CB00E03637 /* UILabel+.swift */; };
+		6C78AA74296F1CDF00B81796 /* adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BED5327295C018700157A3B /* adjust+.swift */; };
+		6C78AA75296F1CDF00B81796 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4187CE296D342900F0FBF4 /* UIViewController+.swift */; };
+		6C78AA76296F1CDF00B81796 /* UITabBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DD295B162600D44722 /* UITabBar+.swift */; };
+		6C78AA77296F1CF100B81796 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628AD295ADB550077AE7B /* GeneralResponse.swift */; };
+		6C78AA78296F1CF100B81796 /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628AF295ADB640077AE7B /* NetworkConstant.swift */; };
+		6C78AA79296F1CF100B81796 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628B1295ADB710077AE7B /* NetworkResult.swift */; };
+		6C78AA7A296F1CF100B81796 /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628A9295ADB2F0077AE7B /* URLConstant.swift */; };
+		6C78AA7B296F1CF100B81796 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628AB295ADB440077AE7B /* NetworkLoggerPlugin.swift */; };
+		6C78AA7C296F1D0900B81796 /* ThirdOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F4296C4ED100771DE4 /* ThirdOnboardingViewController.swift */; };
+		6C78AA7D296F1D0900B81796 /* FinishOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F6296C4EEB00771DE4 /* FinishOnboardingViewController.swift */; };
+		6C78AA7E296F1D0900B81796 /* OnboardingStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E0296C206300771DE4 /* OnboardingStartViewController.swift */; };
+		6C78AA7F296F1D0900B81796 /* FirstOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F0296C4EA400771DE4 /* FirstOnboardingViewController.swift */; };
+		6C78AA80296F1D0900B81796 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56F2296C4EB000771DE4 /* SecondOnboardingViewController.swift */; };
+		6C78AA81296F1D1200B81796 /* StartOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E4296C213900771DE4 /* StartOnboardingView.swift */; };
+		6C78AA82296F1D1200B81796 /* FirstOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E6296C214600771DE4 /* FirstOnboardingView.swift */; };
+		6C78AA83296F1D1200B81796 /* FinishOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56EC296C21A400771DE4 /* FinishOnboardingView.swift */; };
+		6C78AA84296F1D1200B81796 /* ThirdOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E8296C215700771DE4 /* ThirdOnboardingView.swift */; };
+		6C78AA85296F1D1200B81796 /* SecondOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56EA296C218D00771DE4 /* SecondOnboardingView.swift */; };
+		6C78AA86296F1D1B00B81796 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFB529633DFF0050FF49 /* ActionSheetView.swift */; };
+		6C78AA87296F1D1B00B81796 /* ActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B59AFBB29634D900050FF49 /* ActionSheetViewController.swift */; };
+		6C78AA88296F1D1E00B81796 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF0427729633E58000F40EB /* NavigationBarView.swift */; };
+		6C78AA89296F1D2200B81796 /* NotTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34A929617D88002E1161 /* NotTodoButton.swift */; };
+		6C78AA8A296F1D2900B81796 /* HomeEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92B029696CC90090A290 /* HomeEmptyCollectionViewCell.swift */; };
+		6C78AA8B296F1D2900B81796 /* HomeMissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */; };
+		6C78AA8C296F1D2900B81796 /* HomeCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */; };
+		6C78AA8D296F1D2900B81796 /* HomeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AC296807550090A290 /* HomeCollectionReusableView.swift */; };
+		6C78AA8E296F1D2D00B81796 /* MissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6CBC22969D700003A8A7B /* MissionModel.swift */; };
+		6C78AA8F296F1D2D00B81796 /* RandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B888AA629674BA4008209A8 /* RandomData.swift */; };
+		6C78AA90296F1D4C00B81796 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628B3295ADBA20077AE7B /* HomeViewController.swift */; };
+		6C78AA91296F1D5100B81796 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ED42B2961DC310052D2B8 /* HomeView.swift */; };
+		6C78AA92296F1D5B00B81796 /* BackgroundSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DE296C533200877EA7 /* BackgroundSupplementaryView.swift */; };
+		6C78AA93296F1D6000B81796 /* SortedItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0242966A2B0009ED396 /* SortedItemModel.swift */; };
+		6C78AA94296F1D6000B81796 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F06CC29672DCA0036CF55 /* CustomTabBarItem.swift */; };
+		6C78AA95296F1D6300B81796 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0222966A296009ED396 /* RecommendCollectionViewCell.swift */; };
+		6C78AA96296F1D6300B81796 /* CustomTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0162966A142009ED396 /* CustomTabBarCell.swift */; };
+		6C78AA97296F1D6300B81796 /* NestedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE0202966A24A009ED396 /* NestedCollectionViewCell.swift */; };
+		6C78AA98296F1D6300B81796 /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F06F92967EE9E0036CF55 /* LabelCollectionViewCell.swift */; };
+		6C78AA99296F1D6500B81796 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405CF295B101600D44722 /* RecommendViewController.swift */; };
+		6C78AA9A296F1D6F00B81796 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F06CE296732970036CF55 /* CustomTabBarView.swift */; };
+		6C78AA9B296F1D6F00B81796 /* NestedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE01E2966A1FA009ED396 /* NestedView.swift */; };
+		6C78AA9C296F1D6F00B81796 /* RecommendHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BE01A2966A1B3009ED396 /* RecommendHeaderView.swift */; };
+		6C78AA9D296F1D7200B81796 /* AddBehaviorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC79FFB296C64AD00A29DFE /* AddBehaviorModel.swift */; };
+		6C78AA9E296F1D7500B81796 /* AddBehaviorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC79FF8296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift */; };
+		6C78AA9F296F1D7700B81796 /* AddMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D1295B105900D44722 /* AddMissionViewController.swift */; };
+		6C78AAA0296F1D7C00B81796 /* AddMissionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D1429641BE000BFF5F4 /* AddMissionTitleView.swift */; };
+		6C78AAA1296F1D7C00B81796 /* AddMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D0B2963E2AF00BFF5F4 /* AddMissionView.swift */; };
+		6C78AAA2296F1D7C00B81796 /* AddMissionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDC2D202966C86D00BFF5F4 /* AddMissionTextField.swift */; };
+		6C78AAA3296F1D7F00B81796 /* AddSituationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8826112967D85F0005E222 /* AddSituationModel.swift */; };
+		6C78AAA4296F1D8100B81796 /* EmptyRecentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BCB2969FCBC00421D7A /* EmptyRecentViewCell.swift */; };
+		6C78AAA5296F1D8100B81796 /* AddSituationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8826152968221C0005E222 /* AddSituationHeaderView.swift */; };
+		6C78AAA6296F1D8100B81796 /* AddSituationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88260E2967D8280005E222 /* AddSituationCollectionViewCell.swift */; };
+		6C78AAA7296F1D8100B81796 /* AddSituationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA38695296A82B10049D28A /* AddSituationFooterView.swift */; };
+		6C78AAA8296F1D8400B81796 /* AddSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88260B2967D36B0005E222 /* AddSituationViewController.swift */; };
+		6CA2EF97296F1EBA00D3E66B /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C882613296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift */; };
+		6CA2EF98296F1EBA00D3E66B /* AddSituationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8826062967D2EF0005E222 /* AddSituationView.swift */; };
+		6CA2EF99296F1EC100D3E66B /* MissionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */; };
+		6CA2EF9A296F1EC300D3E66B /* MissionHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */; };
+		6CA2EF9B296F1EC500D3E66B /* MissionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */; };
+		6CA2EF9C296F1EC900D3E66B /* MissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC529693B5500421D7A /* MissionHistoryView.swift */; };
+		6CA2EF9D296F1ED000D3E66B /* TitleButtonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0738296BD0990036CF55 /* TitleButtonList.swift */; };
+		6CA2EF9E296F1ED000D3E66B /* MissionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF12965215D009ED396 /* MissionList.swift */; };
+		6CA2EF9F296F1ED300D3E66B /* SituationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DC296C52F000877EA7 /* SituationTableViewCell.swift */; };
+		6CA2EFA0296F1ED900D3E66B /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695D8296C332D00877EA7 /* CompositionalLayout.swift */; };
+		6CA2EFA1296F1ED900D3E66B /* CustomAchieveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF6296522C6009ED396 /* CustomAchieveLabel.swift */; };
+		6CA2EFA2296F1EDD00D3E66B /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D3295B108400D44722 /* AchievementViewController.swift */; };
+		6CA2EFA3296F1EE300D3E66B /* SituationStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFED29651040009ED396 /* SituationStatisticsView.swift */; };
+		6CA2EFA4296F1EE300D3E66B /* MissionStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEF2965104B009ED396 /* MissionStatisticsView.swift */; };
+		6CA2EFA5296F1EE300D3E66B /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F071B296A93810036CF55 /* TableHeaderView.swift */; };
+		6CA2EFA6296F1EE300D3E66B /* SituationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0729296B98B90036CF55 /* SituationTitleView.swift */; };
+		6CA2EFA7296F1EE300D3E66B /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFD82964FEF6009ED396 /* CustomCalendarView.swift */; };
+		6CA2EFA8296F1EE300D3E66B /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0723296AA4A40036CF55 /* TitleView.swift */; };
+		6CA2EFA9296F1EEC00D3E66B /* menuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90CE2965F17A008C5CA8 /* menuModel.swift */; };
+		6CA2EFAA296F1EF200D3E66B /* myInfoUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90C52965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift */; };
+		6CA2EFAB296F1EF200D3E66B /* myInfoMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */; };
+		6CA2EFAC296F1EF200D3E66B /* myInfoFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */; };
+		6CA2EFAD296F1EF600D3E66B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90BC2965673E008C5CA8 /* AuthViewController.swift */; };
+		6CA2EFAE296F1EF600D3E66B /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D5295B109A00D44722 /* MyInfoViewController.swift */; };
+		6CA2EFAF296F1EFA00D3E66B /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90BA29656684008C5CA8 /* MyInfoView.swift */; };
+		6CA2EFB0296F1F0000D3E66B /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D7295B10C900D44722 /* TabBarItem.swift */; };
+		6CA2EFB1296F1F0000D3E66B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */; };
+		6CA2EFB2296F1F0000D3E66B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DB295B146E00D44722 /* TabBarController.swift */; };
+		6CA2EFB4296F1F7000D3E66B /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F073C296C2F770036CF55 /* CustomSegmentedControl.swift */; };
+		6CA2EFB5296F1F8B00D3E66B /* MissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DA296C52B600877EA7 /* MissionTableViewCell.swift */; };
+		6CA2EFB6296F1F8E00D3E66B /* StatisticsEmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0727296B94790036CF55 /* StatisticsEmptyTableViewCell.swift */; };
+		6CA2EFB7296F1FB200D3E66B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4B90BE29656751008C5CA8 /* AuthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -883,9 +910,9 @@
 			buildConfigurationList = 3B162884295AD7870077AE7B /* Build configuration list for PBXNativeTarget "NotToDo" */;
 			buildPhases = (
 				3B1628BB295ADF280077AE7B /* SwiftLint Script */,
-				3B16286C295AD7860077AE7B /* Sources */,
 				3B16286D295AD7860077AE7B /* Frameworks */,
 				3B16286E295AD7860077AE7B /* Resources */,
+				6C78AA66296F1B8B00B81796 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -988,111 +1015,108 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3B16286C295AD7860077AE7B /* Sources */ = {
+		6C78AA66296F1B8B00B81796 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				099F06CD29672DCA0036CF55 /* CustomTabBarItem.swift in Sources */,
-				3B59AFBC29634D900050FF49 /* ActionSheetViewController.swift in Sources */,
-				6C600BC629693B5500421D7A /* MissionHistoryView.swift in Sources */,
-				3BBE56F7296C4EEB00771DE4 /* FinishOnboardingViewController.swift in Sources */,
-				6C88260C2967D36B0005E222 /* AddSituationViewController.swift in Sources */,
-				096BE0192966A18A009ED396 /* CustomPaddingLabel.swift in Sources */,
-				3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */,
-				6C600BC429693B4B00421D7A /* MissionHistoryViewController.swift in Sources */,
-				099F073D296C2F770036CF55 /* CustomSegmentedControl.swift in Sources */,
-				096BE0212966A24A009ED396 /* NestedCollectionViewCell.swift in Sources */,
-				3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */,
-				3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */,
-				3B16288D295AD8380077AE7B /* UIStackView+.swift in Sources */,
-				6CC79FFC296C64AD00A29DFE /* AddBehaviorModel.swift in Sources */,
-				3B1628AE295ADB550077AE7B /* GeneralResponse.swift in Sources */,
-				3BBE56E1296C206300771DE4 /* OnboardingStartViewController.swift in Sources */,
-				6C600BC229693B3B00421D7A /* MissionHistoryCollectionViewCell.swift in Sources */,
-				3B4B90BB29656684008C5CA8 /* MyInfoView.swift in Sources */,
-				3B4187CF296D342900F0FBF4 /* UIViewController+.swift in Sources */,
-				3B1628B2295ADB710077AE7B /* NetworkResult.swift in Sources */,
-				096BE0252966A2B0009ED396 /* SortedItemModel.swift in Sources */,
-				6CC79FF9296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift in Sources */,
-				3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */,
-				3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */,
-				3B888AA729674BA4008209A8 /* RandomData.swift in Sources */,
-				3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */,
-				096BDFF02965104B009ED396 /* MissionStatisticsView.swift in Sources */,
-				3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */,
-				6CF0427829633E58000F40EB /* NavigationBarView.swift in Sources */,
-				6C882614296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
-				3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */,
-				3BEF92B129696CC90090A290 /* HomeEmptyCollectionViewCell.swift in Sources */,
-				099F071C296A93810036CF55 /* TableHeaderView.swift in Sources */,
-				096BDFEE29651040009ED396 /* SituationStatisticsView.swift in Sources */,
-				096BDFF7296522C6009ED396 /* CustomAchieveLabel.swift in Sources */,
-				6C8826072967D2EF0005E222 /* AddSituationView.swift in Sources */,
-				096BDFF7296522C6009ED396 /* CustomAchieveLabel.swift in Sources */,
-				3BBE56EB296C218D00771DE4 /* SecondOnboardingView.swift in Sources */,
-				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,
-				3B1628AA295ADB2F0077AE7B /* URLConstant.swift in Sources */,
-				3B882607296DDC0E00A51B50 /* UIDevice+.swift in Sources */,
-				3B576324296403CB00E03637 /* UILabel+.swift in Sources */,
-				099F0728296B94790036CF55 /* StatisticsEmptyTableViewCell.swift in Sources */,
-				3BED5328295C018700157A3B /* adjust+.swift in Sources */,
-				3B42D1EE2966A1C20012898E /* myInfoMenuCollectionViewCell.swift in Sources */,
-				3BF7CE9E296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift in Sources */,
-				6CA38696296A82B10049D28A /* AddSituationFooterView.swift in Sources */,
-				3BBE56E9296C215700771DE4 /* ThirdOnboardingView.swift in Sources */,
-				096BDFF22965215D009ED396 /* MissionList.swift in Sources */,
-				3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */,
-				3BEF92AF29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift in Sources */,
-				096BE0172966A142009ED396 /* CustomTabBarCell.swift in Sources */,
-				3BBE56E5296C213900771DE4 /* StartOnboardingView.swift in Sources */,
-				3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */,
-				3BE6CBC32969D700003A8A7B /* MissionModel.swift in Sources */,
-				096BE01F2966A1FA009ED396 /* NestedView.swift in Sources */,
-				09F695DB296C52B600877EA7 /* MissionTableViewCell.swift in Sources */,
-				09F695DD296C52F000877EA7 /* SituationTableViewCell.swift in Sources */,
-				6C600BC029693B3100421D7A /* MissionHistoryModel.swift in Sources */,
-				6C8826122967D85F0005E222 /* AddSituationModel.swift in Sources */,
-				6C600BCC2969FCBC00421D7A /* EmptyRecentViewCell.swift in Sources */,
-				3BBE56F5296C4ED100771DE4 /* ThirdOnboardingViewController.swift in Sources */,
-				3BBE56E7296C214600771DE4 /* FirstOnboardingView.swift in Sources */,
-				3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */,
-				09F695D9296C332D00877EA7 /* CompositionalLayout.swift in Sources */,
-				3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */,
-				3B1628AC295ADB440077AE7B /* NetworkLoggerPlugin.swift in Sources */,
-				3B4B90C62965CB8D008C5CA8 /* myInfoUserCollectionViewCell.swift in Sources */,
-				6C88260F2967D8280005E222 /* AddSituationCollectionViewCell.swift in Sources */,
-				3B59AFB8296346650050FF49 /* Numbers.swift in Sources */,
-				3B3405B9295B090300D44722 /* UIColor+.swift in Sources */,
-				6CDC2D212966C86D00BFF5F4 /* AddMissionTextField.swift in Sources */,
-				096BE0232966A296009ED396 /* RecommendCollectionViewCell.swift in Sources */,
-				3B162890295AD89C0077AE7B /* Strings.swift in Sources */,
-				3BBE56ED296C21A400771DE4 /* FinishOnboardingView.swift in Sources */,
-				096BE01B2966A1B3009ED396 /* RecommendHeaderView.swift in Sources */,
-				3BBE56F1296C4EA400771DE4 /* FirstOnboardingViewController.swift in Sources */,
-				3B4B90BF29656751008C5CA8 /* AuthView.swift in Sources */,
-				3B4B90CC2965D697008C5CA8 /* CALayer+.swift in Sources */,
-				3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */,
-				3B1628B0295ADB640077AE7B /* NetworkConstant.swift in Sources */,
-				3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */,
-				6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */,
-				6CDC2D1529641BE000BFF5F4 /* AddMissionTitleView.swift in Sources */,
-				3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */,
-				3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */,
-				6C8826162968221C0005E222 /* AddSituationHeaderView.swift in Sources */,
-				099F0739296BD0990036CF55 /* TitleButtonList.swift in Sources */,
-				099F06CF296732970036CF55 /* CustomTabBarView.swift in Sources */,
-				09F695DF296C533200877EA7 /* BackgroundSupplementaryView.swift in Sources */,
-				099F06FA2967EE9F0036CF55 /* LabelCollectionViewCell.swift in Sources */,
-				3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */,
-				3BBE56F3296C4EB000771DE4 /* SecondOnboardingViewController.swift in Sources */,
-				096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */,
-				099F072A296B98B90036CF55 /* SituationTitleView.swift in Sources */,
-				3B4B90BD2965673E008C5CA8 /* AuthViewController.swift in Sources */,
-				3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */,
-				099F0724296AA4A40036CF55 /* TitleView.swift in Sources */,
-				3B3405D6295B109A00D44722 /* MyInfoViewController.swift in Sources */,
-				3B3405D0295B101600D44722 /* RecommendViewController.swift in Sources */,
-				3B4B90CF2965F17A008C5CA8 /* menuModel.swift in Sources */,
+				6C78AA68296F1C3D00B81796 /* AppDelegate.swift in Sources */,
+				6C78AAA4296F1D8100B81796 /* EmptyRecentViewCell.swift in Sources */,
+				6C78AA9D296F1D7200B81796 /* AddBehaviorModel.swift in Sources */,
+				6C78AA67296F1BC200B81796 /* CustomPaddingLabel.swift in Sources */,
+				6C78AA86296F1D1B00B81796 /* ActionSheetView.swift in Sources */,
+				6C78AA82296F1D1200B81796 /* FirstOnboardingView.swift in Sources */,
+				6CA2EFAD296F1EF600D3E66B /* AuthViewController.swift in Sources */,
+				6C78AA8D296F1D2900B81796 /* HomeCollectionReusableView.swift in Sources */,
+				6C78AA9E296F1D7500B81796 /* AddBehaviorCollectionViewCell.swift in Sources */,
+				6C78AAA1296F1D7C00B81796 /* AddMissionView.swift in Sources */,
+				6CA2EFA7296F1EE300D3E66B /* CustomCalendarView.swift in Sources */,
+				6CA2EFA5296F1EE300D3E66B /* TableHeaderView.swift in Sources */,
+				6C78AA90296F1D4C00B81796 /* HomeViewController.swift in Sources */,
+				6CA2EFA1296F1ED900D3E66B /* CustomAchieveLabel.swift in Sources */,
+				6C78AA75296F1CDF00B81796 /* UIViewController+.swift in Sources */,
+				6C78AA6B296F1CB100B81796 /* Numbers.swift in Sources */,
+				6C78AA73296F1CDF00B81796 /* UILabel+.swift in Sources */,
+				6CA2EFAB296F1EF200D3E66B /* myInfoMenuCollectionViewCell.swift in Sources */,
+				6CA2EFA4296F1EE300D3E66B /* MissionStatisticsView.swift in Sources */,
+				6C78AA95296F1D6300B81796 /* RecommendCollectionViewCell.swift in Sources */,
+				6CA2EF9D296F1ED000D3E66B /* TitleButtonList.swift in Sources */,
+				6C78AA8F296F1D2D00B81796 /* RandomData.swift in Sources */,
+				6CA2EFA9296F1EEC00D3E66B /* menuModel.swift in Sources */,
+				6CA2EFAC296F1EF200D3E66B /* myInfoFooterCollectionReusableView.swift in Sources */,
+				6C78AA6D296F1CD400B81796 /* UIFont+.swift in Sources */,
+				6C78AA70296F1CDB00B81796 /* UIView+.swift in Sources */,
+				6C78AA7C296F1D0900B81796 /* ThirdOnboardingViewController.swift in Sources */,
+				6C78AA84296F1D1200B81796 /* ThirdOnboardingView.swift in Sources */,
+				6CA2EFB7296F1FB200D3E66B /* AuthView.swift in Sources */,
+				6CA2EFB6296F1F8E00D3E66B /* StatisticsEmptyTableViewCell.swift in Sources */,
+				6CA2EF9E296F1ED000D3E66B /* MissionList.swift in Sources */,
+				6CA2EFA3296F1EE300D3E66B /* SituationStatisticsView.swift in Sources */,
+				6C78AA81296F1D1200B81796 /* StartOnboardingView.swift in Sources */,
+				6CA2EFA6296F1EE300D3E66B /* SituationTitleView.swift in Sources */,
+				6CA2EFAA296F1EF200D3E66B /* myInfoUserCollectionViewCell.swift in Sources */,
+				6C78AA89296F1D2200B81796 /* NotTodoButton.swift in Sources */,
+				6C78AA91296F1D5100B81796 /* HomeView.swift in Sources */,
+				6C78AA9C296F1D6F00B81796 /* RecommendHeaderView.swift in Sources */,
+				6C78AA6A296F1CAC00B81796 /* Strings.swift in Sources */,
+				6C78AA80296F1D0900B81796 /* SecondOnboardingViewController.swift in Sources */,
+				6CA2EFA0296F1ED900D3E66B /* CompositionalLayout.swift in Sources */,
+				6C78AA8E296F1D2D00B81796 /* MissionModel.swift in Sources */,
+				6CA2EF9A296F1EC300D3E66B /* MissionHistoryCollectionViewCell.swift in Sources */,
+				6C78AA92296F1D5B00B81796 /* BackgroundSupplementaryView.swift in Sources */,
+				6C78AA94296F1D6000B81796 /* CustomTabBarItem.swift in Sources */,
+				6C78AA6E296F1CD600B81796 /* UIImage+.swift in Sources */,
+				6C78AAA5296F1D8100B81796 /* AddSituationHeaderView.swift in Sources */,
+				6C78AA96296F1D6300B81796 /* CustomTabBarCell.swift in Sources */,
+				6C78AAA6296F1D8100B81796 /* AddSituationCollectionViewCell.swift in Sources */,
+				6CA2EF97296F1EBA00D3E66B /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
+				6C78AA74296F1CDF00B81796 /* adjust+.swift in Sources */,
+				6C78AA72296F1CDF00B81796 /* UIButton+.swift in Sources */,
+				6C78AA69296F1CA700B81796 /* SceneDelegate.swift in Sources */,
+				6C78AA83296F1D1200B81796 /* FinishOnboardingView.swift in Sources */,
+				6CA2EFAE296F1EF600D3E66B /* MyInfoViewController.swift in Sources */,
+				6C78AA71296F1CDF00B81796 /* UIStackView+.swift in Sources */,
+				6C78AA7E296F1D0900B81796 /* OnboardingStartViewController.swift in Sources */,
+				6C78AA87296F1D1B00B81796 /* ActionSheetViewController.swift in Sources */,
+				6C78AA93296F1D6000B81796 /* SortedItemModel.swift in Sources */,
+				6C78AA7B296F1CF100B81796 /* NetworkLoggerPlugin.swift in Sources */,
+				6CA2EFB5296F1F8B00D3E66B /* MissionTableViewCell.swift in Sources */,
+				6CA2EFB4296F1F7000D3E66B /* CustomSegmentedControl.swift in Sources */,
+				6C78AA7D296F1D0900B81796 /* FinishOnboardingViewController.swift in Sources */,
+				6C78AA9A296F1D6F00B81796 /* CustomTabBarView.swift in Sources */,
+				6C78AA99296F1D6500B81796 /* RecommendViewController.swift in Sources */,
+				6C78AA9F296F1D7700B81796 /* AddMissionViewController.swift in Sources */,
+				6C78AA8A296F1D2900B81796 /* HomeEmptyCollectionViewCell.swift in Sources */,
+				6C78AAA8296F1D8400B81796 /* AddSituationViewController.swift in Sources */,
+				6C78AAA3296F1D7F00B81796 /* AddSituationModel.swift in Sources */,
+				6CA2EFA8296F1EE300D3E66B /* TitleView.swift in Sources */,
+				6C78AA7A296F1CF100B81796 /* URLConstant.swift in Sources */,
+				6C78AA9B296F1D6F00B81796 /* NestedView.swift in Sources */,
+				6C78AA6F296F1CD900B81796 /* CALayer+.swift in Sources */,
+				6C78AA8B296F1D2900B81796 /* HomeMissionCollectionViewCell.swift in Sources */,
+				6C78AA6C296F1CD200B81796 /* UIColor+.swift in Sources */,
+				6CA2EFB2296F1F0000D3E66B /* TabBarController.swift in Sources */,
+				6C78AA77296F1CF100B81796 /* GeneralResponse.swift in Sources */,
+				6CA2EF9F296F1ED300D3E66B /* SituationTableViewCell.swift in Sources */,
+				6C78AA98296F1D6300B81796 /* LabelCollectionViewCell.swift in Sources */,
+				6CA2EFB0296F1F0000D3E66B /* TabBarItem.swift in Sources */,
+				6CA2EFA2296F1EDD00D3E66B /* AchievementViewController.swift in Sources */,
+				6C78AA88296F1D1E00B81796 /* NavigationBarView.swift in Sources */,
+				6C78AA78296F1CF100B81796 /* NetworkConstant.swift in Sources */,
+				6C78AAA2296F1D7C00B81796 /* AddMissionTextField.swift in Sources */,
+				6CA2EF9B296F1EC500D3E66B /* MissionHistoryViewController.swift in Sources */,
+				6C78AAA7296F1D8100B81796 /* AddSituationFooterView.swift in Sources */,
+				6C78AA8C296F1D2900B81796 /* HomeCalendarCollectionViewCell.swift in Sources */,
+				6C78AA7F296F1D0900B81796 /* FirstOnboardingViewController.swift in Sources */,
+				6C78AA76296F1CDF00B81796 /* UITabBar+.swift in Sources */,
+				6C78AAA0296F1D7C00B81796 /* AddMissionTitleView.swift in Sources */,
+				6CA2EFAF296F1EFA00D3E66B /* MyInfoView.swift in Sources */,
+				6CA2EF9C296F1EC900D3E66B /* MissionHistoryView.swift in Sources */,
+				6CA2EF99296F1EC100D3E66B /* MissionHistoryModel.swift in Sources */,
+				6C78AA97296F1D6300B81796 /* NestedCollectionViewCell.swift in Sources */,
+				6CA2EF98296F1EBA00D3E66B /* AddSituationView.swift in Sources */,
+				6C78AA79296F1CF100B81796 /* NetworkResult.swift in Sources */,
+				6CA2EFB1296F1F0000D3E66B /* CustomTabBar.swift in Sources */,
+				6C78AA85296F1D1200B81796 /* SecondOnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1232,7 +1256,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CQJ9UKUU35;
+				DEVELOPMENT_TEAM = 87X66KLVXU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotToDo/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1262,7 +1286,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CQJ9UKUU35;
+				DEVELOPMENT_TEAM = 87X66KLVXU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotToDo/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

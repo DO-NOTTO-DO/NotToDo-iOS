@@ -57,13 +57,13 @@ extension AddBehaviorCollectionViewCell {
         contentView.addSubviews(addBehaviorLabel, deleteBehaviorButton)
         
         addBehaviorLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.height.equalTo(40.adjusted)
+            $0.top.leading.equalToSuperview()
         }
         
         deleteBehaviorButton.snp.makeConstraints {
             $0.leading.equalTo(addBehaviorLabel.snp.trailing)
-            $0.height.width.equalTo(40.5.adjusted)
+            $0.height.width.equalTo(40.adjusted)
         }
     }
     

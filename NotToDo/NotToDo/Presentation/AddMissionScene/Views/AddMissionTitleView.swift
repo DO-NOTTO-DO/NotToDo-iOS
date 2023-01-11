@@ -14,7 +14,7 @@ final class AddMissionTitleView: UIView {
     
     // MARK: - UI Components
     
-    let AddMissionTitleLabel = UILabel()
+    var AddMissionTitleLabel = UILabel()
     let AddMissionButton = UIButton(configuration: .plain())
     
     // MARK: - View Life Cycles

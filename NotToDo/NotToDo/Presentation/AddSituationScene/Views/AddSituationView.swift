@@ -10,13 +10,18 @@ import UIKit
 import SnapKit
 import Then
 
+protocol AddSituationViewDelegate: class {
+    func sendSituationData(data: String)
+}
+
 class AddSituationView: UIView {
     
     // MARK: - UI Components
     
-    private var navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
+    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
     lazy var addSituationCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-    var chagedText: String? {
+    weak var delegate: AddSituationViewDelegate?
+    var changedText: String? {
         didSet {
             addSituationCollectionView.reloadData()
         }
@@ -87,6 +92,10 @@ extension AddSituationView {
                                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                             withReuseIdentifier: AddSituationFooterView.identifier)
     }
+    
+    func getChangedText() -> String {
+        return self.changedText ?? I18N.input
+    }
 }
 
 extension AddSituationView: UICollectionViewDataSource {
@@ -155,7 +164,8 @@ extension AddSituationView: UICollectionViewDataSource {
             switch indexPath.section {
             case 1:
                 guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddSituationFooterView.identifier, for: indexPath) as? AddSituationFooterView else { return UICollectionReusableView() }
-                footerView.setTextField(chagedText ?? "")
+                footerView.setData(changedText ?? "")
+                footerView.delegate = self
                 return footerView
             default:
                 return UICollectionReusableView()
@@ -203,12 +213,6 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension AddSituationView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return textField.resignFirstResponder()
-    }
-}
-
 extension AddSituationView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -217,17 +221,22 @@ extension AddSituationView: UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
                 as? AddSituationCollectionViewCell
-        cell!.backgroundColor = .blue
         
         switch indexPath.section {
         case 0:
-            chagedText = recommendList[indexPath.row].keyword
+            changedText = recommendList[indexPath.row].keyword
         case 1:
             if !recentList.isEmpty {
-                chagedText = recentList[indexPath.row].keyword
+                changedText = recentList[indexPath.row].keyword
             }
         default:
             return
         }
+    }
+}
+
+extension AddSituationView: AddSituationFooterViewDelegate {
+    func sendSituationTextFieldData(text: String) {
+        self.changedText = text
     }
 }

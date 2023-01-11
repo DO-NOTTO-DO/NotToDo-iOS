@@ -64,7 +64,7 @@ extension AddMissionViewController {
     }
     
     @objc private func pushToRecommendViewController() {
-        let recommendViewController = RecommendViewController()
+        let recommendViewController = RecommendViewController()여
         navigationController?.pushViewController(recommendViewController, animated: true)
     }
     

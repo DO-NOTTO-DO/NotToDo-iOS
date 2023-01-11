@@ -35,9 +35,12 @@ extension FinishOnboardingViewController {
     // MARK: - @objc Methods
     
     @objc private func enrollButtonDidTap() {
-        let TabBarController = TabBarController()
+        
         if let window = view.window?.windowScene?.keyWindow {
-            window.rootViewController = TabBarController
+            let TabBarController = TabBarController()
+            let navigationController = UINavigationController(rootViewController: TabBarController)
+            navigationController.isNavigationBarHidden = true
+            window.rootViewController = navigationController
         }
     }
 }

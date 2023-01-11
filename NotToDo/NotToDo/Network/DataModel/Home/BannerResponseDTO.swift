@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct BannerResponse: Codable {
+    let title: String
+    let image: String
+}

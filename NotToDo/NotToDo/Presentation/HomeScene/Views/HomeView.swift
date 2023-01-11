@@ -116,6 +116,17 @@ extension HomeView: UICollectionViewDataSource {
             } else {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMissionCollectionViewCell.identifier, for: indexPath) as? HomeMissionCollectionViewCell else { return UICollectionViewCell() }
                 cell.configure(missionList[indexPath.row])
+                cell.clickedStatusButton = { result in
+                    UIView.animate(withDuration: 0.3) {
+                        if result {
+                            cell.missionStateButtonStackView.alpha = 0
+                            cell.missionStateButtonStackView.isHidden = result
+                        } else {
+                            cell.missionStateButtonStackView.alpha = 1
+                            cell.missionStateButtonStackView.isHidden = result
+                        }
+                    }
+                }
                 return cell
             }
         }

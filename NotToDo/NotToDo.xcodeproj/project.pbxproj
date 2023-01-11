@@ -15,7 +15,6 @@
 		090FA2FB2960B87500918AED /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2FA2960B87500918AED /* Moya */; };
 		096BDFD52960B910009ED396 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 096BDFD42960B910009ED396 /* FSCalendar */; };
 		096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFD82964FEF6009ED396 /* CustomCalendarView.swift */; };
-		096BDFEC29650EB8009ED396 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */; };
 		096BDFEE29651040009ED396 /* SituationStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFED29651040009ED396 /* SituationStatisticsView.swift */; };
 		096BDFF02965104B009ED396 /* MissionStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEF2965104B009ED396 /* MissionStatisticsView.swift */; };
 		096BDFF22965215D009ED396 /* MissionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF12965215D009ED396 /* MissionList.swift */; };
@@ -87,6 +86,7 @@
 		3B5B34AA29617D88002E1161 /* NotTodoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34A929617D88002E1161 /* NotTodoButton.swift */; };
 		3B5B34AC29618441002E1161 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B34AB29618441002E1161 /* UIButton+.swift */; };
 		3B5ED42C2961DC310052D2B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ED42B2961DC310052D2B8 /* HomeView.swift */; };
+		3B882607296DDC0E00A51B50 /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B882606296DDC0E00A51B50 /* UIDevice+.swift */; };
 		3B888AA729674BA4008209A8 /* RandomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B888AA629674BA4008209A8 /* RandomData.swift */; };
 		3BBE56E1296C206300771DE4 /* OnboardingStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E0296C206300771DE4 /* OnboardingStartViewController.swift */; };
 		3BBE56E5296C213900771DE4 /* StartOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE56E4296C213900771DE4 /* StartOnboardingView.swift */; };
@@ -127,7 +127,6 @@
 /* Begin PBXFileReference section */
 		090FA2E6295F51BB00918AED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		096BDFD82964FEF6009ED396 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
-		096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		096BDFED29651040009ED396 /* SituationStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationStatisticsView.swift; sourceTree = "<group>"; };
 		096BDFEF2965104B009ED396 /* MissionStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionStatisticsView.swift; sourceTree = "<group>"; };
 		096BDFF12965215D009ED396 /* MissionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionList.swift; sourceTree = "<group>"; };
@@ -200,6 +199,7 @@
 		3B5B34A929617D88002E1161 /* NotTodoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTodoButton.swift; sourceTree = "<group>"; };
 		3B5B34AB29618441002E1161 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		3B5ED42B2961DC310052D2B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3B882606296DDC0E00A51B50 /* UIDevice+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+.swift"; sourceTree = "<group>"; };
 		3B888AA629674BA4008209A8 /* RandomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomData.swift; sourceTree = "<group>"; };
 		3BBE56E0296C206300771DE4 /* OnboardingStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStartViewController.swift; sourceTree = "<group>"; };
 		3BBE56E4296C213900771DE4 /* StartOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartOnboardingView.swift; sourceTree = "<group>"; };
@@ -372,6 +372,7 @@
 				3B5B34AB29618441002E1161 /* UIButton+.swift */,
 				3B576323296403CB00E03637 /* UILabel+.swift */,
 				3B4187CE296D342900F0FBF4 /* UIViewController+.swift */,
+				3B882606296DDC0E00A51B50 /* UIDevice+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -529,7 +530,6 @@
 			children = (
 				3B3405D3295B108400D44722 /* AchievementViewController.swift */,
 				099F073C296C2F770036CF55 /* CustomSegmentedControl.swift */,
-				096BDFFE29655424009ED396 /* CompositionalLayout.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1005,7 +1005,6 @@
 				3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */,
 				3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */,
 				3B16288D295AD8380077AE7B /* UIStackView+.swift in Sources */,
-				096BDFF529652270009ED396 /* MissionCollectionViewCell.swift in Sources */,
 				6CC79FFC296C64AD00A29DFE /* AddBehaviorModel.swift in Sources */,
 				3B1628AE295ADB550077AE7B /* GeneralResponse.swift in Sources */,
 				3BBE56E1296C206300771DE4 /* OnboardingStartViewController.swift in Sources */,
@@ -1033,6 +1032,7 @@
 				3BBE56EB296C218D00771DE4 /* SecondOnboardingView.swift in Sources */,
 				3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */,
 				3B1628AA295ADB2F0077AE7B /* URLConstant.swift in Sources */,
+				3B882607296DDC0E00A51B50 /* UIDevice+.swift in Sources */,
 				3B576324296403CB00E03637 /* UILabel+.swift in Sources */,
 				099F0728296B94790036CF55 /* StatisticsEmptyTableViewCell.swift in Sources */,
 				3BED5328295C018700157A3B /* adjust+.swift in Sources */,
@@ -1232,7 +1232,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZLLGCJ8XUL;
+				DEVELOPMENT_TEAM = CQJ9UKUU35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotToDo/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1262,7 +1262,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZLLGCJ8XUL;
+				DEVELOPMENT_TEAM = CQJ9UKUU35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotToDo/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

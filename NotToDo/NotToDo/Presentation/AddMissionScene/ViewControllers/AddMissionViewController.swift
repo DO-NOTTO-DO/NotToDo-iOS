@@ -55,7 +55,7 @@ extension AddMissionViewController {
     // MARK: - @objc Methods
     
     @objc func checkEnable() {
-        self.checkButtonEnable = addMissionView.missionTextField.text!.count > 0 && behaviorList.count > 0
+        checkButtonEnable = addMissionView.missionTextField.text!.count > 0 && behaviorList.count > 0
         && (addMissionView.situationView.AddMissionButton.titleLabel?.text)! != I18N.input && addMissionView.goalTextField.text!.count > 0
     }
 
@@ -65,14 +65,13 @@ extension AddMissionViewController {
     
     @objc private func pushToRecommendViewController() {
         let recommendViewController = RecommendViewController()
-        self.navigationController?.pushViewController(recommendViewController, animated: true)
+        navigationController?.pushViewController(recommendViewController, animated: true)
     }
     
     @objc private func pushToAddSituationViewController() {
         let addSituationViewController = AddSituationViewController()
         addSituationViewController.delegate = self
         addSituationViewController.checkSituationButton = { [weak self] response in
-            print(response, "ddddddd")
             self?.checkButtonEnable = self?.addMissionView.missionTextField.text!.count ?? 0 > 0 && behaviorList.count > 0
             && response != I18N.input && self?.addMissionView.goalTextField.text!.count ?? 0 > 0
         }

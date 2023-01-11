@@ -190,7 +190,6 @@ extension RecommendViewController {
     }
     
     @objc private func popToAddMissionController() {
-        // delegate?.sendData(data: addSituationView.getChangedText())
         self.navigationController?.popViewController(animated: true)
     }
 }

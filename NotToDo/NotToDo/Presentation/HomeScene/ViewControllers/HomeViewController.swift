@@ -27,12 +27,22 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setAddTarget()
+        requestBannerAPI()
     }
 }
 
 extension HomeViewController {
     private func setAddTarget() {
         homeView.addMissionButton.addTarget(self, action: #selector(addMission), for: .touchUpInside)
+    }
+    
+    private func requestBannerAPI() {
+        HomeAPI.shared.getBanner { [weak self] response in
+            guard self != nil else { return }
+            guard let response = response else { return }
+            
+            dump(response)
+        }
     }
     
     // MARK: - @objc Methods

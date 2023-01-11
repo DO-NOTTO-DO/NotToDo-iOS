@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-protocol AddSituationViewDelegate: class {
+protocol AddSituationViewDelegate: AnyObject {
     func sendSituationData(data: String)
 }
 

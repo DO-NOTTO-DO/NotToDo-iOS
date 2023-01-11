@@ -15,7 +15,9 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     // MARK: Properties
     
     static let identifier = "HomeMissionCollectionViewCell"
-    var clickedEvent: ((Bool) -> Void)?
+    var selectStatusButton: Bool? = true
+    var clickedStatusButton: ((Bool) -> Void)?
+    var meatballClickedEvent: ((Bool) -> Void)?
     
     // MARK: - UI Components
     
@@ -24,6 +26,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     private var statusButton = UIButton()
     private let situationLabel = UILabel()
     private let missionTitleLabel = UILabel()
+    private let meatBallView = UIView()
     private let meatballButton = UIButton()
     private let goalView = UIView()
     private let goalTitleLabel = UILabel()
@@ -46,7 +49,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setUI()
         setLayout()
-        setAddTarget()
+        setRecognizer()
     }
     
     @available(*, unavailable)
@@ -90,6 +93,7 @@ extension HomeMissionCollectionViewCell {
             $0.font = .PretendardMedium(size: 12.adjusted)
         }
         
+        meatBallView.backgroundColor = .clear
         meatballButton.setBackgroundImage(.dot, for: .normal)
         statusButton.do {
             $0.setBackgroundImage(.checkDefault, for: .normal)
@@ -130,11 +134,12 @@ extension HomeMissionCollectionViewCell {
         firstSolusionView.addSubview(firstSolutionLabel)
         secondSolustionView.addSubview(secondSolutionLabel)
         solutionStackview.addArrangedSubviews(firstSolusionView, secondSolustionView)
-        addSubviews(headerBackView, solutionStackview)
         headerBackView.addSubview(headerView)
+        meatballView.addSubview(meatballButton)
         headerView.addSubviews(statusButton, situationLabel, missionTitleLabel,
-                             goalView, goalTitleLabel, meatballButton,
-                               missionStateButtonStackView)
+                               goalView, goalTitleLabel, meatballButton,
+                               meatBallView, missionStateButtonStackView)
+        addSubviews(headerBackView, solutionStackview)
         
         missionStateButtonBackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -198,9 +203,20 @@ extension HomeMissionCollectionViewCell {
             $0.leading.equalTo(goalView.snp.trailing).offset(5.adjusted)
         }
         
+        meatballView.snp.makeConstraints {
+            $0.trailing.equalToSuperview()
+            $0.directionalVerticalEdges.equalToSuperview()
+            $0.width.equalTo(30.adjusted)
+        }
+        
         meatballButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(25.adjusted)
+            $0.trailing.equalToSuperview().inset(13.adjusted)
             $0.centerY.equalToSuperview()
+        }
+        
+        meatBallView.snp.makeConstraints {
+            $0.trailing.directionalVerticalEdges.equalToSuperview()
+            $0.width.equalTo(50.adjusted)
         }
         
         solutionStackview.snp.makeConstraints {
@@ -240,11 +256,17 @@ extension HomeMissionCollectionViewCell {
         firstSolutionLabel.text = actionList[0]
     }
     
-    private func setAddTarget() {
-        statusButton.addTarget(self, action: #selector(pressCheckBox), for: .touchUpInside)
+    private func setRecognizer() {
+        let meatballRecognizer = UITapGestureRecognizer(target: self,
+                                                        action: #selector(meatballButtonTapped))
+        meatBallView.addGestureRecognizer(meatballRecognizer)
     }
     
-    @objc private func pressCheckBox() {
-        print("눌렀져")
+    @objc func statusButtonTapped(_ sender: UIButton) {
+        clickedStatusButton?(isSelected)
+    }
+    
+    @objc func meatballButtonTapped(_ sender: UIView) {
+        meatballClickedEvent?(true)
     }
 }

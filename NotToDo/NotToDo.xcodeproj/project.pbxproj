@@ -8,14 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		090FA2E7295F51BB00918AED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 090FA2E6295F51BB00918AED /* GoogleService-Info.plist */; };
-		090FA2EA295F563C00918AED /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2E9295F563C00918AED /* FirebaseAnalytics */; };
-		090FA2F22960B15300918AED /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2F12960B15300918AED /* FirebaseAnalytics */; };
 		090FA2F52960B70400918AED /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2F42960B70400918AED /* SnapKit */; };
 		090FA2F82960B74000918AED /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2F72960B74000918AED /* Then */; };
 		090FA2FB2960B87500918AED /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2FA2960B87500918AED /* Moya */; };
 		096BDFD52960B910009ED396 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 096BDFD42960B910009ED396 /* FSCalendar */; };
 		096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFD82964FEF6009ED396 /* CustomCalendarView.swift */; };
-		096BDFEC29650EB8009ED396 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */; };
 		096BDFEE29651040009ED396 /* SituationStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFED29651040009ED396 /* SituationStatisticsView.swift */; };
 		096BDFF02965104B009ED396 /* MissionStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEF2965104B009ED396 /* MissionStatisticsView.swift */; };
 		096BDFF22965215D009ED396 /* MissionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF12965215D009ED396 /* MissionList.swift */; };
@@ -128,7 +125,6 @@
 /* Begin PBXFileReference section */
 		090FA2E6295F51BB00918AED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		096BDFD82964FEF6009ED396 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
-		096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		096BDFED29651040009ED396 /* SituationStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationStatisticsView.swift; sourceTree = "<group>"; };
 		096BDFEF2965104B009ED396 /* MissionStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionStatisticsView.swift; sourceTree = "<group>"; };
 		096BDFF12965215D009ED396 /* MissionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionList.swift; sourceTree = "<group>"; };
@@ -246,11 +242,9 @@
 			files = (
 				3B4187D5296D5D8700F0FBF4 /* IQKeyboardManagerSwift in Frameworks */,
 				090FA2FB2960B87500918AED /* Moya in Frameworks */,
-				090FA2EA295F563C00918AED /* FirebaseAnalytics in Frameworks */,
 				096BDFD52960B910009ED396 /* FSCalendar in Frameworks */,
 				090FA2F82960B74000918AED /* Then in Frameworks */,
 				090FA2F52960B70400918AED /* SnapKit in Frameworks */,
-				090FA2F22960B15300918AED /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +526,6 @@
 			children = (
 				3B3405D3295B108400D44722 /* AchievementViewController.swift */,
 				099F073C296C2F770036CF55 /* CustomSegmentedControl.swift */,
-				096BDFFE29655424009ED396 /* CompositionalLayout.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -896,8 +889,6 @@
 			);
 			name = NotToDo;
 			packageProductDependencies = (
-				090FA2E9295F563C00918AED /* FirebaseAnalytics */,
-				090FA2F12960B15300918AED /* FirebaseAnalytics */,
 				090FA2F42960B70400918AED /* SnapKit */,
 				090FA2F72960B74000918AED /* Then */,
 				090FA2FA2960B87500918AED /* Moya */,
@@ -933,7 +924,6 @@
 			);
 			mainGroup = 3B162867295AD7860077AE7B;
 			packageReferences = (
-				090FA2F02960B15300918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				090FA2F32960B70400918AED /* XCRemoteSwiftPackageReference "SnapKit" */,
 				090FA2F62960B74000918AED /* XCRemoteSwiftPackageReference "Then" */,
 				090FA2F92960B87500918AED /* XCRemoteSwiftPackageReference "Moya" */,
@@ -1008,7 +998,6 @@
 				3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */,
 				3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */,
 				3B16288D295AD8380077AE7B /* UIStackView+.swift in Sources */,
-				096BDFF529652270009ED396 /* MissionCollectionViewCell.swift in Sources */,
 				6CC79FFC296C64AD00A29DFE /* AddBehaviorModel.swift in Sources */,
 				3B1628AE295ADB550077AE7B /* GeneralResponse.swift in Sources */,
 				3BBE56E1296C206300771DE4 /* OnboardingStartViewController.swift in Sources */,
@@ -1312,22 +1301,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		090FA2E8295F563C00918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-		090FA2F02960B15300918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		090FA2F32960B70400918AED /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -1371,16 +1344,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		090FA2E9295F563C00918AED /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 090FA2E8295F563C00918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		090FA2F12960B15300918AED /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 090FA2F02960B15300918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
 		090FA2F42960B70400918AED /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 090FA2F32960B70400918AED /* XCRemoteSwiftPackageReference "SnapKit" */;

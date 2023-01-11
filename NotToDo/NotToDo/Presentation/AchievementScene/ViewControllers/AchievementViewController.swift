@@ -33,6 +33,8 @@ final class AchievementViewController: UIViewController {
     private lazy var situationView = SituationStatisticsView(frame: view.bounds)
     private var bottomLabel = UILabel()
     private lazy var dateFormatter = DateFormatter()
+    let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+    
     
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
@@ -145,8 +147,8 @@ extension AchievementViewController {
             $0.leading.equalToSuperview().offset(20.adjusted)
             if missionView.isHidden {
                 $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 55.adjusted + 102.adjusted)
-
-//                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 65.adjusted + 168.adjusted)
+                
+                //                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 65.adjusted + 168.adjusted)
             } else {
                 $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 102.adjusted)
             }
@@ -169,4 +171,8 @@ extension AchievementViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         return false
     }
+    
+//    func calendar(calendar: FSCalendar!, appearance: FSCalendarAppearance, borderDefaultColorForDate date: NSDate!) -> UIColor {
+//        return  calendar.isDateInToday(date) ? appearance.todayColor : nil
+//    }
 }

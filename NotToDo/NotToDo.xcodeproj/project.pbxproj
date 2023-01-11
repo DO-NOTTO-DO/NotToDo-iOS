@@ -15,6 +15,7 @@
 		090FA2FB2960B87500918AED /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2FA2960B87500918AED /* Moya */; };
 		096BDFD52960B910009ED396 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 096BDFD42960B910009ED396 /* FSCalendar */; };
 		096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFD82964FEF6009ED396 /* CustomCalendarView.swift */; };
+		096BDFEC29650EB8009ED396 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEB29650EB8009ED396 /* CustomSegmentedControl.swift */; };
 		096BDFEE29651040009ED396 /* SituationStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFED29651040009ED396 /* SituationStatisticsView.swift */; };
 		096BDFF02965104B009ED396 /* MissionStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFEF2965104B009ED396 /* MissionStatisticsView.swift */; };
 		096BDFF22965215D009ED396 /* MissionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BDFF12965215D009ED396 /* MissionList.swift */; };
@@ -43,33 +44,12 @@
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
 		3B162880295AD7870077AE7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287E295AD7870077AE7B /* LaunchScreen.storyboard */; };
-		3B16288B295AD82F0077AE7B /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16288A295AD82F0077AE7B /* UIView+.swift */; };
-		3B16288D295AD8380077AE7B /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16288C295AD8380077AE7B /* UIStackView+.swift */; };
-		3B162890295AD89C0077AE7B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16288F295AD89C0077AE7B /* Strings.swift */; };
-		3B1628AA295ADB2F0077AE7B /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628A9295ADB2F0077AE7B /* URLConstant.swift */; };
-		3B1628AC295ADB440077AE7B /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628AB295ADB440077AE7B /* NetworkLoggerPlugin.swift */; };
-		3B1628AE295ADB550077AE7B /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628AD295ADB550077AE7B /* GeneralResponse.swift */; };
-		3B1628B0295ADB640077AE7B /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628AF295ADB640077AE7B /* NetworkConstant.swift */; };
-		3B1628B2295ADB710077AE7B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628B1295ADB710077AE7B /* NetworkResult.swift */; };
-		3B1628B4295ADBA20077AE7B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1628B3295ADBA20077AE7B /* HomeViewController.swift */; };
 		3B1628B9295ADD750077AE7B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1628B8295ADD750077AE7B /* Colors.xcassets */; };
 		3B3405B7295B05D400D44722 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405B6295B05D400D44722 /* .swiftlint.yml */; };
-		3B3405B9295B090300D44722 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405B8295B090300D44722 /* UIColor+.swift */; };
 		3B3405BC295B0A2400D44722 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BB295B0A2400D44722 /* Pretendard-Bold.otf */; };
 		3B3405BE295B0A8200D44722 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BD295B0A8200D44722 /* Pretendard-Medium.otf */; };
 		3B3405C0295B0A8C00D44722 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BF295B0A8C00D44722 /* Pretendard-Regular.otf */; };
 		3B3405C2295B0AAE00D44722 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405C1295B0AAD00D44722 /* Pretendard-SemiBold.otf */; };
-		3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405C3295B0ABB00D44722 /* UIFont+.swift */; };
-		3B3405D0295B101600D44722 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405CF295B101600D44722 /* RecommendViewController.swift */; };
-		3B3405D2295B105900D44722 /* AddMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D1295B105900D44722 /* AddMissionViewController.swift */; };
-		3B3405D4295B108400D44722 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D3295B108400D44722 /* AchievementViewController.swift */; };
-		3B3405D6295B109A00D44722 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D5295B109A00D44722 /* MyInfoViewController.swift */; };
-		3B3405D8295B10C900D44722 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D7295B10C900D44722 /* TabBarItem.swift */; };
-		3B3405DA295B12BC00D44722 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405D9295B12BC00D44722 /* UIImage+.swift */; };
-		3B3405DC295B146E00D44722 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DB295B146E00D44722 /* TabBarController.swift */; };
-		3B3405DE295B162600D44722 /* UITabBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DD295B162600D44722 /* UITabBar+.swift */; };
-		3B3405E0295B1B8E00D44722 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */; };
-		3B4187CF296D342900F0FBF4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4187CE296D342900F0FBF4 /* UIViewController+.swift */; };
 		3B4187D5296D5D8700F0FBF4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B4187D4296D5D8700F0FBF4 /* IQKeyboardManagerSwift */; };
 		3B42D1EE2966A1C20012898E /* myInfoMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */; };
 		3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */; };
@@ -916,9 +896,9 @@
 			buildConfigurationList = 3B162884295AD7870077AE7B /* Build configuration list for PBXNativeTarget "NotToDo" */;
 			buildPhases = (
 				3B1628BB295ADF280077AE7B /* SwiftLint Script */,
-				3B16286C295AD7860077AE7B /* Sources */,
 				3B16286D295AD7860077AE7B /* Frameworks */,
 				3B16286E295AD7860077AE7B /* Resources */,
+				6C78AA66296F1B8B00B81796 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -1021,7 +1001,7 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3B16286C295AD7860077AE7B /* Sources */ = {
+		6C78AA66296F1B8B00B81796 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1268,7 +1248,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CQJ9UKUU35;
+				DEVELOPMENT_TEAM = 87X66KLVXU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotToDo/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1298,7 +1278,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CQJ9UKUU35;
+				DEVELOPMENT_TEAM = 87X66KLVXU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotToDo/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

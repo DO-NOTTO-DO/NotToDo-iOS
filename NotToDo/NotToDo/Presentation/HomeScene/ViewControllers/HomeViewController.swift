@@ -49,7 +49,9 @@ extension HomeViewController {
     
     @objc private func addMission() {
         let addMissionViewController = AddMissionViewController()
-        addMissionViewController.modalPresentationStyle = .overFullScreen
-        present(addMissionViewController, animated: true)
+        let navigationController = UINavigationController(rootViewController: addMissionViewController)
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.isNavigationBarHidden = true
+        present(navigationController, animated: true)
     }
 }

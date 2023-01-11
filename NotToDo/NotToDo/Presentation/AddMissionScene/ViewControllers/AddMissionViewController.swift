@@ -31,20 +31,10 @@ final class AddMissionViewController: UIViewController {
 extension AddMissionViewController {
     private func setAddTarget() {
         addMissionView.navigationBarView.backButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
-        addMissionView.behaviorTitleView.AddMissionButton.addTarget(self, action: #selector(touchupRecommendButton), for: .touchUpInside)
-        addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(presentToAddSituationViewController), for: .touchUpInside)
-        addMissionView.addMissionButton.addTarget(self, action: #selector(touchupAddMissionButton), for: .touchUpInside)
-    }
-    
-    /// 페이지 이동
-    
-    private func presentToRecommendViewController() {
-        let recommendViewController = RecommendViewController()
-        self.present(recommendViewController, animated:true, completion:nil)
-    }
-    
-    private func dismissToHomeViewController() {
-        dismiss(animated: true)
+        addMissionView.missionTextField.addTarget(self, action: #selector(pushToMissionHistoryViewController), for: .touchUpInside)
+        addMissionView.behaviorTitleView.AddMissionButton.addTarget(self, action: #selector(pushToRecommendViewController), for: .touchUpInside)
+        addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(pushToAddSituationViewController), for: .touchUpInside)
+        addMissionView.addMissionButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
     }
     
     // MARK: - @objc Methods
@@ -53,16 +43,30 @@ extension AddMissionViewController {
         dismiss(animated: true)
     }
     
-    @objc private func touchupRecommendButton() {
-        presentToRecommendViewController()
+    @objc private func pushToRecommendViewController() {
+        let recommendViewController = RecommendViewController()
+        self.navigationController?.pushViewController(recommendViewController, animated: true)
     }
     
-    @objc private func presentToAddSituationViewController() {
+    @objc private func pushToAddSituationViewController() {
         let addSituationViewController = AddSituationViewController()
-        self.present(addSituationViewController, animated:true, completion:nil)
+        addSituationViewController.delegate = self
+        self.navigationController?.pushViewController(addSituationViewController, animated: true)
     }
     
-    @objc private func touchupAddMissionButton() {
-        dismissToHomeViewController()
+    @objc private func pushToMissionHistoryViewController() {
+        let missionHistoryViewController = MissionHistoryViewController()
+        self.navigationController?.pushViewController(missionHistoryViewController, animated: true)
+    }
+    
+    @objc private func dismissToHomeViewController() {
+        dismiss(animated: true)
+    }
+}
+
+extension AddMissionViewController: AddSituationViewDelegate {
+    func sendData(data: String) {
+        // pop된 뷰컨에서 넘겨 받은 데이터를 원하는 곳에 넣어주기
+        addMissionView.situationView.AddMissionButton.setTitle(data, for: .normal)
     }
 }

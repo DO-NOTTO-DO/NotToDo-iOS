@@ -14,6 +14,7 @@ enum NavigationMode {
     case plain
     case addSituation
     case recommend
+    case leftRecommend
 }
 
 class NavigationBarView: UIView {
@@ -28,6 +29,8 @@ class NavigationBarView: UIView {
     private var titleLabel = UILabel()
     var successButton = UIButton()
     private var line = UIView()
+    private var recommendLabel = UILabel()
+    var createButton = UIButton()
     
     // MARK: - View Life Cycle
     
@@ -54,6 +57,8 @@ extension NavigationBarView {
             setUI(mode: .addSituation)
         case .recommend:
             setUI(mode: .recommend)
+        case .leftRecommend:
+            setUI(mode: .leftRecommend)
         }
         setLayout()
     }
@@ -75,7 +80,9 @@ extension NavigationBarView {
                 $0.textColor = .nottodoBlack
                 $0.font = .PretendardSemiBold(size: 22)
             }
+            
             successButton.isHidden = true
+            createButton.isHidden = true
             line.isHidden = true
             
         case .addSituation:
@@ -85,7 +92,9 @@ extension NavigationBarView {
                 $0.textColor = .nottodoGray1
                 $0.font = .PretendardSemiBold(size: 22)
             }
+            
             successButton.isHidden = false
+            createButton.isHidden = true
             line.isHidden = false
             
         case .recommend:
@@ -95,14 +104,33 @@ extension NavigationBarView {
                 $0.textColor = .nottodoGray1
                 $0.font = .PretendardSemiBold(size: 22)
             }
+            
             successButton.isHidden = true
+            createButton.isHidden = true
             line.isHidden = false
+            
+        case .leftRecommend:
+            recommendLabel.do {
+                $0.text = I18N.recommendMainTitle
+                $0.textColor = .nottodoGray1
+                $0.font = .PretendardSemiBold(size: 22)
+            }
+            
+            createButton.do {
+                $0.setTitle(I18N.recommendButtonTitle, for: .normal)
+                $0.titleLabel!.font = .PretendardMedium(size: 14.adjusted)
+                $0.setTitleColor(UIColor.nottodoGray2, for: .normal)
+            }
+            
+            successButton.isHidden = true
+            createButton.isHidden = false
+            line.isHidden = true
         }
         backgroundColor = .nottodoWhite
     }
     
     private func setLayout() {
-        addSubviews(backButton, titleLabel, successButton, line)
+        addSubviews(backButton, titleLabel, successButton, recommendLabel, createButton, line)
         
         backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -118,6 +146,16 @@ extension NavigationBarView {
         successButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-20.adjusted)
+        }
+        
+        createButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(26.adjusted)
+            $0.trailing.equalToSuperview().inset(20.adjusted)
+        }
+        
+        recommendLabel.snp.makeConstraints {
+            $0.centerY.equalTo(createButton)
+            $0.leading.equalToSuperview().offset(20.adjusted)
         }
         
         line.snp.makeConstraints {

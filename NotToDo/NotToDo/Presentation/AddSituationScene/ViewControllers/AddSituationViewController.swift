@@ -7,11 +7,15 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 final class AddSituationViewController: UIViewController {
     
     // MARK: - UI Components
     
     private var addSituationView: AddSituationView!
+    var delegate: AddSituationViewDelegate?
     
     // MARK: - View Life Cycle
     
@@ -30,14 +34,14 @@ final class AddSituationViewController: UIViewController {
  
 extension AddSituationViewController {
     private func setAddTarget() {
-        addSituationView.navigationBarView.backButton.addTarget(self, action: #selector(dismissToHomeViewController), for: .touchUpInside)
-        addSituationView.navigationBarView.successButton.addTarget(self, action: #selector(dismissToHomeViewController), for: .touchUpInside)
+        addSituationView.navigationBarView.backButton.addTarget(self, action: #selector(popToAddMissionController), for: .touchUpInside)
+        addSituationView.navigationBarView.successButton.addTarget(self, action: #selector(popToAddMissionController), for: .touchUpInside)
     }
     
-    /// 페이지 이동
+    // MARK: - @objc Methods
     
-    @objc private func dismissToHomeViewController() {
-        dismiss(animated: true)
+    @objc private func popToAddMissionController() {
+        delegate?.sendData(data: addSituationView.getChangedText())
+        self.navigationController?.popViewController(animated: true)
     }
-
 }

@@ -14,6 +14,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     // MARK: - Properties
     
+    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .recommend) // .leftRecommend
     var itemList: [SortedItemModel] = SortedItemModel.sampleData
     enum Section: Int, Hashable {
         case sub, main
@@ -23,8 +24,6 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     // MARK: - UI Components
     
-    private var mainTitle = UILabel()
-    private var createButton = UIButton()
     private var underLineView = UIView()
     private var headerView = RecommendHeaderView()
     private lazy var contentsCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: recommendlayout())
@@ -49,17 +48,11 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
 extension RecommendViewController {
     private func setUI() {
         view.backgroundColor = .white
-        mainTitle.do {
-            $0.text = I18N.recommendMainTitle
-            $0.font = .PretendardBold(size: 22)
-            $0.textColor = .nottodoGray1
-        }
-        createButton.do {
-            $0.setTitle(I18N.recommendButtonTitle, for: .normal)
-            $0.titleLabel!.font = .PretendardMedium(size: 14.adjusted)
-            $0.setTitleColor(UIColor.nottodoGray2, for: .normal)
+        
+        navigationBarView.createButton.do {
             $0.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
         }
+        
         contentsCollectionView.do {
             $0.backgroundColor = .systemGray6
             $0.showsHorizontalScrollIndicator = false
@@ -77,21 +70,20 @@ extension RecommendViewController {
     }
     
     private func setLayout() {
-        view.addSubviews(mainTitle, createButton, customTabBar, underLineView, contentsCollectionView)
+        view.addSubviews(navigationBarView, customTabBar, underLineView, contentsCollectionView)
         
-        mainTitle.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(17.adjusted)
-            $0.leading.equalTo(safeArea).offset(20.adjusted)
+        navigationBarView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(68.adjusted)
         }
-        createButton.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(26.adjusted)
-            $0.trailing.equalTo(safeArea).inset(20.adjusted)
-        }
+        
         customTabBar.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
-            $0.top.equalTo(mainTitle.snp.bottom).offset(19.adjusted)
+            $0.top.equalTo(navigationBarView.snp.bottom).offset(19.adjusted)
             $0.height.equalTo(104.adjusted)
         }
+        
         underLineView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.top.equalTo(customTabBar.snp.bottom)

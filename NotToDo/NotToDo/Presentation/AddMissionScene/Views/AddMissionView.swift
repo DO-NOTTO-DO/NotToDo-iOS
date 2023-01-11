@@ -23,7 +23,7 @@ class AddMissionView: UIView {
     
     private let missionView = UIView()
     private let missionTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.missionTitle, buttonLabel: nil, icon: nil)
-    private let missionTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.missionPlaceHolder)
+    let missionTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.missionPlaceHolder)
     
     private let behaviorView = UIView()
     let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.behaviorTitle, buttonLabel: I18N.recommend, icon: .rightArrow)

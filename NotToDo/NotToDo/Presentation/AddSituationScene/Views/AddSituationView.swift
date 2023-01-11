@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 protocol AddSituationViewDelegate: class {
-    func sendData(data: String)
+    func sendSituationData(data: String)
 }
 
 class AddSituationView: UIView {
@@ -94,7 +94,7 @@ extension AddSituationView {
     }
     
     func getChangedText() -> String {
-        return self.changedText ?? ""
+        return self.changedText ?? I18N.input
     }
 }
 
@@ -236,7 +236,7 @@ extension AddSituationView: UICollectionViewDelegate {
 }
 
 extension AddSituationView: AddSituationFooterViewDelegate {
-    func sendTextFieldData(text: String) {
+    func sendSituationTextFieldData(text: String) {
         self.changedText = text
     }
 }

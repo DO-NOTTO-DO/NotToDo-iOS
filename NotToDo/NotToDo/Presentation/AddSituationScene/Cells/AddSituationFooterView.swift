@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 protocol AddSituationFooterViewDelegate: class {
-    func sendTextFieldData(text: String)
+    func sendSituationTextFieldData(text: String)
 }
 
 class AddSituationFooterView: UICollectionReusableView {
@@ -110,6 +110,6 @@ extension AddSituationFooterView {
 
 extension AddSituationFooterView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.sendTextFieldData(text: self.inputTextField.text ?? "")
+        delegate?.sendSituationTextFieldData(text: self.inputTextField.text ?? "")
     }
 }

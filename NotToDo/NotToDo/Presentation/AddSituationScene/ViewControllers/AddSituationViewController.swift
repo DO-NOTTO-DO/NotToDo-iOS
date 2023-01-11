@@ -12,6 +12,10 @@ import Then
 
 final class AddSituationViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    var checkSituationButton: ((String) -> Void)?
+    
     // MARK: - UI Components
     
     private var addSituationView: AddSituationView!
@@ -41,7 +45,8 @@ extension AddSituationViewController {
     // MARK: - @objc Methods
     
     @objc private func popToAddMissionController() {
-        delegate?.sendData(data: addSituationView.getChangedText())
+        delegate?.sendSituationData(data: addSituationView.getChangedText())
+        self.checkSituationButton?(addSituationView.getChangedText())
         self.navigationController?.popViewController(animated: true)
     }
 }

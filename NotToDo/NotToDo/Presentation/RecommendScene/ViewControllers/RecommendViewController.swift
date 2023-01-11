@@ -62,6 +62,8 @@ extension RecommendViewController {
             $0.backgroundColor = .nottodoGray2
         }
         customTabBar.delegate = self
+        
+        navigationBarView.backButton.addTarget(self, action: #selector(popToAddMissionController), for: .touchUpInside)
     }
     
     private func register() {
@@ -185,5 +187,10 @@ extension RecommendViewController {
     
     @objc func btnTapped(_ sender: UIButton) {
         print("tapped")
+    }
+    
+    @objc private func popToAddMissionController() {
+        // delegate?.sendData(data: addSituationView.getChangedText())
+        self.navigationController?.popViewController(animated: true)
     }
 }

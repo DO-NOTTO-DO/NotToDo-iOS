@@ -8,14 +8,13 @@ final class HomeView: UIView {
     
     // MARK: - UI Components
     
-    private(set) lazy var refreshControl = UIRefreshControl()
     lazy var homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     var calendar = FSCalendar(frame: .zero)
     let addMissionButton = NotTodoButton(frame: CGRect(), mode: .withImage, text: I18N.addMissoinButton, image: .plus, font: .semiBold, size: 16)
     
     // MARK: - Life Cycle
     
-    init(frame: CGRect, motivationText: String = "초기화값입니다.") {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
         setLayout()
@@ -52,19 +51,6 @@ extension HomeView {
         backgroundColor = .white
         homeCollectionView.do {
             $0.backgroundColor = .BG
-            $0.refreshControl = refreshControl
-            $0.refreshControl?.addTarget(self, action: #selector(handleRefreshControl),
-                                         for: .valueChanged)
-        }
-    }
-    
-    @objc func handleRefreshControl() {
-        // 컨텐츠를 업데이트하세요.
-        homeCollectionView.reloadData()
-        
-        // Refresh control을 제거하세요.
-        DispatchQueue.main.async {
-            self.homeCollectionView.refreshControl?.endRefreshing()
         }
     }
     

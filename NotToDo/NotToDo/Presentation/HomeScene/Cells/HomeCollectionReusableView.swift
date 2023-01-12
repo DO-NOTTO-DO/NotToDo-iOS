@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Kingfisher
 import SnapKit
 import Then
 
@@ -53,7 +54,7 @@ extension HomeCollectionReusableView {
         }
         dateView.backgroundColor = .yellow_basic
         motivationLabel.do {
-            $0.font = .PretendardBold(size: 27.adjusted)
+            $0.font = .PretendardBold(size: 23.adjusted)
             $0.textColor = .nottodoBlack
             $0.text = ""
             $0.numberOfLines = 0
@@ -82,21 +83,22 @@ extension HomeCollectionReusableView {
         motivationLabel.snp.makeConstraints {
             $0.top.equalTo(dateView.snp.bottom).offset(15.adjusted)
             $0.leading.equalToSuperview().inset(20.adjusted)
-            $0.width.equalTo(147.adjusted)
+            $0.trailing.equalTo(graphicImageView.snp.leading)
         }
         
         graphicImageView.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview()
-            $0.height.equalTo(180.adjusted)
-            $0.width.equalTo(200.adjusted)
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(126.adjusted)
+            $0.width.equalTo(160.adjusted)
             $0.bottom.equalToSuperview().inset(6.adjusted)
         }
     }
     
-    func setRandomData() {
-        graphicImageView.image = graphicData.shuffled().first
-        let randomText = motivationStringData.shuffled().first!
-        self.typingAnimation(randomText)
+    func setRandomData(banner: BannerResponse) {
+        graphicImageView.setImage(with: banner.image)
+        let randomText = banner.title
+        motivationLabel.text = randomText
+//        self.typingAnimation(randomText)
     }
     
     private func typingAnimation(_ target: String) {

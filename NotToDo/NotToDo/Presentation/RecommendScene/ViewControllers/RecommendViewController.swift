@@ -120,7 +120,7 @@ extension RecommendViewController {
             dump(response)
         }
     }
-
+    
     // MARK: - Data
     
     private func setupDataSource() {
@@ -148,12 +148,12 @@ extension RecommendViewController {
         snapShot.appendItems(Array(0..<1), toSection: .sub)
         snapShot.appendItems([], toSection: .main)
     }
-  
+    
     private func updateData(item: [RecommendElementResponse]) {
-            var snapshot = dataSource.snapshot()
-            snapshot.appendItems(item, toSection: .main)
-            dataSource.apply(snapshot)
-        }
+        var snapshot = dataSource.snapshot()
+        snapshot.appendItems(item, toSection: .main)
+        dataSource.apply(snapshot)
+    }
     
     // MARK: - Layout
     
@@ -191,7 +191,9 @@ extension RecommendViewController {
     // MARK: - @objc Methods
     
     @objc func buttonTapped(_ sender: UIButton) {
-        print("tapped")
+        let addMissionViewController = AddMissionViewController()
+        addMissionViewController.modalPresentationStyle = .fullScreen
+        self.present(addMissionViewController, animated: true, completion: nil)
     }
     
     @objc private func popToAddMissionController() {

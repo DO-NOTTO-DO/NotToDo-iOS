@@ -22,7 +22,7 @@ final class AddMissionViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private var addMissionView: AddMissionView!
+    var addMissionView: AddMissionView!
     
     // MARK: - View Life Cycle
     

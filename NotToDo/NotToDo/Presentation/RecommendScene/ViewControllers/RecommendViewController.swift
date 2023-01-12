@@ -14,7 +14,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     // MARK: - Properties
     
-    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .leftRecommend) // .leftRecommend
+    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .leftRecommend) 
     var itemList: [RecommendElementResponse] = []
     var selectedIndex: Int = 0
     
@@ -69,9 +69,6 @@ extension RecommendViewController {
         customTabBar.delegate = self
         
         navigationBarView.backButton.addTarget(self, action: #selector(popToAddMissionController), for: .touchUpInside)
-        nestedView.do {
-            $0.collectionview.delegate = self
-        }
     }
     
     private func register() {
@@ -201,8 +198,11 @@ extension RecommendViewController {
     private func pushToAdd(section: Int, index: Int) {
         let addMissionViewController = AddMissionViewController()
         addMissionViewController.behavior = itemList[section].recommendActions[index].name
-        addMissionViewController.modalPresentationStyle = .fullScreen
-        self.present(addMissionViewController, animated: false, completion: nil)
+        addMissionViewController.addMissionView?.navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
+        let navigationController = UINavigationController(rootViewController: addMissionViewController)
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.isNavigationBarHidden = true
+        self.present(navigationController, animated: false)
     }
     
     // MARK: - @objc Methods
@@ -215,12 +215,5 @@ extension RecommendViewController {
     
     @objc private func popToAddMissionController() {
         self.navigationController?.popViewController(animated: true)
-    }
-}
-extension RecommendViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let addMissionViewController = AddMissionViewController()
-        addMissionViewController.modalPresentationStyle = .fullScreen
-        present(addMissionViewController, animated: false, completion: nil)
     }
 }

@@ -12,6 +12,7 @@ final class MissionHistoryViewController: UIViewController {
     // MARK: - UI Components
     
     private var missionHistoryView: MissionHistoryView!
+    weak var delegate: MissionHistoryViewDelegate?
     
     // MARK: - View Life Cycle
     
@@ -30,10 +31,11 @@ final class MissionHistoryViewController: UIViewController {
 
 extension MissionHistoryViewController {
     private func setAddTarget() {
-        missionHistoryView.backButton.addTarget(self, action: #selector(dismissToAddMissionViewController), for: .touchUpInside)
+        missionHistoryView.backButton.addTarget(self, action: #selector(popToAddMissionViewController), for: .touchUpInside)
     }
-    
-    @objc private func dismissToAddMissionViewController() {
-        dismiss(animated: true)
+
+    @objc private func popToAddMissionViewController() {
+        delegate?.sendMissionHistoryData(data: missionHistoryView.inputTextField.text ?? "")
+        self.navigationController?.popViewController(animated: true)
     }
 }

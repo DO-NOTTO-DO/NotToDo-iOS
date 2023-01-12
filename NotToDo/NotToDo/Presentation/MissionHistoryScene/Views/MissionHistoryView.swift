@@ -10,15 +10,15 @@ import UIKit
 import SnapKit
 import Then
 
-//protocol MissionHistoryViewDelegate: AnyObject {
-//    func sendMissionHistoryTextFieldData(text: String)
-//}
+protocol MissionHistoryViewDelegate: AnyObject {
+    func sendMissionHistoryData(data: String)
+}
 
 class MissionHistoryView: UIView {
     
     // MARK: - UI Components
     
-    private var inputTextField = UITextField()
+    var inputTextField = UITextField()
     var backButton = UIButton()
     private var missionHistoryIcon = UIImageView()
     private var missionHistoryLabel = UILabel()
@@ -28,7 +28,8 @@ class MissionHistoryView: UIView {
     let cellHeight: CGFloat = 49.adjusted
     let width: CGFloat = UIScreen.main.bounds.width
 
-//    weak var delegate: MissionHistoryViewDelegate?
+    var changedText: String?
+    weak var delegate: MissionHistoryViewDelegate?
     
     // MARK: - View Life Cycle
     
@@ -190,6 +191,7 @@ extension MissionHistoryView: UICollectionViewDelegate {
                 as? MissionHistoryCollectionViewCell
         
         print(historyList[indexPath.row].history)
+        changedText = historyList[indexPath.row].history
         inputTextField.text = historyList[indexPath.row].history
     }
 }

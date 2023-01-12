@@ -80,6 +80,7 @@ extension AddMissionViewController {
     
     @objc private func pushToMissionHistoryViewController() {
         let missionHistoryViewController = MissionHistoryViewController()
+        missionHistoryViewController.delegate = self
         self.navigationController?.pushViewController(missionHistoryViewController, animated: true)
     }
     
@@ -107,10 +108,19 @@ extension AddMissionViewController: AddSituationViewDelegate {
         // pop된 뷰컨에서 넘겨 받은 데이터를 원하는 곳에 넣어주기
         if data != "" {
             addMissionView.situationView.AddMissionButton.setTitle(data, for: .normal)
-            addMissionView.situationAvailable = 1
         } else {
             addMissionView.situationView.AddMissionButton.setTitle(I18N.input, for: .normal)
-            addMissionView.situationAvailable = 0
+        }
+    }
+}
+
+extension AddMissionViewController: MissionHistoryViewDelegate {
+    func sendMissionHistoryData(data: String) {
+        if data != "" {
+            print(data)
+            addMissionView.missionTextField.text = data
+        } else {
+            addMissionView.missionTextField.text = ""
         }
     }
 }

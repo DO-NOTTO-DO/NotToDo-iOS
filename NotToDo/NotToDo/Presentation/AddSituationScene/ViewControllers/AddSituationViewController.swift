@@ -19,7 +19,7 @@ final class AddSituationViewController: UIViewController {
     // MARK: - UI Components
     
     private var addSituationView: AddSituationView!
-    var delegate: AddSituationViewDelegate?
+    weak var delegate: AddSituationViewDelegate?
     
     // MARK: - View Life Cycle
     

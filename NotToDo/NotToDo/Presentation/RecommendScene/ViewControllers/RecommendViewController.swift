@@ -14,7 +14,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     // MARK: - Properties
     
-    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .recommend) // .leftRecommend
+    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .leftRecommend) // .leftRecommend
     var itemList: [RecommendElementResponse] = []
     var selectedIndex: Int = 0
     
@@ -51,7 +51,7 @@ extension RecommendViewController {
         view.backgroundColor = .white
         
         navigationBarView.createButton.do {
-            $0.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
+            $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         }
         
         contentsCollectionView.do {
@@ -190,7 +190,7 @@ extension RecommendViewController {
     
     // MARK: - @objc Methods
     
-    @objc func btnTapped(_ sender: UIButton) {
+    @objc func buttonTapped(_ sender: UIButton) {
         print("tapped")
     }
     

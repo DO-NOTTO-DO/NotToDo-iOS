@@ -43,9 +43,17 @@ class SituationStatisticsView: UIView {
 
 extension SituationStatisticsView {
     func setUI() {
-        backgroundColor = .nottodoWhite
-        layer.borderWidth = 0.5
-        layer.borderColor = UIColor.nottodoGray2?.cgColor
+        if tableViewData.isEmpty {
+            print(tableViewData.count)
+            print("situationStatistics empty")
+            backgroundColor = .clear
+            situationTitleView.isHidden = true
+        } else {
+            print("situationStatistics")
+            backgroundColor = .nottodoWhite
+            layer.borderWidth = 0.5
+            layer.borderColor = UIColor.nottodoGray2?.cgColor
+        }
         
         expangindTableView.do {
             $0.backgroundColor = .clear
@@ -62,6 +70,7 @@ extension SituationStatisticsView {
     
     func register() {
         expangindTableView.register(SituationTableViewCell.self, forCellReuseIdentifier: SituationTableViewCell.identifier)
+        expangindTableView.register(StatisticsEmptyTableViewCell.self, forCellReuseIdentifier: StatisticsEmptyTableViewCell.identifier)
     }
     
     func setLayout() {
@@ -83,25 +92,33 @@ extension SituationStatisticsView {
 extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.tableViewData.count
+        if titleLists.isEmpty {
+            return 1
+        } else {
+            return self.tableViewData.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if titleLists.isEmpty {
+            return 300
+        }
         return 50
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if self.hiddenSections.contains(section) {
-            return self.tableViewData[section].count
+            return tableViewData[section].count
+        } else if titleLists.isEmpty {
+            return 1
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableViewData.isEmpty {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsEmptyTableViewCell.identifier, for: indexPath) as? StatisticsEmptyTableViewCell else { return UITableViewCell() }
-            situationTitleView.icon.isHidden = true
-            situationTitleView.subLabel.isHidden = true
+        if titleLists.isEmpty {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsEmptyTableViewCell.identifier, for: indexPath) as? StatisticsEmptyTableViewCell else {return UITableViewCell() }
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SituationTableViewCell.identifier, for: indexPath) as? SituationTableViewCell else { return UITableViewCell() }
@@ -129,30 +146,34 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let customHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableHeaderView.identifier) as? TableHeaderView else { return UIView() }
-        customHeaderView.headerButton.tag = section
-        customHeaderView.headerButton.addTarget(self,
-                                                action: #selector(self.hideSection(sender:)),
-                                                for: .touchUpInside)
-        customHeaderView.config(titleLists[section])
-        customHeaderView.isClickedClosure = { [weak self] result in
-            if result {
-                self?.isSelected[section].toggle()
-                tableView.reloadData()
+        if titleLists.isEmpty {
+            return UIView()
+        } else {
+            guard let customHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableHeaderView.identifier) as? TableHeaderView else { return UIView() }
+            customHeaderView.headerButton.tag = section
+            customHeaderView.headerButton.addTarget(self,
+                                                    action: #selector(self.hideSection(sender:)),
+                                                    for: .touchUpInside)
+            customHeaderView.config(titleLists[section])
+            customHeaderView.isClickedClosure = { [weak self] result in
+                if result {
+                    self?.isSelected[section].toggle()
+                    tableView.reloadData()
+                }
             }
+            customHeaderView.numberLabel.textColor = isSelected[section] ? UIColor.yellow_basic : UIColor.nottodoGray1
+            switch section {
+            case 0:
+                customHeaderView.headerImage.image = isSelected[section] ?  .situationRank1 : .situationRank1off
+            case 1:
+                customHeaderView.headerImage.image = isSelected[section] ?  .situationRank2 : .situationRank2off
+            case 2:
+                customHeaderView.headerImage.image = isSelected[section] ?  .situationRank3 : .situationRank3off
+            default:
+                break
+            }
+            return customHeaderView
         }
-        customHeaderView.numberLabel.textColor = isSelected[section] ? UIColor.yellow_basic : UIColor.nottodoGray1
-        switch section {
-        case 0:
-            customHeaderView.headerImage.image = isSelected[section] ?  .situationRank1 : .situationRank1off
-        case 1:
-            customHeaderView.headerImage.image = isSelected[section] ?  .situationRank2 : .situationRank2off
-        case 2:
-            customHeaderView.headerImage.image = isSelected[section] ?  .situationRank3 : .situationRank3off
-        default:
-            break
-        }
-        return customHeaderView
     }
     
     @objc private func hideSection(sender: UIButton) {

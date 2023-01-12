@@ -39,9 +39,14 @@ class MissionStatisticsView: UIView {
 
 extension MissionStatisticsView {
     func setUI() {
-        backgroundColor = .nottodoWhite
-        layer.borderWidth = 0.5
-        layer.borderColor = UIColor.nottodoGray2?.cgColor
+        if missionList.isEmpty {
+            backgroundColor = .clear
+            situationTitleView.isHidden = true
+        } else {
+            backgroundColor = .nottodoWhite
+            layer.borderWidth = 0.5
+            layer.borderColor = UIColor.nottodoGray2?.cgColor
+        }
         
         missionTableView.do {
             $0.backgroundColor = .clear
@@ -79,19 +84,24 @@ extension MissionStatisticsView {
 }
 extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
+        if missionList.isEmpty {
+          return 300
+        } else {
+            return 55
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return self.missionList.count
+        if missionList.isEmpty {
+            return 1
+        } else {
+            return self.missionList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if missionList.count == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsEmptyTableViewCell.identifier, for: indexPath) as! StatisticsEmptyTableViewCell
-            situationTitleView.isHidden = true
-            
+        if missionList.isEmpty {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsEmptyTableViewCell.identifier, for: indexPath) as? StatisticsEmptyTableViewCell else {return UITableViewCell() }
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MissionTableViewCell.identifier, for: indexPath) as? MissionTableViewCell else { return UITableViewCell() }

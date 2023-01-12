@@ -14,10 +14,10 @@ struct CustomTabBarItem: Hashable {
 extension CustomTabBarItem {
    static let items: [CustomTabBarItem] = [
     CustomTabBarItem(name: "SNS", image: "Recommend/ic_sns_default", activeImage: "Recommend/ic_sns_active"),
-                                            CustomTabBarItem(name: "작업,업무", image: "Recommend/ic_work_default", activeImage: "Recommend/ic_work_active"),
-                                            CustomTabBarItem(name: "건강", image: "Recommend/ic_health_default", activeImage: "Recommend/ic_health_active"),
-                                            CustomTabBarItem(name: "생활습관", image: "Recommend/ic_habit_default", activeImage: "Recommend/ic_habit_active"),
-                                            CustomTabBarItem(name: "기상,취침", image: "Recommend/ic_sleep_default", activeImage: "Recommend/ic_sleep_active"),
+    CustomTabBarItem(name: "작업,업무", image: "Recommend/ic_work_default", activeImage: "Recommend/ic_work_active"),
+    CustomTabBarItem(name: "건강", image: "Recommend/ic_health_default", activeImage: "Recommend/ic_health_active"),
+    CustomTabBarItem(name: "생활습관", image: "Recommend/ic_habit_default", activeImage: "Recommend/ic_habit_active"),
+    CustomTabBarItem(name: "기상,취침", image: "Recommend/ic_sleep_default", activeImage: "Recommend/ic_sleep_active"),
     CustomTabBarItem(name: "소비", image: "Recommend/ic_shop_default", activeImage: "Recommend/ic_shop_active"),
     CustomTabBarItem(name: "오락", image: "Recommend/ic_entertain_default", activeImage: "Recommend/ic_entertain_active"),
     CustomTabBarItem(name: "감정,태도", image: "Recommend/ic_emotion_default", activeImage: "Recommend/ic_emotion_active")

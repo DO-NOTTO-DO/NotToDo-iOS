@@ -35,7 +35,6 @@ final class AchievementViewController: UIViewController {
     private lazy var dateFormatter = DateFormatter()
     let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
     
-    
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
     var data: [Situation] = Situation.dummy()
@@ -70,6 +69,9 @@ extension AchievementViewController {
             $0.text = I18N.statistcisBottomMessage
             $0.font = .PretendardMedium(size: 12.adjusted)
             $0.textColor = .nottodoGray2
+            if missionView.missionList.isEmpty && situationView.titleLists.isEmpty {
+                $0.isHidden = true
+            }
         }
     }
     
@@ -118,14 +120,22 @@ extension AchievementViewController {
         missionView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
-            $0.height.equalTo(CGFloat(missionView.missionList.count) * 55.adjusted + 92.adjusted)
+            if missionView.missionList.isEmpty {
+                $0.height.equalTo(300.adjusted)
+            } else {
+                $0.height.equalTo(CGFloat(missionView.missionList.count) * 55.adjusted + 92.adjusted)
+            }
             $0.bottom.equalTo(scrollView.snp.bottom).offset(-78.adjusted)
         }
         
         situationView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
-            $0.height.equalTo(CGFloat(situationView.titleLists.count) * 55.adjusted + 120.adjusted)
+            if situationView.titleLists.isEmpty {
+                $0.height.equalTo(300.adjusted)
+            } else {
+                $0.height.equalTo(CGFloat(situationView.titleLists.count) * 55.adjusted + 120.adjusted)
+            }
         }
         bottomLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20.adjusted)

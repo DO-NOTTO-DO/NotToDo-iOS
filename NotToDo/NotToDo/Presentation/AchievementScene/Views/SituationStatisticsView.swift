@@ -133,6 +133,7 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
                 cell.backGroundImage.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
             }
             cell.titleLabel.text = (situationList[indexPath.section].missions[indexPath.row].title as! String)
+            cell.numberLabel.text = "\(situationList[indexPath.section].missions[indexPath.row].count)회"
             cell.selectionStyle = .none
             return cell
         }
@@ -151,7 +152,7 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
             customHeaderView.headerButton.addTarget(self,
                                                     action: #selector(self.hideSection(sender:)),
                                                     for: .touchUpInside)
-            customHeaderView.config(situationList[section].name)
+            customHeaderView.config(situationList[section].name, situationList[section].count)
             customHeaderView.isClickedClosure = { [weak self] result in
                 if result {
                     self?.isSelected[section].toggle()

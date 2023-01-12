@@ -16,14 +16,15 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "HomeMissionCollectionViewCell"
     var selectStatusButton: Bool? = true
-    var clickedStatusButton: ((Bool) -> Void)?
+    var clickedStatusButton: (() -> Void)?
     var meatballClickedEvent: ((Bool) -> Void)?
     
     // MARK: - UI Components
     
     private let headerBackView = UIView()
     private let headerView = UIView()
-    private var statusButton = UIButton()
+    var statusButton = UIButton()
+    private let statusButtonView = UIView()
     private let situationLabel = UILabel()
     private let missionTitleLabel = UILabel()
     private let meatballView = UIView()
@@ -38,11 +39,6 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     private var firstSolutionLabel = UILabel()
     private var secondSolutionLabel = UILabel()
     
-    private let missionStateButtonBackView = UIImageView()
-    let missionStateButtonStackView = UIStackView()
-    private let missionSuccessButton = UIButton()
-    private let missionAmbiguousButton = UIButton()
-    
     // MARK: Life Cycle
     
     override init(frame: CGRect) {
@@ -55,14 +51,6 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-  
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first,
-           touch.view !=  missionStateButtonStackView {
-            selectStatusButton = true
-            clickedStatusButton?(selectStatusButton ?? true)
-        }
     }
 }
 
@@ -101,6 +89,7 @@ extension HomeMissionCollectionViewCell {
             $0.font = .PretendardMedium(size: 12.adjusted)
         }
         
+        statusButtonView.backgroundColor = .clear
         meatballView.backgroundColor = .clear
         meatballButton.setBackgroundImage(.dot, for: .normal)
         statusButton.do {
@@ -121,18 +110,6 @@ extension HomeMissionCollectionViewCell {
             $0.font = .PretendardBold(size: 14.adjusted)
         }
         
-        missionSuccessButton.backgroundColor = .clear
-        missionAmbiguousButton.backgroundColor = .clear
-        
-        missionStateButtonBackView.image = .checkStatusBox
-        missionStateButtonStackView.do {
-            $0.isHidden = true
-            $0.alpha = 0
-            $0.axis = .horizontal
-            $0.distribution = .fill
-            $0.addArrangedSubviews(missionStateButtonBackView, missionSuccessButton, missionAmbiguousButton)
-        }
-        
         headerView.clipsToBounds = false
     }
     
@@ -143,33 +120,10 @@ extension HomeMissionCollectionViewCell {
         solutionStackview.addArrangedSubviews(firstSolusionView, secondSolustionView)
         headerBackView.addSubview(headerView)
         meatballView.addSubview(meatballButton)
-        headerView.addSubviews(statusButton, situationLabel, missionTitleLabel,
+        headerView.addSubviews(statusButton, statusButtonView, situationLabel, missionTitleLabel,
                                goalView, goalTitleLabel, meatballButton,
-                               meatballView, missionStateButtonStackView)
+                               meatballView)
         addSubviews(headerBackView, solutionStackview)
-        
-        missionStateButtonBackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
-        missionSuccessButton.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.height.leading.equalToSuperview()
-            $0.trailing.equalTo(missionStateButtonBackView.snp.centerX)
-        }
-        
-        missionAmbiguousButton.snp.makeConstraints {
-            $0.height.trailing.equalToSuperview()
-            $0.leading.equalTo(missionStateButtonStackView.snp.centerX)
-            $0.trailing.equalToSuperview()
-        }
-        
-        missionStateButtonStackView.snp.makeConstraints {
-            $0.width.equalTo(174.adjusted)
-            $0.height.equalTo(104.adjusted)
-            $0.bottom.equalTo(statusButton.snp.bottom).offset(-16.adjusted)
-            $0.leading.equalToSuperview().offset(-18.adjusted)
-        }
         
         headerBackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(17.adjusted)
@@ -188,6 +142,12 @@ extension HomeMissionCollectionViewCell {
         statusButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(19.adjusted)
             $0.centerY.equalToSuperview()
+        }
+        
+        statusButtonView.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(10.adjusted)
+            $0.directionalVerticalEdges.equalToSuperview()
+            $0.width.equalTo(40.adjusted)
         }
         
         situationLabel.snp.makeConstraints {
@@ -268,11 +228,13 @@ extension HomeMissionCollectionViewCell {
     private func setRecognizer() {
         let meatballRecognizer = UITapGestureRecognizer(target: self,
                                                         action: #selector(meatballButtonTapped))
+        let statusButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(statusButtonTapped))
         meatballView.addGestureRecognizer(meatballRecognizer)
+        statusButtonView.addGestureRecognizer(statusButtonRecognizer)
     }
     
     @objc func statusButtonTapped(_ sender: UIButton) {
-        clickedStatusButton?(isSelected)
+        clickedStatusButton?()
     }
     
     @objc func meatballButtonTapped(_ sender: UIView) {

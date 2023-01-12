@@ -110,6 +110,7 @@
 		3BEF92AF29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */; };
 		3BEF92B129696CC90090A290 /* HomeEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92B029696CC90090A290 /* HomeEmptyCollectionViewCell.swift */; };
 		3BF7CE9E296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */; };
+		3BFE8405296FD103000B37CA /* CheckboxToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE8404296FD103000B37CA /* CheckboxToolTipViewController.swift */; };
 		6C600BC029693B3100421D7A /* MissionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */; };
 		6C600BC229693B3B00421D7A /* MissionHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */; };
 		6C600BC429693B4B00421D7A /* MissionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */; };
@@ -231,6 +232,7 @@
 		3BEF92AE29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BEF92B029696CC90090A290 /* HomeEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMissionCollectionViewCell.swift; sourceTree = "<group>"; };
+		3BFE8404296FD103000B37CA /* CheckboxToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToolTipViewController.swift; sourceTree = "<group>"; };
 		6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryModel.swift; sourceTree = "<group>"; };
 		6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryViewController.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				3B1628B3295ADBA20077AE7B /* HomeViewController.swift */,
+				3BFE8404296FD103000B37CA /* CheckboxToolTipViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1104,6 +1107,7 @@
 				09611EE7296FD52700561CAA /* RecommendService.swift in Sources */,
 				3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */,
 				3BE0701B296F455C002CC50A /* HomeViewController.swift in Sources */,
+				3BFE8405296FD103000B37CA /* CheckboxToolTipViewController.swift in Sources */,
 				3BE07003296F43A2002CC50A /* UIFont+.swift in Sources */,
 				3B888AA729674BA4008209A8 /* RandomData.swift in Sources */,
 				096BDFF02965104B009ED396 /* MissionStatisticsView.swift in Sources */,

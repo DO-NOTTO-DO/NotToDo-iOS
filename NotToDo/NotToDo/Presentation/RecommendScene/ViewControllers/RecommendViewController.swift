@@ -14,7 +14,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     // MARK: - Properties
     
-    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .leftRecommend) // .leftRecommend
+    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .leftRecommend) 
     var itemList: [RecommendElementResponse] = []
     var selectedIndex: Int = 0
     
@@ -24,6 +24,8 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     typealias Item = AnyHashable
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
     
+    var isClickedClosure: ((_ section: Int, _ index: Int) -> Void)?
+  
     // MARK: - UI Components
     
     private var underLineView = UIView()
@@ -67,9 +69,6 @@ extension RecommendViewController {
         customTabBar.delegate = self
         
         navigationBarView.backButton.addTarget(self, action: #selector(popToAddMissionController), for: .touchUpInside)
-        nestedView.do {
-            $0.collectionview.delegate = self
-        }
     }
     
     private func register() {
@@ -88,7 +87,7 @@ extension RecommendViewController {
         
         customTabBar.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
-            $0.top.equalTo(navigationBarView.snp.bottom).offset(19.adjusted)
+            $0.top.equalTo(navigationBarView.snp.bottom)
             $0.height.equalTo(104.adjusted)
         }
         
@@ -137,6 +136,10 @@ extension RecommendViewController {
             case .main:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
                 cell.item = self.itemList[indexPath.item]
+                cell.dataBind(section: indexPath.item)
+                cell.isClickedClosure = { [weak self] section, index in
+                    self?.pushToAdd(section: section, index: index)
+                }
                 cell.config()
                 return cell
             }
@@ -192,6 +195,16 @@ extension RecommendViewController {
         return section
     }
     
+    private func pushToAdd(section: Int, index: Int) {
+        let addMissionViewController = AddMissionViewController()
+        addMissionViewController.behavior = itemList[section].recommendActions[index].name
+        addMissionViewController.addMissionView?.navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
+        let navigationController = UINavigationController(rootViewController: addMissionViewController)
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.isNavigationBarHidden = true
+        self.present(navigationController, animated: false)
+    }
+    
     // MARK: - @objc Methods
     
     @objc func buttonTapped(_ sender: UIButton) {
@@ -202,12 +215,5 @@ extension RecommendViewController {
     
     @objc private func popToAddMissionController() {
         self.navigationController?.popViewController(animated: true)
-    }
-}
-extension RecommendViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let addMissionViewController = AddMissionViewController()
-        addMissionViewController.modalPresentationStyle = .fullScreen
-        present(addMissionViewController, animated: false, completion: nil)
     }
 }

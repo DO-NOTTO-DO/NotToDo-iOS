@@ -326,6 +326,10 @@ extension AddMissionView {
         dateButton.setTitle(date, for: .normal)
     }
     
+    func dataBind(behavior: String) {
+        behaviorTextField.text = behavior
+    }
+    
     // MARK: - @objc Methods
     
     func availableAddMission(_ enable: Bool) {

@@ -27,7 +27,7 @@ class SituationStatisticsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setUI()
+//        setUI()
         register()
         setLayout()
     }
@@ -42,6 +42,7 @@ class SituationStatisticsView: UIView {
 extension SituationStatisticsView {
     func setUI() {
         if situationList.isEmpty {
+            print("situation empty")
             backgroundColor = .clear
             situationTitleView.isHidden = true
             expangindTableView.isScrollEnabled = false

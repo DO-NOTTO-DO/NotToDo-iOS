@@ -5,36 +5,29 @@
 //  Created by 강윤서 on 2023/01/12.
 //
 
-import Foundation
-
 import Moya
+import Foundation
 
 final class HomeAPI {
     
     static let shared: HomeAPI = HomeAPI()
     
-    private let homeProvider = MoyaProvider<HomeService>(plugins: [MoyaLoggingPlugin()])
+    var homeProvider = MoyaProvider<HomeService>(plugins: [MoyaLoggingPlugin()])
     
     private init() { }
-    
-    public private(set) var bannerData: GeneralResponse<BannerResponse>?
-    
+
     // MARK: - GET
-    
-    func getBanner(completion: @escaping (GeneralResponse<BannerResponse>?) -> ()) {
-        homeProvider.request(.banner) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    self.bannerData = try response.map(GeneralResponse<BannerResponse>?.self)
-                    guard let bannerData = self.bannerData else { return }
-                    completion(bannerData)
-                } catch (let err) {
-                    print(err.localizedDescription, 500)
-                }
-            case .failure(let err):
-                print(err.localizedDescription)
-                completion(nil)
+        
+    func getBanner(completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.banner) { response in
+            switch response {
+            case let .success(response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, BannerResponse.self)
+                completion(networkResult)
+            case let .failure(err):
+                print(err)
             }
         }
     }

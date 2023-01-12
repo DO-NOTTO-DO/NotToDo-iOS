@@ -15,31 +15,43 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate {
     // MARK: - Properties
     
     var missionList: [DailyMission] = DailyMission.DailyMissionModel
+    var banner: BannerResponse?
     
     // MARK: - UI Components
     
     private var homeView: HomeView!
+    private(set) lazy var refreshControl = UIRefreshControl()
     
     // MARK: - View Life Cycle
     
     override func loadView() {
         super.loadView()
-        homeView = HomeView(frame: CGRect(), motivationText: "초기화 값입니다.")
+        homeView = HomeView()
         view = homeView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setAddTarget()
-        setDelegate()
+        setCalendar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         requestBannerAPI()
     }
+    
 }
 
 extension HomeViewController {
-    private func setDelegate() {
-        homeView.homeCollectionView.delegate = self
-        homeView.homeCollectionView.dataSource = self
+    private func setCalendar() {
+        homeView.homeCollectionView.do {
+            $0.delegate = self
+            $0.dataSource = self
+            $0.refreshControl = refreshControl
+            $0.refreshControl?.addTarget(self, action: #selector(handleRefreshControl),
+                                          for: .valueChanged)
+        }
     }
     
     private func setAddTarget() {
@@ -47,11 +59,23 @@ extension HomeViewController {
     }
     
     private func requestBannerAPI() {
-        HomeAPI.shared.getBanner { [weak self] response in
-            guard self != nil else { return }
-            guard let response = response else { return }
-            dump(response)
+        HomeAPI.shared.getBanner { [weak self] result in
+            switch result {
+            case let .success(data):
+                guard let data = data as? BannerResponse else { return }
+                self?.banner = data
+                self?.homeView.homeCollectionView.reloadData()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
         }
+        
     }
     
     // MARK: - @objc Methods
@@ -62,6 +86,17 @@ extension HomeViewController {
         navigationController.modalPresentationStyle = .overFullScreen
         navigationController.isNavigationBarHidden = true
         present(navigationController, animated: true)
+    }
+    
+    @objc func handleRefreshControl() {
+        // 컨텐츠를 업데이트하세요.
+        requestBannerAPI()
+        homeView.homeCollectionView.reloadData()
+        
+        // Refresh control을 제거하세요.
+        DispatchQueue.main.async {
+            self.homeView.homeCollectionView.refreshControl?.endRefreshing()
+        }
     }
 }
 
@@ -125,7 +160,10 @@ extension HomeViewController: UICollectionViewDataSource {
                 withReuseIdentifier: HomeCollectionReusableView.identifier,
                 for: indexPath
               ) as? HomeCollectionReusableView else { return UICollectionReusableView() }
-        header.setRandomData()
+        if let banner = banner {
+            header.setRandomData(banner: banner)
+        }
+        
         return header
     }
 }

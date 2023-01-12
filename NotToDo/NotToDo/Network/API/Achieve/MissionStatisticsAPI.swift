@@ -21,7 +21,7 @@ final class MissionStatisticsAPI {
     
     // MARK: - GET
     
-    func getMissionStatistics(completion: @escaping (GeneralArrayResponse<MissionStatistcsResponse>?) -> ()) {
+    func getMissionStatistics(completion: @escaping (GeneralArrayResponse<MissionStatistcsResponse>?) -> Void) {
         missionStatisticsProvider.request(.missionStatistics) { result in
             switch result {
             case .success(let response):

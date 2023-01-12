@@ -45,7 +45,7 @@ class AddMissionView: UIView {
     
     private let dateView = UIView()
     private let dateLabel = UILabel()
-    private let dateButton = UIButton(configuration: .filled())
+    let dateButton = UIButton(configuration: .filled())
     var date = Date()
     let nowDate = Date()
     let dateFormatter = DateFormatter()
@@ -149,7 +149,6 @@ extension AddMissionView {
             $0.setTitleColor(.nottodoWhite, for: .normal)
             $0.titleLabel?.font = .PretendardBold(size: 18.adjusted)
             $0.backgroundColor = .nottodoGray2
-            $0.addTarget(self, action: #selector(resetBehaviorModel), for: .touchUpInside)
         }
     }
     
@@ -359,9 +358,5 @@ extension AddMissionView {
 //            addMissionButton.isUserInteractionEnabled = true
 //            addMissionButton.backgroundColor = .nottodoBlack
 //        }
-    }
-    
-    @objc func resetBehaviorModel() {
-        behaviorList.removeAll()
     }
 }

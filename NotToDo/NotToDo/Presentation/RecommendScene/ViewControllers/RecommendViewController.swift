@@ -32,6 +32,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     private lazy var customTabBar = CustomTabBarView()
     private lazy var customTabBarCollectionView = CustomTabBarView().collectionview
     private lazy var safeArea = self.view.safeAreaLayoutGuide
+    private var nestedView = NestedView()
     
     // MARK: - Life Cycle
     
@@ -66,6 +67,9 @@ extension RecommendViewController {
         customTabBar.delegate = self
         
         navigationBarView.backButton.addTarget(self, action: #selector(popToAddMissionController), for: .touchUpInside)
+        nestedView.do {
+            $0.collectionview.delegate = self
+        }
     }
     
     private func register() {
@@ -193,10 +197,17 @@ extension RecommendViewController {
     @objc func buttonTapped(_ sender: UIButton) {
         let addMissionViewController = AddMissionViewController()
         addMissionViewController.modalPresentationStyle = .fullScreen
-        self.present(addMissionViewController, animated: true, completion: nil)
+        self.present(addMissionViewController, animated: false, completion: nil)
     }
     
     @objc private func popToAddMissionController() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+extension RecommendViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let addMissionViewController = AddMissionViewController()
+        addMissionViewController.modalPresentationStyle = .fullScreen
+        present(addMissionViewController, animated: false, completion: nil)
     }
 }

@@ -53,7 +53,6 @@ extension NestedView {
         collectionview.do {
             $0.backgroundColor = .clear
             $0.showsVerticalScrollIndicator = false
-            $0.delegate = self
             $0.isScrollEnabled = false
             $0.bounces = false
         }
@@ -128,5 +127,6 @@ extension NestedView {
 extension NestedView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        print("tapped")
     }
 }

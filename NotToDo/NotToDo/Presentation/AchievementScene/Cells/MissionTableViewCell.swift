@@ -20,6 +20,7 @@ class MissionTableViewCell: UITableViewCell {
     
     private var label = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardSemiBold(size: 14.adjusted))
     var missionImage = UIImageView()
+    let numberLabel = UILabel()
     
     // MARK: - View Life Cycle
     
@@ -48,11 +49,16 @@ extension MissionTableViewCell {
         missionImage.do {
             $0.image = UIImage.rank1
         }
+        numberLabel.do {
+            $0.textColor = .nottodoGray2
+            $0.font = .PretendardRegular(size: 14.adjusted)
+            $0.text = "n회"
+        }
     }
     
     private func setLayout() {
         contentView.addSubview(missionImage)
-        missionImage.addSubview(label)
+        missionImage.addSubviews(label, numberLabel)
         
         missionImage.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -60,6 +66,10 @@ extension MissionTableViewCell {
         label.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(41.adjusted)
+        }
+        numberLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(17.adjusted)
         }
     }
     

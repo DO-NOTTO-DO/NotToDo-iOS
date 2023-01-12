@@ -111,18 +111,23 @@ extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
             switch indexPath.row {
             case 0:
                 cell.missionImage.image = UIImage.rank1
+                cell.numberLabel.textColor = .yellow_basic
                 return cell
             case 1:
                 cell.missionImage.image = UIImage.rank2
+                cell.numberLabel.textColor = .yellow_basic
                 return cell
             case 2:
                 cell.missionImage.image = UIImage.rank3
+                cell.numberLabel.textColor = .yellow_basic
                 return cell
             case 3:
                 cell.missionImage.image = UIImage.rank4
+                cell.numberLabel.textColor = .nottodoGray2
                 return cell
             default:
                 cell.missionImage.image = UIImage.rank5
+                cell.numberLabel.textColor = .nottodoGray2
                 return cell
             }
         }

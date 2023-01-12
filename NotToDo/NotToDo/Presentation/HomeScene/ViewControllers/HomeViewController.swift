@@ -14,7 +14,7 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     // MARK: - Properties
     
-    var missionList: [DailyMission] = DailyMission.DailyMissionModel
+    var missionList: [DailyMissionResponseDTO] = []
     var banner: BannerResponse?
     
     // MARK: - UI Components
@@ -39,6 +39,7 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestBannerAPI()
+        requestDailyMissionDTO(date: "2023-01-23")
     }
     
 }
@@ -75,7 +76,25 @@ extension HomeViewController {
                 print("networkFail")
             }
         }
-        
+    }
+    
+    private func requestDailyMissionDTO(date: String) {
+        HomeAPI.shared.getDailyMission(date: "2023-01-23") { [weak self] result in
+            switch result {
+            case let .success(data):
+                guard let data = data as? [DailyMissionResponseDTO] else { return }
+                self?.missionList = data
+                self?.homeView.homeCollectionView.reloadData()
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            case .requestErr(_):
+                print("networkFail")
+            }
+        }
     }
     
     // MARK: - @objc Methods
@@ -91,6 +110,7 @@ extension HomeViewController {
     @objc func handleRefreshControl() {
         // 컨텐츠를 업데이트하세요.
         requestBannerAPI()
+        requestDailyMissionDTO(date: "2023-01-23")
         homeView.homeCollectionView.reloadData()
         
         // Refresh control을 제거하세요.
@@ -149,7 +169,11 @@ extension HomeViewController: UICollectionViewDataSource {
         case 0:
             return 1
         default:
-            return missionList.count
+            if missionList.isEmpty {
+                return 1
+            } else {
+                return missionList.count ?? 1
+            }
         }
     }
     
@@ -179,12 +203,16 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellHeight = missionList[indexPath.row].actions.count < 2 ? 144.adjusted : 183.adjusted
+        let cellHeight = 144.adjusted
+        print(indexPath.row, "😃")
+//        if let missionList = missionList {
+//            let cellHeight = missionList[indexPath.row].actions.count < 2 ? 144.adjusted : 183.adjusted
+//        }
         switch indexPath.section {
         case 0:
             return CGSize(width: Numbers.width, height: 106.adjusted)
         default:
-            if missionList.isEmpty {
+            if missionList.count == 0 {
                 return CGSize(width: Numbers.width, height: (collectionView.frame.height - 105).adjusted)            // 수정 필요
             } else {
                 return CGSize(width: Numbers.width, height: cellHeight)

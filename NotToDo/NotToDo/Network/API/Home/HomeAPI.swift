@@ -68,5 +68,24 @@ final class HomeAPI {
             }
         }
     }
+    
+    // MARK: - Delete
+    
+    func deleteMission(id: Int, completion: @escaping (GeneralResponse<VoidType>?) -> Void) {
+        homeProvider.request(.deleteMission(id: id)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let data = try response.map(GeneralResponse<VoidType>.self)
+                    completion(data)
+                } catch (let err) {
+                    print(err.localizedDescription, 500)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
 
 }

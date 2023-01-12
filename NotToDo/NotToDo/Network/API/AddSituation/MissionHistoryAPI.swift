@@ -17,16 +17,17 @@ final class MissionHistoryAPI {
     
     private init() { }
     
-    public private(set) var missionHistoryData: GeneralResponse<MissionHistoryResponse>?
+    public private(set) var missionHistoryData: GeneralArrayResponse<MissionHistoryModel>?
     
     // MARK: - GET
     
-    func getMissionHistory(completion: @escaping (GeneralResponse<MissionHistoryResponse>?) -> ()) {
+    func getMissionHistory(completion: @escaping (GeneralArrayResponse<MissionHistoryModel>?) -> ()) {
         missionHistoryProvider.request(.missionHistory) { result in
             switch result {
             case .success(let response):
                 do {
-                    self.missionHistoryData = try response.map(GeneralResponse<MissionHistoryResponse>?.self)
+                    self.missionHistoryData = try
+                    response.map(GeneralArrayResponse<MissionHistoryModel>?.self)
                     guard let missionHistoryData = self.missionHistoryData else { return }
                     completion(missionHistoryData)
                 } catch (let err) {

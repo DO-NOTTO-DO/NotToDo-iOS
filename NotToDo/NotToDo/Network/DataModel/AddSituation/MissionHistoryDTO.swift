@@ -6,7 +6,7 @@
 //
 
 struct MissionHistoryResponse: Codable {
-    let history: String
+    let title: String
 }
 
-typealias MissionHistory = [MissionHistoryResponse]
+typealias MissionHistory = [MissionHistoryModel]

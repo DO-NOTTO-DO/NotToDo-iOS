@@ -15,7 +15,7 @@ class MissionHistoryView: UIView, UITextFieldDelegate {
     // MARK: - UI Components
     
     private var inputTextField = UITextField()
-    private var backButton = UIButton()
+    var backButton = UIButton()
     private var missionHistoryIcon = UIImageView()
     private var missionHistoryLabel = UILabel()
     private lazy var missionHistoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())

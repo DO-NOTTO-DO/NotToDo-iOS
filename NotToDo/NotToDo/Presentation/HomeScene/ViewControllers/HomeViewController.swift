@@ -27,6 +27,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setAddTarget()
+        requestBannerAPI()
     }
 }
 
@@ -35,11 +36,22 @@ extension HomeViewController {
         homeView.addMissionButton.addTarget(self, action: #selector(addMission), for: .touchUpInside)
     }
     
+    private func requestBannerAPI() {
+        HomeAPI.shared.getBanner { [weak self] response in
+            guard self != nil else { return }
+            guard let response = response else { return }
+            
+            dump(response)
+        }
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func addMission() {
         let addMissionViewController = AddMissionViewController()
-        addMissionViewController.modalPresentationStyle = .overFullScreen
-        present(addMissionViewController, animated: true)
+        let navigationController = UINavigationController(rootViewController: addMissionViewController)
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.isNavigationBarHidden = true
+        present(navigationController, animated: true)
     }
 }

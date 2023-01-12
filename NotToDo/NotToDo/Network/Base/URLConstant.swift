@@ -16,4 +16,5 @@ struct URLConstant {
     // MARK: - Home
     
     static let homeBanner = "/banner"
+    static let addSituation = "/situation"
 }

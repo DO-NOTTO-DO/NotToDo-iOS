@@ -21,7 +21,7 @@ final class SituationStatisticsAPI {
     
     // MARK: - GET
     
-    func getSituationStatistics(completion: @escaping (GeneralArrayResponse<SituationStatistcsResponse>?) -> ()) {
+    func getSituationStatistics(completion: @escaping (GeneralArrayResponse<SituationStatistcsResponse>?) -> Void) {
         situationStatisticsProvider.request(.situationStatistics) { result in
             switch result {
             case .success(let response):

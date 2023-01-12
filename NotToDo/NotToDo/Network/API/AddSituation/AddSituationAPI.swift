@@ -20,7 +20,7 @@ final class AddSituationAPI {
     
     // MARK: - GET
     
-    func getAddSituation(completion: @escaping (GeneralResponse<AddSituationResponse>?) -> ()) {
+    func getAddSituation(completion: @escaping (GeneralResponse<AddSituationResponse>?) -> Void) {
         addSituationProvider.request(.addSituation) { result in
             switch result {
             case .success(let response):

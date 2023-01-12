@@ -209,11 +209,11 @@ extension HomeMissionCollectionViewCell {
         }
     }
     
-    func configure(_ model: DailyMission) {
+    func configure(_ model: DailyMissionResponseDTO) {
         situationLabel.text = model.situation
         missionTitleLabel.text = model.title
         goalTitleLabel.text = model.goal
-        setAction(model.actions)
+        setAction(model.actions.map { $0.name })
     }
     
     private func setAction(_ actionList: [String]) {

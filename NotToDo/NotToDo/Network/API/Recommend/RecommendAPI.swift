@@ -21,7 +21,7 @@ final class RecommendAPI {
     
     // MARK: - GET
     
-    func getRecommend(index: Int, completion: @escaping (GeneralArrayResponse<RecommendElementResponse>?) -> ()) {
+    func getRecommend(index: Int, completion: @escaping (GeneralArrayResponse<RecommendElementResponse>?) -> Void) {
         recommendProvider.request(.recommendEnvirionment(id: index )) { result in
             switch result {
             case .success(let response):

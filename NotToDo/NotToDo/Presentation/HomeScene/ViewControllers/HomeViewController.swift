@@ -50,7 +50,6 @@ extension HomeViewController {
         HomeAPI.shared.getBanner { [weak self] response in
             guard self != nil else { return }
             guard let response = response else { return }
-            
             dump(response)
         }
     }

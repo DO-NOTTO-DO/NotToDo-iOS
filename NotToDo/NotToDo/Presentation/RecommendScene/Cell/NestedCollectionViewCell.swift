@@ -61,7 +61,7 @@ extension NestedCollectionViewCell {
         }
     }
     
-    func config(_ item: ItemModel) {
-        titleLabel.text = item.subTitle
+    func config(_ item: RecommendAction) {
+        titleLabel.text = item.name
     }
 }

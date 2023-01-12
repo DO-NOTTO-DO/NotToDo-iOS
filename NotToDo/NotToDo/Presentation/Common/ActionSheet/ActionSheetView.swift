@@ -29,10 +29,16 @@ final class ActionSheetView: UIView {
     
     // MARK: - Properties
     
-    private var mode: ActionSheetType
+    var mode: ActionSheetType {
+        didSet {
+            setupMode(mode: mode)
+        }
+    }
     
     // MARK: - UI Components
     
+    private let labelStackView = UIStackView()
+    private let situationLabel = UILabel()
     private let missionLabel = UILabel()
     private let deleteView = UIView()
     private let deleteIcon = UIImageView()
@@ -40,7 +46,7 @@ final class ActionSheetView: UIView {
     private let editView = UIView()
     private let editIcon = UIImageView()
     private let editLabel = UILabel()
-    private let duplicateView = UIView()
+    let duplicateView = UIView()
     private let duplicateIcon = UIImageView()
     private let duplicateLabel = UILabel()
     private let subDuplicateLabel = UILabel()
@@ -56,15 +62,16 @@ final class ActionSheetView: UIView {
     private lazy var today: Date = { return Date() }()
     lazy var dateFormatter = DateFormatter()
     
-    private var selectButton = NotTodoButton(frame: CGRect(), mode: .plain, text: I18N.select, image: nil, font: .bold, size: 18.adjusted)
+    var selectButton = NotTodoButton(frame: CGRect(), mode: .plain, text: I18N.select, image: nil, font: .bold, size: 18.adjusted)
 
     // MARK: - View Life Cycle
     
-    init(frame: CGRect, mode: ActionSheetType) {
+    init(frame: CGRect, mode: ActionSheetType, situation: String, mission: String) {
         self.mode = mode
         super.init(frame: frame)
         addShape()
         setupMode(mode: mode)
+        setLabel(situation, mission)
     }
     
     @available(*, unavailable)
@@ -98,13 +105,28 @@ extension ActionSheetView {
         }
     }
     
+    private func setLabel(_ situation: String, _ mission: String) {
+        situationLabel.text = situation
+        missionLabel.text = mission
+    }
+    
     private func setMeatballUI() {
         [deleteLabel, editLabel, duplicateLabel].forEach {
             $0.font = .PretendardMedium(size: 16.adjusted)
             $0.textColor = .nottodoGray1
         }
-        missionLabel.text = "9시 이전 유튜브 보지 않기"
-        missionLabel.font = .PretendardRegular(size: 16)
+        situationLabel.do {
+            $0.text = "9시 이전"
+            $0.font = .PretendardRegular(size: 16.adjusted)
+            $0.textColor = .nottodoGray2
+        }
+        
+        missionLabel.do {
+            $0.text = "유튜브 보지 않기"
+            $0.font = .PretendardRegular(size: 16.adjusted)
+            $0.textColor = .nottodoBlack
+        }
+        
         deleteLabel.text = I18N.delete
         editLabel.text = I18N.edit
         duplicateLabel.text = I18N.duplicate
@@ -113,34 +135,51 @@ extension ActionSheetView {
             $0.font = .PretendardRegular(size: 12.adjusted)
             $0.textColor = .nottodoGray2
         }
-        deleteIcon.image = .backBtn
-        editIcon.image = .backBtn
-        duplicateIcon.image = .backBtn
+        
+        deleteIcon.image = .trash
+        editIcon.image = .edit
+        duplicateIcon.image = .anotherDay
         [divisionLine1, divisionLine2].forEach {
             $0.backgroundColor = .nottodoGray4
+        }
+        
+        labelStackView.do {
+            $0.distribution = .fill
+            $0.spacing = 5.adjusted
+            $0.axis = .horizontal
+            $0.addArrangedSubviews(situationLabel, missionLabel)
+        }
+        
+        [deleteView, editView, duplicateView].forEach {
+            $0.backgroundColor = .clear
         }
     }
     
     private func setCalendarUI() {
         setCalendarText()
         setCalendarColor()
+        
         hStack.do {
             $0.axis = .horizontal
             $0.distribution = .fillProportionally
             $0.spacing = 14.adjusted
         }
+        
         leftButton.do {
             $0.setImage(.calendarLeftArrow, for: .normal)
             $0.addTarget(self, action: #selector(prevButtonTapped), for: .touchUpInside)
         }
+        
         rightButton.do {
             $0.setImage(.calendarRightArrow, for: .normal)
             $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         }
+        
         dateFormatter.do {
             $0.locale = Locale(identifier: "ko_KR")
             $0.dateFormat = "yyyy년 M월"
         }
+        
         calendar.do {
             $0.calendarHeaderView.isHidden = true
             $0.appearance.headerMinimumDissolvedAlpha = 0
@@ -148,7 +187,10 @@ extension ActionSheetView {
             $0.headerHeight = 0
             $0.scope = .month
             $0.allowsMultipleSelection = true
+            $0.locale = Locale(identifier: "ko_KR")
+
         }
+        
         headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
     }
     
@@ -185,50 +227,91 @@ extension ActionSheetView {
     }
     
     private func setMeatballLayout() {
-        addSubviews(missionLabel, deleteIcon, deleteLabel,
-                    editIcon, editLabel, duplicateIcon,
-                    duplicateLabel, subDuplicateLabel, divisionLine1, divisionLine2)
+        deleteView.addSubviews(deleteIcon, deleteLabel)
+        editView.addSubviews(editIcon, editLabel)
+        duplicateView.addSubviews(duplicateIcon, duplicateLabel, subDuplicateLabel)
+        addSubviews(labelStackView, deleteView, editView,
+                    duplicateView, divisionLine1, divisionLine2)
+        
         missionLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(34.adjusted)
+            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.leading.equalTo(situationLabel.snp.trailing).offset(5.adjusted)
         }
+        
+        situationLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
+        }
+        
+        labelStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(34.adjusted)
+            $0.centerX.equalToSuperview()
+        }
+        
+        deleteView.snp.makeConstraints {
+            $0.top.equalTo(labelStackView.snp.bottom).offset(16.adjusted)
+            $0.directionalHorizontalEdges.equalToSuperview()
+            $0.height.equalTo(58.adjusted)
+        }
+
         deleteIcon.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(44.adjusted)
-            $0.top.equalTo(missionLabel.snp.bottom).offset(29.adjusted)
+            $0.leading.equalToSuperview().inset(34.adjusted)
+            $0.centerY.equalToSuperview()
             $0.size.equalTo(30.adjusted)
         }
+
         deleteLabel.snp.makeConstraints {
-            $0.top.equalTo(missionLabel.snp.bottom).offset(35.adjusted)
+            $0.centerY.equalTo(deleteIcon.snp.centerY)
             $0.leading.equalTo(deleteIcon.snp.trailing).offset(11.adjusted)
         }
+
         divisionLine1.snp.makeConstraints {
-            $0.top.equalTo(deleteIcon.snp.bottom).offset(14.adjusted)
+            $0.top.equalTo(deleteView.snp.bottom)
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.height.equalTo(0.5.adjusted)
         }
+        
+        editView.snp.makeConstraints {
+            $0.top.equalTo(divisionLine1.snp.bottom)
+            $0.directionalHorizontalEdges.equalToSuperview()
+            $0.height.equalTo(60.adjusted)
+        }
+        
         editIcon.snp.makeConstraints {
             $0.leading.equalTo(deleteIcon.snp.leading)
             $0.size.equalTo(30.adjusted)
-            $0.top.equalTo(divisionLine1.snp.bottom).offset(15.adjusted)
+            $0.centerY.equalToSuperview()
         }
+        
         editLabel.snp.makeConstraints {
-            $0.top.equalTo(divisionLine1.snp.bottom).offset(20.adjusted)
+            $0.centerY.equalToSuperview()
             $0.leading.equalTo(editIcon.snp.trailing).offset(11.adjusted)
         }
+        
         divisionLine2.snp.makeConstraints {
-            $0.top.equalTo(editIcon.snp.bottom).offset(14.adjusted)
+            $0.top.equalTo(editView.snp.bottom)
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.height.equalTo(0.5.adjusted)
         }
+        
+        duplicateView.snp.makeConstraints {
+            $0.top.equalTo(divisionLine2.snp.bottom)
+            $0.height.equalTo(60.adjusted)
+            $0.directionalHorizontalEdges.equalToSuperview()
+        }
+
         duplicateIcon.snp.makeConstraints {
-            $0.top.equalTo(divisionLine2.snp.bottom).offset(14.adjusted)
+            $0.top.equalToSuperview().offset(14.adjusted)
             $0.leading.equalTo(deleteIcon.snp.leading)
             $0.size.equalTo(30.adjusted)
         }
+
         duplicateLabel.snp.makeConstraints {
-            $0.top.equalTo(divisionLine2.snp.bottom).offset(19.adjusted)
+            $0.top.equalToSuperview().offset(19.adjusted)
             $0.leading.equalTo(duplicateIcon.snp.trailing).offset(10.adjusted)
         }
+
         subDuplicateLabel.snp.makeConstraints {
             $0.top.equalTo(duplicateLabel.snp.bottom).offset(6.adjusted)
             $0.leading.equalTo(duplicateIcon.snp.trailing).offset(10.adjusted)

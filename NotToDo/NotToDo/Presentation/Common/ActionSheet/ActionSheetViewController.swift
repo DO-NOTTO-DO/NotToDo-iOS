@@ -15,11 +15,16 @@ final class ActionSheetViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var mode: ActionSheetType! = .meatball
+    var mode: ActionSheetType! = .meatball {
+        didSet {
+            actionSheetView.mode = mode
+        }
+    }
+    var dismissClicked: (() -> Void)?
     
     // MARK: - UI Components
 
-    private var actionSheetView = ActionSheetView(frame: CGRect(), mode: .meatball)
+    lazy var actionSheetView = ActionSheetView(frame: CGRect(), mode: mode, situation: "9시 이후", mission: "밥 먹기")
     
     // MARK: - View Life Cycle
     
@@ -28,16 +33,16 @@ final class ActionSheetViewController: UIViewController {
         setUI()
         setLayout()
         setCalendarDelegate()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        showActionSheetWithAnimation()
+        setRecognizer()
+        setAddTarget()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first,
-           touch.view != actionSheetView {
-            dismissActionSheetWithAnimation()
+        if let touch = touches.first {
+            let position = touch.location(in: self.view)
+            if position.y < Numbers.height - actionSheetView.frame.height {
+                dismissActionSheetWithAnimation()
+            }
         }
     }
 }
@@ -51,24 +56,22 @@ extension ActionSheetViewController {
     }
     
     private func setLayout() {
+        let actionSheetViewHeight = mode.viewHeight
         view.addSubviews(actionSheetView)
         
         actionSheetView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(Numbers.height)
+            $0.top.equalToSuperview().inset(Numbers.height - actionSheetViewHeight)
             $0.bottom.leading.trailing.equalToSuperview()
         }
     }
     
-    private func showActionSheetWithAnimation() {
-        let actionSheetViewHeight = mode.viewHeight
-        self.actionSheetView.snp.updateConstraints {
-            $0.top.equalToSuperview().inset(Numbers.height - actionSheetViewHeight)
-        }
-        UIView.animate(withDuration: 0.3) {
-            self.actionSheetView.transform = CGAffineTransform(translationX: 0, y: 0)
-            self.view.backgroundColor = .nottodoBlack?.withAlphaComponent(0.7)
-            self.view.layoutIfNeeded()
-        }
+    private func setRecognizer() {
+        let duplicationTapGesture = UITapGestureRecognizer(target: self, action: #selector(anotherButtonDidTap))
+        actionSheetView.duplicateView.addGestureRecognizer(duplicationTapGesture)
+    }
+    
+    private func setAddTarget() {
+        actionSheetView.selectButton.addTarget(self, action: #selector(choiceFinishButtonDidTap), for: .touchUpInside)
     }
     
     private func dismissActionSheetWithAnimation() {
@@ -76,7 +79,6 @@ extension ActionSheetViewController {
             $0.top.equalToSuperview().inset(Numbers.height)
         }
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn) {
-            self.view.backgroundColor = .clear
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.dismiss(animated: true)
@@ -85,6 +87,16 @@ extension ActionSheetViewController {
     
     private func setCalendarDelegate() {
         actionSheetView.calendar.delegate = self
+    }
+    
+    @objc private func anotherButtonDidTap() {
+        dismiss(animated: true) { [weak self] in
+            self?.dismissClicked?()
+        }
+    }
+    
+    @objc private func choiceFinishButtonDidTap() {
+        dismissActionSheetWithAnimation()
     }
 }
 

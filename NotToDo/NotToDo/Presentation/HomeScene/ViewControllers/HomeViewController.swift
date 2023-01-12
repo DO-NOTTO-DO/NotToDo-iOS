@@ -55,7 +55,6 @@ extension HomeViewController: CheckboxToolTipDelegate {
 extension HomeViewController: ActionSheetViewDelegate {
     func reloadMissionData() {
         requestDailyMissionAPI(date: "2023-01-25")
-        print(missionList, "☘️")
         homeView.homeCollectionView.reloadData()
     }
 }

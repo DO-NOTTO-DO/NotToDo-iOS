@@ -202,15 +202,18 @@ extension RecommendViewController {
         let navigationController = UINavigationController(rootViewController: addMissionViewController)
         navigationController.modalPresentationStyle = .overFullScreen
         navigationController.isNavigationBarHidden = true
-        self.present(navigationController, animated: false)
+        self.present(navigationController, animated: true)
     }
     
     // MARK: - @objc Methods
     
     @objc func buttonTapped(_ sender: UIButton) {
         let addMissionViewController = AddMissionViewController()
-        addMissionViewController.modalPresentationStyle = .fullScreen
-        self.present(addMissionViewController, animated: false, completion: nil)
+        addMissionViewController.addMissionView?.navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
+        let navigationController = UINavigationController(rootViewController: addMissionViewController)
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.isNavigationBarHidden = true
+        self.present(navigationController, animated: true)
     }
     
     @objc private func popToAddMissionController() {

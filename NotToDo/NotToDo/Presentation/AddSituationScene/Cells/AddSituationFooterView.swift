@@ -24,7 +24,7 @@ class AddSituationFooterView: UICollectionReusableView {
     
     var inputTextField = UITextField()
     var textCountLabel = UILabel()
-    let maxLength = 15
+    let maxLength = 10
     weak var delegate: AddSituationFooterViewDelegate?
     
     // MARK: - View Life Cycles

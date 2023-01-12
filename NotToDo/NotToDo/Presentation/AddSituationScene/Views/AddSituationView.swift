@@ -16,6 +16,8 @@ protocol AddSituationViewDelegate: AnyObject {
 
 class AddSituationView: UIView {
     
+    // MARK: - Properties
+    
     var addSituationResponse: AddSituationResponse?
     var recommendList: [AddSituationModel] = []
     var recentList: [AddSituationModel] = []

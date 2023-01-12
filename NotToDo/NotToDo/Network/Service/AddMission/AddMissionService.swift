@@ -9,11 +9,12 @@ import Foundation
 
 import Moya
 
-enum AddSituationService {
+enum AddMissionService {
     case addSituation
+    case missionHistory
 }
 
-extension AddSituationService: TargetType {
+extension AddMissionService: TargetType {
     var baseURL: URL {
         return URL(string: URLConstant.baseURL)!
     }
@@ -22,26 +23,28 @@ extension AddSituationService: TargetType {
         switch self {
         case .addSituation:
             return URLConstant.addSituation
+        case .missionHistory:
+            return URLConstant.missionhistory
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .addSituation:
+        case .addSituation, .missionHistory:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .addSituation:
+        case .addSituation, .missionHistory:
             return .requestPlain
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .addSituation:
+        case .addSituation, .missionHistory:
             return NetworkConstant.hasTokenHeader
         }
     }

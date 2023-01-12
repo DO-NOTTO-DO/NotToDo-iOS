@@ -63,6 +63,6 @@ extension MissionHistoryCollectionViewCell {
     }
     
     func configure(model: MissionHistoryModel) {
-        missionHistoryLabel.text = model.history
+        missionHistoryLabel.text = model.title
     }
 }

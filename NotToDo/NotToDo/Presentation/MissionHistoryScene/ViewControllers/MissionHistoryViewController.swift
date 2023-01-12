@@ -9,10 +9,15 @@ import UIKit
 
 final class MissionHistoryViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    var missionHistoryResponse: MissionHistoryResponse?
+    var historyList: [MissionHistoryModel] = []
+    weak var delegate: MissionHistoryViewDelegate?
+    
     // MARK: - UI Components
     
     private var missionHistoryView: MissionHistoryView!
-    weak var delegate: MissionHistoryViewDelegate?
     
     // MARK: - View Life Cycle
     
@@ -20,6 +25,7 @@ final class MissionHistoryViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         setAddTarget()
+        requestMissionHistoryAPI()
     }
     
     override func loadView() {
@@ -32,6 +38,20 @@ final class MissionHistoryViewController: UIViewController {
 extension MissionHistoryViewController {
     private func setAddTarget() {
         missionHistoryView.backButton.addTarget(self, action: #selector(popToAddMissionViewController), for: .touchUpInside)
+    }
+    
+    private func requestMissionHistoryAPI() {
+        MissionHistoryAPI.shared.getMissionHistory { [weak self] response in
+            guard self != nil else { return }
+            guard let response = response else { return }
+            
+            guard let data = response.data else { return }
+            self?.historyList = data
+            self?.missionHistoryView.historyList = data
+            self?.missionHistoryView.missionHistoryCollectionView.reloadData()
+    
+            dump(response)
+        }
     }
 
     @objc private func popToAddMissionViewController() {

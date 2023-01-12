@@ -30,4 +30,5 @@ struct URLConstant {
     // MARK: - AddMission
     
     static let addSituation = "/situation"
+    static let missionhistory = "/mission/recent"
 }

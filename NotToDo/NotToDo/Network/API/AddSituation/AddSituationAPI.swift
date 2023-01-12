@@ -12,7 +12,7 @@ final class AddSituationAPI {
     
     static let shared: AddSituationAPI = AddSituationAPI()
     
-    private let addSituationProvider = MoyaProvider<AddSituationService>(plugins: [MoyaLoggingPlugin()])
+    private let addSituationProvider = MoyaProvider<AddMissionService>(plugins: [MoyaLoggingPlugin()])
     
     private init() { }
     

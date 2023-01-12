@@ -96,7 +96,7 @@ extension AchievementViewController {
             dump(response)
         }
     }
-    func configMissionView(){
+    func configMissionView() {
         missionView.missionList = missionList
     }
     

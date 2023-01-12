@@ -42,6 +42,7 @@ extension MissionStatisticsView {
         if missionList.isEmpty {
             backgroundColor = .clear
             situationTitleView.isHidden = true
+            missionTableView.isScrollEnabled = false
         } else {
             backgroundColor = .nottodoWhite
             layer.borderWidth = 0.5
@@ -85,7 +86,7 @@ extension MissionStatisticsView {
 extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if missionList.isEmpty {
-          return 300
+            return 300
         } else {
             return 55
         }
@@ -102,6 +103,7 @@ extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if missionList.isEmpty {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsEmptyTableViewCell.identifier, for: indexPath) as? StatisticsEmptyTableViewCell else {return UITableViewCell() }
+            cell.selectionStyle = .none
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MissionTableViewCell.identifier, for: indexPath) as? MissionTableViewCell else { return UITableViewCell() }

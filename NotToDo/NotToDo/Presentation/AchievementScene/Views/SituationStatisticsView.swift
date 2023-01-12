@@ -42,12 +42,10 @@ class SituationStatisticsView: UIView {
 extension SituationStatisticsView {
     func setUI() {
         if situationList.isEmpty {
-            print(situationList.count)
-            print("situationStatistics empty")
             backgroundColor = .clear
             situationTitleView.isHidden = true
+            expangindTableView.isScrollEnabled = false
         } else {
-            print("situationStatistics")
             backgroundColor = .nottodoWhite
             layer.borderWidth = 0.5
             layer.borderColor = UIColor.nottodoGray2?.cgColor
@@ -117,6 +115,7 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if situationList.isEmpty {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsEmptyTableViewCell.identifier, for: indexPath) as? StatisticsEmptyTableViewCell else {return UITableViewCell() }
+            cell.selectionStyle = .none
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SituationTableViewCell.identifier, for: indexPath) as? SituationTableViewCell else { return UITableViewCell() }

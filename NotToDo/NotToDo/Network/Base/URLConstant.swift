@@ -20,4 +20,9 @@ struct URLConstant {
     // MARK: - Recommend
     
     static let recommendEnvirionment = "/environment"
+    
+    // MARK: - Achieve
+    
+    static let situationStatistics = "/mission/stat/situation"
+    static let missionStatistics = "/mission/stat/notTodo"
 }

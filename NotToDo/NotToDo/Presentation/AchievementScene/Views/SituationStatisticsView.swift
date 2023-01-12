@@ -14,14 +14,12 @@ class SituationStatisticsView: UIView {
     // MARK: - Properties
     
     var hiddenSections = Set<Int>()
-    var tableViewData = [[]]
-    
-    var titleLists: [TitleButtonList] = TitleButtonList.titles
+    var situationList: [SituationStatistcsResponse] = []
     var isSelected: [Bool] = []
     
     // MARK: - UI Components
     
-    private lazy var expangindTableView =  UITableView(frame: .zero, style: .grouped)
+    lazy var expangindTableView =  UITableView(frame: .zero, style: .grouped)
     private let sectionButton = UIButton()
     private let situationTitleView = SituationTitleView()
     
@@ -43,8 +41,8 @@ class SituationStatisticsView: UIView {
 
 extension SituationStatisticsView {
     func setUI() {
-        if tableViewData.isEmpty {
-            print(tableViewData.count)
+        if situationList.isEmpty {
+            print(situationList.count)
             print("situationStatistics empty")
             backgroundColor = .clear
             situationTitleView.isHidden = true
@@ -92,15 +90,15 @@ extension SituationStatisticsView {
 extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if titleLists.isEmpty {
+        if situationList.isEmpty {
             return 1
         } else {
-            return self.tableViewData.count
+            return self.situationList.count
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if titleLists.isEmpty {
+        if situationList.isEmpty {
             return 300
         }
         return 50
@@ -109,15 +107,15 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.hiddenSections.contains(section) {
-            return tableViewData[section].count
-        } else if titleLists.isEmpty {
+            return situationList[section].missions.count
+        } else if situationList.isEmpty {
             return 1
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if titleLists.isEmpty {
+        if situationList.isEmpty {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: StatisticsEmptyTableViewCell.identifier, for: indexPath) as? StatisticsEmptyTableViewCell else {return UITableViewCell() }
             return cell
         } else {
@@ -135,18 +133,18 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
             default:
                 cell.backGroundImage.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
             }
-            cell.titleLabel.text = (tableViewData[indexPath.section][indexPath.row] as! String)
+            cell.titleLabel.text = (situationList[indexPath.section].missions[indexPath.row].title as! String)
             cell.selectionStyle = .none
             return cell
         }
     }
     
-    func config(_ title: TitleButtonList) {
-        sectionButton.setTitle(title.title, for: .normal)
+    func config(_ title: String) {
+        sectionButton.setTitle(title, for: .normal)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if titleLists.isEmpty {
+        if situationList.isEmpty {
             return UIView()
         } else {
             guard let customHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableHeaderView.identifier) as? TableHeaderView else { return UIView() }
@@ -154,7 +152,7 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
             customHeaderView.headerButton.addTarget(self,
                                                     action: #selector(self.hideSection(sender:)),
                                                     for: .touchUpInside)
-            customHeaderView.config(titleLists[section])
+            customHeaderView.config(situationList[section].name)
             customHeaderView.isClickedClosure = { [weak self] result in
                 if result {
                     self?.isSelected[section].toggle()
@@ -182,7 +180,7 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
         func indexPathsForSection() -> [IndexPath] {
             var indexPaths = [IndexPath]()
             
-            for row in 0..<self.tableViewData[section].count {
+            for row in 0..<self.situationList[section].missions.count {
                 indexPaths.append(IndexPath(row: row,
                                             section: section))
             }

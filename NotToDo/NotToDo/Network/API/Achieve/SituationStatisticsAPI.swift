@@ -13,22 +13,22 @@ final class SituationStatisticsAPI {
     
     static let shared: SituationStatisticsAPI = SituationStatisticsAPI()
     
-    private let situationStatisticsProvider = MoyaProvider<RecommendService>(plugins: [MoyaLoggingPlugin()])
+    private let situationStatisticsProvider = MoyaProvider<AchieveService>(plugins: [MoyaLoggingPlugin()])
     
     private init() { }
     
-    public private(set) var recommendData: GeneralArrayResponse<RecommendElementResponse>?
+    public private(set) var situationStatisticsData: GeneralArrayResponse<SituationStatistcsResponse>?
     
     // MARK: - GET
     
-    func getRecommend(completion: @escaping (GeneralArrayResponse<RecommendElementResponse>?) -> ()) {
-        situationStatisticsProvider.request(.recommendEnvirionment(id: 1)) { result in
+    func getSituationStatistics(completion: @escaping (GeneralArrayResponse<SituationStatistcsResponse>?) -> ()) {
+        situationStatisticsProvider.request(.situationStatistics) { result in
             switch result {
             case .success(let response):
                 do {
-                    self.recommendData = try response.map(GeneralArrayResponse<RecommendElementResponse>?.self)
-                    guard let recommendData = self.recommendData else { return }
-                    completion(recommendData)
+                    self.situationStatisticsData = try response.map(GeneralArrayResponse<SituationStatistcsResponse>?.self)
+                    guard let situationStatisticsData = self.situationStatisticsData else { return }
+                    completion(situationStatisticsData)
                 } catch (let err) {
                     print(err.localizedDescription, 500)
                 }

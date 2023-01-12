@@ -14,9 +14,6 @@ class NestedView: UIView {
     
     // MARK: - Properties
 
-   // let itemList: [SortedItemModel] = SortedItemModel.sampleData
-//    let itemList: RecommendElementResponse?
-    //var item: SortedItemModel?
     var item: RecommendElementResponse?
     
     enum Section: Int, Hashable {
@@ -81,9 +78,8 @@ extension NestedView {
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionview, cellProvider: { (_, indexPath, item) -> UICollectionViewCell? in
             guard let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.identifier, for: indexPath) as? NestedCollectionViewCell else { return UICollectionViewCell()}
-          //  let item = item as! ItemModel
             let item = item as! RecommendAction
-            cell.config(item)
+            cell.configure(item)
             switch indexPath.row {
             case 0:
                 cell.layer.addBorder([.top, .bottom, .left, .right], color: .nottodoGray2!, width: 0.5)

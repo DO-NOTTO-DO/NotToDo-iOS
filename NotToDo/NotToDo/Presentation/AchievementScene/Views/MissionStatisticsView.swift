@@ -14,11 +14,11 @@ class MissionStatisticsView: UIView {
     
     // MARK: - Properties
     
-    let missionList: [MissionList] = MissionList.titles
+    var missionList: [MissionStatistcsResponse] = []
     
     // MARK: - UI Components
     
-    private lazy var missionTableView =  UITableView(frame: .zero, style: .grouped)
+    lazy var missionTableView =  UITableView(frame: .zero, style: .grouped)
     let situationTitleView = SituationTitleView()
     
     // MARK: - Life cycle

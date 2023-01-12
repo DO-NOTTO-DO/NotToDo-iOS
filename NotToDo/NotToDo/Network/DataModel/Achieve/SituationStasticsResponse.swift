@@ -8,10 +8,21 @@
 import Foundation
 
 // MARK: - SituationStatistcsResponseElement
-struct SituationStatistcsResponseElement: Codable {
+struct SituationStatistcsResponse: Codable {
     let id, count: Int
     let name: String
     let missions: [SituationMissions]
+    
+//    public func convert() -> [String] {
+//        var result: [String] = []
+//        for mission in missions {
+//            result.append(mission.title)
+//        }
+//        return result
+//    }
+//    static func dummy() -> [SituationStatistcsResponse] {
+//        return []
+//    }
 }
 
 // MARK: - Mission
@@ -20,4 +31,5 @@ struct SituationMissions: Codable {
     let title: String
 }
 
-typealias SituationStatistcsResponse = [SituationStatistcsResponseElement]
+
+

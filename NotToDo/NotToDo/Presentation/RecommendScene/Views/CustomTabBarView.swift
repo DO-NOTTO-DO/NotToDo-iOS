@@ -88,7 +88,7 @@ extension CustomTabBarView {
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionview, cellProvider: { collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomTabBarCell.identifier, for: indexPath) as? CustomTabBarCell else { return UICollectionViewCell()}
-            cell.config(item as! CustomTabBarItem, isSelected: indexPath.item == self.defaultIndex)
+            cell.configure(item as! CustomTabBarItem, isSelected: indexPath.item == self.defaultIndex)
             return cell
         })
     }

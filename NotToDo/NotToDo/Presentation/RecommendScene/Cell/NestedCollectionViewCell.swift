@@ -61,7 +61,7 @@ extension NestedCollectionViewCell {
         }
     }
     
-    func config(_ item: RecommendAction) {
+    func configure(_ item: RecommendAction) {
         titleLabel.text = item.name
     }
 }

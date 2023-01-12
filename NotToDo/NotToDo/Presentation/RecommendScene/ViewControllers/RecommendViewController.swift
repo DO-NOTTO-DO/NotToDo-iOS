@@ -132,8 +132,6 @@ extension RecommendViewController {
                 return cell
             case .main:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
-                print(indexPath.item)
-                print(self.itemList)
                 cell.item = self.itemList[indexPath.item]
                 cell.config()
                 return cell

@@ -86,8 +86,8 @@ extension TableHeaderView {
         }
     }
     
-    func config(_ title: TitleButtonList) {
-        headerLabel.text = title.title
+    func config(_ title: String) {
+        headerLabel.text = title
     }
     
     @objc func headerButtonTapped(_ sender: UIButton) {

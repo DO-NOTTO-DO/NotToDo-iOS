@@ -10,7 +10,7 @@ import UIKit
 
 struct DailyMissionResponseDTO: Codable {
     let id: Int
-    let title, situation, completionStatus, goal: String
+    var title, situation, completionStatus, goal: String
     let actions: [ActionDTO]
 }
 

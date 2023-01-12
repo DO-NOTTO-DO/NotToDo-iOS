@@ -93,9 +93,9 @@ extension HomeCollectionReusableView {
         }
     }
     
-    func setRandomData() {
-        graphicImageView.image = graphicData.shuffled().first
-        let randomText = motivationStringData.shuffled().first!
+    func setRandomData(banner: BannerResponse) {
+        graphicImageView.image = banner.image
+        let randomText = banner.title
         self.typingAnimation(randomText)
     }
     

@@ -15,6 +15,8 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate {
     // MARK: - Properties
     
     var missionList: [DailyMission] = DailyMission.DailyMissionModel
+    var banner: BannerResponse?
+    
     
     // MARK: - UI Components
     
@@ -47,12 +49,23 @@ extension HomeViewController {
     }
     
     private func requestBannerAPI() {
-        HomeAPI.shared.getBanner { [weak self] response in
-            guard self != nil else { return }
-            guard let response = response else { return }
-            
-            dump(response)
+        HomeAPI.shared.getBanner { [weak self] result in
+            switch result {
+            case let .success(data):
+                guard let data = data as? BannerResponse else { return }
+                self?.banner = data
+                self?.homeView.homeCollectionView.reloadData()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
         }
+        
     }
     
     // MARK: - @objc Methods
@@ -126,7 +139,7 @@ extension HomeViewController: UICollectionViewDataSource {
                 withReuseIdentifier: HomeCollectionReusableView.identifier,
                 for: indexPath
               ) as? HomeCollectionReusableView else { return UICollectionReusableView() }
-        header.setRandomData()
+        header.setRandomData(banner: banner)
         return header
     }
 }

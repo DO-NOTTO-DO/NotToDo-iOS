@@ -58,7 +58,7 @@ extension AddSituationCollectionViewCell {
     }
     
     func configure(model: AddSituationModel) {
-        addSituationLabel.text = model.keyword
+        addSituationLabel.text = model.name
     }
     
     override var isHighlighted: Bool {

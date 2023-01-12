@@ -15,11 +15,14 @@ final class AddSituationViewController: UIViewController {
     // MARK: - Properties
     
     var checkSituationButton: ((String) -> Void)?
+    var addSituationResponse: AddSituationResponse?
+    var recommendList: [AddSituationModel] = []
+    var recentList: [AddSituationModel] = []
+    weak var delegate: AddSituationViewDelegate?
     
     // MARK: - UI Components
     
     private var addSituationView: AddSituationView!
-    weak var delegate: AddSituationViewDelegate?
     
     // MARK: - View Life Cycle
     
@@ -48,6 +51,13 @@ extension AddSituationViewController {
             guard self != nil else { return }
             guard let response = response else { return }
             
+            guard let data = response.data else { return }
+            self?.recommendList = data.recommends
+            self?.recentList = data.recents
+            self?.addSituationView.recommendList = data.recommends
+            self?.addSituationView.recentList = data.recents
+            self?.addSituationView.addSituationCollectionView.reloadData()
+    
             dump(response)
         }
     }

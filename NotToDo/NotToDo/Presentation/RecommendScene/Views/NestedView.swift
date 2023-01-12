@@ -12,6 +12,8 @@ import Then
 
 class NestedView: UIView {
     
+    // MARK: - Properties
+
     let itemList: [SortedItemModel] = SortedItemModel.sampleData
     var item: SortedItemModel?
     
@@ -126,6 +128,6 @@ extension NestedView {
 }
 extension NestedView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        
     }
 }

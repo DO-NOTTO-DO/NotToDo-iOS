@@ -1034,6 +1034,9 @@
 				099F073D296C2F770036CF55 /* CustomSegmentedControl.swift in Sources */,
 				096BE0212966A24A009ED396 /* NestedCollectionViewCell.swift in Sources */,
 				3BEF92AD296807550090A290 /* HomeCollectionReusableView.swift in Sources */,
+				3B3405C4295B0ABB00D44722 /* UIFont+.swift in Sources */,
+				3B16288D295AD8380077AE7B /* UIStackView+.swift in Sources */,
+				096BDFF529652270009ED396 /* MissionCollectionViewCell.swift in Sources */,
 				6CC79FFC296C64AD00A29DFE /* AddBehaviorModel.swift in Sources */,
 				3BBE56E1296C206300771DE4 /* OnboardingStartViewController.swift in Sources */,
 				6C600BC229693B3B00421D7A /* MissionHistoryCollectionViewCell.swift in Sources */,
@@ -1264,7 +1267,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 87X66KLVXU;
+				DEVELOPMENT_TEAM = CQJ9UKUU35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotToDo/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1294,7 +1297,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 87X66KLVXU;
+				DEVELOPMENT_TEAM = CQJ9UKUU35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotToDo/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -37,15 +37,17 @@ final class AchievementViewController: UIViewController {
     
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
-    var data: [Situation] = Situation.dummy()
+    var situationList: [SituationStatistcsResponse] = []
+    var missionList: [MissionStatistcsResponse] = []
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configView()
+        configSituationView()
         setUI()
         setLayout()
+        requestAchieveAPI()
     }
 }
 
@@ -69,23 +71,38 @@ extension AchievementViewController {
             $0.text = I18N.statistcisBottomMessage
             $0.font = .PretendardMedium(size: 12.adjusted)
             $0.textColor = .nottodoGray2
-            if missionView.missionList.isEmpty && situationView.titleLists.isEmpty {
+            if missionView.missionList.isEmpty && situationView.situationList.isEmpty {
                 $0.isHidden = true
             }
         }
     }
     
-    func configView() {
-        var tableViewData: [[String]] = []
-        var titleList: [TitleButtonList] = []
-        var isSelected: [Bool] = []
-        for item in data {
-            tableViewData.append(item.convert())
-            titleList.append(TitleButtonList(title: item.name))
-            isSelected.append(false)
+    private func requestAchieveAPI() {
+        MissionStatisticsAPI.shared.getMissionStatistics { [weak self] response in
+            guard self != nil else { return }
+            guard let response = response else { return }
+            self?.missionList = response.data!
+            self?.configMissionView()
+            self?.missionView.missionTableView.reloadData()
+            dump(response)
         }
-        situationView.tableViewData = tableViewData
-        situationView.titleLists = titleList
+        SituationStatisticsAPI.shared.getSituationStatistics { [weak self] response in
+            guard self != nil else { return }
+            guard let response = response else { return }
+            self?.situationList = response.data!
+            self?.configSituationView()
+            self?.situationView.expangindTableView.reloadData()
+            print(response)
+            dump(response)
+        }
+    }
+    func configMissionView() {
+        missionView.missionList = missionList
+    }
+    
+    func configSituationView() {
+        var isSelected: [Bool] = [Bool](repeating: false, count: situationList.count)
+        situationView.situationList = situationList
         situationView.isSelected = isSelected
     }
     
@@ -131,16 +148,16 @@ extension AchievementViewController {
         situationView.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
             $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
-            if situationView.titleLists.isEmpty {
+            if situationView.situationList.isEmpty {
                 $0.height.equalTo(300.adjusted)
             } else {
-                $0.height.equalTo(CGFloat(situationView.titleLists.count) * 55.adjusted + 120.adjusted)
+                $0.height.equalTo(CGFloat(situationView.situationList.count) * 55.adjusted + 120.adjusted)
             }
         }
         bottomLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20.adjusted)
             if missionView.isHidden {
-                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 55.adjusted + 130.adjusted)
+                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.situationList.count) * 55.adjusted + 130.adjusted)
             } else {
                 $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 102.adjusted)
             }
@@ -155,7 +172,7 @@ extension AchievementViewController {
         bottomLabel.snp.remakeConstraints {
             $0.leading.equalToSuperview().offset(20.adjusted)
             if missionView.isHidden {
-                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.titleLists.count) * 55.adjusted + 130.adjusted)
+                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.situationList.count) * 55.adjusted + 130.adjusted)
             } else {
                 $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 102.adjusted)
             }

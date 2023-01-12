@@ -73,7 +73,8 @@ extension MissionTableViewCell {
         }
     }
     
-    func configure(_ item: MissionList) {
+    func configure(_ item: MissionStatistcsResponse) {
         label.text = item.title
+        numberLabel.text = "\(item.count)회"
     }
 }

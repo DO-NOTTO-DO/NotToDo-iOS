@@ -14,8 +14,10 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     // MARK: - Properties
     
-    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .recommend) // .leftRecommend
-    var itemList: [SortedItemModel] = SortedItemModel.sampleData
+    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .leftRecommend) // .leftRecommend
+    var itemList: [RecommendElementResponse] = []
+    var selectedIndex: Int = 0
+    
     enum Section: Int, Hashable {
         case sub, main
     }
@@ -30,6 +32,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     private lazy var customTabBar = CustomTabBarView()
     private lazy var customTabBarCollectionView = CustomTabBarView().collectionview
     private lazy var safeArea = self.view.safeAreaLayoutGuide
+    private var nestedView = NestedView()
     
     // MARK: - Life Cycle
     
@@ -38,8 +41,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
         setUI()
         register()
         setLayout()
-        setupDataSource()
-        reloadData()
+        requestRecommendAPI()
     }
 }
 
@@ -50,7 +52,7 @@ extension RecommendViewController {
         view.backgroundColor = .white
         
         navigationBarView.createButton.do {
-            $0.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
+            $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         }
         
         contentsCollectionView.do {
@@ -58,12 +60,16 @@ extension RecommendViewController {
             $0.showsHorizontalScrollIndicator = false
             $0.isPagingEnabled = true
         }
+        
         underLineView.do {
             $0.backgroundColor = .nottodoGray2
         }
         customTabBar.delegate = self
         
         navigationBarView.backButton.addTarget(self, action: #selector(popToAddMissionController), for: .touchUpInside)
+        nestedView.do {
+            $0.collectionview.delegate = self
+        }
     }
     
     private func register() {
@@ -100,25 +106,22 @@ extension RecommendViewController {
     
     // 탭바를 클릭했을 때, 콘텐츠 뷰 이동
     func scrollToIndex(to index: Int) {
-        fetchCategoryItems(index) { [weak self] itemList in
-            self?.itemList = itemList
-            self?.contentsCollectionView.reloadData()
-        }
+        selectedIndex = index
+        requestRecommendAPI()
+        contentsCollectionView.reloadData()
     }
     
     // MARK: - Network
     
-    private func fetchCategoryItems(_ index: Int, completion: @escaping ([SortedItemModel]) -> ()) {
-        // FIXME : - 나중에 인덱스별로 서버에서 데이터를 들고 와야 함.
-        
-        // 아래 코드는 서버 없이 임의로 작성한 예시
-        switch index {
-        case 0: completion(SortedItemModel.sampleData)
-        case 1: completion(SortedItemModel.sampleData1)
-        case 2: completion(SortedItemModel.sampleData2)
-        case 3: completion(SortedItemModel.sampleData3)
-        case 4: completion(SortedItemModel.sampleData4)
-        default: completion(SortedItemModel.sampleData)
+    private func requestRecommendAPI() {
+        RecommendAPI.shared.getRecommend(index: selectedIndex + 1) { [weak self] response in
+            guard self != nil else { return }
+            guard let response = response else { return }
+            self?.itemList = response.data!
+            self?.setupDataSource()
+            self?.reloadData()
+            self?.updateData(item: response.data!)
+            dump(response)
         }
     }
     
@@ -147,7 +150,13 @@ extension RecommendViewController {
         }
         snapShot.appendSections([.sub, .main])
         snapShot.appendItems(Array(0..<1), toSection: .sub)
-        snapShot.appendItems(itemList, toSection: .main)
+        snapShot.appendItems([], toSection: .main)
+    }
+    
+    private func updateData(item: [RecommendElementResponse]) {
+        var snapshot = dataSource.snapshot()
+        snapshot.appendItems(item, toSection: .main)
+        dataSource.apply(snapshot)
     }
     
     // MARK: - Layout
@@ -185,11 +194,20 @@ extension RecommendViewController {
     
     // MARK: - @objc Methods
     
-    @objc func btnTapped(_ sender: UIButton) {
-        print("tapped")
+    @objc func buttonTapped(_ sender: UIButton) {
+        let addMissionViewController = AddMissionViewController()
+        addMissionViewController.modalPresentationStyle = .fullScreen
+        self.present(addMissionViewController, animated: false, completion: nil)
     }
     
     @objc private func popToAddMissionController() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+extension RecommendViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let addMissionViewController = AddMissionViewController()
+        addMissionViewController.modalPresentationStyle = .fullScreen
+        present(addMissionViewController, animated: false, completion: nil)
     }
 }

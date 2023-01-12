@@ -14,8 +14,7 @@ class NestedView: UIView {
     
     // MARK: - Properties
 
-    let itemList: [SortedItemModel] = SortedItemModel.sampleData
-    var item: SortedItemModel?
+    var item: RecommendElementResponse?
     
     enum Section: Int, Hashable {
         case main
@@ -54,7 +53,6 @@ extension NestedView {
         collectionview.do {
             $0.backgroundColor = .clear
             $0.showsVerticalScrollIndicator = false
-            $0.delegate = self
             $0.isScrollEnabled = false
             $0.bounces = false
         }
@@ -79,8 +77,8 @@ extension NestedView {
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionview, cellProvider: { (_, indexPath, item) -> UICollectionViewCell? in
             guard let cell = self.collectionview.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.identifier, for: indexPath) as? NestedCollectionViewCell else { return UICollectionViewCell()}
-            let item = item as! ItemModel
-            cell.config(item)
+            let item = item as! RecommendAction
+            cell.configure(item)
             switch indexPath.row {
             case 0:
                 cell.layer.addBorder([.top, .bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
@@ -100,7 +98,7 @@ extension NestedView {
         }
         snapShot.appendSections([.main])
         guard let item = item else { return }
-        snapShot.appendItems(item.itemsList, toSection: .main)
+        snapShot.appendItems(item.recommendActions, toSection: .main)
         
         dataSource.supplementaryViewProvider = { (collectionView, _, indexPath) in
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendHeaderView.reuseId, for: indexPath) as? RecommendHeaderView else {return UICollectionReusableView()}
@@ -129,5 +127,6 @@ extension NestedView {
 extension NestedView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        print("tapped")
     }
 }

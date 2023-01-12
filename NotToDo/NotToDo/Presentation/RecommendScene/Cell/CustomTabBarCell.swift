@@ -66,7 +66,7 @@ extension CustomTabBarCell {
         }
     }
     
-    func config(_ item: CustomTabBarItem, isSelected: Bool) {
+    func configure(_ item: CustomTabBarItem, isSelected: Bool) {
         if isSelected {
             titleLabel.text = item.name
             titleLabel.textColor = .nottodoGray1

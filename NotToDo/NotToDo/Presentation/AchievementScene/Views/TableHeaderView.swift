@@ -86,8 +86,9 @@ extension TableHeaderView {
         }
     }
     
-    func config(_ title: TitleButtonList) {
-        headerLabel.text = title.title
+    func config(_ title: String, _ number: Int) {
+        headerLabel.text = title
+        numberLabel.text = "\(number)회"
     }
     
     @objc func headerButtonTapped(_ sender: UIButton) {

@@ -94,7 +94,6 @@ extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
             
             return cell
         } else {
-            print(missionList.count, "A?DF?SF")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MissionTableViewCell.identifier, for: indexPath) as? MissionTableViewCell else { return UITableViewCell() }
             let item = missionList[indexPath.row]
             switch indexPath.row {

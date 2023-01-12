@@ -1,10 +1,3 @@
-//
-//  HomeView.swift
-//  NotToDo
-//
-//  Created by 강윤서 on 2023/01/02.
-//
-
 import UIKit
 
 import FSCalendar
@@ -13,14 +6,10 @@ import Then
 
 final class HomeView: UIView {
     
-    // MARK: - Properties
-    
-    var missionList: [DailyMission] = DailyMission.DailyMissionModel
-    
     // MARK: - UI Components
     
     private(set) lazy var refreshControl = UIRefreshControl()
-    private lazy var homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    lazy var homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     var calendar = FSCalendar(frame: .zero)
     let addMissionButton = NotTodoButton(frame: CGRect(), mode: .withImage, text: I18N.addMissoinButton, image: .plus, font: .semiBold, size: 16)
     
@@ -48,9 +37,6 @@ extension HomeView {
     }
     
     private func register() {
-        homeCollectionView.delegate = self
-        homeCollectionView.dataSource = self
-        
         homeCollectionView.register(HomeCollectionReusableView.self,
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                     withReuseIdentifier: HomeCollectionReusableView.identifier)
@@ -95,98 +81,6 @@ extension HomeView {
             $0.height.equalTo(46.adjusted)
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(9.adjusted)
-        }
-    }
-}
-
-extension HomeView: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCalendarCollectionViewCell.identifier, for: indexPath) as? HomeCalendarCollectionViewCell else { return UICollectionViewCell() }
-            return cell
-        default:
-            if missionList.isEmpty {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeEmptyCollectionViewCell.identifier, for: indexPath) as? HomeEmptyCollectionViewCell else { return UICollectionViewCell() }
-                return cell
-            } else {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMissionCollectionViewCell.identifier, for: indexPath) as? HomeMissionCollectionViewCell else { return UICollectionViewCell() }
-                cell.configure(missionList[indexPath.row])
-                cell.clickedStatusButton = { result in
-                    UIView.animate(withDuration: 0.3) {
-                        if result {
-                            cell.missionStateButtonStackView.alpha = 0
-                            cell.missionStateButtonStackView.isHidden = result
-                        } else {
-                            cell.missionStateButtonStackView.alpha = 1
-                            cell.missionStateButtonStackView.isHidden = result
-                        }
-                    }
-                }
-                return cell
-            }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        default:
-            return missionList.count
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard kind == UICollectionView.elementKindSectionHeader,
-              let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: HomeCollectionReusableView.identifier,
-                for: indexPath
-              ) as? HomeCollectionReusableView else { return UICollectionReusableView() }
-        header.setRandomData()
-        return header
-    }
-}
-
-extension HomeView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        switch section {
-        case 0:
-            return CGSize(width: Numbers.width, height: 183.adjusted)
-        default:
-            return CGSize()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellHeight = missionList[indexPath.row].actions.count < 2 ? 144.adjusted : 183.adjusted
-        switch indexPath.section {
-        case 0:
-            return CGSize(width: Numbers.width, height: 106.adjusted)
-        default:
-            if missionList.isEmpty {
-                return CGSize(width: Numbers.width, height: (collectionView.frame.height - 105).adjusted)            // 수정 필요
-            } else {
-                return CGSize(width: Numbers.width, height: cellHeight)
-            }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        switch section {
-        case 0:
-            return UIEdgeInsets()
-        default:
-            return UIEdgeInsets(top: 7.adjusted, left: 0, bottom: 17.adjusted, right: 0)
         }
     }
 }

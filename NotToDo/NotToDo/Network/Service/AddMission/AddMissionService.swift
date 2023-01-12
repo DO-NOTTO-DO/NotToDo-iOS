@@ -10,6 +10,7 @@ import Foundation
 import Moya
 
 enum AddMissionService {
+    case addMission(AddMissionRequest)
     case addSituation
     case missionHistory
 }
@@ -21,6 +22,8 @@ extension AddMissionService: TargetType {
     
     var path: String {
         switch self {
+        case .addMission:
+            return URLConstant.addMission
         case .addSituation:
             return URLConstant.addSituation
         case .missionHistory:
@@ -30,6 +33,8 @@ extension AddMissionService: TargetType {
     
     var method: Moya.Method {
         switch self {
+        case .addMission:
+            return .post
         case .addSituation, .missionHistory:
             return .get
         }
@@ -37,6 +42,10 @@ extension AddMissionService: TargetType {
     
     var task: Moya.Task {
         switch self {
+        case .addMission(let newMission):
+            return .requestParameters(
+                parameters: newMission.toDictionary,
+                encoding: JSONEncoding.default)
         case .addSituation, .missionHistory:
             return .requestPlain
         }
@@ -44,8 +53,16 @@ extension AddMissionService: TargetType {
     
     var headers: [String: String]? {
         switch self {
-        case .addSituation, .missionHistory:
+        case .addMission, .addSituation, .missionHistory:
             return NetworkConstant.hasTokenHeader
         }
     }
+}
+
+extension Encodable {
+  var toDictionary : [String: Any] {
+    guard let object = try? JSONEncoder().encode(self) else { fatalError() }
+    guard let dictionary = try? JSONSerialization.jsonObject(with: object, options: []) as? [String: Any] else { fatalError() }
+    return dictionary
+  }
 }

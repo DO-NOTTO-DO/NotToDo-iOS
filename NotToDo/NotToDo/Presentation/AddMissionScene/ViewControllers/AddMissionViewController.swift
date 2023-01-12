@@ -17,6 +17,7 @@ final class AddMissionViewController: UIViewController {
             addMissionView.availableAddMission(checkButtonEnable)
         }
     }
+    var addMissionRequest: AddMissionRequest?
     
     // MARK: - UI Components
     
@@ -28,6 +29,7 @@ final class AddMissionViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         setAddTarget()
+        resetBehaviorModel()
     }
     
     override func loadView() {
@@ -50,9 +52,22 @@ extension AddMissionViewController {
         addMissionView.goalTextField.addTarget(self, action: #selector(checkEnable), for: .editingChanged)
         addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(checkEnable), for: .touchUpInside)
         addMissionView.addBehaviorButton.addTarget(self, action: #selector(checkEnable), for: .touchUpInside)
+        addMissionView.addMissionButton.addTarget(self, action: #selector(requestAddMissionAPI), for: .touchUpInside)
+    }
+    
+    func resetBehaviorModel() {
+        behaviorList.removeAll()
     }
     
     // MARK: - @objc Methods
+    
+    @objc private func requestAddMissionAPI() {
+        print(addMissionView.addMissionButton.titleLabel?.text)
+        AddMissionAPI.shared.postAddMission(newMission: AddMissionRequest(title: addMissionView.missionText.text!, situation: (addMissionView.situationView.AddMissionButton.titleLabel?.text)!, actions: behaviorList.map { $0.behavior }, goal: addMissionView.goalTextField.text!, actionDate: "2023.01.25")) { [weak self] request in
+            guard self != nil else { return }
+            // behaviorList.removeAll()
+        } // (addMissionView.dateButton.titleLabel?.text)!
+    }
     
     @objc func checkEnable() {
         checkButtonEnable = addMissionView.missionText.text!.count > 0 && behaviorList.count > 0
@@ -60,6 +75,7 @@ extension AddMissionViewController {
     }
 
     @objc private func dismissAddMissionViewController() {
+        // behaviorList.removeAll()
         dismiss(animated: true)
     }
     

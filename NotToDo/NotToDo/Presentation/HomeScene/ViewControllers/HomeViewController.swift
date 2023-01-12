@@ -10,12 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeViewController: UIViewController, UICollectionViewDelegate {
+final class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
     var missionList: [DailyMissionResponseDTO] = []
-    var banner: BannerResponse?
+    var banner: BannerResponseDTO?
+    var missionId: Int?
     
     // MARK: - UI Components
     
@@ -39,12 +40,19 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestBannerAPI()
-        requestDailyMissionDTO(date: "2023-01-24")
+        requestDailyMissionAPI(date: "2023-01-24")
     }
     
 }
 
-extension HomeViewController {
+extension HomeViewController: CheckboxToolTipDelegate {
+    func setMissionStatus(status: String, indexPath: IndexPath) {
+        missionList[indexPath.row].completionStatus = status
+        homeView.homeCollectionView.reloadData()
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
     private func setCalendar() {
         homeView.homeCollectionView.do {
             $0.delegate = self
@@ -63,7 +71,7 @@ extension HomeViewController {
         HomeAPI.shared.getBanner { [weak self] result in
             switch result {
             case let .success(data):
-                guard let data = data as? BannerResponse else { return }
+                guard let data = data as? BannerResponseDTO else { return }
                 self?.banner = data
                 self?.homeView.homeCollectionView.reloadData()
             case .requestErr(_):
@@ -78,7 +86,7 @@ extension HomeViewController {
         }
     }
     
-    private func requestDailyMissionDTO(date: String) {
+    private func requestDailyMissionAPI(date: String) {
         HomeAPI.shared.getDailyMission(date: "2023-01-24") { [weak self] result in
             switch result {
             case let .success(data):
@@ -110,7 +118,7 @@ extension HomeViewController {
     @objc func handleRefreshControl() {
         // 컨텐츠를 업데이트하세요.
         requestBannerAPI()
-        requestDailyMissionDTO(date: "2023-01-24")
+        requestDailyMissionAPI(date: "2023-01-24")
         homeView.homeCollectionView.reloadData()
         
         // Refresh control을 제거하세요.
@@ -137,26 +145,28 @@ extension HomeViewController: UICollectionViewDataSource {
             } else {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMissionCollectionViewCell.identifier, for: indexPath) as? HomeMissionCollectionViewCell else { return UICollectionViewCell() }
                 cell.configure(missionList[indexPath.row])
-                cell.clickedStatusButton = {[weak self] in
+                cell.indexPath = indexPath
+                cell.clickedStatusButton = {[weak self] missionId in
                     let checkboxViewController = CheckboxToolTipViewController()
                     checkboxViewController.modalPresentationStyle = .overFullScreen
                     checkboxViewController.modalTransitionStyle = .crossDissolve
                     checkboxViewController.setUpdateLayout(cell.frame.minY - collectionView.contentOffset.y)
+                    checkboxViewController.id = missionId
+                    checkboxViewController.delegate = self
+                    checkboxViewController.indexPath = indexPath
                     self?.present(checkboxViewController, animated: true)
                 }
-                cell.meatballClickedEvent = { result in
-                    if result {
-                        let actionSheetViewController = ActionSheetViewController()
-                        actionSheetViewController.modalPresentationStyle = .overFullScreen
-                        actionSheetViewController.modalTransitionStyle = .crossDissolve
-                        self.present(actionSheetViewController, animated: true)
-                        actionSheetViewController.dismissClicked = {
-                            let calendarActionSheetViewController = ActionSheetViewController()
-                            calendarActionSheetViewController.mode = .calendar
-                            calendarActionSheetViewController.modalPresentationStyle = .overFullScreen
-                            calendarActionSheetViewController.modalTransitionStyle = .crossDissolve
-                            self.present(calendarActionSheetViewController, animated: true)
-                        }
+                cell.meatballClickedEvent = {[weak self] in
+                    let actionSheetViewController = ActionSheetViewController()
+                    actionSheetViewController.modalPresentationStyle = .overFullScreen
+                    actionSheetViewController.modalTransitionStyle = .crossDissolve
+                    self?.present(actionSheetViewController, animated: true)
+                    actionSheetViewController.dismissClicked = {
+                        let calendarActionSheetViewController = ActionSheetViewController()
+                        calendarActionSheetViewController.mode = .calendar
+                        calendarActionSheetViewController.modalPresentationStyle = .overFullScreen
+                        calendarActionSheetViewController.modalTransitionStyle = .crossDissolve
+                        self?.present(calendarActionSheetViewController, animated: true)
                     }
                 }
                 return cell

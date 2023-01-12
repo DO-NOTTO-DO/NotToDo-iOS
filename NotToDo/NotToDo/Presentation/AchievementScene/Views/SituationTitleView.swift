@@ -16,7 +16,7 @@ class SituationTitleView: UIView {
     
     lazy var hStack = UIStackView(arrangedSubviews: [icon, subLabel])
     lazy var icon = UIImageView()
-    lazy var subLabel = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardSemiBold(size: 16))
+    lazy var subLabel = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardSemiBold(size: 16.adjusted))
     
     // MARK: - Life Cycle
     

@@ -12,25 +12,27 @@ import Then
 class TableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
-
+    
     static var identifier = "TableHeaderVIew"
     
     // MARK: - UI Components
-
+    
     var headerButton = UIButton()
     var headerImage = UIImageView()
     var headerLabel = UILabel()
     var numberLabel = UILabel()
     var iconImageView = UIImageView()
-    let isSelected: Bool = false
-   
+    var isSelected: Bool = false
+    var isClickedClosure: ((_ result: Bool) -> Void)?
+    
     // MARK: - View Life Cycle
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        isSelected = false
+        numberLabel.textColor = isSelected ? UIColor.yellow_basic : UIColor.nottodoGray1
         headerImage.image = nil
-        numberLabel.textColor = nil
+        
     }
     
     override init(reuseIdentifier: String?) {
@@ -68,8 +70,8 @@ extension TableHeaderView {
         headerButton.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
             $0.top.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(6)
-            $0.height.equalTo(45)
+            $0.bottom.equalToSuperview().inset(6.adjusted)
+            $0.height.equalTo(45.adjusted)
         }
         headerImage.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -79,7 +81,7 @@ extension TableHeaderView {
             $0.leading.equalToSuperview().offset(50.adjusted)
         }
         numberLabel.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(30)
+            $0.trailing.equalToSuperview().inset(30.adjusted)
             $0.centerY.equalTo(headerLabel.snp.centerY)
         }
     }
@@ -89,7 +91,6 @@ extension TableHeaderView {
     }
     
     @objc func headerButtonTapped(_ sender: UIButton) {
-        headerButton.isSelected.toggle()
-        numberLabel.textColor = isSelected ? UIColor.yellow_basic : UIColor.nottodoGray1
+        isClickedClosure?(true)
     }
 }

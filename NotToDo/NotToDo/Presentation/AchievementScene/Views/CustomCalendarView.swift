@@ -49,7 +49,7 @@ extension CustomCalendar {
         hStack.do {
             $0.axis = .horizontal
             $0.distribution = .fillProportionally
-            $0.spacing = 14
+            $0.spacing = 14.adjusted
         }
         headerLabel.do {
             $0.text = self.dateFormatter.string(from: calendar.currentPage)
@@ -88,7 +88,7 @@ extension CustomCalendar {
         hStack.snp.makeConstraints {
             $0.top.equalToSuperview().offset(32.adjusted)
             $0.trailing.equalToSuperview().inset(16.adjusted)
-            $0.width.equalTo(64)
+            $0.width.equalTo(64.adjusted)
         }
         calendar.snp.makeConstraints {
             $0.top.equalTo(headerImage.snp.bottom).offset(25.adjusted)

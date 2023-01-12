@@ -45,7 +45,7 @@ extension StatisticsEmptyTableViewCell {
             $0.numberOfLines = 2
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.13
-            $0.font = UIFont(name: AppFontName.pretendardSemiBold, size: 16)
+            $0.font = UIFont(name: AppFontName.pretendardSemiBold, size: 16.adjusted)
             $0.attributedText = NSMutableAttributedString(string: I18N.statisticsEmptyTitle, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
             $0.textAlignment = .center
         }
@@ -59,6 +59,7 @@ extension StatisticsEmptyTableViewCell {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview()
         }
+        
         mainTitle.snp.makeConstraints {
             $0.top.equalTo(iconImage.snp.bottom).offset(10.adjusted)
             $0.directionalHorizontalEdges.equalToSuperview().inset(80.adjusted)

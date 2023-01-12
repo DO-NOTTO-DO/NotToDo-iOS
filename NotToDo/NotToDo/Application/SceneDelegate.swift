@@ -7,7 +7,7 @@
 
 import UIKit
 
-import FirebaseCore
+//import FirebaseCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func application(_ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions:
                      [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
 
         return true
       }

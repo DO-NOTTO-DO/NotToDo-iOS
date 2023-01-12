@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class MissionTableViewCell: UITableViewCell {
     
     // MARK: - Properties
@@ -15,8 +18,9 @@ class MissionTableViewCell: UITableViewCell {
     
     // MARK: - UI Components
     
-    private var label = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardSemiBold(size: 14))
+    private var label = CustomAchieveLabel(color: .nottodoBlack!, font: .PretendardSemiBold(size: 14.adjusted))
     var missionImage = UIImageView()
+    let numberLabel = UILabel()
     
     // MARK: - View Life Cycle
     
@@ -28,7 +32,7 @@ class MissionTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10.adjusted, left: 0, bottom: 0, right: 0))
     }
     
     required init?(coder: NSCoder) {
@@ -40,23 +44,32 @@ class MissionTableViewCell: UITableViewCell {
 
 extension MissionTableViewCell {
     private func setUI() {
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10.0, left: 0, bottom: 0, right: 0))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10.adjusted, left: 0, bottom: 0, right: 0))
         backgroundColor = .clear
         missionImage.do {
             $0.image = UIImage.rank1
+        }
+        numberLabel.do {
+            $0.textColor = .nottodoGray2
+            $0.font = .PretendardRegular(size: 14.adjusted)
+            $0.text = "n회"
         }
     }
     
     private func setLayout() {
         contentView.addSubview(missionImage)
-        missionImage.addSubview(label)
+        missionImage.addSubviews(label, numberLabel)
         
         missionImage.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         label.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(41)
+            $0.leading.equalToSuperview().offset(41.adjusted)
+        }
+        numberLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(17.adjusted)
         }
     }
     

@@ -107,6 +107,9 @@
 		3BEF92B129696CC90090A290 /* HomeEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEF92B029696CC90090A290 /* HomeEmptyCollectionViewCell.swift */; };
 		3BF7CE9E296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */; };
 		3BFE8405296FD103000B37CA /* CheckboxToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE8404296FD103000B37CA /* CheckboxToolTipViewController.swift */; };
+		3BFE840B29704534000B37CA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3BFE840A29704534000B37CA /* Kingfisher */; };
+		3BFE840D2970454E000B37CA /* NetworkBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE840C2970454E000B37CA /* NetworkBase.swift */; };
+		3BFE840F297045D4000B37CA /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE840E297045D4000B37CA /* UIImageView+.swift */; };
 		6C600BC029693B3100421D7A /* MissionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */; };
 		6C600BC229693B3B00421D7A /* MissionHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */; };
 		6C600BC429693B4B00421D7A /* MissionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */; };
@@ -225,6 +228,8 @@
 		3BEF92B029696CC90090A290 /* HomeEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMissionCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BFE8404296FD103000B37CA /* CheckboxToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToolTipViewController.swift; sourceTree = "<group>"; };
+		3BFE840C2970454E000B37CA /* NetworkBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBase.swift; sourceTree = "<group>"; };
+		3BFE840E297045D4000B37CA /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryModel.swift; sourceTree = "<group>"; };
 		6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BFE840B29704534000B37CA /* Kingfisher in Frameworks */,
 				3B4187D5296D5D8700F0FBF4 /* IQKeyboardManagerSwift in Frameworks */,
 				090FA2FB2960B87500918AED /* Moya in Frameworks */,
 				096BDFD52960B910009ED396 /* FSCalendar in Frameworks */,
@@ -380,6 +386,7 @@
 				3B576323296403CB00E03637 /* UILabel+.swift */,
 				3B4187CE296D342900F0FBF4 /* UIViewController+.swift */,
 				3B882606296DDC0E00A51B50 /* UIDevice+.swift */,
+				3BFE840E297045D4000B37CA /* UIImageView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -603,6 +610,7 @@
 				3B1628AD295ADB550077AE7B /* GeneralResponse.swift */,
 				3B1628AF295ADB640077AE7B /* NetworkConstant.swift */,
 				3B1628B1295ADB710077AE7B /* NetworkResult.swift */,
+				3BFE840C2970454E000B37CA /* NetworkBase.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -933,6 +941,7 @@
 				090FA2FA2960B87500918AED /* Moya */,
 				096BDFD42960B910009ED396 /* FSCalendar */,
 				3B4187D4296D5D8700F0FBF4 /* IQKeyboardManagerSwift */,
+				3BFE840A29704534000B37CA /* Kingfisher */,
 			);
 			productName = NotToDo;
 			productReference = 3B162870295AD7860077AE7B /* NotToDo.app */;
@@ -968,6 +977,7 @@
 				090FA2F92960B87500918AED /* XCRemoteSwiftPackageReference "Moya" */,
 				096BDFD32960B910009ED396 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				3B4187D3296D5D8700F0FBF4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				3BFE840929704534000B37CA /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 3B162871295AD7860077AE7B /* Products */;
 			projectDirPath = "";
@@ -1043,6 +1053,7 @@
 				3B4B90BB29656684008C5CA8 /* MyInfoView.swift in Sources */,
 				096BE0252966A2B0009ED396 /* SortedItemModel.swift in Sources */,
 				3BE07016296F44C9002CC50A /* TabBarItem.swift in Sources */,
+				3BFE840F297045D4000B37CA /* UIImageView+.swift in Sources */,
 				6CC79FF9296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift in Sources */,
 				3BE07008296F43A2002CC50A /* UILabel+.swift in Sources */,
 				3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */,
@@ -1051,6 +1062,7 @@
 				3BE07003296F43A2002CC50A /* UIFont+.swift in Sources */,
 				3B888AA729674BA4008209A8 /* RandomData.swift in Sources */,
 				096BDFF02965104B009ED396 /* MissionStatisticsView.swift in Sources */,
+				3BFE840D2970454E000B37CA /* NetworkBase.swift in Sources */,
 				3BE07011296F4450002CC50A /* URLConstant.swift in Sources */,
 				6CF0427829633E58000F40EB /* NavigationBarView.swift in Sources */,
 				6C882614296819560005E222 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
@@ -1384,6 +1396,14 @@
 				kind = branch;
 			};
 		};
+		3BFE840929704534000B37CA /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1411,6 +1431,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3B4187D3296D5D8700F0FBF4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		3BFE840A29704534000B37CA /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3BFE840929704534000B37CA /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

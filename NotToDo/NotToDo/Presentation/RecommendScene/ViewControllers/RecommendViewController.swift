@@ -24,6 +24,8 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     typealias Item = AnyHashable
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
     
+    var isClickedClosure: ((_ section: Int, _ index: Int) -> Void)?
+  
     // MARK: - UI Components
     
     private var underLineView = UIView()
@@ -88,7 +90,7 @@ extension RecommendViewController {
         
         customTabBar.snp.makeConstraints {
             $0.directionalHorizontalEdges.equalToSuperview()
-            $0.top.equalTo(navigationBarView.snp.bottom).offset(19.adjusted)
+            $0.top.equalTo(navigationBarView.snp.bottom)
             $0.height.equalTo(104.adjusted)
         }
         
@@ -137,6 +139,10 @@ extension RecommendViewController {
             case .main:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
                 cell.item = self.itemList[indexPath.item]
+                cell.dataBind(section: indexPath.item)
+                cell.isClickedClosure = { [weak self] section, index in
+                    self?.pushToAdd(section: section, index: index)
+                }
                 cell.config()
                 return cell
             }
@@ -190,6 +196,13 @@ extension RecommendViewController {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         return section
+    }
+    
+    private func pushToAdd(section: Int, index: Int) {
+        let addMissionViewController = AddMissionViewController()
+        addMissionViewController.behavior = itemList[section].recommendActions[index].name
+        addMissionViewController.modalPresentationStyle = .fullScreen
+        self.present(addMissionViewController, animated: false, completion: nil)
     }
     
     // MARK: - @objc Methods

@@ -18,6 +18,8 @@ final class AddMissionViewController: UIViewController {
         }
     }
     
+    var behavior: String?
+    
     // MARK: - UI Components
     
     private var addMissionView: AddMissionView!
@@ -33,6 +35,9 @@ final class AddMissionViewController: UIViewController {
     override func loadView() {
         super.loadView()
         addMissionView = AddMissionView()
+        if let behavior = behavior {
+            addMissionView.dataBind(behavior: behavior)
+        }
         view = addMissionView
     }
 }

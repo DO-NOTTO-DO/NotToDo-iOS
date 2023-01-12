@@ -16,6 +16,9 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     
     static var identifier = "RecommendCollectionViewCell"
     
+    var isClickedClosure: ((_ section: Int, _ index: Int) -> Void)?
+    var section: Int?
+    
     // MARK: - UI Components
     
     lazy var nestedCollectionView = NestedView(frame: .zero)
@@ -51,6 +54,11 @@ extension RecommendCollectionViewCell {
     private func setLayout() {
         addSubviews(nestedCollectionView)
         nestedCollectionView.item = item
+        if let section = section
+           {
+            nestedCollectionView.dataBind(section: section)
+            nestedCollectionView.isClickedClosure = isClickedClosure
+        }
         nestedCollectionView.config()
         
         nestedCollectionView.snp.makeConstraints {
@@ -58,5 +66,12 @@ extension RecommendCollectionViewCell {
             $0.directionalHorizontalEdges.equalToSuperview().inset(20.adjusted)
             $0.bottom.equalToSuperview()
         }
+    }
+    
+    func dataBind(section: Int) {
+        self.section = section
+        nestedCollectionView.section = section
+        nestedCollectionView.isClickedClosure = isClickedClosure
+        
     }
 }

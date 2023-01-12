@@ -14,6 +14,7 @@ enum HomeService {
     case dailyMission(date: String)
     case updateMissionStatus(id: Int, status: String)
     case deleteMission(id: Int)
+    case addAnotherDay(id: Int, dates: [String])
 }
 
 extension HomeService: TargetType {
@@ -29,7 +30,7 @@ extension HomeService: TargetType {
             return URLConstant.dailyMission + "/\(date)"
         case .updateMissionStatus(let id, _):
             return URLConstant.mission + "/\(id)" + "/check"
-        case .deleteMission(let id):
+        case .deleteMission(let id), .addAnotherDay(let id, _):
             return URLConstant.mission + "/\(id)"
         }
     }
@@ -42,6 +43,8 @@ extension HomeService: TargetType {
             return .patch
         case .deleteMission:
             return .delete
+        case .addAnotherDay:
+            return .post
         }
     }
     
@@ -52,12 +55,15 @@ extension HomeService: TargetType {
         case .updateMissionStatus(_, let status):
             return .requestParameters(parameters: ["completionStatus": status],
                                       encoding: JSONEncoding.default)
+        case .addAnotherDay(_, let dates):
+            return .requestParameters(parameters: ["dates": dates],
+                                      encoding: JSONEncoding.default)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .banner, .dailyMission, .updateMissionStatus, .deleteMission:
+        case .banner, .dailyMission, .updateMissionStatus, .deleteMission, .addAnotherDay:
             return NetworkConstant.hasTokenHeader
         }
     }

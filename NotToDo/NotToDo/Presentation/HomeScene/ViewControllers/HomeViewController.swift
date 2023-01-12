@@ -55,7 +55,6 @@ extension HomeViewController: CheckboxToolTipDelegate {
 extension HomeViewController: ActionSheetViewDelegate {
     func reloadMissionData() {
         requestDailyMissionAPI(date: "2023-01-25")
-        print(missionList, "☘️")
         homeView.homeCollectionView.reloadData()
     }
 }
@@ -173,6 +172,7 @@ extension HomeViewController: UICollectionViewDataSource {
                     actionSheetViewController.dismissClicked = {
                         let calendarActionSheetViewController = ActionSheetViewController()
                         calendarActionSheetViewController.mode = .calendar
+                        calendarActionSheetViewController.id = missionId
                         calendarActionSheetViewController.modalPresentationStyle = .overFullScreen
                         calendarActionSheetViewController.modalTransitionStyle = .crossDissolve
                         self?.present(calendarActionSheetViewController, animated: true)

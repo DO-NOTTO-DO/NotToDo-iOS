@@ -195,9 +195,3 @@ extension MissionHistoryView: UICollectionViewDelegate {
         inputTextField.text = historyList[indexPath.row].history
     }
 }
-
-//extension MissionHistoryView: UITextFieldDelegate {
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        delegate?.sendMissionHistoryTextFieldData(text: self.inputTextField.text ?? "")
-//    }
-//}

@@ -40,7 +40,7 @@ final class ActionSheetView: UIView {
     private let labelStackView = UIStackView()
     private let situationLabel = UILabel()
     private let missionLabel = UILabel()
-    private let deleteView = UIView()
+    let deleteView = UIView()
     private let deleteIcon = UIImageView()
     private let deleteLabel = UILabel()
     private let editView = UIView()

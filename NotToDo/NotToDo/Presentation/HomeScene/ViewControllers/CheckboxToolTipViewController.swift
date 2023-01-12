@@ -85,9 +85,8 @@ extension CheckboxToolTipViewController {
     
     private func requestPatchUpdateMissionAPI(id: Int, status: String) {
         HomeAPI.shared.patchUpdateMissionStatus(id: id, status: status) { [weak self] result in
-            guard let self = self else { return }
-            guard let response = result else { return }
-            
+            guard self != nil else { return }
+            guard result != nil else { return }
         }
     }
     

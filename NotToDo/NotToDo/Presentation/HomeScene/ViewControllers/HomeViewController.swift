@@ -40,7 +40,7 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestBannerAPI()
-        requestDailyMissionAPI(date: "2023-01-24")
+        requestDailyMissionAPI(date: "2023-01-25")
     }
     
 }
@@ -48,6 +48,14 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: CheckboxToolTipDelegate {
     func setMissionStatus(status: String, indexPath: IndexPath) {
         missionList[indexPath.row].completionStatus = status
+        homeView.homeCollectionView.reloadData()
+    }
+}
+
+extension HomeViewController: ActionSheetViewDelegate {
+    func reloadMissionData() {
+        requestDailyMissionAPI(date: "2023-01-25")
+        print(missionList, "☘️")
         homeView.homeCollectionView.reloadData()
     }
 }
@@ -87,7 +95,7 @@ extension HomeViewController: UICollectionViewDelegate {
     }
     
     private func requestDailyMissionAPI(date: String) {
-        HomeAPI.shared.getDailyMission(date: "2023-01-24") { [weak self] result in
+        HomeAPI.shared.getDailyMission(date: "2023-01-25") { [weak self] result in
             switch result {
             case let .success(data):
                 guard let data = data as? [DailyMissionResponseDTO] else { return }
@@ -118,7 +126,7 @@ extension HomeViewController: UICollectionViewDelegate {
     @objc func handleRefreshControl() {
         // 컨텐츠를 업데이트하세요.
         requestBannerAPI()
-        requestDailyMissionAPI(date: "2023-01-24")
+        requestDailyMissionAPI(date: "2023-01-25")
         homeView.homeCollectionView.reloadData()
         
         // Refresh control을 제거하세요.
@@ -156,10 +164,11 @@ extension HomeViewController: UICollectionViewDataSource {
                     checkboxViewController.indexPath = indexPath
                     self?.present(checkboxViewController, animated: true)
                 }
-                cell.meatballClickedEvent = {[weak self] in
+                cell.meatballClickedEvent = {[weak self] missionId in
                     let actionSheetViewController = ActionSheetViewController()
                     actionSheetViewController.modalPresentationStyle = .overFullScreen
                     actionSheetViewController.modalTransitionStyle = .crossDissolve
+                    actionSheetViewController.id = missionId
                     self?.present(actionSheetViewController, animated: true)
                     actionSheetViewController.dismissClicked = {
                         let calendarActionSheetViewController = ActionSheetViewController()

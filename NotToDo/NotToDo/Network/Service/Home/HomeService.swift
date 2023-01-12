@@ -15,6 +15,7 @@ enum HomeService {
     case updateMissionStatus(id: Int, status: String)
     case deleteMission(id: Int)
     case addAnotherDay(id: Int, dates: [String])
+    case missionWeekly(startDate: String)
 }
 
 extension HomeService: TargetType {
@@ -32,12 +33,14 @@ extension HomeService: TargetType {
             return URLConstant.mission + "/\(id)" + "/check"
         case .deleteMission(let id), .addAnotherDay(let id, _):
             return URLConstant.mission + "/\(id)"
+        case .missionWeekly(let startDate):
+            return URLConstant.missionWeekly + "/\(startDate)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .banner, .dailyMission:
+        case .banner, .dailyMission, .missionWeekly:
             return .get
         case .updateMissionStatus:
             return .patch
@@ -50,7 +53,7 @@ extension HomeService: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .banner, .dailyMission, .deleteMission:
+        case .banner, .dailyMission, .deleteMission, .missionWeekly:
             return .requestPlain
         case .updateMissionStatus(_, let status):
             return .requestParameters(parameters: ["completionStatus": status],
@@ -62,9 +65,6 @@ extension HomeService: TargetType {
     }
     
     var headers: [String: String]? {
-        switch self {
-        case .banner, .dailyMission, .updateMissionStatus, .deleteMission, .addAnotherDay:
-            return NetworkConstant.hasTokenHeader
-        }
+        return NetworkConstant.hasTokenHeader
     }
 }

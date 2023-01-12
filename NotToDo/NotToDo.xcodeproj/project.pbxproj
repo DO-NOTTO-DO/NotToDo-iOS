@@ -48,6 +48,7 @@
 		3B162880295AD7870077AE7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287E295AD7870077AE7B /* LaunchScreen.storyboard */; };
 		3B1628B9295ADD750077AE7B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1628B8295ADD750077AE7B /* Colors.xcassets */; };
 		3B2748632970B570005DBD46 /* AddAnotherDayResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2748622970B570005DBD46 /* AddAnotherDayResponseDTO.swift */; };
+		3B2748672970C361005DBD46 /* MissionWeeklyResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2748662970C361005DBD46 /* MissionWeeklyResponseDTO.swift */; };
 		3B3405B7295B05D400D44722 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405B6295B05D400D44722 /* .swiftlint.yml */; };
 		3B3405BC295B0A2400D44722 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BB295B0A2400D44722 /* Pretendard-Bold.otf */; };
 		3B3405BE295B0A8200D44722 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BD295B0A8200D44722 /* Pretendard-Medium.otf */; };
@@ -194,6 +195,7 @@
 		3B1628B3295ADBA20077AE7B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3B1628B8295ADD750077AE7B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		3B2748622970B570005DBD46 /* AddAnotherDayResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnotherDayResponseDTO.swift; sourceTree = "<group>"; };
+		3B2748662970C361005DBD46 /* MissionWeeklyResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionWeeklyResponseDTO.swift; sourceTree = "<group>"; };
 		3B3405B6295B05D400D44722 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3B3405B8295B090300D44722 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		3B3405BB295B0A2400D44722 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -834,6 +836,7 @@
 				3BFE8410297059D7000B37CA /* DailyMissionResponseDTO.swift */,
 				3BFE8412297071BB000B37CA /* UpdateMissionResponseDTO.swift */,
 				3B2748622970B570005DBD46 /* AddAnotherDayResponseDTO.swift */,
+				3B2748662970C361005DBD46 /* MissionWeeklyResponseDTO.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1178,6 +1181,7 @@
 				3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */,
 				3BE0701B296F455C002CC50A /* HomeViewController.swift in Sources */,
 				3BFE8405296FD103000B37CA /* CheckboxToolTipViewController.swift in Sources */,
+				3B2748672970C361005DBD46 /* MissionWeeklyResponseDTO.swift in Sources */,
 				3BE07003296F43A2002CC50A /* UIFont+.swift in Sources */,
 				3B888AA729674BA4008209A8 /* RandomData.swift in Sources */,
 				096BDFF02965104B009ED396 /* MissionStatisticsView.swift in Sources */,

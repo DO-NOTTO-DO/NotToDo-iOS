@@ -16,6 +16,12 @@ protocol MissionHistoryViewDelegate: AnyObject {
 
 class MissionHistoryView: UIView {
     
+    // MARK: - Properties
+    
+    var missionHistoryResponse: MissionHistoryResponse?
+    var historyList: [MissionHistoryModel] = []
+    weak var delegate: MissionHistoryViewDelegate?
+    
     // MARK: - UI Components
     
     var inputTextField = UITextField()
@@ -23,13 +29,12 @@ class MissionHistoryView: UIView {
     private var missionHistoryIcon = UIImageView()
     private var missionHistoryLabel = UILabel()
     
-    private lazy var missionHistoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    lazy var missionHistoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     let historyInset: UIEdgeInsets = UIEdgeInsets(top: 15.adjusted, left: 20.adjusted, bottom: 15.adjusted, right: 20.adjusted)
     let cellHeight: CGFloat = 49.adjusted
     let width: CGFloat = UIScreen.main.bounds.width
 
     var changedText: String?
-    weak var delegate: MissionHistoryViewDelegate?
     
     // MARK: - View Life Cycle
     
@@ -190,8 +195,8 @@ extension MissionHistoryView: UICollectionViewDelegate {
             withReuseIdentifier: MissionHistoryCollectionViewCell.identifier, for: indexPath)
                 as? MissionHistoryCollectionViewCell
         
-        print(historyList[indexPath.row].history)
-        changedText = historyList[indexPath.row].history
-        inputTextField.text = historyList[indexPath.row].history
+        print(historyList[indexPath.row].title)
+        changedText = historyList[indexPath.row].title
+        inputTextField.text = historyList[indexPath.row].title
     }
 }

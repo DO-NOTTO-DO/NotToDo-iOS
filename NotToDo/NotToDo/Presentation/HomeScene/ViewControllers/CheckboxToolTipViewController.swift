@@ -10,7 +10,17 @@ import UIKit
 import SnapKit
 import Then
 
+protocol CheckboxToolTipDelegate: AnyObject {
+    func setMissionStatus(status: String, indexPath: IndexPath)
+}
+
 final class CheckboxToolTipViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    var id: Int = 0
+    weak var delegate: CheckboxToolTipDelegate?
+    var indexPath: IndexPath?
     
     // MARK: - UI Components
     
@@ -23,7 +33,6 @@ final class CheckboxToolTipViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         setUI()
         setLayout()
         addTapGesture()
@@ -74,12 +83,26 @@ extension CheckboxToolTipViewController {
         missionAmbiguousButton.addTarget(self, action: #selector(ambiguousMission), for: .touchUpInside)
     }
     
+    private func requestPatchUpdateMissionAPI(id: Int, status: String) {
+        HomeAPI.shared.patchUpdateMissionStatus(id: id, status: status) { [weak self] result in
+            guard let self = self else { return }
+            guard let response = result else { return }
+            
+        }
+    }
+    
     @objc private func successMission(_ sender: UIButton) {
-        print("성공")
+        requestPatchUpdateMissionAPI(id: self.id, status: "FINISH")
+        guard let indexPath = indexPath else { return }
+        delegate?.setMissionStatus(status: "FINISH", indexPath: indexPath)
+        self.dismiss(animated: true)
     }
     
     @objc private func ambiguousMission(_ sender: UIButton) {
-        print("애매")
+        requestPatchUpdateMissionAPI(id: self.id, status: "AMBIGUOUS")
+        guard let indexPath = indexPath else { return }
+        delegate?.setMissionStatus(status: "AMBIGUOUS", indexPath: indexPath)
+        self.dismiss(animated: true)
     }
     
     @objc private func dismissViewController() {

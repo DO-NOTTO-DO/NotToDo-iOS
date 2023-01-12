@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BannerResponse: Codable {
+struct BannerResponseDTO: Codable {
     let title: String
     let image: String
 }

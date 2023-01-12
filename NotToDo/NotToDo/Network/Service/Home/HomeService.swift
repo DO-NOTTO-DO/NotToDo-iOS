@@ -12,6 +12,7 @@ import Moya
 enum HomeService {
     case banner
     case dailyMission(date: String)
+    case updateMissionStatus(id: Int, status: String)
 }
 
 extension HomeService: TargetType {
@@ -25,6 +26,8 @@ extension HomeService: TargetType {
             return URLConstant.homeBanner
         case .dailyMission(let date):
             return URLConstant.dailyMission + "/\(date)"
+        case .updateMissionStatus(let id, _):
+            return URLConstant.updateMissionStatus + "/\(id)" + "/check"
         }
     }
     
@@ -32,6 +35,8 @@ extension HomeService: TargetType {
         switch self {
         case .banner, .dailyMission:
             return .get
+        case .updateMissionStatus:
+            return .patch
         }
     }
     
@@ -39,12 +44,15 @@ extension HomeService: TargetType {
         switch self {
         case .banner, .dailyMission:
             return .requestPlain
+        case .updateMissionStatus(_, let status):
+            return .requestParameters(parameters: ["completionStatus": status],
+                                      encoding: JSONEncoding.default)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .banner, .dailyMission:
+        case .banner, .dailyMission, .updateMissionStatus:
             return NetworkConstant.hasTokenHeader
         }
     }

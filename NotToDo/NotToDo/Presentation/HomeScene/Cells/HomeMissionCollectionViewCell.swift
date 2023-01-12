@@ -16,8 +16,10 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "HomeMissionCollectionViewCell"
     var selectStatusButton: Bool? = true
-    var clickedStatusButton: (() -> Void)?
-    var meatballClickedEvent: ((Bool) -> Void)?
+    var clickedStatusButton: ((Int) -> Void)?
+    var meatballClickedEvent: (() -> Void)?
+    var missionId: Int?
+    var indexPath: IndexPath?
     
     // MARK: - UI Components
     
@@ -214,6 +216,17 @@ extension HomeMissionCollectionViewCell {
         missionTitleLabel.text = model.title
         goalTitleLabel.text = model.goal
         setAction(model.actions.map { $0.name })
+        missionId = model.id
+        
+        if model.completionStatus == "FINISH" {
+            statusButton.setImage(.checkCircle , for: .normal)
+        } else if (model.completionStatus == "AMBIGUOUS") {
+            statusButton.setImage(.checkTriangle , for: .normal)
+        }
+        else {
+            statusButton.setImage(.checkDefault, for: .normal)
+        }
+        
     }
     
     private func setAction(_ actionList: [String]) {
@@ -234,10 +247,12 @@ extension HomeMissionCollectionViewCell {
     }
     
     @objc func statusButtonTapped(_ sender: UIButton) {
-        clickedStatusButton?()
+        guard let missionId = missionId else { return }
+        clickedStatusButton?(missionId)
     }
     
     @objc func meatballButtonTapped(_ sender: UIView) {
-        meatballClickedEvent?(true)
+        guard let missionId = missionId else { return }
+        meatballClickedEvent?()
     }
 }

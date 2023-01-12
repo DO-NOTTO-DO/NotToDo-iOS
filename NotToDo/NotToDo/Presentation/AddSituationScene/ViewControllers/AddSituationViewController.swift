@@ -27,6 +27,7 @@ final class AddSituationViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         setAddTarget()
+        requestAddSituationAPI()
     }
     
     override func loadView() {
@@ -40,6 +41,15 @@ extension AddSituationViewController {
     private func setAddTarget() {
         addSituationView.navigationBarView.backButton.addTarget(self, action: #selector(popToAddMissionController), for: .touchUpInside)
         addSituationView.navigationBarView.successButton.addTarget(self, action: #selector(popToAddMissionController), for: .touchUpInside)
+    }
+    
+    private func requestAddSituationAPI() {
+        AddSituationAPI.shared.getAddSituation { [weak self] response in
+            guard self != nil else { return }
+            guard let response = response else { return }
+            
+            dump(response)
+        }
     }
     
     // MARK: - @objc Methods

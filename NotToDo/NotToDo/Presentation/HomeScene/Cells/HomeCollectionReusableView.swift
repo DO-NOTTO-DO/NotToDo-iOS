@@ -94,7 +94,7 @@ extension HomeCollectionReusableView {
         }
     }
     
-    func setRandomData(banner: BannerResponse) {
+    func setRandomData(banner: BannerResponseDTO) {
         graphicImageView.setImage(with: banner.image)
         let randomText = banner.title
         motivationLabel.text = randomText

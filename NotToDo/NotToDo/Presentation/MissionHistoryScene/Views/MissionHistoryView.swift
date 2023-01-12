@@ -10,7 +10,11 @@ import UIKit
 import SnapKit
 import Then
 
-class MissionHistoryView: UIView, UITextFieldDelegate {
+//protocol MissionHistoryViewDelegate: AnyObject {
+//    func sendMissionHistoryTextFieldData(text: String)
+//}
+
+class MissionHistoryView: UIView {
     
     // MARK: - UI Components
     
@@ -18,10 +22,13 @@ class MissionHistoryView: UIView, UITextFieldDelegate {
     var backButton = UIButton()
     private var missionHistoryIcon = UIImageView()
     private var missionHistoryLabel = UILabel()
+    
     private lazy var missionHistoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     let historyInset: UIEdgeInsets = UIEdgeInsets(top: 15.adjusted, left: 20.adjusted, bottom: 15.adjusted, right: 20.adjusted)
     let cellHeight: CGFloat = 49.adjusted
     let width: CGFloat = UIScreen.main.bounds.width
+
+//    weak var delegate: MissionHistoryViewDelegate?
     
     // MARK: - View Life Cycle
     
@@ -53,7 +60,8 @@ extension MissionHistoryView {
             $0.leftViewMode = .always
             $0.attributedPlaceholder = NSAttributedString(string: I18N.historyPlaceHolder,
                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
-            $0.delegate = self
+            // $0.delegate = self
+            $0.addTarget(self, action: #selector(changeText), for: .editingChanged)
         }
         
         backButton.do {
@@ -114,6 +122,22 @@ extension MissionHistoryView {
         }
     }
     
+    // MARK: - @objc Methods
+    
+    @objc func changeText() {
+        missionHistoryCollectionView.reloadData()
+        
+        if inputTextField.text?.count ?? 0 > 20 { // 글자 수 제한
+            inputTextField.deleteBackward()
+        }
+        
+        if inputTextField.text!.count > 0 {
+            inputTextField.layer.borderColor = UIColor.nottodoGray2?.cgColor
+        } else {
+            inputTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
+        }
+    }
+    
     private func layout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -127,7 +151,7 @@ extension MissionHistoryView {
     
     private func register() {
         missionHistoryCollectionView.register(MissionHistoryCollectionViewCell.self,
-                                            forCellWithReuseIdentifier: MissionHistoryCollectionViewCell.identifier)
+                                              forCellWithReuseIdentifier: MissionHistoryCollectionViewCell.identifier)
     }
 }
 
@@ -158,3 +182,20 @@ extension MissionHistoryView: UICollectionViewDelegateFlowLayout {
         return historyInset
     }
 }
+
+extension MissionHistoryView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MissionHistoryCollectionViewCell.identifier, for: indexPath)
+                as? MissionHistoryCollectionViewCell
+        
+        print(historyList[indexPath.row].history)
+        inputTextField.text = historyList[indexPath.row].history
+    }
+}
+
+//extension MissionHistoryView: UITextFieldDelegate {
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        delegate?.sendMissionHistoryTextFieldData(text: self.inputTextField.text ?? "")
+//    }
+//}

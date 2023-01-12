@@ -33,7 +33,6 @@ class AddSituationFooterView: UICollectionReusableView {
         super.init(frame: frame)
         setUI()
         setLayout()
-        inputTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -55,6 +54,7 @@ extension AddSituationFooterView {
             $0.leftViewMode = .always
             $0.attributedPlaceholder = NSAttributedString(string: I18N.inputPlaceHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.nottodoGray3!])
             $0.addTarget(self, action: #selector(changeText), for: .editingChanged)
+            $0.delegate = self
         }
         
         textCountLabel.do {

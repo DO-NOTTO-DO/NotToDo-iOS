@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Kingfisher
 import SnapKit
 import Then
 
@@ -82,7 +83,7 @@ extension HomeCollectionReusableView {
         motivationLabel.snp.makeConstraints {
             $0.top.equalTo(dateView.snp.bottom).offset(15.adjusted)
             $0.leading.equalToSuperview().inset(20.adjusted)
-            $0.width.equalTo(147.adjusted)
+            $0.trailing.equalTo(graphicImageView.snp.leading).offset(-10.adjusted)
         }
         
         graphicImageView.snp.makeConstraints {
@@ -94,7 +95,7 @@ extension HomeCollectionReusableView {
     }
     
     func setRandomData(banner: BannerResponse) {
-        graphicImageView.image = banner.image
+        graphicImageView.setImage(with: banner.image)
         let randomText = banner.title
         self.typingAnimation(randomText)
     }

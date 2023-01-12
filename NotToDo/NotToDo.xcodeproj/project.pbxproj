@@ -109,6 +109,7 @@
 		3BFE8405296FD103000B37CA /* CheckboxToolTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE8404296FD103000B37CA /* CheckboxToolTipViewController.swift */; };
 		3BFE840B29704534000B37CA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3BFE840A29704534000B37CA /* Kingfisher */; };
 		3BFE840D2970454E000B37CA /* NetworkBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE840C2970454E000B37CA /* NetworkBase.swift */; };
+		3BFE840F297045D4000B37CA /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE840E297045D4000B37CA /* UIImageView+.swift */; };
 		6C600BC029693B3100421D7A /* MissionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */; };
 		6C600BC229693B3B00421D7A /* MissionHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */; };
 		6C600BC429693B4B00421D7A /* MissionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */; };
@@ -228,6 +229,7 @@
 		3BF7CE9D296B6EBA009C13DC /* HomeMissionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMissionCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BFE8404296FD103000B37CA /* CheckboxToolTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToolTipViewController.swift; sourceTree = "<group>"; };
 		3BFE840C2970454E000B37CA /* NetworkBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBase.swift; sourceTree = "<group>"; };
+		3BFE840E297045D4000B37CA /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		6C600BBF29693B3100421D7A /* MissionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryModel.swift; sourceTree = "<group>"; };
 		6C600BC129693B3B00421D7A /* MissionHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		6C600BC329693B4B00421D7A /* MissionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionHistoryViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				3B576323296403CB00E03637 /* UILabel+.swift */,
 				3B4187CE296D342900F0FBF4 /* UIViewController+.swift */,
 				3B882606296DDC0E00A51B50 /* UIDevice+.swift */,
+				3BFE840E297045D4000B37CA /* UIImageView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1050,6 +1053,7 @@
 				3B4B90BB29656684008C5CA8 /* MyInfoView.swift in Sources */,
 				096BE0252966A2B0009ED396 /* SortedItemModel.swift in Sources */,
 				3BE07016296F44C9002CC50A /* TabBarItem.swift in Sources */,
+				3BFE840F297045D4000B37CA /* UIImageView+.swift in Sources */,
 				6CC79FF9296C63B000A29DFE /* AddBehaviorCollectionViewCell.swift in Sources */,
 				3BE07008296F43A2002CC50A /* UILabel+.swift in Sources */,
 				3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */,

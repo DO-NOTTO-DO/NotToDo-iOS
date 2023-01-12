@@ -29,7 +29,7 @@ struct URLConstant {
     static let missionStatistics = "/mission/stat/notTodo"
 
     // MARK: - AddMission
-    
+    static let addMission = "/mission"
     static let addSituation = "/situation"
     static let missionhistory = "/mission/recent"
 }

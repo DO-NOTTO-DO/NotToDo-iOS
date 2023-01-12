@@ -19,9 +19,11 @@ final class AddMissionViewController: UIViewController {
     }
     var addMissionRequest: AddMissionRequest?
     
+    var behavior: String?
+    
     // MARK: - UI Components
     
-    private var addMissionView: AddMissionView!
+    var addMissionView: AddMissionView!
     
     // MARK: - View Life Cycle
     
@@ -35,6 +37,9 @@ final class AddMissionViewController: UIViewController {
     override func loadView() {
         super.loadView()
         addMissionView = AddMissionView()
+        if let behavior = behavior {
+            addMissionView.dataBind(behavior: behavior)
+        }
         view = addMissionView
     }
 }
@@ -81,6 +86,7 @@ extension AddMissionViewController {
     
     @objc private func pushToRecommendViewController() {
         let recommendViewController = RecommendViewController()
+        recommendViewController.navigationBarView = NavigationBarView(frame: CGRect(), mode: .recommend)
         navigationController?.pushViewController(recommendViewController, animated: true)
     }
     

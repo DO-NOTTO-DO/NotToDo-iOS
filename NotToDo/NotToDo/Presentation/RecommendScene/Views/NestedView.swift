@@ -16,6 +16,10 @@ class NestedView: UIView {
 
     var item: RecommendElementResponse?
     
+    var isClickedClosure: ((_ section: Int, _ index: Int) -> Void)?
+    var section: Int?
+    var index: Int?
+    
     enum Section: Int, Hashable {
         case main
     }
@@ -49,12 +53,17 @@ extension NestedView {
         reloadData()
     }
     
+    func dataBind(section: Int) {
+        self.section = section
+    }
+    
     private func setUI() {
         collectionview.do {
             $0.backgroundColor = .clear
             $0.showsVerticalScrollIndicator = false
             $0.isScrollEnabled = false
             $0.bounces = false
+            $0.delegate = self
         }
     }
     
@@ -126,7 +135,9 @@ extension NestedView {
 }
 extension NestedView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if let section = section {
+            isClickedClosure?(section, indexPath.item)
+        }
         print("tapped")
     }
 }

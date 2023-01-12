@@ -25,7 +25,7 @@ class MissionStatisticsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setUI()
+//        setUI()
         register()
         setLayout()
     }

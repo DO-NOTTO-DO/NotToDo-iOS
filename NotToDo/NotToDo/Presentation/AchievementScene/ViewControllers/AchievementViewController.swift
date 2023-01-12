@@ -71,9 +71,9 @@ extension AchievementViewController {
             $0.text = I18N.statistcisBottomMessage
             $0.font = .PretendardMedium(size: 12.adjusted)
             $0.textColor = .nottodoGray2
-            if missionView.missionList.isEmpty && situationView.situationList.isEmpty {
-                $0.isHidden = true
-            }
+//            if missionView.missionList.isEmpty && situationView.situationList.isEmpty {
+//                $0.isHidden = true
+//            }
         }
     }
     
@@ -83,7 +83,9 @@ extension AchievementViewController {
             guard let response = response else { return }
             self?.missionList = response.data!
             self?.configMissionView()
+            self?.missionView.setUI()
             self?.missionView.missionTableView.reloadData()
+            self?.relayout()
             dump(response)
         }
         SituationStatisticsAPI.shared.getSituationStatistics { [weak self] response in
@@ -91,7 +93,9 @@ extension AchievementViewController {
             guard let response = response else { return }
             self?.situationList = response.data!
             self?.configSituationView()
+            self?.situationView.setUI()
             self?.situationView.expangindTableView.reloadData()
+            self?.relayout()
             print(response)
             dump(response)
         }
@@ -140,9 +144,9 @@ extension AchievementViewController {
             if missionView.missionList.isEmpty {
                 $0.height.equalTo(300.adjusted)
             } else {
-                $0.height.equalTo(CGFloat(missionView.missionList.count) * 55.adjusted + 92.adjusted)
+                $0.height.equalTo(CGFloat(missionView.missionList.count) * 55.adjusted + 105.adjusted)
             }
-            $0.bottom.equalTo(scrollView.snp.bottom).offset(-78.adjusted)
+            $0.bottom.lessThanOrEqualTo(scrollView.snp.bottom).offset(-78.adjusted)
         }
         
         situationView.snp.makeConstraints {
@@ -151,15 +155,16 @@ extension AchievementViewController {
             if situationView.situationList.isEmpty {
                 $0.height.equalTo(300.adjusted)
             } else {
-                $0.height.equalTo(CGFloat(situationView.situationList.count) * 55.adjusted + 120.adjusted)
+                $0.height.equalTo(CGFloat(situationView.situationList.count) * 55.adjusted + 105.adjusted)
             }
+            $0.bottom.lessThanOrEqualTo(scrollView.snp.bottom).offset(-78.adjusted)
         }
         bottomLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(20.adjusted)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20.adjusted)
             if missionView.isHidden {
-                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.situationList.count) * 55.adjusted + 130.adjusted)
+                $0.top.equalTo(situationView.snp.bottom).offset(10.adjusted)
             } else {
-                $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 102.adjusted)
+                $0.top.equalTo(missionView.snp.bottom).offset(10.adjusted)
             }
         }
         segmentedControl.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
@@ -169,12 +174,33 @@ extension AchievementViewController {
     }
     
     func relayout() {
+        missionView.snp.remakeConstraints {
+            $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
+            $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
+            if missionView.missionList.isEmpty {
+                $0.height.equalTo(300.adjusted)
+            } else {
+                $0.height.equalTo(CGFloat(missionView.missionList.count) * 55.adjusted + 105.adjusted)
+            }
+            $0.bottom.lessThanOrEqualTo(scrollView.snp.bottom).offset(-78.adjusted)
+        }
+        
+        situationView.snp.remakeConstraints {
+            $0.directionalHorizontalEdges.equalTo(safeArea).inset(20.adjusted)
+            $0.top.equalTo(segmentedControl.snp.bottom).offset(20.adjusted)
+            if situationView.situationList.isEmpty {
+                $0.height.equalTo(300.adjusted)
+            } else {
+                $0.height.equalTo(CGFloat(situationView.situationList.count) * 55.adjusted + 105.adjusted)
+            }
+            $0.bottom.lessThanOrEqualTo(scrollView.snp.bottom).offset(-78.adjusted)
+        }
         bottomLabel.snp.remakeConstraints {
             $0.leading.equalToSuperview().offset(20.adjusted)
             if missionView.isHidden {
-                $0.top.equalTo(situationView.snp.top).offset(CGFloat(situationView.situationList.count) * 55.adjusted + 130.adjusted)
+                $0.top.equalTo(situationView.snp.bottom).offset(10.adjusted)
             } else {
-                $0.top.equalTo(missionView.snp.top).offset(CGFloat(missionView.missionList.count) * 55.adjusted + 102.adjusted)
+                $0.top.equalTo(missionView.snp.bottom).offset(10.adjusted)
             }
         }
     }

@@ -101,8 +101,15 @@ extension ActionSheetViewController {
     
     private func requestDeleteMission(id: Int) {
         HomeAPI.shared.deleteMission(id: id) { [weak self] response in
-            guard let self = self else { return }
-            guard let response = response else { return }
+            guard self != nil else { return }
+            guard response != nil else { return }
+        }
+    }
+    
+    private func requestAddAnotherDay(id: Int, dates: [String]) {
+        HomeAPI.shared.postAnotherDay(id: id, dates: dates) { [weak self] response in
+            guard self != nil else { return }
+            guard response != nil else { return }
         }
     }
     
@@ -121,6 +128,7 @@ extension ActionSheetViewController {
     }
     
     @objc private func choiceFinishButtonDidTap() {
+        requestAddAnotherDay(id: id, dates: ["2023.01.26", "2032.01.26"])
         dismissActionSheetWithAnimation()
     }
 }

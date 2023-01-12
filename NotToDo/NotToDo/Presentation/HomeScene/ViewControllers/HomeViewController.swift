@@ -172,6 +172,7 @@ extension HomeViewController: UICollectionViewDataSource {
                     actionSheetViewController.dismissClicked = {
                         let calendarActionSheetViewController = ActionSheetViewController()
                         calendarActionSheetViewController.mode = .calendar
+                        calendarActionSheetViewController.id = missionId
                         calendarActionSheetViewController.modalPresentationStyle = .overFullScreen
                         calendarActionSheetViewController.modalTransitionStyle = .crossDissolve
                         self?.present(calendarActionSheetViewController, animated: true)

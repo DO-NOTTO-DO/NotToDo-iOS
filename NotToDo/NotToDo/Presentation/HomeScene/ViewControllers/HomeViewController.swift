@@ -83,6 +83,13 @@ extension HomeViewController: UICollectionViewDataSource {
             } else {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMissionCollectionViewCell.identifier, for: indexPath) as? HomeMissionCollectionViewCell else { return UICollectionViewCell() }
                 cell.configure(missionList[indexPath.row])
+                cell.clickedStatusButton = {[weak self] in
+                    let checkboxViewController = CheckboxToolTipViewController()
+                    checkboxViewController.modalPresentationStyle = .overFullScreen
+                    checkboxViewController.modalTransitionStyle = .crossDissolve
+                    checkboxViewController.setUpdateLayout(cell.frame.minY - collectionView.contentOffset.y)
+                    self?.present(checkboxViewController, animated: true)
+                }
                 cell.meatballClickedEvent = { result in
                     if result {
                         let actionSheetViewController = ActionSheetViewController()
@@ -90,7 +97,6 @@ extension HomeViewController: UICollectionViewDataSource {
                         actionSheetViewController.modalTransitionStyle = .crossDissolve
                         self.present(actionSheetViewController, animated: true)
                         actionSheetViewController.dismissClicked = {
-                            // action sheet
                             let calendarActionSheetViewController = ActionSheetViewController()
                             calendarActionSheetViewController.mode = .calendar
                             calendarActionSheetViewController.modalPresentationStyle = .overFullScreen

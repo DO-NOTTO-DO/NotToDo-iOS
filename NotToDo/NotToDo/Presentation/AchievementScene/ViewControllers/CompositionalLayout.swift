@@ -7,10 +7,10 @@
 
 import UIKit
 
-public class SubItem {
+final class Layout {
+    
     static  let spacing: NSCollectionLayoutSpacing = .fixed(10)
-}
-public final class Layout: SubItem {
+    
     class func compositional_vertical(itemW: NSCollectionLayoutDimension, itemH: NSCollectionLayoutDimension, gWidth: NSCollectionLayoutDimension, gHeight: NSCollectionLayoutDimension, count: Int?) -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: itemW, heightDimension: itemH))
         if count == nil {
@@ -22,6 +22,7 @@ public final class Layout: SubItem {
             return emptySection(group, NSDirectionalEdgeInsets(top: 56, leading: 0, bottom: 27, trailing: 0))
         }
     }
+    
     class func missionSection(_ group: NSCollectionLayoutGroup, _ edge: NSDirectionalEdgeInsets) -> NSCollectionLayoutSection {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = edge
@@ -32,6 +33,7 @@ public final class Layout: SubItem {
         section.boundarySupplementaryItems = [header]
         return section
     }
+    
     class func emptySection(_ group: NSCollectionLayoutGroup, _ edge: NSDirectionalEdgeInsets) -> NSCollectionLayoutSection {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = edge

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		090FA2E7295F51BB00918AED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 090FA2E6295F51BB00918AED /* GoogleService-Info.plist */; };
-		090FA2EA295F563C00918AED /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2E9295F563C00918AED /* FirebaseAnalytics */; };
-		090FA2F22960B15300918AED /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2F12960B15300918AED /* FirebaseAnalytics */; };
 		090FA2F52960B70400918AED /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2F42960B70400918AED /* SnapKit */; };
 		090FA2F82960B74000918AED /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2F72960B74000918AED /* Then */; };
 		090FA2FB2960B87500918AED /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2FA2960B87500918AED /* Moya */; };
@@ -39,6 +37,7 @@
 		09F695DB296C52B600877EA7 /* MissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DA296C52B600877EA7 /* MissionTableViewCell.swift */; };
 		09F695DD296C52F000877EA7 /* SituationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DC296C52F000877EA7 /* SituationTableViewCell.swift */; };
 		09F695DF296C533200877EA7 /* BackgroundSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DE296C533200877EA7 /* BackgroundSupplementaryView.swift */; };
+		09F695E3296D68DD00877EA7 /* SituationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695E2296D68DD00877EA7 /* SituationList.swift */; };
 		3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162873295AD7860077AE7B /* AppDelegate.swift */; };
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
@@ -154,6 +153,7 @@
 		09F695DA296C52B600877EA7 /* MissionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionTableViewCell.swift; sourceTree = "<group>"; };
 		09F695DC296C52F000877EA7 /* SituationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SituationTableViewCell.swift; sourceTree = "<group>"; };
 		09F695DE296C533200877EA7 /* BackgroundSupplementaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundSupplementaryView.swift; sourceTree = "<group>"; };
+		09F695E2296D68DD00877EA7 /* SituationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationList.swift; sourceTree = "<group>"; };
 		3B162870295AD7860077AE7B /* NotToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B162873295AD7860077AE7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B162875295AD7860077AE7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -250,11 +250,9 @@
 			files = (
 				3B4187D5296D5D8700F0FBF4 /* IQKeyboardManagerSwift in Frameworks */,
 				090FA2FB2960B87500918AED /* Moya in Frameworks */,
-				090FA2EA295F563C00918AED /* FirebaseAnalytics in Frameworks */,
 				096BDFD52960B910009ED396 /* FSCalendar in Frameworks */,
 				090FA2F82960B74000918AED /* Then in Frameworks */,
 				090FA2F52960B70400918AED /* SnapKit in Frameworks */,
-				090FA2F22960B15300918AED /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +312,7 @@
 			children = (
 				096BDFF12965215D009ED396 /* MissionList.swift */,
 				099F0738296BD0990036CF55 /* TitleButtonList.swift */,
+				09F695E2296D68DD00877EA7 /* SituationList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -926,8 +925,6 @@
 			);
 			name = NotToDo;
 			packageProductDependencies = (
-				090FA2E9295F563C00918AED /* FirebaseAnalytics */,
-				090FA2F12960B15300918AED /* FirebaseAnalytics */,
 				090FA2F42960B70400918AED /* SnapKit */,
 				090FA2F72960B74000918AED /* Then */,
 				090FA2FA2960B87500918AED /* Moya */,
@@ -963,7 +960,6 @@
 			);
 			mainGroup = 3B162867295AD7860077AE7B;
 			packageReferences = (
-				090FA2F02960B15300918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				090FA2F32960B70400918AED /* XCRemoteSwiftPackageReference "SnapKit" */,
 				090FA2F62960B74000918AED /* XCRemoteSwiftPackageReference "Then" */,
 				090FA2F92960B87500918AED /* XCRemoteSwiftPackageReference "Moya" */,
@@ -1116,6 +1112,7 @@
 				3B59AFB629633DFF0050FF49 /* ActionSheetView.swift in Sources */,
 				6CDC2D0C2963E2AF00BFF5F4 /* AddMissionView.swift in Sources */,
 				6CDC2D1529641BE000BFF5F4 /* AddMissionTitleView.swift in Sources */,
+				09F695E3296D68DD00877EA7 /* SituationList.swift in Sources */,
 				3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */,
 				3B90A42C296F28D2000D6852 /* HomeService.swift in Sources */,
 				3BE07009296F43A2002CC50A /* UITabBar+.swift in Sources */,
@@ -1346,22 +1343,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		090FA2E8295F563C00918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-		090FA2F02960B15300918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		090FA2F32960B70400918AED /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -1405,16 +1386,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		090FA2E9295F563C00918AED /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 090FA2E8295F563C00918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		090FA2F12960B15300918AED /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 090FA2F02960B15300918AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
 		090FA2F42960B70400918AED /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 090FA2F32960B70400918AED /* XCRemoteSwiftPackageReference "SnapKit" */;

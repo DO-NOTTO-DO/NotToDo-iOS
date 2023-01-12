@@ -143,14 +143,14 @@ extension UIImage {
     static let progressBarSecond = UIImage(named: "Onboarding/prgressbar_page2")!.withRenderingMode(.alwaysOriginal)
     static let progressBarThird = UIImage(named: "Onboarding/prgressbar_page3")!.withRenderingMode(.alwaysOriginal)
     
-    static let situation_Rank1 = UIImage(named: "Achieve/situation_rank1")!.withRenderingMode(.alwaysOriginal)
-    static let situation_Rank1_off = UIImage(named: "Achieve/situation_rank1_off")!.withRenderingMode(.alwaysOriginal)
-    static let situation_Rank2 = UIImage(named: "Achieve/situation_rank2")!.withRenderingMode(.alwaysOriginal)
-    static let situation_Rank2_off = UIImage(named: "Achieve/situation_rank2_off")!.withRenderingMode(.alwaysOriginal)
-    static let situation_Rank3 = UIImage(named: "Achieve/situation_rank3")!.withRenderingMode(.alwaysOriginal)
-    static let situation_Rank3_off = UIImage(named: "Achieve/situation_rank3_off")!.withRenderingMode(.alwaysOriginal)
+    static let situationRank1 = UIImage(named: "Achieve/situation_rank1")!.withRenderingMode(.alwaysOriginal)
+    static let situationRank1off = UIImage(named: "Achieve/situation_rank1_off")!.withRenderingMode(.alwaysOriginal)
+    static let situationRank2 = UIImage(named: "Achieve/situation_rank2")!.withRenderingMode(.alwaysOriginal)
+    static let situationRank2off = UIImage(named: "Achieve/situation_rank2_off")!.withRenderingMode(.alwaysOriginal)
+    static let situationRank3 = UIImage(named: "Achieve/situation_rank3")!.withRenderingMode(.alwaysOriginal)
+    static let situationRank3off = UIImage(named: "Achieve/situation_rank3_off")!.withRenderingMode(.alwaysOriginal)
     
-    static let situation_1 = UIImage(named: "Achieve/situation_1")!.withRenderingMode(.alwaysOriginal)
-    static let situation_2 = UIImage(named: "Achieve/situation_2")!.withRenderingMode(.alwaysOriginal)
-    static let situation_3 = UIImage(named: "Achieve/situation_3")!.withRenderingMode(.alwaysOriginal)
+    static let situation1 = UIImage(named: "Achieve/situation_1")!.withRenderingMode(.alwaysOriginal)
+    static let situation2 = UIImage(named: "Achieve/situation_2")!.withRenderingMode(.alwaysOriginal)
+    static let situation3 = UIImage(named: "Achieve/situation_3")!.withRenderingMode(.alwaysOriginal)
 }

@@ -33,10 +33,13 @@ class SituationTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Methods
+
 extension SituationTableViewCell {
     func setUI() {
         backGroundImage.do {
-            $0.image = .situation_1
+            $0.image = .situation1
         }
         titleLabel.do {
             $0.textColor = .nottodoBlack
@@ -48,6 +51,7 @@ extension SituationTableViewCell {
             $0.text = "n회"
         }
     }
+    
     func setLayout() {
         addSubview(backGroundImage)
         backGroundImage.addSubviews(titleLabel, numberLabel)
@@ -56,7 +60,7 @@ extension SituationTableViewCell {
             $0.edges.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(50)
+            $0.leading.equalToSuperview().offset(50.adjusted)
             $0.centerY.equalToSuperview()
         }
         numberLabel.snp.makeConstraints {

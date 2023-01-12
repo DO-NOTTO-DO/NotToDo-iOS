@@ -11,7 +11,7 @@ final class AddMissionViewController: UIViewController {
     
     // MARK: - Properties
     
-    lazy var checkButtonEnable: Bool = addMissionView.missionTextField.text!.count > 0 && behaviorList.count > 0
+    lazy var checkButtonEnable: Bool = addMissionView.missionText.text!.count > 0 && behaviorList.count > 0
     && (addMissionView.situationView.AddMissionButton.titleLabel?.text)! != I18N.input && addMissionView.goalTextField.text!.count > 0 {
         didSet {
             addMissionView.availableAddMission(checkButtonEnable)
@@ -39,14 +39,14 @@ final class AddMissionViewController: UIViewController {
 
 extension AddMissionViewController {
     private func setAddTarget() {
+        let missionHistoryRecognizer = UITapGestureRecognizer(target: self, action: #selector(pushToMissionHistoryViewController))
+        
         addMissionView.addBehaviorCollectionView.dataSource = self
         addMissionView.navigationBarView.backButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
-        addMissionView.missionTextField.addTarget(self, action: #selector(pushToMissionHistoryViewController), for: .touchUpInside)
+        addMissionView.missionTextField.addGestureRecognizer(missionHistoryRecognizer)
         addMissionView.behaviorTitleView.AddMissionButton.addTarget(self, action: #selector(pushToRecommendViewController), for: .touchUpInside)
         addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(pushToAddSituationViewController), for: .touchUpInside)
         addMissionView.addMissionButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
-        
-        addMissionView.missionTextField.addTarget(self, action: #selector(checkEnable), for: .editingChanged)
         addMissionView.goalTextField.addTarget(self, action: #selector(checkEnable), for: .editingChanged)
         addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(checkEnable), for: .touchUpInside)
         addMissionView.addBehaviorButton.addTarget(self, action: #selector(checkEnable), for: .touchUpInside)
@@ -55,7 +55,7 @@ extension AddMissionViewController {
     // MARK: - @objc Methods
     
     @objc func checkEnable() {
-        checkButtonEnable = addMissionView.missionTextField.text!.count > 0 && behaviorList.count > 0
+        checkButtonEnable = addMissionView.missionText.text!.count > 0 && behaviorList.count > 0
         && (addMissionView.situationView.AddMissionButton.titleLabel?.text)! != I18N.input && addMissionView.goalTextField.text!.count > 0
     }
 
@@ -72,7 +72,7 @@ extension AddMissionViewController {
         let addSituationViewController = AddSituationViewController()
         addSituationViewController.delegate = self
         addSituationViewController.checkSituationButton = { [weak self] response in
-            self?.checkButtonEnable = self?.addMissionView.missionTextField.text!.count ?? 0 > 0 && behaviorList.count > 0
+            self?.checkButtonEnable = self?.addMissionView.missionText.text!.count ?? 0 > 0 && behaviorList.count > 0
             && response != I18N.input && self?.addMissionView.goalTextField.text!.count ?? 0 > 0
         }
         self.navigationController?.pushViewController(addSituationViewController, animated: true)
@@ -80,7 +80,11 @@ extension AddMissionViewController {
     
     @objc private func pushToMissionHistoryViewController() {
         let missionHistoryViewController = MissionHistoryViewController()
+        missionHistoryViewController.delegate = self
         self.navigationController?.pushViewController(missionHistoryViewController, animated: true)
+        
+        checkButtonEnable = addMissionView.missionText.text!.count > 0 && behaviorList.count > 0
+        && (addMissionView.situationView.AddMissionButton.titleLabel?.text)! != I18N.input && addMissionView.goalTextField.text!.count > 0
     }
     
     @objc private func dismissToHomeViewController() {
@@ -107,10 +111,23 @@ extension AddMissionViewController: AddSituationViewDelegate {
         // pop된 뷰컨에서 넘겨 받은 데이터를 원하는 곳에 넣어주기
         if data != "" {
             addMissionView.situationView.AddMissionButton.setTitle(data, for: .normal)
-            addMissionView.situationAvailable = 1
         } else {
             addMissionView.situationView.AddMissionButton.setTitle(I18N.input, for: .normal)
-            addMissionView.situationAvailable = 0
+        }
+    }
+}
+
+extension AddMissionViewController: MissionHistoryViewDelegate {
+    func sendMissionHistoryData(data: String) {
+        if data != "" {
+            print(data)
+            addMissionView.missionText.text = data
+            addMissionView.missionText.textColor = .nottodoGray1
+            addMissionView.missionTextField.layer.borderColor = UIColor.nottodoGray2?.cgColor
+        } else {
+            addMissionView.missionText.text = I18N.missionPlaceHolder
+            addMissionView.missionText.textColor = .nottodoGray3
+            addMissionView.missionTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
         }
     }
 }

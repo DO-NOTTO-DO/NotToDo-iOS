@@ -19,6 +19,3 @@ struct SituationMissions: Codable {
     let count: Int
     let title: String
 }
-
-
-

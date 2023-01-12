@@ -16,6 +16,10 @@ protocol AddSituationViewDelegate: AnyObject {
 
 class AddSituationView: UIView {
     
+    var addSituationResponse: AddSituationResponse?
+    var recommendList: [AddSituationModel] = []
+    var recentList: [AddSituationModel] = []
+    
     // MARK: - UI Components
     
     var navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
@@ -179,15 +183,15 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath) as? AddSituationCollectionViewCell else { return .zero }
         switch indexPath.section {
         case 0:
-            cell.addSituationLabel.text = recommendList[indexPath.row].keyword
+            cell.addSituationLabel.text = recommendList[indexPath.row].name
         case 1:
             if recentList.isEmpty {
                 return CGSize(width: addSituationCollectionView.frame.width, height: 35.adjusted)
             } else {
-                cell.addSituationLabel.text = recentList[indexPath.row].keyword
+                cell.addSituationLabel.text = recentList[indexPath.row].name
             }
         default:
-            cell.addSituationLabel.text = recommendList[indexPath.row].keyword
+            cell.addSituationLabel.text = recommendList[indexPath.row].name
         }
         
         cell.addSituationLabel.sizeToFit()
@@ -224,10 +228,10 @@ extension AddSituationView: UICollectionViewDelegate {
         
         switch indexPath.section {
         case 0:
-            changedText = recommendList[indexPath.row].keyword
+            changedText = recommendList[indexPath.row].name
         case 1:
             if !recentList.isEmpty {
-                changedText = recentList[indexPath.row].keyword
+                changedText = recentList[indexPath.row].name
             }
         default:
             return

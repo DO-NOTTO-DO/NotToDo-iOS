@@ -25,4 +25,5 @@ struct URLConstant {
     
     static let situationStatistics = "/mission/stat/situation"
     static let missionStatistics = "/mission/stat/notTodo"
+    static let addSituation = "/situation"
 }

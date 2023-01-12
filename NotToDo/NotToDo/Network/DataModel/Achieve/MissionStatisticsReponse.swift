@@ -12,4 +12,3 @@ struct MissionStatistcsResponse: Codable {
     let count: Int
     let title: String
 }
-

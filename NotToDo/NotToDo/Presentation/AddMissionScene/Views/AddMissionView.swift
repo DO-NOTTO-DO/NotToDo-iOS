@@ -25,7 +25,8 @@ class AddMissionView: UIView {
     
     private let missionView = UIView()
     private let missionTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.missionTitle, buttonLabel: nil, icon: nil)
-    let missionTextField = AddMissionTextField(frame: .zero, placeHolder: I18N.missionPlaceHolder)
+    let missionTextField = UIView()
+    let missionText = UILabel()
     
     private let behaviorView = UIView()
     let behaviorTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.behaviorTitle, buttonLabel: I18N.recommend, icon: .rightArrow)
@@ -37,7 +38,6 @@ class AddMissionView: UIView {
     lazy var addBehaviorCollectionView = UICollectionView(frame: self.bounds, collectionViewLayout: layout())
     
     let situationView = AddMissionTitleView(frame: .zero, titleLabel: I18N.situationTitle, buttonLabel: I18N.input, icon: .rightArrow)
-    var situationAvailable = 0
     
     private let goalView = UIView()
     private let goalTitleView = AddMissionTitleView(frame: .zero, titleLabel: I18N.goalTitle, buttonLabel: nil, icon: nil)
@@ -82,8 +82,20 @@ extension AddMissionView {
         
         maxMissionLabel.do {
             $0.text = I18N.maxMission
-            $0.font = .PretendardRegular(size: 14)
+            $0.font = .PretendardRegular(size: 14.adjusted)
             $0.textColor = .nottodoGray2
+        }
+        
+        missionTextField.do {
+            $0.layer.borderWidth = 1.adjusted
+            $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
+            $0.isUserInteractionEnabled = true
+        }
+        
+        missionText.do {
+            $0.text = I18N.missionPlaceHolder
+            $0.font = .PretendardMedium(size: 16.adjusted)
+            $0.textColor = .nottodoGray3
         }
         
         addBehaviorButton.do {
@@ -98,7 +110,7 @@ extension AddMissionView {
         
         maxBehaviorLabel.do {
             $0.text = I18N.maxBehavior
-            $0.font = .PretendardRegular(size: 12)
+            $0.font = .PretendardRegular(size: 12.adjusted)
             $0.textColor = .nottodoGray2
         }
         
@@ -110,7 +122,7 @@ extension AddMissionView {
         dateLabel.do {
             $0.text = I18N.actionDate
             $0.textColor = .nottodoBlack
-            $0.font = .PretendardMedium(size: 16)
+            $0.font = .PretendardMedium(size: 16.adjusted)
         }
         
         dateFormatter.do {
@@ -129,13 +141,13 @@ extension AddMissionView {
             $0.layer.borderWidth = 0.5.adjusted
             $0.layer.borderColor = UIColor.nottodoGray4?.cgColor
             $0.layer.cornerRadius = 5.adjusted
-            $0.titleLabel?.font = .PretendardMedium(size: 16)
+            $0.titleLabel?.font = .PretendardMedium(size: 16.adjusted)
         }
         
         addMissionButton.do {
             $0.setTitle(I18N.add, for: .normal)
             $0.setTitleColor(.nottodoWhite, for: .normal)
-            $0.titleLabel?.font = .PretendardBold(size: 18)
+            $0.titleLabel?.font = .PretendardBold(size: 18.adjusted)
             $0.backgroundColor = .nottodoGray2
             $0.addTarget(self, action: #selector(resetBehaviorModel), for: .touchUpInside)
         }
@@ -147,6 +159,7 @@ extension AddMissionView {
         addSubviews(navigationBarView, scrollView, addMissionButton)
         scrollView.addSubviews(maxMissionLabelView, missionView, behaviorView, addBehaviorCollectionView, vStack)
         missionView.addSubviews(missionTitleView, missionTextField)
+        missionTextField.addSubview(missionText)
         behaviorView.addSubviews(behaviorTitleView, behaviorTextField, addBehaviorButton, unavailableAddBehaviorButton, maxBehaviorLabel)
         goalView.addSubviews(goalTitleView, goalTextField)
         dateView.addSubviews(dateLabel, dateButton)
@@ -228,6 +241,11 @@ extension AddMissionView {
             $0.top.equalTo(missionTitleView.snp.bottom).offset(11.adjusted)
             $0.leading.trailing.equalToSuperview().inset(20.adjusted)
             $0.height.equalTo(46.adjusted)
+        }
+        
+        missionText.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(15)
         }
         
         behaviorTitleView.snp.makeConstraints {
@@ -333,10 +351,10 @@ extension AddMissionView {
             addBehaviorButton.isHidden = true
         }
         
-        if missionTextField.text!.count > 0 && goalTextField.text!.count > 0 {
-            addMissionButton.isUserInteractionEnabled = true
-            addMissionButton.backgroundColor = .nottodoBlack
-        }
+//        if missionText.text!.count > 0 && goalTextField.text!.count > 0 {
+//            addMissionButton.isUserInteractionEnabled = true
+//            addMissionButton.backgroundColor = .nottodoBlack
+//        }
     }
     
     @objc func resetBehaviorModel() {

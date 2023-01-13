@@ -7,11 +7,7 @@
 
 import Foundation
 
-struct MissionWeeklyResponseDTO: Codable {
-    let data: [WeekMission]
-}
-
-struct WeekMission: Codable {
+struct WeekMissionResponseDTO: Codable {
     let actionDate: String
-    let percentage: Float
+    let percentage: CGFloat
 }

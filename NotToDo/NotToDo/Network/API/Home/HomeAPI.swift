@@ -19,7 +19,7 @@ final class HomeAPI {
     public private(set) var missionDailyData: GeneralArrayResponse<DailyMissionResponseDTO>?
     public private(set) var updateMissionStatus: GeneralResponse<UpdateMissionResponseDTO>?
     public private(set) var addAnotherDay: GeneralResponse<AddAnotherDayResponseDTO>?
-    public private(set) var missionWeekly: GeneralResponse<MissionWeeklyResponseDTO>?
+    public private(set) var missionWeekly: GeneralResponse<WeekMissionResponseDTO>?
 
     // MARK: - GET
         
@@ -58,7 +58,7 @@ final class HomeAPI {
                 let statusCode = response.statusCode
                 let data = response.data
                 let networkResult = NetworkBase.judgeStatus(by: statusCode, data,
-                                                            MissionWeeklyResponseDTO.self)
+                                                            [WeekMissionResponseDTO].self)
                 completion(networkResult)
             case let .failure(err):
                 print(err)

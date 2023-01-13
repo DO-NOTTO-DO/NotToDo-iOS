@@ -32,7 +32,6 @@ class TableHeaderView: UITableViewHeaderFooterView {
         isSelected = false
         numberLabel.textColor = isSelected ? UIColor.yellow_basic : UIColor.nottodoGray1
         headerImage.image = nil
-        
     }
     
     override init(reuseIdentifier: String?) {

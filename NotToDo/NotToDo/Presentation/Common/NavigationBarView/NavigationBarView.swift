@@ -21,7 +21,7 @@ class NavigationBarView: UIView {
 
     // MARK: - Properties
     
-    private var navigationMode: NavigationMode
+    var navigationMode: NavigationMode
     
     // MARK: - UI Components
     

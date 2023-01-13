@@ -9,6 +9,8 @@ import UIKit
 
 final class BackgroundSupplementaryView: UICollectionReusableView {
     
+    // MARK: - Life Cycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .nottodoWhite

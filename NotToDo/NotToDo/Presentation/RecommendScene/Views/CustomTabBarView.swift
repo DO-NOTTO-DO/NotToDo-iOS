@@ -106,7 +106,7 @@ extension CustomTabBarView {
     
     private func layout() -> UICollectionViewCompositionalLayout {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(69), heightDimension: .absolute(82)))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(642), heightDimension: .absolute(104)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(550), heightDimension: .absolute(104)), subitems: [item])
         group.interItemSpacing = .fixed(10)
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)

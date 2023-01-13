@@ -379,13 +379,6 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		099F07002969E0F30036CF55 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		09D3C536296FFD5500F1488D /* Achieve */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,7 +552,6 @@
 		3B16289A295AD9850077AE7B /* AchievementScene */ = {
 			isa = PBXGroup;
 			children = (
-				099F07002969E0F30036CF55 /* Model */,
 				096BDFF329652260009ED396 /* Cells */,
 				096BDFE1296508C3009ED396 /* Common */,
 				3B1628A1295AD9EC0077AE7B /* ViewControllers */,

@@ -19,7 +19,6 @@ extension CustomTabBarItem {
     CustomTabBarItem(name: "생활습관", image: "Recommend/ic_habit_default", activeImage: "Recommend/ic_habit_active"),
     CustomTabBarItem(name: "기상,취침", image: "Recommend/ic_sleep_default", activeImage: "Recommend/ic_sleep_active"),
     CustomTabBarItem(name: "소비", image: "Recommend/ic_shop_default", activeImage: "Recommend/ic_shop_active"),
-    CustomTabBarItem(name: "오락", image: "Recommend/ic_entertain_default", activeImage: "Recommend/ic_entertain_active"),
-    CustomTabBarItem(name: "감정,태도", image: "Recommend/ic_emotion_default", activeImage: "Recommend/ic_emotion_active")
+    CustomTabBarItem(name: "오락", image: "Recommend/ic_entertain_default", activeImage: "Recommend/ic_entertain_active")
     ]
 }

@@ -147,7 +147,6 @@ extension HomeViewController: UICollectionViewDelegate {
         requestDailyMissionAPI(date: "2023-01-25")
         homeView.homeCollectionView.reloadData()
         
-        // Refresh control을 제거하세요.
         DispatchQueue.main.async {
             self.homeView.homeCollectionView.refreshControl?.endRefreshing()
         }
@@ -187,6 +186,8 @@ extension HomeViewController: UICollectionViewDataSource {
                     actionSheetViewController.modalPresentationStyle = .overFullScreen
                     actionSheetViewController.modalTransitionStyle = .crossDissolve
                     actionSheetViewController.id = missionId
+                    actionSheetViewController.situation = self?.missionList[indexPath.row].situation ?? ""
+                    actionSheetViewController.mission = self?.missionList[indexPath.row].title ?? ""
                     self?.present(actionSheetViewController, animated: true)
                     actionSheetViewController.dismissClicked = {
                         let calendarActionSheetViewController = ActionSheetViewController()

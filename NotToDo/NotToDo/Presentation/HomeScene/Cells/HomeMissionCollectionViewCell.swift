@@ -225,7 +225,6 @@ extension HomeMissionCollectionViewCell {
         } else {
             statusButton.setImage(.checkDefault, for: .normal)
         }
-        
     }
     
     private func setAction(_ actionList: [String]) {
@@ -233,6 +232,8 @@ extension HomeMissionCollectionViewCell {
         if actionList.count >= 2 {
             secondSolutionLabel.text = actionList[1]
             secondSolustionView.image = .secondSolutionView
+        } else {
+            firstSolusionView.image = .secondSolutionView
         }
         firstSolutionLabel.text = actionList[0]
     }

@@ -13,9 +13,7 @@ import Then
 final class AchievementViewController: UIViewController {
     
     // MARK: - Properties
-    
-    var dataSource: [String: Int] = [:]
-    
+        
     var shouldHideMissionView: Bool? {
         didSet {
             guard let shouldHideMissionView = self.shouldHideMissionView else { return }
@@ -30,7 +28,6 @@ final class AchievementViewController: UIViewController {
     private var titleView = TitleView()
     private lazy var segmentedControl = CustomSegmentedControl(items: [I18N.missionStatisticsMessage, I18N.situationStatisticsMessage])
     private lazy var calendarView = CustomCalendar(frame: .zero)
-    
     private lazy var missionView = MissionStatisticsView(frame: view.bounds)
     private lazy var situationView = SituationStatisticsView(frame: view.bounds)
     private var bottomLabel = UILabel()
@@ -42,7 +39,7 @@ final class AchievementViewController: UIViewController {
     
     var situationList: [SituationStatistcsResponseDTO] = []
     var missionList: [MissionStatistcsResponseDTO] = []
-    private var achieveMonth: String?
+    var dataSource: [String: Int] = [:]
     
     // MARK: - View Life Cycle
     
@@ -274,7 +271,7 @@ extension AchievementViewController: FSCalendarDataSource {
          */
         
         // 캘린더 셀 설정해주는 코드 : CollectionViewCell이랑 동일하게 생각하면 됨
-        cell.configure(.bordered)
+        cell.configure(.step1)
         return cell
     }
 }

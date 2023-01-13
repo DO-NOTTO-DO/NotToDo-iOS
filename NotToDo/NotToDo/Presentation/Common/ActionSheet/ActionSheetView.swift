@@ -14,12 +14,13 @@ import Then
 public enum ActionSheetType {
     case meatball
     case calendar
+    case addMissionCalendar
     
     var viewHeight: CGFloat {
         switch self {
         case .meatball:
             return 306.adjusted
-        case .calendar:
+        case .calendar, .addMissionCalendar:
             return 443.adjusted
         }
     }
@@ -89,7 +90,7 @@ extension ActionSheetView {
         case .meatball:
             setUI(mode: .meatball)
             setLayout(mode: .meatball)
-        case .calendar:
+        case .calendar, .addMissionCalendar:
             setUI(mode: .calendar)
             setLayout(mode: .calendar)
         }
@@ -100,7 +101,7 @@ extension ActionSheetView {
         switch mode {
         case .meatball:
             setMeatballUI()
-        case .calendar:
+        case .calendar, .addMissionCalendar:
             setCalendarUI()
         }
     }
@@ -221,7 +222,7 @@ extension ActionSheetView {
         switch mode {
         case .meatball:
             setMeatballLayout()
-        case .calendar:
+        case .calendar, .addMissionCalendar:
             setCalendarLayout()
         }
     }

@@ -52,12 +52,13 @@ extension AddMissionViewController {
         addMissionView.navigationBarView.backButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
         addMissionView.missionTextField.addGestureRecognizer(missionHistoryRecognizer)
         addMissionView.behaviorTitleView.AddMissionButton.addTarget(self, action: #selector(pushToRecommendViewController), for: .touchUpInside)
-        addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(pushToAddSituationViewController), for: .touchUpInside)
-        addMissionView.addMissionButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
-        addMissionView.goalTextField.addTarget(self, action: #selector(checkEnable), for: .editingChanged)
-        addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(checkEnable), for: .touchUpInside)
         addMissionView.addBehaviorButton.addTarget(self, action: #selector(checkEnable), for: .touchUpInside)
+        addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(pushToAddSituationViewController), for: .touchUpInside)
+        addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(checkEnable), for: .touchUpInside)
+        addMissionView.goalTextField.addTarget(self, action: #selector(checkEnable), for: .editingChanged)
+        addMissionView.dateButton.addTarget(self, action: #selector(presentToActionSheet), for: .touchUpInside)
         addMissionView.addMissionButton.addTarget(self, action: #selector(requestAddMissionAPI), for: .touchUpInside)
+        addMissionView.addMissionButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
     }
     
     func resetBehaviorModel() {
@@ -70,7 +71,6 @@ extension AddMissionViewController {
         print(addMissionView.addMissionButton.titleLabel?.text)
         AddMissionAPI.shared.postAddMission(newMission: AddMissionRequest(title: addMissionView.missionText.text!, situation: (addMissionView.situationView.AddMissionButton.titleLabel?.text)!, actions: behaviorList.map { $0.behavior }, goal: addMissionView.goalTextField.text!, actionDate: "2023.01.25")) { [weak self] request in
             guard self != nil else { return }
-            // behaviorList.removeAll()
         } // (addMissionView.dateButton.titleLabel?.text)!
     }
     
@@ -131,6 +131,16 @@ extension AddMissionViewController {
             addMissionView.addBehaviorButton.isHidden = false
         }
     }
+    
+    @objc private func presentToActionSheet() {
+        let actionSheetViewController = ActionSheetViewController()
+        actionSheetViewController.mode = .addMissionCalendar
+        actionSheetViewController.actionSheetView.calendar.allowsMultipleSelection = false
+        actionSheetViewController.modalPresentationStyle = .overFullScreen
+        actionSheetViewController.modalTransitionStyle = .crossDissolve
+        present(actionSheetViewController, animated: true, completion: nil)
+        actionSheetViewController.dateDelegate = self
+    }
 }
 
 extension AddMissionViewController: AddSituationViewDelegate {
@@ -156,6 +166,12 @@ extension AddMissionViewController: MissionHistoryViewDelegate {
             addMissionView.missionText.textColor = .nottodoGray3
             addMissionView.missionTextField.layer.borderColor = UIColor.nottodoGray4?.cgColor
         }
+    }
+}
+
+extension AddMissionViewController: DateDelegate {
+    func sendDateData(date: String) {
+        addMissionView.dateButton.setTitle(date, for: .normal)
     }
 }
 

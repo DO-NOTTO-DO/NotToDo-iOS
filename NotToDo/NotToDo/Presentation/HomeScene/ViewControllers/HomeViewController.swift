@@ -19,7 +19,9 @@ final class HomeViewController: UIViewController {
     var banner: BannerResponseDTO?
     var missionId: Int?
     private var clickedDay: String?
-    private let dateFormatter = DateFormatter()
+    private let todayDateFormatter = DateFormatter()
+    private let mothlyDateFormatter = DateFormatter()
+    private var currentPage: Date? = Date()
     
     // MARK: - UI Components
     
@@ -44,7 +46,7 @@ final class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         requestBannerAPI()
         requestWeeklyMissoinAPI(startDate: "2023-01-23")
-        requestDailyMissionAPI(date: "2023-01-25")
+        requestDailyMissionAPI(date: clickedDay ?? "")
     }
 }
 
@@ -73,9 +75,14 @@ extension HomeViewController: UICollectionViewDelegate {
                                           for: .valueChanged)
         }
         
-        dateFormatter.do {
+        todayDateFormatter.do {
             $0.locale = Locale(identifier: "ko_KR")
             $0.dateFormat = "yyyy-MM-dd"
+        }
+        
+        mothlyDateFormatter.do {
+            $0.locale = Locale(identifier: "ko_KR")
+            $0.dateFormat = "yyyy년 M월"
         }
     }
     
@@ -152,7 +159,7 @@ extension HomeViewController: UICollectionViewDelegate {
     @objc func handleRefreshControl() {
         // 컨텐츠를 업데이트하세요.
         requestBannerAPI()
-        requestDailyMissionAPI(date: "2023-01-25")
+        requestDailyMissionAPI(date: clickedDay ?? "")
         homeView.homeCollectionView.reloadData()
         
         DispatchQueue.main.async {
@@ -171,6 +178,7 @@ extension HomeViewController: UICollectionViewDataSource {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCalendarCollectionViewCell.identifier, for: indexPath) as? HomeCalendarCollectionViewCell else { return UICollectionViewCell() }
             cell.calendar.delegate = self
+            self.currentPage = cell.calendar.currentPage
             return cell
         default:
             if missionList.isEmpty {
@@ -233,6 +241,7 @@ extension HomeViewController: UICollectionViewDataSource {
                 withReuseIdentifier: HomeCollectionReusableView.identifier,
                 for: indexPath
               ) as? HomeCollectionReusableView else { return UICollectionReusableView() }
+        header.dateLabel.text = mothlyDateFormatter.string(from: self.currentPage ?? Date())
         if let banner = banner {
             header.setRandomData(banner: banner)
         }
@@ -284,7 +293,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 extension HomeViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        clickedDay = dateFormatter.string(from: date)
+        clickedDay = todayDateFormatter.string(from: date)
         requestDailyMissionAPI(date: clickedDay ?? "")
     }
 }

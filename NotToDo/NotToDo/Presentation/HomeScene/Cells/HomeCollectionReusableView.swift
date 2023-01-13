@@ -19,8 +19,7 @@ final class HomeCollectionReusableView: UICollectionReusableView {
     
     // MARK: - UI Components
     
-    private lazy var dateFormatter = DateFormatter()
-    private var dateLabel = UILabel()
+    var dateLabel = UILabel()
     private let dateView = UIView()
     private var motivationLabel = UILabel()
     private var graphicImageView = UIImageView()
@@ -42,15 +41,10 @@ final class HomeCollectionReusableView: UICollectionReusableView {
 extension HomeCollectionReusableView {
     private func setUI() {
         backgroundColor = .nottodoWhite
-        dateFormatter.do {
-            $0.locale = Locale(identifier: "ko_KR")
-            $0.dateFormat = "YYYY년 M월"
-            $0.timeZone = TimeZone(identifier: "KST")
-        }
         dateLabel.do {
             $0.textColor = .nottodoBlack
             $0.font = .PretendardBold(size: 18.adjusted)
-            $0.text = "2023년 1월"            // dateFormatter로 수정
+//            $0.text = "2023년 1월"            // dateFormatter로 수정
         }
         dateView.backgroundColor = .yellow_basic
         motivationLabel.do {

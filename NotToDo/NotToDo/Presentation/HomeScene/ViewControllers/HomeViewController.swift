@@ -56,7 +56,7 @@ extension HomeViewController: ActionSheetViewDelegate {
     func reloadMissionData() {
         requestWeeklyMissoinAPI(startDate: "2023-01-23")
         requestDailyMissionAPI(date: "2023-01-25")
-        homeView.homeCollectionView.reloadData()
+        
     }
 }
 
@@ -186,6 +186,7 @@ extension HomeViewController: UICollectionViewDataSource {
                     actionSheetViewController.modalPresentationStyle = .overFullScreen
                     actionSheetViewController.modalTransitionStyle = .crossDissolve
                     actionSheetViewController.id = missionId
+                    actionSheetViewController.delegate = self
                     actionSheetViewController.situation = self?.missionList[indexPath.row].situation ?? ""
                     actionSheetViewController.mission = self?.missionList[indexPath.row].title ?? ""
                     self?.present(actionSheetViewController, animated: true)

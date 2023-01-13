@@ -239,6 +239,7 @@ extension AchievementViewController {
 extension AchievementViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendarView.calendar.reloadData()
+        reloadMonthData()
         calendarView.headerLabel.text = calendarView.dateFormatter.string(from: calendar.currentPage)
     }
     

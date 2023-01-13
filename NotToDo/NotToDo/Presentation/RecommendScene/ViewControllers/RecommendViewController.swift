@@ -60,7 +60,7 @@ extension RecommendViewController {
         }
         
         contentsCollectionView.do {
-            $0.backgroundColor = .systemGray6
+            $0.backgroundColor = .BG
             $0.showsHorizontalScrollIndicator = false
             $0.isPagingEnabled = true
         }

@@ -21,6 +21,8 @@ class MissionHistoryView: UIView {
     var missionHistoryResponse: MissionHistoryResponse?
     var historyList: [MissionHistoryModel] = []
     weak var delegate: MissionHistoryViewDelegate?
+    let historyInset: UIEdgeInsets = UIEdgeInsets(top: 15.adjusted, left: 20.adjusted, bottom: 15.adjusted, right: 20.adjusted)
+    let cellHeight: CGFloat = 49.adjusted
     
     // MARK: - UI Components
     
@@ -30,9 +32,6 @@ class MissionHistoryView: UIView {
     private var missionHistoryLabel = UILabel()
     
     lazy var missionHistoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-    let historyInset: UIEdgeInsets = UIEdgeInsets(top: 15.adjusted, left: 20.adjusted, bottom: 15.adjusted, right: 20.adjusted)
-    let cellHeight: CGFloat = 49.adjusted
-    let width: CGFloat = UIScreen.main.bounds.width
 
     var changedText: String?
     
@@ -89,8 +88,6 @@ extension MissionHistoryView {
         missionHistoryCollectionView.do {
             $0.isScrollEnabled = true
             $0.collectionViewLayout = layout()
-            $0.delegate = self
-            $0.dataSource = self
         }
     }
     
@@ -152,46 +149,11 @@ extension MissionHistoryView {
     
     private func calculateCellHeight() -> CGFloat {
         let count = CGFloat(historyList.count)
-        return count * cellHeight + (count-1) * historyInset.top + historyInset.bottom
+        return count * self.cellHeight + (count-1) * self.historyInset.top + self.historyInset.bottom
     }
     
     private func register() {
         missionHistoryCollectionView.register(MissionHistoryCollectionViewCell.self,
                                               forCellWithReuseIdentifier: MissionHistoryCollectionViewCell.identifier)
-    }
-}
-
-extension MissionHistoryView: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return historyList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: MissionHistoryCollectionViewCell.identifier, for: indexPath)
-                as? MissionHistoryCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(model: historyList[indexPath.row])
-        cell.setBorder(indexPath)
-        return cell
-    }
-}
-
-extension MissionHistoryView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: width, height: cellHeight)
-    }
-    
-    func collectionView(_collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return historyInset
-    }
-}
-
-extension MissionHistoryView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        changedText = historyList[indexPath.row].title
-        inputTextField.text = historyList[indexPath.row].title
     }
 }

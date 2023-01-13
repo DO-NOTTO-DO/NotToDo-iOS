@@ -54,11 +54,13 @@ extension CustomTabBarCell {
             $0.width.equalTo(69.adjusted)
             $0.centerX.centerY.equalToSuperview()
         }
+        
         icImage.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(6.adjusted)
             $0.directionalHorizontalEdges.equalToSuperview().inset(12.adjusted)
         }
+        
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(icImage.snp.bottom).offset(6.adjusted)

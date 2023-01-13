@@ -8,11 +8,18 @@
 import UIKit
 
 class CustomPaddingLabel: UILabel {
+    
+    // MARK: - Properties
+    
     private var padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    
+    // MARK: - Life Cycle
+
     convenience init(padding: UIEdgeInsets) {
         self.init()
         self.padding = padding
     }
+    
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: padding))
     }

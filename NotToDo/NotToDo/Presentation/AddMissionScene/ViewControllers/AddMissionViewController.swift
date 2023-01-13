@@ -87,6 +87,11 @@ extension AddMissionViewController {
     @objc private func pushToRecommendViewController() {
         let recommendViewController = RecommendViewController()
         recommendViewController.navigationBarView = NavigationBarView(frame: CGRect(), mode: .recommend)
+        recommendViewController.recommendTextFieldClosure = { [weak self] result in
+            self?.behavior = result
+            self?.addMissionView.dataBind(behavior: result)
+        }
+            
         navigationController?.pushViewController(recommendViewController, animated: true)
     }
     

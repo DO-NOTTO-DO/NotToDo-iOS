@@ -34,7 +34,7 @@
 		099F072A296B98B90036CF55 /* SituationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F0729296B98B90036CF55 /* SituationTitleView.swift */; };
 		099F073D296C2F770036CF55 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F073C296C2F770036CF55 /* CustomSegmentedControl.swift */; };
 		09D3C535296FFD3500F1488D /* SituationStasticsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C534296FFD3500F1488D /* SituationStasticsResponse.swift */; };
-		09D3C538296FFD7C00F1488D /* SituationStatisticsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C537296FFD7C00F1488D /* SituationStatisticsAPI.swift */; };
+		09D3C538296FFD7C00F1488D /* AchieveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C537296FFD7C00F1488D /* AchieveAPI.swift */; };
 		09D3C53D29700DC800F1488D /* AchieveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C53C29700DC800F1488D /* AchieveService.swift */; };
 		09D3C53F29700F7B00F1488D /* MissionStatisticsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C53E29700F7B00F1488D /* MissionStatisticsAPI.swift */; };
 		09D3C5412970101400F1488D /* MissionStatisticsReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C5402970101400F1488D /* MissionStatisticsReponse.swift */; };
@@ -170,7 +170,7 @@
 		099F0729296B98B90036CF55 /* SituationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationTitleView.swift; sourceTree = "<group>"; };
 		099F073C296C2F770036CF55 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		09D3C534296FFD3500F1488D /* SituationStasticsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationStasticsResponse.swift; sourceTree = "<group>"; };
-		09D3C537296FFD7C00F1488D /* SituationStatisticsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationStatisticsAPI.swift; sourceTree = "<group>"; };
+		09D3C537296FFD7C00F1488D /* AchieveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveAPI.swift; sourceTree = "<group>"; };
 		09D3C53C29700DC800F1488D /* AchieveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveService.swift; sourceTree = "<group>"; };
 		09D3C53E29700F7B00F1488D /* MissionStatisticsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionStatisticsAPI.swift; sourceTree = "<group>"; };
 		09D3C5402970101400F1488D /* MissionStatisticsReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionStatisticsReponse.swift; sourceTree = "<group>"; };
@@ -389,7 +389,7 @@
 		09D3C536296FFD5500F1488D /* Achieve */ = {
 			isa = PBXGroup;
 			children = (
-				09D3C537296FFD7C00F1488D /* SituationStatisticsAPI.swift */,
+				09D3C537296FFD7C00F1488D /* AchieveAPI.swift */,
 				09D3C53E29700F7B00F1488D /* MissionStatisticsAPI.swift */,
 			);
 			path = Achieve;
@@ -1274,7 +1274,7 @@
 				099F072A296B98B90036CF55 /* SituationTitleView.swift in Sources */,
 				3B2748632970B570005DBD46 /* AddAnotherDayResponseDTO.swift in Sources */,
 				3B4B90BD2965673E008C5CA8 /* AuthViewController.swift in Sources */,
-				09D3C538296FFD7C00F1488D /* SituationStatisticsAPI.swift in Sources */,
+				09D3C538296FFD7C00F1488D /* AchieveAPI.swift in Sources */,
 				099F0724296AA4A40036CF55 /* TitleView.swift in Sources */,
 				3B4B90CF2965F17A008C5CA8 /* menuModel.swift in Sources */,
 			);

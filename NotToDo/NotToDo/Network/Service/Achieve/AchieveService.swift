@@ -10,6 +10,7 @@ import Foundation
 import Moya
 
 enum AchieveService {
+    case achieveCalendar(month: String)
     case missionStatistics
     case situationStatistics
 }
@@ -21,6 +22,8 @@ extension AchieveService: TargetType {
     
     var path: String {
         switch self {
+        case .achieveCalendar(month: let month):
+            return URLConstant.achieveCalendar+"/\(month)"
         case .missionStatistics:
             return URLConstant.missionStatistics
         case .situationStatistics:
@@ -30,21 +33,21 @@ extension AchieveService: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .missionStatistics, .situationStatistics:
+        case .achieveCalendar(month: _), .missionStatistics, .situationStatistics:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .missionStatistics, .situationStatistics:
+        case .achieveCalendar(month: _), .missionStatistics, .situationStatistics:
             return .requestPlain
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .missionStatistics, .situationStatistics:
+        case .achieveCalendar(month: _), .missionStatistics, .situationStatistics:
             return NetworkConstant.hasTokenHeader
         }
     }

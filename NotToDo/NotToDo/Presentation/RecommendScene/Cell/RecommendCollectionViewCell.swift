@@ -54,8 +54,7 @@ extension RecommendCollectionViewCell {
     private func setLayout() {
         addSubviews(nestedCollectionView)
         nestedCollectionView.item = item
-        if let section = section
-           {
+        if let section = section {
             nestedCollectionView.dataBind(section: section)
             nestedCollectionView.isClickedClosure = isClickedClosure
         }

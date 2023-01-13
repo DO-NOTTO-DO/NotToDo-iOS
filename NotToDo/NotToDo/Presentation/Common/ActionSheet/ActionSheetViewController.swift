@@ -15,6 +15,10 @@ protocol ActionSheetViewDelegate: AnyObject {
     func reloadMissionData()
 }
 
+protocol DateDelegate: AnyObject {
+    func sendDateData(date: String)
+}
+
 final class ActionSheetViewController: UIViewController {
     
     // MARK: - Properties
@@ -29,10 +33,12 @@ final class ActionSheetViewController: UIViewController {
     lazy var situation: String = ""
     lazy var mission: String = ""
     weak var delegate: ActionSheetViewDelegate?
+    weak var dateDelegate: DateDelegate?
     
     // MARK: - UI Components
 
     lazy var actionSheetView = ActionSheetView(frame: CGRect(), mode: mode, situation: self.situation, mission: self.mission)
+    private lazy var dateFormatter = DateFormatter()
     
     // MARK: - View Life Cycle
     
@@ -61,6 +67,11 @@ extension ActionSheetViewController {
     
     private func setUI() {
         view.backgroundColor = .nottodoBlack?.withAlphaComponent(0.7)
+        
+        dateFormatter.do {
+            $0.locale = Locale(identifier: "ko_KR")
+            $0.dateFormat = "yyyy년 M월"
+        }
     }
     
     private func setLayout() {
@@ -136,9 +147,13 @@ extension ActionSheetViewController {
 
 extension ActionSheetViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        let currentDate = Date().addingTimeInterval(-24 * 60 * 60)
-        if date < currentDate || date.compare(Date()) == .orderedAscending {
-            return false
+        if actionSheetView.mode == .calendar {
+            let currentDate = Date().addingTimeInterval(-24 * 60 * 60)
+            if date < currentDate || date.compare(Date()) == .orderedAscending {
+                return false
+            } else {
+                return true
+            }
         } else {
             return true
         }
@@ -147,5 +162,11 @@ extension ActionSheetViewController: FSCalendarDelegate {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         actionSheetView.calendar.reloadData()
         actionSheetView.headerLabel.text = actionSheetView.dateFormatter.string(from: calendar.currentPage)
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        print(dateFormatter.string(from: date))
+        self.dateDelegate?.sendDateData(date: dateFormatter.string(from: date))
     }
 }

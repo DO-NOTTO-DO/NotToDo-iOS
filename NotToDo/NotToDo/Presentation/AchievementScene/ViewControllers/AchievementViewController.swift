@@ -78,7 +78,7 @@ extension AchievementViewController {
     }
     
     private func requestAchieveAPI() {
-        MissionStatisticsAPI.shared.getMissionStatistics { [weak self] response in
+        AchieveAPI.shared.getMissionStatistics { [weak self] response in
             guard self != nil else { return }
             guard let response = response else { return }
             self?.missionList = response.data!
@@ -88,7 +88,7 @@ extension AchievementViewController {
             self?.relayout()
             dump(response)
         }
-        SituationStatisticsAPI.shared.getSituationStatistics { [weak self] response in
+        AchieveAPI.shared.getSituationStatistics { [weak self] response in
             guard self != nil else { return }
             guard let response = response else { return }
             self?.situationList = response.data!

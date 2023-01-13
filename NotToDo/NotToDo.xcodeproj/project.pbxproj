@@ -36,7 +36,6 @@
 		09D3C535296FFD3500F1488D /* SituationStasticsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C534296FFD3500F1488D /* SituationStasticsResponse.swift */; };
 		09D3C538296FFD7C00F1488D /* AchieveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C537296FFD7C00F1488D /* AchieveAPI.swift */; };
 		09D3C53D29700DC800F1488D /* AchieveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C53C29700DC800F1488D /* AchieveService.swift */; };
-		09D3C53F29700F7B00F1488D /* MissionStatisticsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C53E29700F7B00F1488D /* MissionStatisticsAPI.swift */; };
 		09D3C5412970101400F1488D /* MissionStatisticsReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3C5402970101400F1488D /* MissionStatisticsReponse.swift */; };
 		09F695D9296C332D00877EA7 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695D8296C332D00877EA7 /* CompositionalLayout.swift */; };
 		09F695DB296C52B600877EA7 /* MissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DA296C52B600877EA7 /* MissionTableViewCell.swift */; };
@@ -172,7 +171,6 @@
 		09D3C534296FFD3500F1488D /* SituationStasticsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationStasticsResponse.swift; sourceTree = "<group>"; };
 		09D3C537296FFD7C00F1488D /* AchieveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveAPI.swift; sourceTree = "<group>"; };
 		09D3C53C29700DC800F1488D /* AchieveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveService.swift; sourceTree = "<group>"; };
-		09D3C53E29700F7B00F1488D /* MissionStatisticsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionStatisticsAPI.swift; sourceTree = "<group>"; };
 		09D3C5402970101400F1488D /* MissionStatisticsReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionStatisticsReponse.swift; sourceTree = "<group>"; };
 		09F695D8296C332D00877EA7 /* CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompositionalLayout.swift; path = ../ViewControllers/CompositionalLayout.swift; sourceTree = "<group>"; };
 		09F695DA296C52B600877EA7 /* MissionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionTableViewCell.swift; sourceTree = "<group>"; };
@@ -390,7 +388,6 @@
 			isa = PBXGroup;
 			children = (
 				09D3C537296FFD7C00F1488D /* AchieveAPI.swift */,
-				09D3C53E29700F7B00F1488D /* MissionStatisticsAPI.swift */,
 			);
 			path = Achieve;
 			sourceTree = "<group>";
@@ -1223,7 +1220,6 @@
 				3BE07005296F43A2002CC50A /* UIColor+.swift in Sources */,
 				3BE6CBC32969D700003A8A7B /* MissionModel.swift in Sources */,
 				096BE01F2966A1FA009ED396 /* NestedView.swift in Sources */,
-				09D3C53F29700F7B00F1488D /* MissionStatisticsAPI.swift in Sources */,
 				09F695DB296C52B600877EA7 /* MissionTableViewCell.swift in Sources */,
 				09D3C5412970101400F1488D /* MissionStatisticsReponse.swift in Sources */,
 				3BE0700C296F43A2002CC50A /* UIView+.swift in Sources */,

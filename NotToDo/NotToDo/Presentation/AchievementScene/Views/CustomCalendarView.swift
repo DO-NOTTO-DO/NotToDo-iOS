@@ -72,6 +72,7 @@ extension CustomCalendar {
             $0.locale = Locale(identifier: "ko_KR")
             $0.dateFormat = "yyyy년 M월"
         }
+        calendar.locale = Locale(identifier: "ko_KR")
     }
     
     private func setLayout() {

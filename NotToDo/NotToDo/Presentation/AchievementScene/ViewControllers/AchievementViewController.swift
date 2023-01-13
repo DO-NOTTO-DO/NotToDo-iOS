@@ -105,7 +105,7 @@ extension AchievementViewController {
     }
     
     func configSituationView() {
-        var isSelected: [Bool] = [Bool](repeating: false, count: situationList.count)
+        let isSelected: [Bool] = [Bool](repeating: false, count: situationList.count)
         situationView.situationList = situationList
         situationView.isSelected = isSelected
     }

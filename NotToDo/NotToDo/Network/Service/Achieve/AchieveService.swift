@@ -33,21 +33,21 @@ extension AchieveService: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .achieveCalendar(month: _), .missionStatistics, .situationStatistics:
+        case .achieveCalendar, .missionStatistics, .situationStatistics:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .achieveCalendar(month: _), .missionStatistics, .situationStatistics:
+        case .achieveCalendar, .missionStatistics, .situationStatistics:
             return .requestPlain
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .achieveCalendar(month: _), .missionStatistics, .situationStatistics:
+        case .achieveCalendar, .missionStatistics, .situationStatistics:
             return NetworkConstant.hasTokenHeader
         }
     }

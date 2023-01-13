@@ -67,11 +67,14 @@ extension AddMissionViewController {
     // MARK: - @objc Methods
     
     @objc private func requestAddMissionAPI() {
-        print(addMissionView.addMissionButton.titleLabel?.text)
-        AddMissionAPI.shared.postAddMission(newMission: AddMissionRequest(title: addMissionView.missionText.text!, situation: (addMissionView.situationView.AddMissionButton.titleLabel?.text)!, actions: behaviorList.map { $0.behavior }, goal: addMissionView.goalTextField.text!, actionDate: "2023.01.25")) { [weak self] request in
+        AddMissionAPI.shared.postAddMission(
+            newMission: AddMissionRequest(title: addMissionView.missionText.text!,
+                                          situation: (addMissionView.situationView.AddMissionButton.titleLabel?.text)!,
+                                          actions: behaviorList.map { $0.behavior },
+                                          goal: addMissionView.goalTextField.text!,
+                                          actionDate: "2023.01.25")) { [weak self] _ in
             guard self != nil else { return }
-            // behaviorList.removeAll()
-        } // (addMissionView.dateButton.titleLabel?.text)!
+        }
     }
     
     @objc func checkEnable() {

@@ -14,7 +14,7 @@ import Then
 class CustomCalendar: UIView {
     
     // MARK: - UI Components
-
+    
     var calendar: FSCalendar! = FSCalendar(frame: .zero)
     private lazy var hStack = UIStackView(arrangedSubviews: [leftBtn, rightBtn])
     lazy var headerLabel = UILabel()
@@ -24,9 +24,11 @@ class CustomCalendar: UIView {
     var currentPage: Date? 
     private lazy var today: Date = { return Date() }()
     lazy var dateFormatter = DateFormatter()
-    
-    // MARK: - View Life Cycle
+    var monthData: [AchieveCalendarResponseDTO] = []
+    var monthCalendarClosure: ((_ month:String) -> Void)?
 
+    // MARK: - View Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setUI()
@@ -95,8 +97,9 @@ extension CustomCalendar {
             $0.directionalHorizontalEdges.equalToSuperview().inset(23.adjusted)
             $0.bottom.equalToSuperview().inset(26.adjusted) 
         }
-        
     }
+    
+    
     private func calendarText() {
         calendar.calendarHeaderView.isHidden = true
         calendar.calendarWeekdayView.weekdayLabels[0].text = "일"
@@ -117,7 +120,7 @@ extension CustomCalendar {
         calendar.appearance.titleWeekendColor = .nottodoBlack
         calendar.appearance.titleTodayColor = .blue
         calendar.appearance.todayColor = .clear
-        }
+    }
     
     private func setUpCalendar() {
         self.calendar.placeholderType = .fillHeadTail
@@ -132,11 +135,17 @@ extension CustomCalendar {
         dateComponents.month = isPrev ? -1 : 1
         self.currentPage = cal.date(byAdding: dateComponents, to: self.currentPage ?? self.today)
         self.calendar.setCurrentPage(self.currentPage!, animated: true)
+        self.dateFormatter.dateFormat = "yyyy-MM"
+        let stringDate = self.dateFormatter.string(from: calendar.currentPage)
+        monthCalendarClosure?(stringDate)
     }
-
+    
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendar.reloadData()
         self.headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
+        self.dateFormatter.dateFormat = "yyyy-MM"
+        let stringDate = self.dateFormatter.string(from: calendar.currentPage)
+        monthCalendarClosure?(stringDate)
     }
     
     @objc func prevBtnTapped(_sender: UIButton) {

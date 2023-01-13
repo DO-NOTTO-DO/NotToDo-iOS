@@ -30,7 +30,7 @@ class SituationTitleView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-    
+
 // MARK: - Methods
 
 extension SituationTitleView {

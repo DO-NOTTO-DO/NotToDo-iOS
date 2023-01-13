@@ -13,7 +13,7 @@ import Then
 final class AchievementViewController: UIViewController {
     
     // MARK: - Properties
-        
+    
     var shouldHideMissionView: Bool? {
         didSet {
             guard let shouldHideMissionView = self.shouldHideMissionView else { return }
@@ -21,6 +21,7 @@ final class AchievementViewController: UIViewController {
             situationView.isHidden = !self.missionView.isHidden
         }
     }
+
     
     // MARK: - UI Components
     
@@ -46,7 +47,7 @@ final class AchievementViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestAchieveAPI()
-        requestMonthAPI(month: dateFormatter.string(from: Date()))
+       // requestMonthAPI(month: month)
     }
     
     override func viewDidLoad() {
@@ -60,8 +61,9 @@ final class AchievementViewController: UIViewController {
 // MARK: - Methods
 
 extension AchievementViewController {
-    func reloadMonthData() {
-        requestMonthAPI(month: dateFormatter.string(from: Date()))
+    func reloadMonthData(month: String) {
+        print(month)
+        requestMonthAPI(month: month)
     }
     
     func setUI() {
@@ -73,14 +75,17 @@ extension AchievementViewController {
             $0.backgroundColor = .BG
         }
         calendarView.do {
+            $0.monthCalendarClosure = { [self] result in
+                let month = result
+                self.reloadMonthData(month: month)
+                }
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
             $0.calendar.delegate = self
-            /* */
             $0.calendar.dataSource = self
             $0.calendar.register(MissionCalendarDayCell.self, forCellReuseIdentifier: String(describing: MissionCalendarDayCell.self))
-            
         }
+        
         bottomLabel.do {
             $0.text = I18N.statistcisBottomMessage
             $0.font = .PretendardMedium(size: 12.adjusted)
@@ -111,8 +116,8 @@ extension AchievementViewController {
         }
     }
     
-    private func requestMonthAPI(month: String) {
-        AchieveAPI.shared.getAchieveCalendar(month: month) { result in
+    func requestMonthAPI(month: String) {
+        AchieveAPI.shared.getAchieveCalendar(month: month) { [self] result in
             switch result {
             case let .success(data):
                 guard data is [AchieveCalendarResponseDTO] else { return }
@@ -242,7 +247,6 @@ extension AchievementViewController {
 extension AchievementViewController: FSCalendarDelegate {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendarView.calendar.reloadData()
-        reloadMonthData()
         calendarView.headerLabel.text = calendarView.dateFormatter.string(from: calendar.currentPage)
     }
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
@@ -256,6 +260,18 @@ extension AchievementViewController: FSCalendarDataSource {
     // date 매칭된 것에 맞게 데이터를 넘겨줘야 함
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
         let cell = calendar.dequeueReusableCell(withIdentifier: String(describing: MissionCalendarDayCell.self), for: date, at: position) as! MissionCalendarDayCell
+//        switch cell.state {
+//        case .none:
+//            return
+//        case .step1:
+//           return
+//        case .step2:
+//            return
+//        case .step3:
+//            return
+//        default:
+//            break
+//        }
         
         // MARK: 서버에서 넘어온 값에 따라 셀 상태 변화시켜주기
         // Date : Int(Enum)

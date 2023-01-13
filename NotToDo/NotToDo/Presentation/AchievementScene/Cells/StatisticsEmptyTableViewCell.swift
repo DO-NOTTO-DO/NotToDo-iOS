@@ -10,16 +10,16 @@ import UIKit
 class StatisticsEmptyTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-
+    
     static var identifier = "StatisticsEmptyTableViewCell"
     
     // MARK: - UI Components
-
+    
     private lazy var mainTitle = UILabel()
     private lazy var iconImage = UIImageView()
     
     // MARK: - Life Cycle
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()

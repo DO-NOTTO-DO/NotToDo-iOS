@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - AchieveCalendarResponse
 struct AchieveCalendarResponseDTO: Codable {
     let actionDate: String
     let count: Int

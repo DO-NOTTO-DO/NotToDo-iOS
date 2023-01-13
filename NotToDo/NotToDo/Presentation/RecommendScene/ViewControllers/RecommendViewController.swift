@@ -14,18 +14,16 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     
     // MARK: - Properties
     
-    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .leftRecommend) 
+    var navigationBarView = NavigationBarView(frame: CGRect(), mode: .leftRecommend)
     var itemList: [RecommendElementResponseDTO] = []
     var selectedIndex: Int = 0
-    
+    typealias Item = AnyHashable
     enum Section: Int, Hashable {
         case sub, main
     }
-    typealias Item = AnyHashable
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
-    
     var isClickedClosure: ((_ section: Int, _ index: Int) -> Void)?
-  
+    
     // MARK: - UI Components
     
     var navigationMode: NavigationMode?
@@ -37,7 +35,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     private var nestedView = NestedView()
     var recommendTextFieldClosure: ((_ result: String) -> Void)?
-
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {

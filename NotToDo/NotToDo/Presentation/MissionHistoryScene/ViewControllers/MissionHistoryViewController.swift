@@ -14,6 +14,8 @@ final class MissionHistoryViewController: UIViewController {
     var missionHistoryResponse: MissionHistoryResponse?
     var historyList: [MissionHistoryModel] = []
     weak var delegate: MissionHistoryViewDelegate?
+    let historyInset: UIEdgeInsets = UIEdgeInsets(top: 15.adjusted, left: 20.adjusted, bottom: 15.adjusted, right: 20.adjusted)
+    let cellHeight: CGFloat = 49.adjusted
     
     // MARK: - UI Components
     
@@ -26,6 +28,7 @@ final class MissionHistoryViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         setAddTarget()
         requestMissionHistoryAPI()
+        setDelegate()
     }
     
     override func loadView() {
@@ -36,6 +39,11 @@ final class MissionHistoryViewController: UIViewController {
 }
 
 extension MissionHistoryViewController {
+    private func setDelegate() {
+        missionHistoryView.missionHistoryCollectionView.delegate = self
+        missionHistoryView.missionHistoryCollectionView.dataSource = self
+    }
+    
     private func setAddTarget() {
         missionHistoryView.backButton.addTarget(self, action: #selector(popToAddMissionViewController), for: .touchUpInside)
     }
@@ -55,7 +63,48 @@ extension MissionHistoryViewController {
     }
 
     @objc private func popToAddMissionViewController() {
+        sendData()
+    }
+    
+    private func sendData() {
         delegate?.sendMissionHistoryData(data: missionHistoryView.inputTextField.text ?? "")
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension MissionHistoryViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: Numbers.width, height: cellHeight)
+    }
+    
+    func collectionView(_collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return historyInset
+    }
+}
+
+extension MissionHistoryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        missionHistoryView.changedText = historyList[indexPath.row].title
+        missionHistoryView.inputTextField.text = historyList[indexPath.row].title
+        sendData()
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension MissionHistoryViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return historyList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MissionHistoryCollectionViewCell.identifier, for: indexPath)
+                as? MissionHistoryCollectionViewCell else { return UICollectionViewCell() }
+        cell.configure(model: historyList[indexPath.row])
+        cell.setBorder(indexPath)
+        return cell
     }
 }

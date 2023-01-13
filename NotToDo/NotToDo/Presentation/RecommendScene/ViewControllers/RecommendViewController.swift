@@ -28,6 +28,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
   
     // MARK: - UI Components
     
+    var navigationMode : NavigationMode?
     private var underLineView = UIView()
     private var headerView = RecommendHeaderView()
     private lazy var contentsCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: recommendlayout())
@@ -35,6 +36,8 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     private lazy var customTabBarCollectionView = CustomTabBarView().collectionview
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     private var nestedView = NestedView()
+    var recommendTextFieldClosure : ((_ result: String) -> Void)?
+
     
     // MARK: - Life Cycle
     
@@ -198,11 +201,16 @@ extension RecommendViewController {
     private func pushToAdd(section: Int, index: Int) {
         let addMissionViewController = AddMissionViewController()
         addMissionViewController.behavior = itemList[section].recommendActions[index].name
-        addMissionViewController.addMissionView?.navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
-        let navigationController = UINavigationController(rootViewController: addMissionViewController)
-        navigationController.modalPresentationStyle = .overFullScreen
-        navigationController.isNavigationBarHidden = true
-        self.present(navigationController, animated: true)
+        if navigationBarView.navigationMode  == .leftRecommend {
+            addMissionViewController.addMissionView?.navigationBarView = NavigationBarView(frame: CGRect(), mode: .addSituation)
+            let navigationController = UINavigationController(rootViewController: addMissionViewController)
+            navigationController.modalPresentationStyle = .overFullScreen
+            navigationController.isNavigationBarHidden = true
+            self.present(navigationController, animated: true)
+        } else if navigationBarView.navigationMode == .recommend {
+            recommendTextFieldClosure?(itemList[section].recommendActions[index].name)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     // MARK: - @objc Methods

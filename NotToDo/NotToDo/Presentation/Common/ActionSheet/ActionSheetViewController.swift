@@ -19,6 +19,10 @@ protocol DateDelegate: AnyObject {
     func sendDateData(date: String)
 }
 
+protocol DateListDelegate: AnyObject {
+    func sendAnotherDateData(dataList: [String])
+}
+
 final class ActionSheetViewController: UIViewController {
     
     // MARK: - Properties
@@ -30,10 +34,12 @@ final class ActionSheetViewController: UIViewController {
     }
     var dismissClicked: (() -> Void)?
     var id: Int = 0
+    var anotherDate: [String] = []
     lazy var situation: String = ""
     lazy var mission: String = ""
     weak var delegate: ActionSheetViewDelegate?
     weak var dateDelegate: DateDelegate?
+    weak var dataListDelegate: DateListDelegate?
     
     // MARK: - UI Components
 
@@ -121,8 +127,9 @@ extension ActionSheetViewController {
     
     private func requestAddAnotherDay(id: Int, dates: [String]) {
         HomeAPI.shared.postAnotherDay(id: id, dates: dates) { [weak self] response in
-            guard self != nil else { return }
+            guard let self = self else { return }
             guard response != nil else { return }
+            self.delegate?.reloadMissionData()
         }
     }
     
@@ -140,7 +147,7 @@ extension ActionSheetViewController {
     }
     
     @objc private func choiceFinishButtonDidTap() {
-        requestAddAnotherDay(id: id, dates: ["2023.01.26", "2032.01.26"])
+        requestAddAnotherDay(id: id, dates: anotherDate)
         dismissActionSheetWithAnimation()
     }
 }
@@ -166,7 +173,7 @@ extension ActionSheetViewController: FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         dateFormatter.dateFormat = "yyyy.MM.dd"
-        print(dateFormatter.string(from: date))
+        anotherDate.append(dateFormatter.string(from: date))
         self.dateDelegate?.sendDateData(date: dateFormatter.string(from: date))
     }
 }

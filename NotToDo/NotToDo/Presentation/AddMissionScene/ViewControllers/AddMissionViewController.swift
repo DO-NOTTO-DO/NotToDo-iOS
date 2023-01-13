@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddMissoinViewDelegate: AnyObject {
+    func homeViewReload()
+}
+
 final class AddMissionViewController: UIViewController {
     
     // MARK: - Properties
@@ -18,8 +22,8 @@ final class AddMissionViewController: UIViewController {
         }
     }
     var addMissionRequest: AddMissionRequest?
-    
     var behavior: String?
+    weak var delegate: AddMissoinViewDelegate?
     
     // MARK: - UI Components
     
@@ -57,7 +61,6 @@ extension AddMissionViewController {
         addMissionView.situationView.AddMissionButton.addTarget(self, action: #selector(checkEnable), for: .touchUpInside)
         addMissionView.goalTextField.addTarget(self, action: #selector(checkEnable), for: .editingChanged)
         addMissionView.dateButton.addTarget(self, action: #selector(presentToActionSheet), for: .touchUpInside)
-        addMissionView.addMissionButton.addTarget(self, action: #selector(requestAddMissionAPI), for: .touchUpInside)
         addMissionView.addMissionButton.addTarget(self, action: #selector(dismissAddMissionViewController), for: .touchUpInside)
     }
     
@@ -65,18 +68,20 @@ extension AddMissionViewController {
         behaviorList.removeAll()
     }
     
-    // MARK: - @objc Methods
-    
-    @objc private func requestAddMissionAPI() {
+    private func requestAddMissionAPI() {
         AddMissionAPI.shared.postAddMission(
             newMission: AddMissionRequest(title: addMissionView.missionText.text!,
                                           situation: (addMissionView.situationView.AddMissionButton.titleLabel?.text)!,
                                           actions: behaviorList.map { $0.behavior },
                                           goal: addMissionView.goalTextField.text!,
                                           actionDate: (addMissionView.dateButton.titleLabel?.text)!)) { [weak self] _ in
-                                              guard self != nil else { return }
+                                              guard let self = self else { return }
+                                              self.delegate?.homeViewReload()
+                                              self.dismiss(animated: true)
                                           }
     }
+    
+    // MARK: - @objc Methods
     
     @objc func checkEnable() {
         checkButtonEnable = addMissionView.missionText.text!.count > 0 && behaviorList.count > 0
@@ -84,8 +89,7 @@ extension AddMissionViewController {
     }
 
     @objc private func dismissAddMissionViewController() {
-        // behaviorList.removeAll()
-        dismiss(animated: true)
+        requestAddMissionAPI()
     }
     
     @objc private func pushToRecommendViewController() {

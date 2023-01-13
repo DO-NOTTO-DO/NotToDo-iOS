@@ -110,7 +110,7 @@ extension HomeViewController: UICollectionViewDelegate {
         }
     }
     
-    private func requestDailyMissionAPI(date: String) {
+    fileprivate func requestDailyMissionAPI(date: String) {
         HomeAPI.shared.getDailyMission(date: date) { [weak self] result in
             switch result {
             case let .success(data):
@@ -151,6 +151,7 @@ extension HomeViewController: UICollectionViewDelegate {
     
     @objc private func addMission() {
         let addMissionViewController = AddMissionViewController()
+        addMissionViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: addMissionViewController)
         navigationController.modalPresentationStyle = .overFullScreen
         navigationController.isNavigationBarHidden = true
@@ -246,7 +247,6 @@ extension HomeViewController: UICollectionViewDataSource {
         if let banner = banner {
             header.setRandomData(banner: banner)
         }
-        
         return header
     }
 }
@@ -296,5 +296,12 @@ extension HomeViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         clickedDay = todayDateFormatter.string(from: date)
         requestDailyMissionAPI(date: clickedDay ?? "")
+    }
+}
+
+extension HomeViewController: AddMissoinViewDelegate {
+    func homeViewReload() {
+        requestDailyMissionAPI(date: clickedDay ?? "")
+        homeView.homeCollectionView.reloadData()
     }
 }

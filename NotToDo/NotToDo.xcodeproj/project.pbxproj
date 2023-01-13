@@ -42,7 +42,7 @@
 		09F695DB296C52B600877EA7 /* MissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DA296C52B600877EA7 /* MissionTableViewCell.swift */; };
 		09F695DD296C52F000877EA7 /* SituationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DC296C52F000877EA7 /* SituationTableViewCell.swift */; };
 		09F695DF296C533200877EA7 /* BackgroundSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F695DE296C533200877EA7 /* BackgroundSupplementaryView.swift */; };
-		3B0155872971512C00E7BBF1 /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0155862971512C00E7BBF1 /* CalendarDayCell.swift */; };
+		3B0155872971512C00E7BBF1 /* MissionCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0155862971512C00E7BBF1 /* MissionCalendarDayCell.swift */; };
 		3B162874295AD7860077AE7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162873295AD7860077AE7B /* AppDelegate.swift */; };
 		3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162875295AD7860077AE7B /* SceneDelegate.swift */; };
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
@@ -55,7 +55,6 @@
 		3B3405BE295B0A8200D44722 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BD295B0A8200D44722 /* Pretendard-Medium.otf */; };
 		3B3405C0295B0A8C00D44722 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BF295B0A8C00D44722 /* Pretendard-Regular.otf */; };
 		3B3405C2295B0AAE00D44722 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405C1295B0AAD00D44722 /* Pretendard-SemiBold.otf */; };
-		3B388E0D29716C4D0073CB5E /* MissionCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B388E0C29716C4D0073CB5E /* MissionCalendarCell.swift */; };
 		3B4187D5296D5D8700F0FBF4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B4187D4296D5D8700F0FBF4 /* IQKeyboardManagerSwift */; };
 		3B42D1EE2966A1C20012898E /* myInfoMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */; };
 		3B42D1F02966A6320012898E /* myInfoFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */; };
@@ -180,7 +179,7 @@
 		09F695DA296C52B600877EA7 /* MissionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionTableViewCell.swift; sourceTree = "<group>"; };
 		09F695DC296C52F000877EA7 /* SituationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SituationTableViewCell.swift; sourceTree = "<group>"; };
 		09F695DE296C533200877EA7 /* BackgroundSupplementaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundSupplementaryView.swift; sourceTree = "<group>"; };
-		3B0155862971512C00E7BBF1 /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
+		3B0155862971512C00E7BBF1 /* MissionCalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCalendarDayCell.swift; sourceTree = "<group>"; };
 		3B162870295AD7860077AE7B /* NotToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B162873295AD7860077AE7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B162875295AD7860077AE7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -215,7 +214,6 @@
 		3B3405DB295B146E00D44722 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3B3405DD295B162600D44722 /* UITabBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+.swift"; sourceTree = "<group>"; };
 		3B3405DF295B1B8E00D44722 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
-		3B388E0C29716C4D0073CB5E /* MissionCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCalendarCell.swift; sourceTree = "<group>"; };
 		3B4187CE296D342900F0FBF4 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		3B42D1ED2966A1C20012898E /* myInfoMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B42D1EF2966A6320012898E /* myInfoFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoFooterCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -403,7 +401,7 @@
 		3B015585297150E400E7BBF1 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				3B0155862971512C00E7BBF1 /* CalendarDayCell.swift */,
+				3B0155862971512C00E7BBF1 /* MissionCalendarDayCell.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -761,14 +759,6 @@
 				3B3405D9295B12BC00D44722 /* UIImage+.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		3B388E0B29716C290073CB5E /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				3B388E0C29716C4D0073CB5E /* MissionCalendarCell.swift */,
-			);
-			path = Calendar;
 			sourceTree = "<group>";
 		};
 		3B4B90C02965B5AF008C5CA8 /* Cells */ = {
@@ -1231,7 +1221,7 @@
 				3BEF92AF29686A8E0090A290 /* HomeCalendarCollectionViewCell.swift in Sources */,
 				096BE0172966A142009ED396 /* CustomTabBarCell.swift in Sources */,
 				3BE07017296F44D3002CC50A /* MyInfoViewController.swift in Sources */,
-				3B0155872971512C00E7BBF1 /* CalendarDayCell.swift in Sources */,
+				3B0155872971512C00E7BBF1 /* MissionCalendarDayCell.swift in Sources */,
 				3BE07006296F43A2002CC50A /* UIStackView+.swift in Sources */,
 				3BBE56E5296C213900771DE4 /* StartOnboardingView.swift in Sources */,
 				3BE07005296F43A2002CC50A /* UIColor+.swift in Sources */,
@@ -1277,7 +1267,6 @@
 				6CCBCF95297075590093C0F3 /* AddMissionAPI.swift in Sources */,
 				3B162876295AD7860077AE7B /* SceneDelegate.swift in Sources */,
 				3B90A42C296F28D2000D6852 /* HomeService.swift in Sources */,
-				3B388E0D29716C4D0073CB5E /* MissionCalendarCell.swift in Sources */,
 				3BE07009296F43A2002CC50A /* UITabBar+.swift in Sources */,
 				6C8826162968221C0005E222 /* AddSituationHeaderView.swift in Sources */,
 				099F06CF296732970036CF55 /* CustomTabBarView.swift in Sources */,

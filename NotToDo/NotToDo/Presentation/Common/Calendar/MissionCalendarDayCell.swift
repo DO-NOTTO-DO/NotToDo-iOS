@@ -1,5 +1,5 @@
 //
-//  MissionCalendarCell.swift
+//  MissionCalendarDayCell.swift
 //  NotToDo
 //
 //  Created by 강윤서 on 2023/01/13.
@@ -36,7 +36,7 @@ extension ToDoState {
     }
 }
 
-final class MissionCalendarCell: FSCalendarCell {
+final class MissionCalendarDayCell: FSCalendarCell {
     
     // MARK: - Properties
     
@@ -80,7 +80,7 @@ final class MissionCalendarCell: FSCalendarCell {
     }
 }
 
-extension MissionCalendarCell {
+extension MissionCalendarDayCell {
     func configure(_ state: ToDoState) {
         self.state = state
     }

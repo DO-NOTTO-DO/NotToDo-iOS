@@ -28,7 +28,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
   
     // MARK: - UI Components
     
-    var navigationMode : NavigationMode?
+    var navigationMode: NavigationMode?
     private var underLineView = UIView()
     private var headerView = RecommendHeaderView()
     private lazy var contentsCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: recommendlayout())
@@ -36,9 +36,8 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     private lazy var customTabBarCollectionView = CustomTabBarView().collectionview
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     private var nestedView = NestedView()
-    var recommendTextFieldClosure : ((_ result: String) -> Void)?
+    var recommendTextFieldClosure: ((_ result: String) -> Void)?
 
-    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {

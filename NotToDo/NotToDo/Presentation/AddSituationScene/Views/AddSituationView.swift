@@ -221,13 +221,7 @@ extension AddSituationView: UICollectionViewDelegateFlowLayout {
 
 extension AddSituationView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         collectionView.reloadData()
-        
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: AddSituationCollectionViewCell.identifier, for: indexPath)
-                as? AddSituationCollectionViewCell
-        
         switch indexPath.section {
         case 0:
             changedText = recommendList[indexPath.row].name

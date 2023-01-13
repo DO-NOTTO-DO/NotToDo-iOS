@@ -112,8 +112,10 @@ extension ActionSheetViewController {
     
     private func requestDeleteMission(id: Int) {
         HomeAPI.shared.deleteMission(id: id) { [weak self] response in
-            guard self != nil else { return }
+            guard let self = self else { return }
             guard response != nil else { return }
+            self.delegate?.reloadMissionData()
+            self.dismiss(animated: true)
         }
     }
     
@@ -134,8 +136,7 @@ extension ActionSheetViewController {
     
     @objc private func deleteButtonDidTap() {
         requestDeleteMission(id: id)
-        delegate?.reloadMissionData()
-        self.dismiss(animated: true)
+       
     }
     
     @objc private func choiceFinishButtonDidTap() {

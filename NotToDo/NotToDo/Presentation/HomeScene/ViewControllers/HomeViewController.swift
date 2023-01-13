@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Then
+import FSCalendar
 
 final class HomeViewController: UIViewController {
     
@@ -17,6 +18,8 @@ final class HomeViewController: UIViewController {
     var missionList: [DailyMissionResponseDTO] = []
     var banner: BannerResponseDTO?
     var missionId: Int?
+    private var clickedDay: String?
+    private let dateFormatter = DateFormatter()
     
     // MARK: - UI Components
     
@@ -55,8 +58,8 @@ extension HomeViewController: CheckboxToolTipDelegate {
 extension HomeViewController: ActionSheetViewDelegate {
     func reloadMissionData() {
         requestWeeklyMissoinAPI(startDate: "2023-01-23")
-        requestDailyMissionAPI(date: "2023-01-25")
-        homeView.homeCollectionView.reloadData()
+        requestDailyMissionAPI(date: clickedDay ?? "")
+        
     }
 }
 
@@ -68,6 +71,11 @@ extension HomeViewController: UICollectionViewDelegate {
             $0.refreshControl = refreshControl
             $0.refreshControl?.addTarget(self, action: #selector(handleRefreshControl),
                                           for: .valueChanged)
+        }
+        
+        dateFormatter.do {
+            $0.locale = Locale(identifier: "ko_KR")
+            $0.dateFormat = "yyyy-MM-dd"
         }
     }
     
@@ -82,7 +90,7 @@ extension HomeViewController: UICollectionViewDelegate {
                 guard let data = data as? BannerResponseDTO else { return }
                 self?.banner = data
                 self?.homeView.homeCollectionView.reloadData()
-            case .requestErr(_):
+            case .requestErr:
                 print("requestErr")
             case .pathErr:
                 print("pathErr")
@@ -95,7 +103,7 @@ extension HomeViewController: UICollectionViewDelegate {
     }
     
     private func requestDailyMissionAPI(date: String) {
-        HomeAPI.shared.getDailyMission(date: "2023-01-25") { [weak self] result in
+        HomeAPI.shared.getDailyMission(date: date) { [weak self] result in
             switch result {
             case let .success(data):
                 guard let data = data as? [DailyMissionResponseDTO] else { return }
@@ -107,7 +115,7 @@ extension HomeViewController: UICollectionViewDelegate {
                 print("serverErr")
             case .networkFail:
                 print("networkFail")
-            case .requestErr(_):
+            case .requestErr:
                 print("networkFail")
             }
         }
@@ -117,9 +125,9 @@ extension HomeViewController: UICollectionViewDelegate {
         HomeAPI.shared.getWeeklyMissoin(startDate: startDate) { result in
             switch result {
             case let .success(data):
-                guard let data = data as? [WeekMissionResponseDTO] else { return }
+                guard data is [WeekMissionResponseDTO] else { return }
                 
-            case .requestErr(_):
+            case .requestErr:
                 print("requestErr")
             case .pathErr:
                 print("pathErr")
@@ -147,7 +155,6 @@ extension HomeViewController: UICollectionViewDelegate {
         requestDailyMissionAPI(date: "2023-01-25")
         homeView.homeCollectionView.reloadData()
         
-        // Refresh control을 제거하세요.
         DispatchQueue.main.async {
             self.homeView.homeCollectionView.refreshControl?.endRefreshing()
         }
@@ -163,6 +170,7 @@ extension HomeViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCalendarCollectionViewCell.identifier, for: indexPath) as? HomeCalendarCollectionViewCell else { return UICollectionViewCell() }
+            cell.calendar.delegate = self
             return cell
         default:
             if missionList.isEmpty {
@@ -187,6 +195,9 @@ extension HomeViewController: UICollectionViewDataSource {
                     actionSheetViewController.modalPresentationStyle = .overFullScreen
                     actionSheetViewController.modalTransitionStyle = .crossDissolve
                     actionSheetViewController.id = missionId
+                    actionSheetViewController.delegate = self
+                    actionSheetViewController.situation = self?.missionList[indexPath.row].situation ?? ""
+                    actionSheetViewController.mission = self?.missionList[indexPath.row].title ?? ""
                     self?.present(actionSheetViewController, animated: true)
                     actionSheetViewController.dismissClicked = {
                         let calendarActionSheetViewController = ActionSheetViewController()
@@ -210,7 +221,7 @@ extension HomeViewController: UICollectionViewDataSource {
             if missionList.isEmpty {
                 return 1
             } else {
-                return missionList.count ?? 1
+                return missionList.count 
             }
         }
     }
@@ -268,5 +279,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         default:
             return UIEdgeInsets(top: 7.adjusted, left: 0, bottom: 17.adjusted, right: 0)
         }
+    }
+}
+
+extension HomeViewController: FSCalendarDelegate {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        clickedDay = dateFormatter.string(from: date)
+        requestDailyMissionAPI(date: clickedDay ?? "")
     }
 }

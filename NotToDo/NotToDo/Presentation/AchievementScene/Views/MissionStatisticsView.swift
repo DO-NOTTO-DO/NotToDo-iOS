@@ -14,7 +14,7 @@ class MissionStatisticsView: UIView {
     
     // MARK: - Properties
     
-    var missionList: [MissionStatistcsResponse] = []
+    var missionList: [MissionStatistcsResponseDTO] = []
     
     // MARK: - UI Components
     
@@ -25,7 +25,6 @@ class MissionStatisticsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-//        setUI()
         register()
         setLayout()
     }
@@ -83,7 +82,7 @@ extension MissionStatisticsView {
         
     }
 }
-extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
+extension MissionStatisticsView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if missionList.isEmpty {
             return 300
@@ -99,6 +98,8 @@ extension MissionStatisticsView: UITableViewDataSource, UITableViewDelegate {
             return self.missionList.count
         }
     }
+}
+extension MissionStatisticsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if missionList.isEmpty {

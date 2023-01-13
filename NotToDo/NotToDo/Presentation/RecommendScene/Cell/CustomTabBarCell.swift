@@ -18,7 +18,7 @@ class CustomTabBarCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
-    private var bgView = UIView()
+    private var backGroundView = UIView()
     private var icImage = UIImageView()
     private var titleLabel = UILabel()
     
@@ -46,10 +46,10 @@ extension CustomTabBarCell {
     }
     
     private func setLayout() {
-        addSubview(bgView)
-        bgView.addSubviews(icImage, titleLabel)
+        addSubview(backGroundView)
+        backGroundView.addSubviews(icImage, titleLabel)
         
-        bgView.snp.makeConstraints {
+        backGroundView.snp.makeConstraints {
             $0.height.equalTo(82.adjusted)
             $0.width.equalTo(69.adjusted)
             $0.centerX.centerY.equalToSuperview()
@@ -74,13 +74,13 @@ extension CustomTabBarCell {
             titleLabel.textColor = .nottodoGray1
             titleLabel.font = .PretendardBold(size: 12.adjusted)
             icImage.image = UIImage(named: item.activeImage)
-            bgView.backgroundColor = .yellow_mild
+            backGroundView.backgroundColor = .yellow_mild
         } else {
             titleLabel.text = item.name
             titleLabel.textColor = .nottodoGray2
             titleLabel.font = .PretendardMedium(size: 12.adjusted)
             icImage.image = UIImage(named: item.image)
-            bgView.backgroundColor = .clear
+            backGroundView.backgroundColor = .clear
         }
     }
 }

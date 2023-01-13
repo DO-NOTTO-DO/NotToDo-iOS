@@ -13,8 +13,8 @@ import Then
 class NestedView: UIView {
     
     // MARK: - Properties
-
-    var item: RecommendElementResponse?
+    
+    var item: RecommendElementResponseDTO?
     
     var isClickedClosure: ((_ section: Int, _ index: Int) -> Void)?
     var section: Int?
@@ -138,6 +138,5 @@ extension NestedView: UICollectionViewDelegate {
         if let section = section {
             isClickedClosure?(section, indexPath.item)
         }
-        print("tapped")
     }
 }

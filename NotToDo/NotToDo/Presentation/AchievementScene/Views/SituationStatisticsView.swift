@@ -14,7 +14,7 @@ class SituationStatisticsView: UIView {
     // MARK: - Properties
     
     var hiddenSections = Set<Int>()
-    var situationList: [SituationStatistcsResponse] = []
+    var situationList: [SituationStatistcsResponseDTO] = []
     var isSelected: [Bool] = []
     
     // MARK: - UI Components
@@ -27,7 +27,6 @@ class SituationStatisticsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-//        setUI()
         register()
         setLayout()
     }

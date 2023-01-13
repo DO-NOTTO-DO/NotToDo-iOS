@@ -28,32 +28,43 @@ final class AchievementViewController: UIViewController {
     private var titleView = TitleView()
     private lazy var segmentedControl = CustomSegmentedControl(items: [I18N.missionStatisticsMessage, I18N.situationStatisticsMessage])
     private lazy var calendarView = CustomCalendar(frame: .zero)
-    
     private lazy var missionView = MissionStatisticsView(frame: view.bounds)
     private lazy var situationView = SituationStatisticsView(frame: view.bounds)
     private var bottomLabel = UILabel()
-    private lazy var dateFormatter = DateFormatter()
-    let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+    private var dateFormatter = DateFormatter().then {
+        $0.dateFormat = "yyyy-MM"
+    }
     
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
-    var situationList: [SituationStatistcsResponse] = []
-    var missionList: [MissionStatistcsResponse] = []
+    var situationList: [SituationStatistcsResponseDTO] = []
+    var missionList: [MissionStatistcsResponseDTO] = []
+    var dataSource: [String: Int] = [:]
     
     // MARK: - View Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        requestAchieveAPI()
+        requestMonthAPI(month: dateFormatter.string(from: calendarView.calendar.today!))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configSituationView()
         setUI()
         setLayout()
-        requestAchieveAPI()
     }
 }
 
 // MARK: - Methods
 
 extension AchievementViewController {
+    func reloadMonthData(month: String) {
+        print(month)
+        requestMonthAPI(month: month)
+    }
+    
     func setUI() {
         view.backgroundColor = .BG
         
@@ -63,22 +74,26 @@ extension AchievementViewController {
             $0.backgroundColor = .BG
         }
         calendarView.do {
+            $0.monthCalendarClosure = { [self] result in
+                let month = result
+                self.reloadMonthData(month: month)
+            }
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
             $0.calendar.delegate = self
+            $0.calendar.dataSource = self
+            $0.calendar.register(MissionCalendarDayCell.self, forCellReuseIdentifier: String(describing: MissionCalendarDayCell.self))
         }
+        
         bottomLabel.do {
             $0.text = I18N.statistcisBottomMessage
             $0.font = .PretendardMedium(size: 12.adjusted)
             $0.textColor = .nottodoGray2
-//            if missionView.missionList.isEmpty && situationView.situationList.isEmpty {
-//                $0.isHidden = true
-//            }
         }
     }
     
     private func requestAchieveAPI() {
-        MissionStatisticsAPI.shared.getMissionStatistics { [weak self] response in
+        AchieveAPI.shared.getMissionStatistics { [weak self] response in
             guard self != nil else { return }
             guard let response = response else { return }
             self?.missionList = response.data!
@@ -88,7 +103,7 @@ extension AchievementViewController {
             self?.relayout()
             dump(response)
         }
-        SituationStatisticsAPI.shared.getSituationStatistics { [weak self] response in
+        AchieveAPI.shared.getSituationStatistics { [weak self] response in
             guard self != nil else { return }
             guard let response = response else { return }
             self?.situationList = response.data!
@@ -96,10 +111,33 @@ extension AchievementViewController {
             self?.situationView.setUI()
             self?.situationView.expangindTableView.reloadData()
             self?.relayout()
-            print(response)
             dump(response)
         }
     }
+    
+    func requestMonthAPI(month: String) {
+        AchieveAPI.shared.getAchieveCalendar(month: month) { [self] result in
+            switch result {
+            case let .success(data):
+                guard let data = data as? [AchieveCalendarResponseDTO] else { return }
+                self.dataSource = [:]
+                for item in data {
+                    self.dataSource[item.actionDate] = item.count
+                }
+                calendarView.calendar.reloadData()
+                
+            case .requestErr:
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     func configMissionView() {
         missionView.missionList = missionList
     }
@@ -211,13 +249,35 @@ extension AchievementViewController {
     }
 }
 
-extension AchievementViewController: FSCalendarDelegate, FSCalendarDataSource {
+extension AchievementViewController: FSCalendarDelegate {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendarView.calendar.reloadData()
         calendarView.headerLabel.text = calendarView.dateFormatter.string(from: calendar.currentPage)
     }
-    
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         return false
+    }
+}
+
+extension AchievementViewController: FSCalendarDataSource {
+    
+    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
+        let cell = calendar.dequeueReusableCell(withIdentifier: String(describing: MissionCalendarDayCell.self), for: date, at: position) as! MissionCalendarDayCell
+        
+        if let count = self.dataSource[date.toString()] {
+            switch count {
+            case 0:
+                cell.configure(.none)
+            case 1:
+                cell.configure(.step1)
+            case 2:
+                cell.configure(.step2)
+            case 3:
+                cell.configure(.step3)
+            default:
+                cell.configure(.none)
+            }
+        }
+        return cell
     }
 }

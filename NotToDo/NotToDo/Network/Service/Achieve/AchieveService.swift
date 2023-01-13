@@ -22,15 +22,15 @@ extension AchieveService: TargetType {
     
     var path: String {
         switch self {
-        case .achieveCalendar(month: let month):
-            return URLConstant.achieveCalendar+"/\(month)"
+        case .achieveCalendar(let month):
+            return URLConstant.achieveCalendar + "/\(month)"
         case .missionStatistics:
             return URLConstant.missionStatistics
         case .situationStatistics:
             return URLConstant.situationStatistics
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
         case .achieveCalendar, .missionStatistics, .situationStatistics:

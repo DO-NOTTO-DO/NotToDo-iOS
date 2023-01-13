@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: - MissionStatistcsResponse
-struct MissionStatistcsResponse: Codable {
+struct MissionStatistcsResponseDTO: Codable {
     let count: Int
     let title: String
 }

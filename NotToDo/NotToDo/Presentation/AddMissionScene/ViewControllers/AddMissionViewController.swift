@@ -73,13 +73,9 @@ extension AddMissionViewController {
                                           situation: (addMissionView.situationView.AddMissionButton.titleLabel?.text)!,
                                           actions: behaviorList.map { $0.behavior },
                                           goal: addMissionView.goalTextField.text!,
-                                          actionDate: "2023.01.25")) { [weak self] _ in
-            guard self != nil else { return }
-<<<<<<< HEAD
-        } // (addMissionView.dateButton.titleLabel?.text)!
-=======
-        }
->>>>>>> aeee3cc6a03d46dbddba752b960c886fd5b2a800
+                                          actionDate: (addMissionView.dateButton.titleLabel?.text)!)) { [weak self] _ in
+                                              guard self != nil else { return }
+                                          }
     }
     
     @objc func checkEnable() {

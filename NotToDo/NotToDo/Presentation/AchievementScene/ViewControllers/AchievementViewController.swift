@@ -14,6 +14,8 @@ final class AchievementViewController: UIViewController {
     
     // MARK: - Properties
     
+    var dataSource: [String: Int] = [:]
+    
     var shouldHideMissionView: Bool? {
         didSet {
             guard let shouldHideMissionView = self.shouldHideMissionView else { return }
@@ -77,6 +79,10 @@ extension AchievementViewController {
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
             $0.calendar.delegate = self
+            /* */
+            $0.calendar.dataSource = self
+            $0.calendar.register(MissionCalendarDayCell.self, forCellReuseIdentifier: String(describing: MissionCalendarDayCell.self))
+            
         }
         bottomLabel.do {
             $0.text = I18N.statistcisBottomMessage
@@ -236,14 +242,43 @@ extension AchievementViewController {
     }
 }
 
-extension AchievementViewController: FSCalendarDelegate, FSCalendarDataSource {
+extension AchievementViewController: FSCalendarDelegate {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendarView.calendar.reloadData()
         reloadMonthData()
         calendarView.headerLabel.text = calendarView.dateFormatter.string(from: calendar.currentPage)
     }
-    
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         return false
     }
+}
+
+extension AchievementViewController: FSCalendarDataSource {
+    
+    // 서버에서 넘어온 dateString이랑 이 메서드의 date를 잘 매칭시켜줘야 함
+    // date 매칭된 것에 맞게 데이터를 넘겨줘야 함
+    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
+        let cell = calendar.dequeueReusableCell(withIdentifier: String(describing: MissionCalendarDayCell.self), for: date, at: position) as! MissionCalendarDayCell
+        
+        // MARK: 서버에서 넘어온 값에 따라 셀 상태 변화시켜주기
+        // Date : Int(Enum)
+        /*
+         NotToDoCalendarCell에 가보면 Enum이 보일 것임
+         프로젝트 상황에 따라 적절하게 바꿔서 사용하기
+         
+         현재는 5개의 case가 있음
+         - none, step1, step2, step3, bordered
+         
+         case에 따라서 backgroundColor 변화시키는 식으로 구현되어 있는데 UI 디테일을 살리고 싶으면
+         그냥 case에 따라 이미지를 넣는 것이 더 쉬움
+         */
+        
+        // 캘린더 셀 설정해주는 코드 : CollectionViewCell이랑 동일하게 생각하면 됨
+        cell.configure(.bordered)
+        return cell
+    }
+}
+
+extension AchievementViewController: FSCalendarDelegateAppearance {
+    
 }

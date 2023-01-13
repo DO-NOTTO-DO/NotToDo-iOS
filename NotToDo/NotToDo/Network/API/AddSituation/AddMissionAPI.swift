@@ -17,8 +17,6 @@ final class AddMissionAPI {
     
     private init() { }
     
-    //public private(set) var addMissionData: GeneralResponse<AddMissionResponse>?
-    
     // MARK: - POST
     
     func postAddMission(newMission: AddMissionRequest, completion: @escaping (GeneralResponse<AddMissionResponse>?) -> Void) {
@@ -28,7 +26,7 @@ final class AddMissionAPI {
                 do {
                     guard let addMissionData = try response.map(GeneralResponse<AddMissionResponse>?.self) else { return }
                     completion(addMissionData)
-                } catch (let err) {
+                } catch let err {
                     print(err.localizedDescription, 500)
                 }
             case .failure(let err):

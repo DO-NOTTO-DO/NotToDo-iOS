@@ -21,7 +21,7 @@ final class MissionHistoryAPI {
     
     // MARK: - GET
     
-    func getMissionHistory(completion: @escaping (GeneralArrayResponse<MissionHistoryModel>?) -> ()) {
+    func getMissionHistory(completion: @escaping (GeneralArrayResponse<MissionHistoryModel>?) -> Void) {
         missionHistoryProvider.request(.missionHistory) { result in
             switch result {
             case .success(let response):
@@ -30,7 +30,7 @@ final class MissionHistoryAPI {
                     response.map(GeneralArrayResponse<MissionHistoryModel>?.self)
                     guard let missionHistoryData = self.missionHistoryData else { return }
                     completion(missionHistoryData)
-                } catch (let err) {
+                } catch let err {
                     print(err.localizedDescription, 500)
                 }
             case .failure(let err):

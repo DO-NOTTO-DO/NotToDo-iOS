@@ -81,16 +81,17 @@ extension HomeCollectionReusableView {
         }
         
         motivationLabel.snp.makeConstraints {
-            $0.top.equalTo(dateView.snp.bottom).offset(15.adjusted)
+            $0.top.equalTo(dateView.snp.bottom).offset(16.adjusted)
             $0.leading.equalToSuperview().inset(20.adjusted)
             $0.trailing.equalTo(graphicImageView.snp.leading)
         }
         
         graphicImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(17.adjusted)
             $0.trailing.equalToSuperview()
-            $0.height.equalTo(126.adjusted)
+            $0.height.equalTo(144.adjusted)
             $0.width.equalTo(160.adjusted)
-            $0.bottom.equalToSuperview().inset(6.adjusted)
+            $0.bottom.equalToSuperview().inset(22.adjusted)
         }
     }
     

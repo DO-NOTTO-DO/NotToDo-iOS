@@ -82,7 +82,7 @@ extension HomeViewController: UICollectionViewDelegate {
                 guard let data = data as? BannerResponseDTO else { return }
                 self?.banner = data
                 self?.homeView.homeCollectionView.reloadData()
-            case .requestErr(_):
+            case .requestErr:
                 print("requestErr")
             case .pathErr:
                 print("pathErr")
@@ -107,7 +107,7 @@ extension HomeViewController: UICollectionViewDelegate {
                 print("serverErr")
             case .networkFail:
                 print("networkFail")
-            case .requestErr(_):
+            case .requestErr:
                 print("networkFail")
             }
         }
@@ -117,9 +117,9 @@ extension HomeViewController: UICollectionViewDelegate {
         HomeAPI.shared.getWeeklyMissoin(startDate: startDate) { result in
             switch result {
             case let .success(data):
-                guard let data = data as? [WeekMissionResponseDTO] else { return }
+                guard data is [WeekMissionResponseDTO] else { return }
                 
-            case .requestErr(_):
+            case .requestErr:
                 print("requestErr")
             case .pathErr:
                 print("pathErr")
@@ -147,7 +147,6 @@ extension HomeViewController: UICollectionViewDelegate {
         requestDailyMissionAPI(date: "2023-01-25")
         homeView.homeCollectionView.reloadData()
         
-        // Refresh control을 제거하세요.
         DispatchQueue.main.async {
             self.homeView.homeCollectionView.refreshControl?.endRefreshing()
         }
@@ -187,6 +186,8 @@ extension HomeViewController: UICollectionViewDataSource {
                     actionSheetViewController.modalPresentationStyle = .overFullScreen
                     actionSheetViewController.modalTransitionStyle = .crossDissolve
                     actionSheetViewController.id = missionId
+                    actionSheetViewController.situation = self?.missionList[indexPath.row].situation ?? ""
+                    actionSheetViewController.mission = self?.missionList[indexPath.row].title ?? ""
                     self?.present(actionSheetViewController, animated: true)
                     actionSheetViewController.dismissClicked = {
                         let calendarActionSheetViewController = ActionSheetViewController()
@@ -210,7 +211,7 @@ extension HomeViewController: UICollectionViewDataSource {
             if missionList.isEmpty {
                 return 1
             } else {
-                return missionList.count ?? 1
+                return missionList.count 
             }
         }
     }

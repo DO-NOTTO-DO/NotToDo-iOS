@@ -39,6 +39,7 @@ final class AchievementViewController: UIViewController {
     
     var situationList: [SituationStatistcsResponse] = []
     var missionList: [MissionStatistcsResponse] = []
+    private var dayChecked: String?
     
     // MARK: - View Life Cycle
     
@@ -47,7 +48,11 @@ final class AchievementViewController: UIViewController {
         configSituationView()
         setUI()
         setLayout()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         requestAchieveAPI()
+        requestMonthAPI(month: "2023-01")
     }
 }
 
@@ -71,9 +76,6 @@ extension AchievementViewController {
             $0.text = I18N.statistcisBottomMessage
             $0.font = .PretendardMedium(size: 12.adjusted)
             $0.textColor = .nottodoGray2
-//            if missionView.missionList.isEmpty && situationView.situationList.isEmpty {
-//                $0.isHidden = true
-//            }
         }
     }
     
@@ -96,10 +98,33 @@ extension AchievementViewController {
             self?.situationView.setUI()
             self?.situationView.expangindTableView.reloadData()
             self?.relayout()
-            print(response)
             dump(response)
         }
     }
+    
+    private func requestMonthAPI(month: String) {
+        AchieveAPI.shared.getAchieveCalendar(month: month) { [weak self] response in
+            guard self != nil else { return }
+            guard let response = response else { return }
+            print(response)
+            dump(response)
+        }
+//        AchieveAPI.shared.getAchieveCalendar(month: month) { [weak self] result in
+//            switch result {
+//            case let .success(data):
+//                guard data is [AchieveCalendarResponse] else { return }
+//            case .requestErr:
+//                print("requestErr")
+//            case .pathErr:
+//                print("pathErr")
+//            case .serverErr:
+//                print("serverErr")
+//            case .networkFail:
+//                print("networkFail")
+//            }
+//        }
+    }
+    
     func configMissionView() {
         missionView.missionList = missionList
     }

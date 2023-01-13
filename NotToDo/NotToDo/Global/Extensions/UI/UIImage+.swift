@@ -24,7 +24,7 @@ extension UIImage {
     
     static let addNotToDo = UIImage(named: "Home/btn_nottodo")!.withRenderingMode(.alwaysOriginal)
     static let target = UIImage(named: "Home/ic_target")!.withRenderingMode(.alwaysOriginal)
-    static let checkStatusBox = UIImage(named: "Home/checkbox/checkBox")!.withRenderingMode(.alwaysOriginal)
+    static let checkStatusBox = UIImage(named: "Home/checkbox/btn_status_check")!.withRenderingMode(.alwaysOriginal)
     static let checkBox = UIImage(named: "Home/checkbox/btn_check_blank")!.withRenderingMode(.alwaysOriginal)
     static let checkDefault = UIImage(named: "Home/checkbox/Default")!.withRenderingMode(.alwaysOriginal)
     static let checkCircle = UIImage(named: "Home/checkbox/circle")!.withRenderingMode(.alwaysOriginal)

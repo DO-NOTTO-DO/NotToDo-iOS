@@ -1,6 +1,5 @@
 import UIKit
 
-import FSCalendar
 import SnapKit
 import Then
 
@@ -9,7 +8,6 @@ final class HomeView: UIView {
     // MARK: - UI Components
     
     lazy var homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-    var calendar = FSCalendar(frame: .zero)
     let addMissionButton = NotTodoButton(frame: CGRect(), mode: .withImage, text: I18N.addMissoinButton, image: .plus, font: .semiBold, size: 16)
     
     // MARK: - Life Cycle

@@ -70,8 +70,6 @@ extension HomeCalendarCollectionViewCell {
             $0.collectionView.snp.makeConstraints {
                 $0.edges.equalToSuperview()
             }
-            $0.delegate = self
-            $0.dataSource = self
         }
     }
     
@@ -85,8 +83,4 @@ extension HomeCalendarCollectionViewCell {
             $0.top.equalToSuperview().inset(23.adjusted)
         }
     }
-}
-
-extension HomeCalendarCollectionViewCell: FSCalendarDataSource, FSCalendarDelegate {
-    
 }

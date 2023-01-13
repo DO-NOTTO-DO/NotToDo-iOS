@@ -61,7 +61,7 @@ extension HomeCalendarCollectionViewCell {
             /* */
             $0.dataSource = self
             $0.delegate = self
-            $0.register(NotToDoCalendarCell.self, forCellReuseIdentifier: String(describing: NotToDoCalendarCell.self))
+            $0.register(MissionCalendarCell.self, forCellReuseIdentifier: String(describing: MissionCalendarCell.self))
             
             $0.appearance.titleTodayColor = .nottodoBlack
             $0.appearance.todayColor = .none
@@ -100,12 +100,12 @@ extension HomeCalendarCollectionViewCell {
     }
 }
 
-extension HomeCalendarCollectionViewCell: FSCalendarDataSource, FSCalendarDelegate {
+extension HomeCalendarCollectionViewCell: FSCalendarDataSource {
     
     // 서버에서 넘어온 dateString이랑 이 메서드의 date를 잘 매칭시켜줘야 함
     // date 매칭된 것에 맞게 데이터를 넘겨줘야 함
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
-        let cell = calendar.dequeueReusableCell(withIdentifier: String(describing: NotToDoCalendarCell.self), for: date, at: position) as! NotToDoCalendarCell
+        let cell = calendar.dequeueReusableCell(withIdentifier: String(describing: MissionCalendarCell.self), for: date, at: position) as! MissionCalendarCell
         
         // MARK: 서버에서 넘어온 값에 따라 셀 상태 변화시켜주기
         // Date : Int(Enum)
@@ -124,4 +124,8 @@ extension HomeCalendarCollectionViewCell: FSCalendarDataSource, FSCalendarDelega
         cell.configure(.bordered)
         return cell
     }
+}
+
+extension HomeCalendarCollectionViewCell: FSCalendarDelegate {
+    
 }

@@ -12,5 +12,5 @@ struct NetworkConstant {
     static let hasTokenHeader = ["Content-Type": "application/json",
                                  "Authorization": NetworkConstant.accessToken]
     
-    static var accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2NzM0NTQxMDgsImV4cCI6MTY3NTUyNzcwOH0.rsDnsUfOYGBa44eiKz_vePR_lyz-yrvlCDgrZmrAP9E"
+    static var accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzLCJpYXQiOjE2NzM2MjM0ODgsImV4cCI6MTY3NTY5NzA4OH0.S6LxBOCHwMg-zysGGZisQbST1Lw8aIzgtz6aY3iKBRw"
 }

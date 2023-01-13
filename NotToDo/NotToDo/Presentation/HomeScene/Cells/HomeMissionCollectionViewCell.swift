@@ -17,7 +17,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     static let identifier = "HomeMissionCollectionViewCell"
     var selectStatusButton: Bool? = true
     var clickedStatusButton: ((Int) -> Void)?
-    var meatballClickedEvent: (() -> Void)?
+    var meatballClickedEvent: ((Int) -> Void)?
     var missionId: Int?
     var indexPath: IndexPath?
     
@@ -253,6 +253,6 @@ extension HomeMissionCollectionViewCell {
     
     @objc func meatballButtonTapped(_ sender: UIView) {
         guard let missionId = missionId else { return }
-        meatballClickedEvent?()
+        meatballClickedEvent?(missionId)
     }
 }

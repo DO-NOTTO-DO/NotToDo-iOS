@@ -11,6 +11,10 @@ import FSCalendar
 import SnapKit
 import Then
 
+protocol ActionSheetViewDelegate: AnyObject {
+    func reloadMissionData()
+}
+
 final class ActionSheetViewController: UIViewController {
     
     // MARK: - Properties
@@ -21,10 +25,14 @@ final class ActionSheetViewController: UIViewController {
         }
     }
     var dismissClicked: (() -> Void)?
+    var id: Int = 0
+    lazy var situation: String = ""
+    lazy var mission: String = ""
+    weak var delegate: ActionSheetViewDelegate?
     
     // MARK: - UI Components
 
-    lazy var actionSheetView = ActionSheetView(frame: CGRect(), mode: mode, situation: "9시 이후", mission: "밥 먹기")
+    lazy var actionSheetView = ActionSheetView(frame: CGRect(), mode: mode, situation: self.situation, mission: self.mission)
     
     // MARK: - View Life Cycle
     
@@ -67,7 +75,9 @@ extension ActionSheetViewController {
     
     private func setRecognizer() {
         let duplicationTapGesture = UITapGestureRecognizer(target: self, action: #selector(anotherButtonDidTap))
+        let deleteTapGesture = UITapGestureRecognizer(target: self, action: #selector(deleteButtonDidTap))
         actionSheetView.duplicateView.addGestureRecognizer(duplicationTapGesture)
+        actionSheetView.deleteView.addGestureRecognizer(deleteTapGesture)
     }
     
     private func setAddTarget() {
@@ -89,13 +99,36 @@ extension ActionSheetViewController {
         actionSheetView.calendar.delegate = self
     }
     
+    private func requestDeleteMission(id: Int) {
+        HomeAPI.shared.deleteMission(id: id) { [weak self] response in
+            guard self != nil else { return }
+            guard response != nil else { return }
+        }
+    }
+    
+    private func requestAddAnotherDay(id: Int, dates: [String]) {
+        HomeAPI.shared.postAnotherDay(id: id, dates: dates) { [weak self] response in
+            guard self != nil else { return }
+            guard response != nil else { return }
+        }
+    }
+    
+    // MARK: - @objc
+    
     @objc private func anotherButtonDidTap() {
         dismiss(animated: true) { [weak self] in
             self?.dismissClicked?()
         }
     }
     
+    @objc private func deleteButtonDidTap() {
+        requestDeleteMission(id: id)
+        delegate?.reloadMissionData()
+        self.dismiss(animated: true)
+    }
+    
     @objc private func choiceFinishButtonDidTap() {
+        requestAddAnotherDay(id: id, dates: ["2023.01.26", "2032.01.26"])
         dismissActionSheetWithAnimation()
     }
 }

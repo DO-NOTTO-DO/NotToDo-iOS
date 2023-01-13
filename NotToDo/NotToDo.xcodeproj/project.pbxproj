@@ -47,6 +47,7 @@
 		3B16287D295AD7870077AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287C295AD7870077AE7B /* Assets.xcassets */; };
 		3B162880295AD7870077AE7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B16287E295AD7870077AE7B /* LaunchScreen.storyboard */; };
 		3B1628B9295ADD750077AE7B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1628B8295ADD750077AE7B /* Colors.xcassets */; };
+		3B2748632970B570005DBD46 /* AddAnotherDayResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2748622970B570005DBD46 /* AddAnotherDayResponseDTO.swift */; };
 		3B3405B7295B05D400D44722 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405B6295B05D400D44722 /* .swiftlint.yml */; };
 		3B3405BC295B0A2400D44722 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BB295B0A2400D44722 /* Pretendard-Bold.otf */; };
 		3B3405BE295B0A8200D44722 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3405BD295B0A8200D44722 /* Pretendard-Medium.otf */; };
@@ -192,6 +193,7 @@
 		3B1628B1295ADB710077AE7B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		3B1628B3295ADBA20077AE7B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3B1628B8295ADD750077AE7B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		3B2748622970B570005DBD46 /* AddAnotherDayResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnotherDayResponseDTO.swift; sourceTree = "<group>"; };
 		3B3405B6295B05D400D44722 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3B3405B8295B090300D44722 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		3B3405BB295B0A2400D44722 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -831,6 +833,7 @@
 				3B90A431296F2981000D6852 /* BannerResponseDTO.swift */,
 				3BFE8410297059D7000B37CA /* DailyMissionResponseDTO.swift */,
 				3BFE8412297071BB000B37CA /* UpdateMissionResponseDTO.swift */,
+				3B2748622970B570005DBD46 /* AddAnotherDayResponseDTO.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1265,6 +1268,7 @@
 				3BBE56F3296C4EB000771DE4 /* SecondOnboardingViewController.swift in Sources */,
 				096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */,
 				099F072A296B98B90036CF55 /* SituationTitleView.swift in Sources */,
+				3B2748632970B570005DBD46 /* AddAnotherDayResponseDTO.swift in Sources */,
 				3B4B90BD2965673E008C5CA8 /* AuthViewController.swift in Sources */,
 				09D3C538296FFD7C00F1488D /* SituationStatisticsAPI.swift in Sources */,
 				099F0724296AA4A40036CF55 /* TitleView.swift in Sources */,

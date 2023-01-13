@@ -22,7 +22,6 @@ final class AchievementViewController: UIViewController {
         }
     }
     
-    
     // MARK: - UI Components
     
     private lazy var scrollView = UIScrollView()
@@ -41,7 +40,6 @@ final class AchievementViewController: UIViewController {
     var situationList: [SituationStatistcsResponseDTO] = []
     var missionList: [MissionStatistcsResponseDTO] = []
     var dataSource: [String: Int] = [:]
-    
     
     // MARK: - View Life Cycle
     
@@ -283,4 +281,3 @@ extension AchievementViewController: FSCalendarDataSource {
         return cell
     }
 }
-

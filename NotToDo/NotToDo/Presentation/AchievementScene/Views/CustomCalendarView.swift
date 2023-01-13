@@ -25,7 +25,7 @@ class CustomCalendar: UIView {
     private lazy var today: Date = { return Date() }()
     lazy var dateFormatter = DateFormatter()
     var monthData: [AchieveCalendarResponseDTO] = []
-    var monthCalendarClosure: ((_ month:String) -> Void)?
+    var monthCalendarClosure: ((_ month: String) -> Void)?
     
     // MARK: - View Life Cycle
     
@@ -98,7 +98,6 @@ extension CustomCalendar {
             $0.bottom.equalToSuperview().inset(26.adjusted) 
         }
     }
-    
     
     private func calendarText() {
         calendar.calendarHeaderView.isHidden = true

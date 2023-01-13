@@ -22,8 +22,8 @@ struct AchieveCalendarResponseDTO: Codable {
             }
         }
     
-    func convert() -> [Date:Int] {
+    func convert() -> [Date: Int] {
         guard let date = self.toDate(dateString: actionDate) else { return [:]}
-        return [date:count]
+        return [date: count]
     }
 }

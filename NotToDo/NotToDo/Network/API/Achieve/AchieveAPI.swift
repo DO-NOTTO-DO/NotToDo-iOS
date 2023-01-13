@@ -51,7 +51,7 @@ final class AchieveAPI {
                     self.missionStatisticsData = try response.map(GeneralArrayResponse<MissionStatistcsResponseDTO>?.self)
                     guard let situationStatisticsData = self.missionStatisticsData else { return }
                     completion(self.missionStatisticsData)
-                } catch (let err) {
+                } catch let err {
                     print(err.localizedDescription, 500)
                 }
             case .failure(let err):
@@ -62,26 +62,7 @@ final class AchieveAPI {
     }
     
     // MARK: - GET
-    
-//    func getAchieveCalendar(month: String, completion: @escaping (GeneralResponse<AchieveCalendarResponse>?) -> Void) {
-//        achieveProvider.request(.achieveCalendar(month: month)) { result in
-//            switch result {
-//            case .success(let response):
-//                do {
-//                    self.achieveCalendarData = try response.map(GeneralResponse<AchieveCalendarResponse>?.self)
-//                    guard let achieveCalendarData = self.achieveCalendarData else { return }
-//                    completion(self.achieveCalendarData)
-//                } catch (let err) {
-//                    print(err.localizedDescription, 500)
-//                }
-//            case .failure(let err):
-//                print(err.localizedDescription)
-//                completion(nil)
-//            }
-//        }
-//    }
-    
-    
+
     func getAchieveCalendar(month: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         achieveProvider.request(.achieveCalendar(month: month)) { response in
             switch response {

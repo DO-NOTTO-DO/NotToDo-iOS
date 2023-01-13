@@ -29,7 +29,7 @@ final class SituationStatisticsAPI {
                     self.situationStatisticsData = try response.map(GeneralArrayResponse<SituationStatistcsResponse>?.self)
                     guard let situationStatisticsData = self.situationStatisticsData else { return }
                     completion(situationStatisticsData)
-                } catch (let err) {
+                } catch let err {
                     print(err.localizedDescription, 500)
                 }
             case .failure(let err):

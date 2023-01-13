@@ -220,7 +220,7 @@ extension HomeMissionCollectionViewCell {
         
         if model.completionStatus == "FINISH" {
             statusButton.setImage(.checkCircle, for: .normal)
-        } else if (model.completionStatus == "AMBIGUOUS") {
+        } else if model.completionStatus == "AMBIGUOUS" {
             statusButton.setImage(.checkTriangle, for: .normal)
         } else {
             statusButton.setImage(.checkDefault, for: .normal)

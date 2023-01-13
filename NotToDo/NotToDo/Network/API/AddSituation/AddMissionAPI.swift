@@ -26,7 +26,7 @@ final class AddMissionAPI {
                 do {
                     guard let addMissionData = try response.map(GeneralResponse<AddMissionResponse>?.self) else { return }
                     completion(addMissionData)
-                } catch (let err) {
+                } catch let err {
                     print(err.localizedDescription, 500)
                 }
             case .failure(let err):

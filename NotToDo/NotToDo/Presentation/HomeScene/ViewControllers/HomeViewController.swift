@@ -82,7 +82,7 @@ extension HomeViewController: UICollectionViewDelegate {
                 guard let data = data as? BannerResponseDTO else { return }
                 self?.banner = data
                 self?.homeView.homeCollectionView.reloadData()
-            case .requestErr(_):
+            case .requestErr:
                 print("requestErr")
             case .pathErr:
                 print("pathErr")
@@ -107,7 +107,7 @@ extension HomeViewController: UICollectionViewDelegate {
                 print("serverErr")
             case .networkFail:
                 print("networkFail")
-            case .requestErr(_):
+            case .requestErr:
                 print("networkFail")
             }
         }
@@ -117,9 +117,9 @@ extension HomeViewController: UICollectionViewDelegate {
         HomeAPI.shared.getWeeklyMissoin(startDate: startDate) { result in
             switch result {
             case let .success(data):
-                guard let data = data as? [WeekMissionResponseDTO] else { return }
+                guard data is [WeekMissionResponseDTO] else { return }
                 
-            case .requestErr(_):
+            case .requestErr:
                 print("requestErr")
             case .pathErr:
                 print("pathErr")

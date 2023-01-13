@@ -28,7 +28,7 @@ final class AddSituationAPI {
                     self.addSituationData = try response.map(GeneralResponse<AddSituationResponse>?.self)
                     guard let addSituationData = self.addSituationData else { return }
                     completion(addSituationData)
-                } catch (let err) {
+                } catch let err {
                     print(err.localizedDescription, 500)
                 }
             case .failure(let err):

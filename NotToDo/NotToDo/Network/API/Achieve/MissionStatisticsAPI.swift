@@ -27,9 +27,9 @@ final class MissionStatisticsAPI {
             case .success(let response):
                 do {
                     self.missionStatisticsData = try response.map(GeneralArrayResponse<MissionStatistcsResponse>?.self)
-                    guard let situationStatisticsData = self.missionStatisticsData else { return }
+                    guard self.missionStatisticsData != nil else { return }
                     completion(self.missionStatisticsData)
-                } catch (let err) {
+                } catch let err {
                     print(err.localizedDescription, 500)
                 }
             case .failure(let err):

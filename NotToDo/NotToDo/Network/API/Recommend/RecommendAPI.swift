@@ -29,7 +29,7 @@ final class RecommendAPI {
                     self.recommendData = try response.map(GeneralArrayResponse<RecommendElementResponse>?.self)
                     guard let recommendData = self.recommendData else { return }
                     completion(recommendData)
-                } catch (let err) {
+                } catch let err {
                     print(err.localizedDescription, 500)
                 }
             case .failure(let err):

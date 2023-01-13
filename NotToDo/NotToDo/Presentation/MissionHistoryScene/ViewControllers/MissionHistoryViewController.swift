@@ -45,7 +45,8 @@ extension MissionHistoryViewController {
     }
     
     private func setAddTarget() {
-        missionHistoryView.backButton.addTarget(self, action: #selector(popToAddMissionViewController), for: .touchUpInside)
+        missionHistoryView.inputTextField.keyboardToolbar.doneBarButton.setTarget(self, action: #selector(popToAddMissionViewController))
+        missionHistoryView.backButton.addTarget(self, action: #selector(cancelMissionHistory), for: .touchUpInside)
     }
     
     private func requestMissionHistoryAPI() {
@@ -64,6 +65,10 @@ extension MissionHistoryViewController {
 
     @objc private func popToAddMissionViewController() {
         sendData()
+    }
+    
+    @objc private func cancelMissionHistory() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func sendData() {

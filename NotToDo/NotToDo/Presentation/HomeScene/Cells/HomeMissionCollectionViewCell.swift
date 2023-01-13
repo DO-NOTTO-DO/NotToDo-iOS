@@ -34,6 +34,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     private let goalView = UIView()
     private let goalTitleLabel = UILabel()
     private let goalLabel = UILabel()
+    private let cancelLineView = UIView()
     
     private let solutionStackview = UIStackView()
     private var firstSolusionView = UIImageView()
@@ -113,6 +114,11 @@ extension HomeMissionCollectionViewCell {
         }
         
         headerView.clipsToBounds = false
+        
+        cancelLineView.do {
+            $0.backgroundColor = .nottodoGray1
+            $0.isHidden = true
+        }
     }
     
     private func setLayout() {
@@ -124,7 +130,7 @@ extension HomeMissionCollectionViewCell {
         meatballView.addSubview(meatballButton)
         headerView.addSubviews(statusButton, statusButtonView, situationLabel, missionTitleLabel,
                                goalView, goalTitleLabel, meatballButton,
-                               meatballView)
+                               meatballView, cancelLineView)
         addSubviews(headerBackView, solutionStackview)
         
         headerBackView.snp.makeConstraints {
@@ -209,6 +215,13 @@ extension HomeMissionCollectionViewCell {
                 $0.leading.equalToSuperview().inset(22.adjusted)
             }
         }
+        
+        cancelLineView.snp.makeConstraints {
+            $0.height.equalTo(1.adjusted)
+            $0.leading.equalTo(situationLabel.snp.leading).offset(-8.adjusted)
+            $0.trailing.equalTo(missionTitleLabel.snp.trailing).offset(11.adjusted)
+            $0.centerY.equalTo(missionTitleLabel.snp.centerY)
+        }
     }
     
     func configure(_ model: DailyMissionResponseDTO) {
@@ -220,8 +233,10 @@ extension HomeMissionCollectionViewCell {
         
         if model.completionStatus == "FINISH" {
             statusButton.setImage(.checkCircle, for: .normal)
+            cancelLineView.isHidden = false
         } else if model.completionStatus == "AMBIGUOUS" {
             statusButton.setImage(.checkTriangle, for: .normal)
+            cancelLineView.isHidden = true
         } else {
             statusButton.setImage(.checkDefault, for: .normal)
         }

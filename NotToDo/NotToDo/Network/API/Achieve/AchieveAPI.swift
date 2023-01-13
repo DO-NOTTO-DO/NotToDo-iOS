@@ -19,7 +19,7 @@ final class AchieveAPI {
     
     public private(set) var situationStatisticsData: GeneralArrayResponse<SituationStatistcsResponse>?
     public private(set) var missionStatisticsData: GeneralArrayResponse<MissionStatistcsResponse>?
-    public private(set) var achieveCalendarData: GeneralArrayResponse<AchieveCalendarResponse>?
+    public private(set) var achieveCalendarData: GeneralResponse<AchieveCalendarResponseDTO>?
 
     // MARK: - GET
     
@@ -63,21 +63,38 @@ final class AchieveAPI {
     
     // MARK: - GET
     
-    func getAchieveCalendar(month: String, completion: @escaping (GeneralArrayResponse<AchieveCalendarResponse>?) -> Void) {
-        achieveProvider.request(.achieveCalendar(month: month)) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    self.achieveCalendarData = try response.map(GeneralArrayResponse<AchieveCalendarResponse>?.self)
-                    guard let situationStatisticsData = self.achieveCalendarData else { return }
-                    completion(self.achieveCalendarData)
-                } catch (let err) {
-                    print(err.localizedDescription, 500)
-                }
-            case .failure(let err):
-                print(err.localizedDescription)
-                completion(nil)
+//    func getAchieveCalendar(month: String, completion: @escaping (GeneralResponse<AchieveCalendarResponse>?) -> Void) {
+//        achieveProvider.request(.achieveCalendar(month: month)) { result in
+//            switch result {
+//            case .success(let response):
+//                do {
+//                    self.achieveCalendarData = try response.map(GeneralResponse<AchieveCalendarResponse>?.self)
+//                    guard let achieveCalendarData = self.achieveCalendarData else { return }
+//                    completion(self.achieveCalendarData)
+//                } catch (let err) {
+//                    print(err.localizedDescription, 500)
+//                }
+//            case .failure(let err):
+//                print(err.localizedDescription)
+//                completion(nil)
+//            }
+//        }
+//    }
+    
+    
+    func getAchieveCalendar(month: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        achieveProvider.request(.achieveCalendar(month: month)) { response in
+            switch response {
+            case let .success(response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data,
+                                                            [AchieveCalendarResponseDTO].self)
+                completion(networkResult)
+            case let .failure(err):
+                print(err)
             }
         }
     }
+
 }

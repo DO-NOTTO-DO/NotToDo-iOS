@@ -32,16 +32,22 @@ final class AchievementViewController: UIViewController {
     private lazy var missionView = MissionStatisticsView(frame: view.bounds)
     private lazy var situationView = SituationStatisticsView(frame: view.bounds)
     private var bottomLabel = UILabel()
-    private lazy var dateFormatter = DateFormatter()
+    private var dateFormatter = DateFormatter()
     let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
     
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
     var situationList: [SituationStatistcsResponse] = []
     var missionList: [MissionStatistcsResponse] = []
-    private var dayChecked: String?
+    private var achieveMonth: String?
     
     // MARK: - View Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        requestAchieveAPI()
+        requestMonthAPI(month: "2023-01")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,16 +55,15 @@ final class AchievementViewController: UIViewController {
         setUI()
         setLayout()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        requestAchieveAPI()
-        requestMonthAPI(month: "2023-01")
-    }
 }
 
 // MARK: - Methods
 
 extension AchievementViewController {
+    func reloadMonthData() {
+        requestMonthAPI(month: "2023-01")
+    }
+    
     func setUI() {
         view.backgroundColor = .BG
         
@@ -103,26 +108,20 @@ extension AchievementViewController {
     }
     
     private func requestMonthAPI(month: String) {
-        AchieveAPI.shared.getAchieveCalendar(month: month) { [weak self] response in
-            guard self != nil else { return }
-            guard let response = response else { return }
-            print(response)
-            dump(response)
+        AchieveAPI.shared.getAchieveCalendar(month: month) { result in
+            switch result {
+            case let .success(data):
+                guard data is [AchieveCalendarResponseDTO] else { return }
+            case .requestErr:
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
         }
-//        AchieveAPI.shared.getAchieveCalendar(month: month) { [weak self] result in
-//            switch result {
-//            case let .success(data):
-//                guard data is [AchieveCalendarResponse] else { return }
-//            case .requestErr:
-//                print("requestErr")
-//            case .pathErr:
-//                print("pathErr")
-//            case .serverErr:
-//                print("serverErr")
-//            case .networkFail:
-//                print("networkFail")
-//            }
-//        }
     }
     
     func configMissionView() {

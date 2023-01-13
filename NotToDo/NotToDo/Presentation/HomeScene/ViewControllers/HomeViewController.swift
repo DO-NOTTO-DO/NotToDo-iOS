@@ -40,9 +40,9 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestBannerAPI()
+        requestWeeklyMissoinAPI(startDate: "2023-01-23")
         requestDailyMissionAPI(date: "2023-01-25")
     }
-    
 }
 
 extension HomeViewController: CheckboxToolTipDelegate {
@@ -54,6 +54,7 @@ extension HomeViewController: CheckboxToolTipDelegate {
 
 extension HomeViewController: ActionSheetViewDelegate {
     func reloadMissionData() {
+        requestWeeklyMissoinAPI(startDate: "2023-01-23")
         requestDailyMissionAPI(date: "2023-01-25")
         homeView.homeCollectionView.reloadData()
     }
@@ -107,6 +108,24 @@ extension HomeViewController: UICollectionViewDelegate {
             case .networkFail:
                 print("networkFail")
             case .requestErr(_):
+                print("networkFail")
+            }
+        }
+    }
+    
+    private func requestWeeklyMissoinAPI(startDate: String) {
+        HomeAPI.shared.getWeeklyMissoin(startDate: startDate) { result in
+            switch result {
+            case let .success(data):
+                guard let data = data as? [WeekMissionResponseDTO] else { return }
+                
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
                 print("networkFail")
             }
         }

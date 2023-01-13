@@ -191,11 +191,6 @@ extension MissionHistoryView: UICollectionViewDelegateFlowLayout {
 
 extension MissionHistoryView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: MissionHistoryCollectionViewCell.identifier, for: indexPath)
-                as? MissionHistoryCollectionViewCell
-        
-        print(historyList[indexPath.row].title)
         changedText = historyList[indexPath.row].title
         inputTextField.text = historyList[indexPath.row].title
     }

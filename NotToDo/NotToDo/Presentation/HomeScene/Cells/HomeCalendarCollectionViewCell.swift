@@ -64,9 +64,9 @@ extension HomeCalendarCollectionViewCell {
             $0.calendarWeekdayView.fs_height = 0
             $0.headerHeight = 0
             $0.scope = .week
-            $0.firstWeekday = 2 // 월요일부터 시작
+            $0.firstWeekday = 2 
             $0.locale = Locale(identifier: "ko_KR")
-            $0.placeholderType = .fillHeadTail  // 달력 필요한 부분만 보이게
+            $0.placeholderType = .fillHeadTail
             $0.collectionView.snp.makeConstraints {
                 $0.edges.equalToSuperview()
             }

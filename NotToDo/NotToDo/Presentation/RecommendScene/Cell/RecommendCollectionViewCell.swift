@@ -22,7 +22,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     // MARK: - UI Components
     
     lazy var nestedCollectionView = NestedView(frame: .zero)
-    var item: RecommendElementResponse?
+    var item: RecommendElementResponseDTO?
     
     // MARK: - Life Cycle
     

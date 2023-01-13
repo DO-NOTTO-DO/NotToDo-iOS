@@ -15,7 +15,7 @@ class RecommendViewController: UIViewController, CustomTabBarDelegate {
     // MARK: - Properties
     
     var navigationBarView = NavigationBarView(frame: CGRect(), mode: .leftRecommend) 
-    var itemList: [RecommendElementResponse] = []
+    var itemList: [RecommendElementResponseDTO] = []
     var selectedIndex: Int = 0
     
     enum Section: Int, Hashable {
@@ -158,7 +158,7 @@ extension RecommendViewController {
         snapShot.appendItems([], toSection: .main)
     }
     
-    private func updateData(item: [RecommendElementResponse]) {
+    private func updateData(item: [RecommendElementResponseDTO]) {
         var snapshot = dataSource.snapshot()
         snapshot.appendItems(item, toSection: .main)
         dataSource.apply(snapshot)

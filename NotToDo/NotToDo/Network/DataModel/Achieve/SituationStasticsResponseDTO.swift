@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - SituationStatistcsResponseElement
-struct SituationStatistcsResponse: Codable {
+struct SituationStatistcsResponseDTO: Codable {
     let id, count: Int
     let name: String
     let missions: [SituationMissions]

@@ -17,18 +17,18 @@ final class AchieveAPI {
 
     private init() { }
     
-    public private(set) var situationStatisticsData: GeneralArrayResponse<SituationStatistcsResponse>?
-    public private(set) var missionStatisticsData: GeneralArrayResponse<MissionStatistcsResponse>?
+    public private(set) var situationStatisticsData: GeneralArrayResponse<SituationStatistcsResponseDTO>?
+    public private(set) var missionStatisticsData: GeneralArrayResponse<MissionStatistcsResponseDTO>?
     public private(set) var achieveCalendarData: GeneralResponse<AchieveCalendarResponseDTO>?
 
     // MARK: - GET
     
-    func getSituationStatistics(completion: @escaping (GeneralArrayResponse<SituationStatistcsResponse>?) -> Void) {
+    func getSituationStatistics(completion: @escaping (GeneralArrayResponse<SituationStatistcsResponseDTO>?) -> Void) {
         achieveProvider.request(.situationStatistics) { result in
             switch result {
             case .success(let response):
                 do {
-                    self.situationStatisticsData = try response.map(GeneralArrayResponse<SituationStatistcsResponse>?.self)
+                    self.situationStatisticsData = try response.map(GeneralArrayResponse<SituationStatistcsResponseDTO>?.self)
                     guard let situationStatisticsData = self.situationStatisticsData else { return }
                     completion(situationStatisticsData)
                 } catch let err {
@@ -43,12 +43,12 @@ final class AchieveAPI {
     
     // MARK: - GET
     
-    func getMissionStatistics(completion: @escaping (GeneralArrayResponse<MissionStatistcsResponse>?) -> Void) {
+    func getMissionStatistics(completion: @escaping (GeneralArrayResponse<MissionStatistcsResponseDTO>?) -> Void) {
         achieveProvider.request(.missionStatistics) { result in
             switch result {
             case .success(let response):
                 do {
-                    self.missionStatisticsData = try response.map(GeneralArrayResponse<MissionStatistcsResponse>?.self)
+                    self.missionStatisticsData = try response.map(GeneralArrayResponse<MissionStatistcsResponseDTO>?.self)
                     guard let situationStatisticsData = self.missionStatisticsData else { return }
                     completion(self.missionStatisticsData)
                 } catch (let err) {

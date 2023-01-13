@@ -32,13 +32,14 @@ final class AchievementViewController: UIViewController {
     private lazy var missionView = MissionStatisticsView(frame: view.bounds)
     private lazy var situationView = SituationStatisticsView(frame: view.bounds)
     private var bottomLabel = UILabel()
-    private var dateFormatter = DateFormatter()
-    let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+    private var dateFormatter = DateFormatter().then {
+        $0.dateFormat = "yyyy-MM"
+    }
     
     private lazy var safeArea = self.view.safeAreaLayoutGuide
     
-    var situationList: [SituationStatistcsResponse] = []
-    var missionList: [MissionStatistcsResponse] = []
+    var situationList: [SituationStatistcsResponseDTO] = []
+    var missionList: [MissionStatistcsResponseDTO] = []
     private var achieveMonth: String?
     
     // MARK: - View Life Cycle
@@ -46,7 +47,7 @@ final class AchievementViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestAchieveAPI()
-        requestMonthAPI(month: "2023-01")
+        requestMonthAPI(month: dateFormatter.string(from: Date()))
     }
     
     override func viewDidLoad() {
@@ -61,7 +62,7 @@ final class AchievementViewController: UIViewController {
 
 extension AchievementViewController {
     func reloadMonthData() {
-        requestMonthAPI(month: "2023-01")
+        requestMonthAPI(month: dateFormatter.string(from: Date()))
     }
     
     func setUI() {

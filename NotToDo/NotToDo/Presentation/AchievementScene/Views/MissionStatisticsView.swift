@@ -14,7 +14,7 @@ class MissionStatisticsView: UIView {
     
     // MARK: - Properties
     
-    var missionList: [MissionStatistcsResponse] = []
+    var missionList: [MissionStatistcsResponseDTO] = []
     
     // MARK: - UI Components
     

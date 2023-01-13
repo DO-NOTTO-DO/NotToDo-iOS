@@ -14,7 +14,7 @@ class NestedView: UIView {
     
     // MARK: - Properties
 
-    var item: RecommendElementResponse?
+    var item: RecommendElementResponseDTO?
     
     var isClickedClosure: ((_ section: Int, _ index: Int) -> Void)?
     var section: Int?

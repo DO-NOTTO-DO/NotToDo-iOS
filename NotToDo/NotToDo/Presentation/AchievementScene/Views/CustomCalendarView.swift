@@ -21,7 +21,7 @@ class CustomCalendar: UIView {
     private lazy var leftBtn = UIButton()
     private lazy var rightBtn = UIButton()
     private lazy var headerImage = UIImageView()
-    private var currentPage: Date?
+    var currentPage: Date? 
     private lazy var today: Date = { return Date() }()
     lazy var dateFormatter = DateFormatter()
     

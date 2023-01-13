@@ -7,7 +7,7 @@
 import Foundation
 
 // MARK: - RecommendElement
-struct RecommendElementResponse: Codable, Hashable {
+struct RecommendElementResponseDTO: Codable, Hashable {
     let title: String
     let recommendActions: [RecommendAction]
 }
@@ -16,5 +16,3 @@ struct RecommendElementResponse: Codable, Hashable {
 struct RecommendAction: Codable, Hashable {
     let name: String
 }
-
-typealias Recommend = [RecommendElementResponse]

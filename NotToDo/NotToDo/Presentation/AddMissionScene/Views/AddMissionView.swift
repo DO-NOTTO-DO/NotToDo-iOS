@@ -353,10 +353,5 @@ extension AddMissionView {
             unavailableAddBehaviorButton.isHidden = false
             addBehaviorButton.isHidden = true
         }
-        
-//        if missionText.text!.count > 0 && goalTextField.text!.count > 0 {
-//            addMissionButton.isUserInteractionEnabled = true
-//            addMissionButton.backgroundColor = .nottodoBlack
-//        }
     }
 }

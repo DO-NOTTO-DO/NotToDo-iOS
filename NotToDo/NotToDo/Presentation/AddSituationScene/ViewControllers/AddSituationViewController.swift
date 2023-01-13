@@ -30,13 +30,17 @@ final class AddSituationViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         setAddTarget()
-        requestAddSituationAPI()
     }
     
     override func loadView() {
         super.loadView()
         addSituationView = AddSituationView()
         view = addSituationView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        requestAddSituationAPI()
     }
 }
  
@@ -46,7 +50,7 @@ extension AddSituationViewController {
         addSituationView.navigationBarView.successButton.addTarget(self, action: #selector(popToAddMissionController), for: .touchUpInside)
     }
     
-    private func requestAddSituationAPI() {
+    func requestAddSituationAPI() {
         AddSituationAPI.shared.getAddSituation { [weak self] response in
             guard self != nil else { return }
             guard let response = response else { return }
@@ -57,8 +61,6 @@ extension AddSituationViewController {
             self?.addSituationView.recommendList = data.recommends
             self?.addSituationView.recentList = data.recents
             self?.addSituationView.addSituationCollectionView.reloadData()
-    
-            dump(response)
         }
     }
     

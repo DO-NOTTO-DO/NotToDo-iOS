@@ -219,11 +219,10 @@ extension HomeMissionCollectionViewCell {
         missionId = model.id
         
         if model.completionStatus == "FINISH" {
-            statusButton.setImage(.checkCircle , for: .normal)
+            statusButton.setImage(.checkCircle, for: .normal)
         } else if (model.completionStatus == "AMBIGUOUS") {
-            statusButton.setImage(.checkTriangle , for: .normal)
-        }
-        else {
+            statusButton.setImage(.checkTriangle, for: .normal)
+        } else {
             statusButton.setImage(.checkDefault, for: .normal)
         }
         

@@ -210,7 +210,7 @@ extension HomeViewController: UICollectionViewDataSource {
             if missionList.isEmpty {
                 return 1
             } else {
-                return missionList.count ?? 1
+                return missionList.count 
             }
         }
     }

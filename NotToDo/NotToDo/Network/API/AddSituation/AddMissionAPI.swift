@@ -17,8 +17,6 @@ final class AddMissionAPI {
     
     private init() { }
     
-    //public private(set) var addMissionData: GeneralResponse<AddMissionResponse>?
-    
     // MARK: - POST
     
     func postAddMission(newMission: AddMissionRequest, completion: @escaping (GeneralResponse<AddMissionResponse>?) -> Void) {

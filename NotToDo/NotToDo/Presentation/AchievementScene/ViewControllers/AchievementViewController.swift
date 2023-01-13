@@ -21,7 +21,7 @@ final class AchievementViewController: UIViewController {
             situationView.isHidden = !self.missionView.isHidden
         }
     }
-
+    
     
     // MARK: - UI Components
     
@@ -42,12 +42,13 @@ final class AchievementViewController: UIViewController {
     var missionList: [MissionStatistcsResponseDTO] = []
     var dataSource: [String: Int] = [:]
     
+    
     // MARK: - View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestAchieveAPI()
-       // requestMonthAPI(month: month)
+        requestMonthAPI(month: dateFormatter.string(from: calendarView.calendar.today!))
     }
     
     override func viewDidLoad() {
@@ -78,7 +79,7 @@ extension AchievementViewController {
             $0.monthCalendarClosure = { [self] result in
                 let month = result
                 self.reloadMonthData(month: month)
-                }
+            }
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.nottodoGray2?.cgColor
             $0.calendar.delegate = self
@@ -120,7 +121,13 @@ extension AchievementViewController {
         AchieveAPI.shared.getAchieveCalendar(month: month) { [self] result in
             switch result {
             case let .success(data):
-                guard data is [AchieveCalendarResponseDTO] else { return }
+                guard let data = data as? [AchieveCalendarResponseDTO] else { return }
+                self.dataSource = [:]
+                for item in data {
+                    self.dataSource[item.actionDate] = item.count
+                }
+                calendarView.calendar.reloadData()
+                
             case .requestErr:
                 print("requestErr")
             case .pathErr:
@@ -256,42 +263,24 @@ extension AchievementViewController: FSCalendarDelegate {
 
 extension AchievementViewController: FSCalendarDataSource {
     
-    // 서버에서 넘어온 dateString이랑 이 메서드의 date를 잘 매칭시켜줘야 함
-    // date 매칭된 것에 맞게 데이터를 넘겨줘야 함
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
         let cell = calendar.dequeueReusableCell(withIdentifier: String(describing: MissionCalendarDayCell.self), for: date, at: position) as! MissionCalendarDayCell
-//        switch cell.state {
-//        case .none:
-//            return
-//        case .step1:
-//           return
-//        case .step2:
-//            return
-//        case .step3:
-//            return
-//        default:
-//            break
-//        }
         
-        // MARK: 서버에서 넘어온 값에 따라 셀 상태 변화시켜주기
-        // Date : Int(Enum)
-        /*
-         NotToDoCalendarCell에 가보면 Enum이 보일 것임
-         프로젝트 상황에 따라 적절하게 바꿔서 사용하기
-         
-         현재는 5개의 case가 있음
-         - none, step1, step2, step3, bordered
-         
-         case에 따라서 backgroundColor 변화시키는 식으로 구현되어 있는데 UI 디테일을 살리고 싶으면
-         그냥 case에 따라 이미지를 넣는 것이 더 쉬움
-         */
-        
-        // 캘린더 셀 설정해주는 코드 : CollectionViewCell이랑 동일하게 생각하면 됨
-        cell.configure(.step1)
+        if let count = self.dataSource[date.toString()] {
+            switch count {
+            case 0:
+                cell.configure(.none)
+            case 1:
+                cell.configure(.step1)
+            case 2:
+                cell.configure(.step2)
+            case 3:
+                cell.configure(.step3)
+            default:
+                cell.configure(.none)
+            }
+        }
         return cell
     }
 }
 
-extension AchievementViewController: FSCalendarDelegateAppearance {
-    
-}

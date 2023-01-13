@@ -83,5 +83,6 @@ final class MissionCalendarDayCell: FSCalendarCell {
 extension MissionCalendarDayCell {
     func configure(_ state: ToDoState) {
         self.state = state
+        updateUI()
     }
 }

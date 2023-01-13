@@ -133,7 +133,7 @@ extension SituationStatisticsView: UITableViewDataSource, UITableViewDelegate {
             default:
                 cell.backGroundImage.layer.addBorder([.bottom, .left, .right], color: .nottodoGray2!, width: 0.5)
             }
-            cell.titleLabel.text = (situationList[indexPath.section].missions[indexPath.row].title as! String)
+            cell.titleLabel.text = (situationList[indexPath.section].missions[indexPath.row].title)
             cell.numberLabel.text = "\(situationList[indexPath.section].missions[indexPath.row].count)회"
             cell.selectionStyle = .none
             return cell

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090D3DDB297139B1000F468C /* CalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090D3DDA297139B1000F468C /* CalendarCustomCell.swift */; };
 		090FA2E7295F51BB00918AED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 090FA2E6295F51BB00918AED /* GoogleService-Info.plist */; };
 		090FA2F52960B70400918AED /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2F42960B70400918AED /* SnapKit */; };
 		090FA2F82960B74000918AED /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 090FA2F72960B74000918AED /* Then */; };
@@ -147,6 +148,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		090D3DDA297139B1000F468C /* CalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCustomCell.swift; sourceTree = "<group>"; };
 		090FA2E6295F51BB00918AED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0951EE8C297130DF004A3B5B /* AchieveCalendarResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveCalendarResponseDTO.swift; sourceTree = "<group>"; };
 		09611EE6296FD52700561CAA /* RecommendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendService.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				09F695DC296C52F000877EA7 /* SituationTableViewCell.swift */,
 				099F0727296B94790036CF55 /* StatisticsEmptyTableViewCell.swift */,
 				09F695DA296C52B600877EA7 /* MissionTableViewCell.swift */,
+				090D3DDA297139B1000F468C /* CalendarCustomCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1262,6 +1265,7 @@
 				3BE0700E296F43B6002CC50A /* Strings.swift in Sources */,
 				099F06FA2967EE9F0036CF55 /* LabelCollectionViewCell.swift in Sources */,
 				3BBE56F3296C4EB000771DE4 /* SecondOnboardingViewController.swift in Sources */,
+				090D3DDB297139B1000F468C /* CalendarCustomCell.swift in Sources */,
 				096BDFD92964FEF6009ED396 /* CustomCalendarView.swift in Sources */,
 				099F072A296B98B90036CF55 /* SituationTitleView.swift in Sources */,
 				3B2748632970B570005DBD46 /* AddAnotherDayResponseDTO.swift in Sources */,

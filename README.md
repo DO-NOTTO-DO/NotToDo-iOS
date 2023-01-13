@@ -95,13 +95,11 @@ Firebase | 푸쉬 알림 | SPM
 홈 뷰 디자인을 구현하는 것이 가장 어려웠습니다. 처음에는 GUI와 그대로 구현하는 거만 생각하고 중첩이 3번 되는 구조로 뷰를 짰는데, 서버통신과 데이터 전달 과정에서 복잡함을 깨달았습니다. 아래 순서대로 뷰 구조를 뒤집었습니다.
 
 1. 첫 번째 구조
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eeca49ce-6c0d-44f8-ad25-7905643e0af0/Untitled.png)
+![첫번째구조](https://user-images.githubusercontent.com/83651335/212325937-7e625951-a1d5-4bb2-b5f5-7a6afc6c0783.png)
 
 1. 두 번째 구조
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2b6bfe63-efb4-46fe-922d-f6a737f67ded/Untitled.png)
-    
+    ![두번째구조](https://user-images.githubusercontent.com/83651335/212325953-58eb120d-4639-43a4-94f3-d94e2d32759e.png)
+
 2. 세 번째 구조
     
     달력을 cell 0
@@ -121,7 +119,7 @@ Firebase | 푸쉬 알림 | SPM
 
 따라서 배경이 clear이고 툴팁 하나를 가지고 있는 뷰 컨트롤러를 만들어서 체크 박스를 클릭 했을 때 crossDisolve 속성으로 present되도록 구현했습니다. 이때 present될 때 마다 셀의 체크박스를 기준으로 layout을 remake 해주었습니다. 스크롤 될 때 역시 제대로 된 cell 위치를 가져오기 위해 수식을 계산하는 과정에서 scrollView의 contentOffSet 개념에 대해 새로 공부하게 되었습니다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/938c866c-0165-49dc-a1b0-7e2587712902/Untitled.png)
+![툴팉ㅂ](https://user-images.githubusercontent.com/83651335/212325989-2408e461-f4a2-43d2-898a-cb1fbf947b70.png)
 
 </br>
 

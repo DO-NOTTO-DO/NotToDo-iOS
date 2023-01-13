@@ -44,7 +44,6 @@ extension HomeCollectionReusableView {
         dateLabel.do {
             $0.textColor = .nottodoBlack
             $0.font = .PretendardBold(size: 18.adjusted)
-//            $0.text = "2023년 1월"            // dateFormatter로 수정
         }
         dateView.backgroundColor = .yellow_basic
         motivationLabel.do {

@@ -18,7 +18,8 @@ final class HomeViewController: UIViewController {
     var missionList: [DailyMissionResponseDTO] = []
     var banner: BannerResponseDTO?
     var missionId: Int?
-    private var clickedDay: String?
+    private let todayDate = Date()
+    private lazy var clickedDay: String? = todayDateFormatter.string(from: self.todayDate)
     private let todayDateFormatter = DateFormatter()
     private let mothlyDateFormatter = DateFormatter()
     private var currentPage: Date? = Date()

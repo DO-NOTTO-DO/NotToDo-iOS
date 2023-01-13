@@ -239,6 +239,7 @@ extension HomeMissionCollectionViewCell {
             cancelLineView.isHidden = true
         } else {
             statusButton.setImage(.checkDefault, for: .normal)
+            cancelLineView.isHidden = false
         }
     }
     

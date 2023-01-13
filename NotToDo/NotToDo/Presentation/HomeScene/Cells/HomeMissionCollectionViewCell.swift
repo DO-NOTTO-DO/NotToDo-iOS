@@ -236,8 +236,10 @@ extension HomeMissionCollectionViewCell {
             cancelLineView.isHidden = false
         } else if model.completionStatus == "AMBIGUOUS" {
             statusButton.setImage(.checkTriangle, for: .normal)
+            cancelLineView.isHidden = true
         } else {
             statusButton.setImage(.checkDefault, for: .normal)
+            cancelLineView.isHidden = false
         }
     }
     

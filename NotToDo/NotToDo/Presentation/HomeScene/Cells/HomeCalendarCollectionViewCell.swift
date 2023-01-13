@@ -62,11 +62,11 @@ extension HomeCalendarCollectionViewCell {
             $0.appearance.titleTodayColor = .nottodoBlack
             $0.appearance.todayColor = .none
             $0.appearance.todaySelectionColor = .none
-            $0.appearance.selectionColor = .none
+            $0.appearance.selectionColor = .yellow_basic
             
             $0.appearance.weekdayTextColor = .nottodoBlack
             $0.appearance.titleSelectionColor = .nottodoBlack
-            $0.appearance.borderRadius = 0.4.adjusted
+            $0.appearance.borderRadius = 0.4
             $0.appearance.titleFont = .PretendardMedium(size: 14.adjusted)
             $0.appearance.weekdayFont = .PretendardMedium(size: 14.adjusted)
             $0.appearance.headerMinimumDissolvedAlpha = 0
@@ -100,7 +100,7 @@ extension HomeCalendarCollectionViewCell: FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
         let cell = calendar.dequeueReusableCell(withIdentifier: String(describing: MissionCalendarDayCell.self), for: date, at: position) as! MissionCalendarDayCell
-        cell.configure(.bordered)
+        cell.configure(.none)
         return cell
     }
 }

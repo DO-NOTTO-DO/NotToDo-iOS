@@ -12,11 +12,6 @@ import SnapKit
 import Then
 
 final class HomeCalendarCollectionViewCell: UICollectionViewCell {
-  
-    // TODO: 해당 데이터 가지고 셀 각각에 데이터 뿌려주면 될듯
-    // 딕셔너리나 배열 적절하게 선택해서 사용하기 -> 배열이 더 익숙하니까 배열 사용하는 것이 더 편할 것임
-    // 아마 서버에서 [날짜(String), Int] 값을 배열 형태로 같이 넘겨줄 것 같은데 그거 가지고 사용하면 됨
-    var dataSource: [String: Int] = [:]
     
     // TODO: 해당 데이터 가지고 셀 각각에 데이터 뿌려주면 될듯
     // 딕셔너리나 배열 적절하게 선택해서 사용하기 -> 배열이 더 익숙하니까 배열 사용하는 것이 더 편할 것임
@@ -66,7 +61,7 @@ extension HomeCalendarCollectionViewCell {
             /* */
             $0.dataSource = self
             $0.delegate = self
-            $0.register(MissionCalendarCell.self, forCellReuseIdentifier: String(describing: MissionCalendarCell.self))
+            $0.register(MissionCalendarDayCell.self, forCellReuseIdentifier: String(describing: MissionCalendarDayCell.self))
             
             $0.appearance.titleTodayColor = .nottodoBlack
             $0.appearance.todayColor = .none
@@ -110,7 +105,7 @@ extension HomeCalendarCollectionViewCell: FSCalendarDataSource {
     // 서버에서 넘어온 dateString이랑 이 메서드의 date를 잘 매칭시켜줘야 함
     // date 매칭된 것에 맞게 데이터를 넘겨줘야 함
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
-        let cell = calendar.dequeueReusableCell(withIdentifier: String(describing: MissionCalendarCell.self), for: date, at: position) as! MissionCalendarCell
+        let cell = calendar.dequeueReusableCell(withIdentifier: String(describing: MissionCalendarDayCell.self), for: date, at: position) as! MissionCalendarDayCell
         
         // MARK: 서버에서 넘어온 값에 따라 셀 상태 변화시켜주기
         // Date : Int(Enum)

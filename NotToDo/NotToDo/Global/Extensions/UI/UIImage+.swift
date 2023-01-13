@@ -81,16 +81,16 @@ extension UIImage {
     
     // Calendar
     
-    static let headerImage = UIImage(named: "Calendar/Component")!.withRenderingMode(.alwaysOriginal)
-    static let calendarLeftArrow = UIImage(named: "Calendar/btn_arrow/_left")!.withRenderingMode(.alwaysOriginal)
-    static let calendarRightArrow = UIImage(named: "Calendar/btn_arrow/_right")!.withRenderingMode(.alwaysOriginal)
-    static let selectedDateBtn = UIImage(named: "Calendar/btn_selected")!.withRenderingMode(.alwaysOriginal)
-    static let rectangle_Clear = UIImage(named: "Calendar/Rectangle_Clear")!.withRenderingMode(.alwaysOriginal)
+    static let headerImage = UIImage(named: "calendar/Component")!.withRenderingMode(.alwaysOriginal)
+    static let calendarLeftArrow = UIImage(named: "calendar/btn_arrow/_left")!.withRenderingMode(.alwaysOriginal)
+    static let calendarRightArrow = UIImage(named: "calendar/btn_arrow/_right")!.withRenderingMode(.alwaysOriginal)
+    static let selectedDateBtn = UIImage(named: "calendar/btn_selected")!.withRenderingMode(.alwaysOriginal)
+    static let rectangle_Clear = UIImage(named: "calendar/Rectangle_Clear")!.withRenderingMode(.alwaysOriginal)
     
     // Shape
     
-    static let deletePageBtn = UIImage(named: "Other/btn_delete_page")!.withRenderingMode(.alwaysOriginal)
-    static let backBtn = UIImage(named: "Other/btn_back")!.withRenderingMode(.alwaysOriginal)
+    static let deletePageBtn = UIImage(named: "other/btn_delete_page")!.withRenderingMode(.alwaysOriginal)
+    static let backBtn = UIImage(named: "other/btn_back")!.withRenderingMode(.alwaysOriginal)
     static let rightArrow = UIImage(named: "Arrow/ic_right_arrow")!.withRenderingMode(.alwaysOriginal)
     static let leftArrow = UIImage(named: "Arrow/ic_left_arrow")!.withRenderingMode(.alwaysOriginal)
     static let gray4RightArrow = UIImage(named: "Arrow/ic_gray4_right")!.withRenderingMode(.alwaysOriginal)

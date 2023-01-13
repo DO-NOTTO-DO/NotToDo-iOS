@@ -215,6 +215,7 @@ extension HomeViewController: UICollectionViewDataSource {
                         calendarActionSheetViewController.id = missionId
                         calendarActionSheetViewController.modalPresentationStyle = .overFullScreen
                         calendarActionSheetViewController.modalTransitionStyle = .crossDissolve
+                        calendarActionSheetViewController.delegate = self
                         self?.present(calendarActionSheetViewController, animated: true)
                     }
                 }
@@ -301,6 +302,14 @@ extension HomeViewController: FSCalendarDelegate {
 
 extension HomeViewController: AddMissoinViewDelegate {
     func homeViewReload() {
+        requestDailyMissionAPI(date: clickedDay ?? "")
+        homeView.homeCollectionView.reloadData()
+    }
+}
+
+extension HomeViewController: DateListDelegate {
+    func sendAnotherDateData(dataList: [String]) {
+        
         requestDailyMissionAPI(date: clickedDay ?? "")
         homeView.homeCollectionView.reloadData()
     }

@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Then
 import Combine
+import KakaoSDKUser
 
 final class KakaoAuthView: UIView {
     
@@ -60,12 +61,14 @@ extension KakaoAuthView {
             $0.font = .PretendardBold(size: 20)
             $0.textColor = .nottodoGray1
             $0.textAlignment = .center
+            $0.text = I18N.login
             $0.numberOfLines = 0
         }
         
         loginStatusLabel.do {
             $0.font = .PretendardRegular(size: 12)
             $0.textColor = .nottodoGray1
+            $0.text = I18N.agreeLogin
         }
     }
     
@@ -122,11 +125,32 @@ extension KakaoAuthView {
     }
     
     fileprivate func setBindings() {
+        var nickname: String?
+        var imageUrl: Any?
+        
+        UserApi.shared.me() {(user, error) in
+            if let error = error {
+                print(error)
+            } else {
+                print("me() success.")
+                
+                // do something
+                _ = user
+                
+               nickname = user?.kakaoAccount?.profile?.nickname
+                
+                if let url = user?.kakaoAccount?.profile?.profileImageUrl,
+                   let data = try? Data(contentsOf: url) {
+                    imageUrl = try? Data(contentsOf: url)
+                }
+            }
+        }
+        
         self.kakaoAuthModel.$isLoggedIn.sink { [weak self] isLoggedIn in
             guard let self = self else { return }
             self.loginStatusLabel.text = isLoggedIn ? "로그인 상태입니다." : "로그아웃 상태입니다."
-            self.loginImageView.image = isLoggedIn ? UIImage(data: image) : .login
             self.loginLabel.text = isLoggedIn ? nickname : I18N.login
+            self.loginImageView.image = isLoggedIn ? UIImage(data: imageUrl as! Data) : .login
         }
         .store(in: &subscriptions)
     }

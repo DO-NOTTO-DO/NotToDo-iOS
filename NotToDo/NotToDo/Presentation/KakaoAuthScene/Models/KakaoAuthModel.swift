@@ -17,9 +17,9 @@ class KakaoAuthModel: ObservableObject {
     
     @Published var isLoggedIn: Bool = false
     
-    init() {
-        print("KakaoAuthModel - init() called")
-    }
+//    init() {
+//        print("KakaoAuthModel - init() called")
+//    }
     
     // 카카오톡 앱으로 로그인
     func kakaoLoginWithApp() async -> Bool {
@@ -37,7 +37,6 @@ class KakaoAuthModel: ObservableObject {
                     continuation.resume(returning: true)
                     
                     let accessToken = oauthToken?.accessToken
-                    self.setUserInfo()
                 }
             }
         }
@@ -59,7 +58,6 @@ class KakaoAuthModel: ObservableObject {
                     continuation.resume(returning: true)
                     
                     let accessToken = oauthToken?.accessToken
-                    self.setUserInfo()
                 }
             }
         }
@@ -97,27 +95,6 @@ class KakaoAuthModel: ObservableObject {
                 } else {
                     print("logout() success.")
                     continuation.resume(returning: true)
-                }
-            }
-        }
-    }
-    
-    func setUserInfo() {
-        
-        UserApi.shared.me() {(user, error) in
-            if let error = error {
-                print(error)
-            } else {
-                print("me() success.")
-                
-                // do something
-                _ = user
-                let nickname = user?.kakaoAccount?.profile?.nickname
-                print(user?.kakaoAccount?.profile?.nickname)
-                
-                if let url = user?.kakaoAccount?.profile?.profileImageUrl,
-                   let image = try? Data(contentsOf: url) {
-                    print(url)
                 }
             }
         }

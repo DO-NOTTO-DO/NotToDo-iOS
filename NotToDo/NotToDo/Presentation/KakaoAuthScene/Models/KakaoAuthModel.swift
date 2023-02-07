@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import KakaoSDKAuth
 import KakaoSDKUser
+import UIKit
 
 class KakaoAuthModel: ObservableObject {
     
@@ -34,6 +35,9 @@ class KakaoAuthModel: ObservableObject {
                     // do something
                     _ = oauthToken
                     continuation.resume(returning: true)
+                    
+                    let accessToken = oauthToken?.accessToken
+                    self.setUserInfo()
                 }
             }
         }
@@ -53,6 +57,9 @@ class KakaoAuthModel: ObservableObject {
                     // do something
                     _ = oauthToken
                     continuation.resume(returning: true)
+                    
+                    let accessToken = oauthToken?.accessToken
+                    self.setUserInfo()
                 }
             }
         }
@@ -90,6 +97,27 @@ class KakaoAuthModel: ObservableObject {
                 } else {
                     print("logout() success.")
                     continuation.resume(returning: true)
+                }
+            }
+        }
+    }
+    
+    func setUserInfo() {
+        
+        UserApi.shared.me() {(user, error) in
+            if let error = error {
+                print(error)
+            } else {
+                print("me() success.")
+                
+                // do something
+                _ = user
+                let nickname = user?.kakaoAccount?.profile?.nickname
+                print(user?.kakaoAccount?.profile?.nickname)
+                
+                if let url = user?.kakaoAccount?.profile?.profileImageUrl,
+                   let image = try? Data(contentsOf: url) {
+                    print(url)
                 }
             }
         }

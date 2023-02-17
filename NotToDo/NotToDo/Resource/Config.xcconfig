@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  NotToDo
+//
+//  Created by 김민서 on 2023/02/07.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+KAKAO_NATIVE_APP_KEY = 1fedb88d99f3002f423b7af1f7cbf8f2
